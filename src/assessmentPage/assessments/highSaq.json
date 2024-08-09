@@ -1,0 +1,3664 @@
+{
+  "id": "0r3ebyXxwY8pHS8yfl5z1",
+  "name": "Cyber Security Assessment - High Risk",
+  "status": "DRAFT",
+  "outcomes": { "tbc": { "title": "", "body": "" } },
+  "sections": [
+    {
+      "name": "Certification",
+      "questions": [
+        {
+          "id": "SAQ000-01",
+          "title": "Do you have any Information Security Certification?",
+          "guidance": "Example certification includes:  Cyber Essential (Plus) and ISO 27001",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Yes",
+              "value": "yes",
+              "points": 0
+            },
+            {
+              "name": "No",
+              "value": "no",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "condition": [
+                {
+                  "op": "EQUAL",
+                  "value": "no"
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ000-02",
+          "title": "Check all information certificates that you own and provide the associated certificate number.",
+          "type": "MULTIPLE_CHOICE",
+          "allowMultiple": true,
+          "options": [
+            {
+              "name": "Cyber Essential (Plus)",
+              "value": "cyberEssentialPlus",
+              "points": 0
+            },
+            {
+              "name": "ISO 27001",
+              "value": "iso27001",
+              "points": 0
+            },
+            {
+              "name": "Other",
+              "value": "other",
+              "freeText": true,
+              "freeTextLabel": "Please name the certificate providers.",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ3"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Managing Security Risk",
+      "questions": [
+        {
+          "id": "SAQ1",
+          "title": "Are there documented policies that cover the management and support of information security for the service provided?",
+          "guidance": "To effectively manage information security risks, there should be a documented policy or set of policies that set out key expectations and requirements around information security. It is important that these policies cover the full scope of the ICT arrangements used to deliver the contract.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime,The NCSC's 10 Steps to Cyber Security: Risk Management Regime,\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC’s NIS Cyber Assessment Framework: A1,\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B1,\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance: A1 and B1,\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework ,The NCSC's Cloud Security Principles: Principle 4: Governance Framework",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No – Limited or no documented coverage of Information Security",
+              "value": "noLimitedOrNoDocumentedCoverageOfInformationSecurity",
+              "points": 0
+            },
+            {
+              "name": "Partial – Some specific policy coverage of Information Security",
+              "value": "partialSomeSpecificPolicyCoverageOfInformationSecurity",
+              "points": 10
+            },
+            {
+              "name": "Yes – There is a well documented policy set",
+              "value": "yesThereIsAWellDocumentedPolicySet",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Governance"
+        },
+        {
+          "id": "SAQ2",
+          "title": "Have appropriate information security roles and responsibilities been defined and allocated?",
+          "guidance": "There should be an identified, and named, board or senior representative (or a person with the direct delegated authority) who is responsible for the information security aspects of the service and all employees, contractors and third parties. This may, for example, be someone with the title ‘Chief Security Officer’, ‘Chief Information Officer’ or ‘Chief Technical Officer’. There should be clarity on who in the organisation has overall accountability for the security of relevant networks and information systems. If required, a Data Protection Officer should be appointed.\n\nThe NCSC's 10 Steps to Cyber Security:\nhttps://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime,Risk Management Regime,\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A1\n\nThe NCSC and ICO's GDPR Security Outcomes guidance:\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A1 (Data Protection Officer)\n\nThe NCSC's Cloud Security Principles\nhttps://www.ncsc.gov.uk/guidance/cl-security-principle-4-governance-framework,Principle 4: Governance Framework",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - Responsibility for information security has not been formally assigned",
+              "value": "noResponsibilityForInformationSecurityHasNotBeenFormallyAssigned",
+              "points": 0
+            },
+            {
+              "name": "Partial – Responsibilities are understood but not formalised",
+              "value": "partialResponsibilitiesAreUnderstoodButNotFormalised",
+              "points": 25
+            },
+            {
+              "name": "Yes – Clearly assigned roles and responsibilities, including senior levels",
+              "value": "yesClearlyAssignedRolesAndResponsibilitiesIncludingSeniorLevels",
+              "minimumRequired": true,
+              "points": 35
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Governance"
+        },
+        {
+          "id": "SAQ3",
+          "title": "Are information security risks regularly communicated to senior management?",
+          "guidance": "Security and information security should be part of financial and operational risk reporting mechanisms, ensuring that board/senior managers are kept informed of security and information risks.\n\nThe NCSC's 10 Steps to Cyber Security:\nhttps://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime,Risk Management Regime\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A1\n\nThe NCSC's Cloud Security Principles:\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework,Principle 4: Governance Framework",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Governance",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ6"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ4",
+          "title": "Are there arrangements for reporting significant cyber security incidents to external authorities?",
+          "guidance": "As a minimum, organisations need to know when they should or must report information security incidents to external authorities, and how to do so. Depending on the circumstances, this may include law enforcement (in Scotland, call Police Scotland 101), the Information Commissioner, NIS Competent Authorities, and other sector-specific regulators.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework,The NCSC's Small Business Guide: Avoid Phishing Attacks: Tip 4\n\nThe NCSC's 10 Steps to Cyber Security:\nhttps://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime, Risk Management Regime\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B6\n\nThe NCSC and ICO's GDPR Security Outcomes Guidance\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes ,D2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Governance"
+        },
+        {
+          "id": "SAQ5",
+          "title": "Do key staff subscribe to appropriate threat intelligence feeds and take part in threat intelligence/security knowledge sharing partnerships?",
+          "guidance": "To stay on top of, and respond to, emerging threats, vulnerabilities and other developments, key staff should subscribe to appropriate vendor alert feeds, be members of specialist information security interest groups, attend cyber security conferences, etc. In addition to other intelligence sharing partnerships, all organisations are encouraged where appropriate to join the NCSC's free Cybersecurity Information Sharing Partnership (CiSP).\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework,The NCSC's Small Business Guide: Avoid Phishing Attacks: Tip 4}\n\nThe NCSC's 10 Steps to Cyber Security:\nhttps://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime,Risk Management Regime\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B6\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes Guidance D2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Yes", "value": "yes", "points": 10 },
+            {
+              "name": "Yes - including membership of CiSP or intelligence sharing partnership",
+              "value": "yesIncludingMembershipOfCispOrIntelligenceSharingPartnership",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Risk Management"
+        },
+        {
+          "id": "SAQ6",
+          "title": "Is there a risk management regime which assesses the risks to relevant information and systems?",
+          "guidance": "Organisations should apply a similar level of rigour to assessing the risks to technology, systems and information assets as they would to other risks that might have a material business impact, such as regulatory, financial or operational risks.\nSenior management should have visibility of key risk decisions made throughout the organisation. This can be achieved by embedding an appropriate risk management regime across the organisation, which is actively supported by the board, senior managers and an empowered governance structure. Examples of good practice may include risk assessments (e.g. IS1/2, SP800-30, COBIT, 27005), risk registers, design authority, information governance boards, programme and project engagement with infosec professionals, change control, etc.\n\nThe NCSC's 10 Steps to Cyber Security: https://www.ncsc.gov.uk/guidance/10-steps-information-risk-management-regime,Risk Management Regime\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A1.c A2.a\n\nThe NCSC and ICO's GDPR Security Outcomes guidance:\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A2\n\nThe NCSC's Cloud Security Principles: https://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework,Principle 4: Governance Framework",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No specific activities under this description",
+              "value": "noSpecificActivitiesUnderThisDescription",
+              "points": 0
+            },
+            {
+              "name": "ICT risk assessment and management processes are done on an ad hoc basis",
+              "value": "ictRiskAssessmentAndManagementProcessesAreDoneOnAnAdHocBasis",
+              "points": 19
+            },
+            {
+              "name": "Fully governed and using a repeatable formal assessment process",
+              "value": "fullyGovernedAndUsingARepeatableFormalAssessmentProcess",
+              "minimumRequired": true,
+              "points": 30
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Risk Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ11"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ7",
+          "title": "Have roles and processes been established to ensure compliance with all applicable legal and regulatory requirements?",
+          "guidance": "Good governance must provide processes to identify and ensure compliance with applicable legal and regulatory requirements.<br/>These may include, but are not limited to: GDPR, Freedom of Information (FOI/FOISA), Records Management, Reuse of public sector information, the EU Directive on Network and Information Systems, etc.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B1.a\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance,\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-4-governance-framework,The NCSC's Cloud Security Principles: Principle 4: Governance Framework",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Risk Management"
+        },
+        {
+          "id": "SAQ8",
+          "title": "Do senior management review the effectiveness of the information security programme on a regular basis?",
+          "guidance": "There should be regular auditing to assess if relevant ICT policies and procedures are effective and being followed. Senior management should review the results.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security,\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A2.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Risk Management"
+        },
+        {
+          "id": "SAQ11",
+          "title": "In which countries or regions will data or information be processed?",
+          "guidance": "Organisations must understand in which countries data will be stored, processed and managed. They should also consider how this affects their compliance with relevant legislation.\n\nData protection legislation requires that data only be processed within the EEA, or jurisdictions with adequate protections. If personal data are being processed, organisations must ensure that these requirements are complied with.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,The NCSC's Cloud Security Principles: Principle 2: Asset protection and Resilience\nhttps://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-law-enforcement-processing/international-transfers/,The Information Commissioner's Guidance on International Transfers",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "There are no restrictions",
+              "value": "thereAreNoRestrictions",
+              "points": 0
+            },
+            {
+              "name": "Non EEA without adequacy agreement",
+              "value": "nonEeaWithoutAdequacyAgreement",
+              "points": 0
+            },
+            {
+              "name": "Non EEA with adequacy agreement (Minimum at Low)",
+              "value": "nonEeaWithAdequacyAgreementMinimumAtLow",
+              "points": 12
+            },
+            {
+              "name": "EEA (Minimum at Moderate)",
+              "value": "eeaMinimumAtModerate",
+              "points": 15
+            },
+            {
+              "name": "UK Only",
+              "value": "ukOnly",
+              "minimumRequired": true,
+              "points": 25
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ13"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ12",
+          "title": "Are there appropriate physical access and environmental controls in place to protect servers, communication rooms, and data centres?",
+          "guidance": "Physical security measures ensure that ICT equipment is physically secure and protected from environmental risks. Examples may include fire suppression, air conditioning, secure rooms or datacentres, multiple datacentres, etc.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A3.a\n\nThe NCSC's Cloud Security Principles: https://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,Principle 2: Asset protection and Resilience",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No Physical security controls",
+              "value": "noPhysicalSecurityControls",
+              "points": 0
+            },
+            {
+              "name": "Information stored onsite. Limited environmental and physical security controls",
+              "value": "informationStoredOnsiteLimitedEnvironmentalAndPhysicalSecurityControls",
+              "points": 5
+            },
+            {
+              "name": "Information stored in a access controlled, purpose built onsite computer room.  Robust environmental and physical security controls. No redundancy",
+              "value": "informationStoredInAAccessControlledPurposeBuiltOnsiteComputerRoomRobustEnvironmentalAndPhysicalSecurityControlsNoRedundancy",
+              "points": 7
+            },
+            {
+              "name": "Information is stored in a access controlled data centre. Robust environmental and physical security controls. Limited redundancy",
+              "value": "informationIsStoredInAAccessControlledDataCentreRobustEnvironmentalAndPhysicalSecurityControlsLimitedRedundancy",
+              "points": 10
+            },
+            {
+              "name": "As above, plus fault tolerant and  redundancy for every component",
+              "value": "asAbovePlusFaultTolerantAndRedundancyForEveryComponent",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management"
+        },
+        {
+          "id": "SAQ13",
+          "title": "Do appropriate controls exists to separate user data from that of others?",
+          "guidance": "In a cloud environment different customers are separated logically (by software or virtualisation) rather than physically. The technical controls required to provide appropriate separation will vary depending on the service model employed and the business’s requirements.\n\nSeparation between users is typically enforced by a hypervisor, though in some circumstances it may also be achieved by allocating physical hardware to consumers. The strength of separation usually depends on the virtualisation technology in use. Using hardware virtualisation and assured virtualisation products should provide higher confidence in the separation within the computer environment. Additionally, Using virtualisation technologies running on dedicated hardware (a private cloud) or hardware that is shared between a community of users (community cloud) can reduce reliance on the hypervisor to separate your data from that of other customers.\n\nIn Software as a Service offerings, the separation between users is often enforced by software controls running within a single instance of an application. The strength of the separation is dependent on the application architecture and implementation.\n\nhttps://www.ncsc.gov.uk/guidance/separation-and-cloud-security, Separation and cloud security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "Do not know", "value": "doNotKnow", "points": 0 },
+            {
+              "name": "No – Data separation between users is not enforced",
+              "value": "noDataSeparationBetweenUsersIsNotEnforced",
+              "points": 0
+            },
+            {
+              "name": "Yes - Appropriate data separation between users is enforced",
+              "value": "yesAppropriateDataSeparationBetweenUsersIsEnforced",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ17"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ14",
+          "title": "Are hardware, software, and information assets inventoried, and assigned an owner who is responsible for their protection?",
+          "guidance": "There should be inventories of all authorised hardware and software used across the organisation, to ensure they can be managed appropriately by identified business owners. Ideally the inventory should capture the physical location, business owner and purpose of hardware, together with the version and patch status of all software. Assets will ideally be prioritised according to their importance to the delivery of the service.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration,\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A3.a and B4.b\n\nThe NCSC and ICO's GDPR Security Outcomes guidance:\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A3 and B4\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5: Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management"
+        },
+        {
+          "id": "SAQ15",
+          "title": "Are proportionate measures in place to ensure that storage media containing  relevant data are not compromised?",
+          "guidance": "Sensitive information should be encrypted at rest on media (hard drives, storage space, removable media, backups). If encryption is not employed then other techniques such as obfuscation or appropriate physical protection of the media are critical. Small businesses should as a minimum ensure that office equipment (laptops, PCs, etc.) uses an encryption product (such as BitLocker for Windows) in order to start up.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.ncsc.gov.uk/guidance/10-steps-removable-media-controls,The NCSC's 10 Steps to Cyber Security: Removable Media Controls\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.c\nThe NCSC and ICO's GDPR Security Outcomes guidance: https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4\nThe NCSC's Cloud Security Principles: https://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,Principle 2.3: Data at Rest Protection",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management"
+        },
+        {
+          "id": "SAQ16",
+          "title": "Are there appropriate policies and /or procedures in place to govern the storage and transfer of information using personal electronic devices and removable media?",
+          "guidance": "Organisations should develop and implement policies and solutions to control the use of removable media. Removable media should not be used as a default mechanism to store or transfer information. Unnecessary peripheral devices and removable media access (e.g. USB ports, CD/DVD drives) should be disabled unless there is a business case for their use.\n\nhttps://www.ncsc.gov.uk/guidance/protecting-your-organisation-malware,The NCSC's Small Business Guide: Protecting Your Organisation from Malware\n,https://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-removable-media-controls, The NCSC's 10 Steps to Cyber Security: Removable Media Controls\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.d\n\nThe NCSC and ICO's GDPR Security Outcomes guidance: https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management"
+        },
+        {
+          "id": "SAQ17",
+          "title": "Are personal electronic devices such as smartphones, laptops and tablets configured to security best practices?",
+          "guidance": "",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Asset Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ23"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ18",
+          "title": "Are contractual cyber security requirements passed on to other suppliers with a role in delivery of the contract?",
+          "guidance": "Supply chain compromise can undermine the security of the service.\n\nYour ICT arrangements should ensure that there are policies and procedures, etc. agreed within relevant contracts to protect information that may be accessible to IT outsourcers and other external suppliers throughout the supply chain. You should clearly express the security needs you place on suppliers delivering components of this contract in ways that are mutually understood and are laid out in contracts. There should be a clear and documented shared-responsibility model.  Where personal data is concerned, the GDPR includes provisions where processors are used, including specific stipulations that must feature in your contract.\n\n,https://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A4\n\nThe NCSC and ICO's GDPR Security Outcomes guidance:\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A4\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-8-supply-chain-security,The NCSC's Cloud Security Principles: Principle 8: Supply Chain Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ19",
+          "title": "Are all relevant suppliers risk managed to identify and mitigate cyber security risks?",
+          "guidance": "Supply chain compromise can undermine the security of the service.\n\nSecurity risks associated with the use of third parties in the delivery of the contract should be actively managed.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A4\n\nThe NCSC and ICO's GDPR Security Outcomes guidance: https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A4\nThe NCSC's Cloud Security Principles: https://www.ncsc.gov.uk/guidance/cloud-security-principle-8-supply-chain-security, Principle 8: Supply Chain Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ20",
+          "title": "Are there arrangements to ensure appropriate assurance is in place for all relevant suppliers?",
+          "guidance": "Supply chain compromise can undermine the security of the service.\n\nTo mitigate this risk, organisations should gain assurance over their suppliers. Depending on the level of risk that the contract exposes the organisation to, they may choose to: ask the supplier to perform a self assessment of their information security control environment; place reliance on a recognised standard of good practice (e.g. ISO 27001) or an independent audit or assessment (e.g. SAE 16 SOC 3); or perform an audit of the third party (or ask an independent auditor to do so on their behalf).\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A4\n\nThe NCSC and ICO's GDPR Security Outcomes guidance: https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A4\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-8-supply-chain-security,The NCSC's Cloud Security Principles: Principle 8: Supply Chain Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ21",
+          "title": "Is any onwards sharing/processing of information with suppliers only undertaken in line with clear data sharing agreements in the contract?",
+          "guidance": "Data sharing agreements should exist between organisations, partners and other bodies that will be sharing organisation information and data.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A4a",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ22",
+          "title": "Are remote access support agreements and procedures in place for suppliers and support providers to access relevant supplier systems and network to fix issues?",
+          "guidance": "Remote access is typically required to allow systems support personnel to \"dial-in\" to fix problems. Agreements, including non disclosure agreements, should be in place for third party support providers that have access to systems and services (and thus possible access to the organisation's information and data).\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A4a\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "There are no special arrangements",
+              "value": "thereAreNoSpecialArrangements",
+              "points": 0
+            },
+            {
+              "name": "Support is provided on an ad hoc basis",
+              "value": "supportIsProvidedOnAnAdHocBasis",
+              "points": 0
+            },
+            {
+              "name": "Agreements and procedures are in place",
+              "value": "agreementsAndProceduresAreInPlace",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ23",
+          "title": "Do policies and procedures ensure that all remote access support sessions to supplier networks are logged, with change control logs updated to reflect the work done?",
+          "guidance": "To support change control and configuration management it is essential that work done is recorded.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Not specifically logged",
+              "value": "notSpecificallyLogged",
+              "points": 0
+            },
+            {
+              "name": "Sessions are logged",
+              "value": "sessionsAreLogged",
+              "points": 0
+            },
+            {
+              "name": "Sessions are logged and change control submitted",
+              "value": "sessionsAreLoggedAndChangeControlSubmitted",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ24",
+          "title": "Are there arrangements in place to provide assurance that hardware and software used in the delivery of the service are genuine and have not been tampered with?",
+          "guidance": "Organisations need to be able to verify that hardware and software used in the service is genuine and has not been tampered with. Examples of good practice may include use of official authorised suppliers, genuine licensed software, or procedures to ensure that any refurbished computers have been securely wiped and reloaded.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-8-supply-chain-security,The NCSC's Cloud Security Principles: Principle 8: Supply Chain Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Origin of some hardware/software unknown.",
+              "value": "originOfSomeHardwaresoftwareUnknown",
+              "points": 0
+            },
+            {
+              "name": "Sourced from general resellers",
+              "value": "sourcedFromGeneralResellers",
+              "points": 0
+            },
+            {
+              "name": "Sourced from OEM or official trusted sources only",
+              "value": "sourcedFromOemOrOfficialTrustedSourcesOnly",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ27"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ25",
+          "title": "Are appropriate screening checks performed to confirm the identity and trustworthiness of all relevant supplier and/or contractor staff, that may have access to public sector information, prior to their engagement?",
+          "guidance": "Appropriate pre-employment screening should be completed before staff and contractors are allowed access to organisation information and data. Examples of appropriate screening processes or security clearances include BPSS/BS7858, CTC, SC, DV, Standard disclosure, Enhanced disclosure, PVG.\n\nhttps://www.ncsc.gov.uk/guidance/supply-chain-security,The NCSC's Supply Chain Cyber Security collection: use Case A\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B1.b\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-6-personnel-security,The NCSC's Cloud Security Principles: Principle 6: Personnel Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 40
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        },
+        {
+          "id": "SAQ26",
+          "title": "Are there procedures that ensure that all equipment is returned at the end of an individual's period of employment and that leavers are reminded of their ongoing obligations?",
+          "guidance": "There should be policies and procedures in place to manage what happens when an employee leaves an organisation.<br/>It is important to ensure that equipment, is returned and they are reminded of ongoing contractual obligations to not disclose confidential information.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.d",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 3
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Supplier Management"
+        }
+      ]
+    },
+    {
+      "name": "Protecting from Cyber Attack & Identity and Access Management",
+      "questions": [
+        {
+          "id": "SAQ27",
+          "title": "Are there policies and procedures in place to ensure that visitors and third parties are  escorted during all visits to relevant locations?",
+          "guidance": "There should be policies and procedures in place to ensure that only authorised and individually authenticated users can physically access parts of your estate where the networks or information systems used to deliver the contract are located. \n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Not specifically",
+              "value": "notSpecifically",
+              "points": 0
+            },
+            {
+              "name": "Partial - sensitive areas only",
+              "value": "partialSensitiveAreasOnly",
+              "points": 19
+            },
+            {
+              "name": "Yes - always",
+              "value": "yesAlways",
+              "minimumRequired": true,
+              "points": 45
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Personnel Security"
+        },
+        {
+          "id": "SAQ28",
+          "title": "Is all access to relevant data centres/computer rooms logged with sign in and out times recorded?",
+          "guidance": "There should be policies and procedures in place to ensure that only authorised and individually authenticated users can physically access parts of the estate where the networks or information systems used to deliver the contract are located.\n\nA number of standards may be appropriate when validating physical access control protections. These are backed by a variety of certification schemes, including: CSA CCM v3.0 and SSAE-16/ISAE 3402.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,The NCSC's Cloud Security Principles: Principle 2.3: Asset Protection and Resilience",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 40
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Personnel Security",
+          "logic": [
+            {
+              "priority": 1,
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ39"
+              }
+            },
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ30"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ29",
+          "title": "Are all users asked to authenticate appropriately before they can access relevant applications, devices, and management interfaces?",
+          "guidance": "There should be policies and procedures in place to ensure that all users are asked to authenticate before they can access applications, devices and management interfaces that are relevant to delivery of the contract. In some circumstances, e.g. privileged or remote access via the Internet to systems that operate or support essential services or that process personal data, an additional authentication factor (such as a token or hardware-backed certificates) should be used.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\n\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-9-secure-user-management,The NCSC's Cloud Security Principles: Principle 9: Secure User Management\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-11-external-interface-protection,The NCSC's Cloud Security Principles: Principle 11: External Interface Protection",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Access Management"
+        },
+        {
+          "id": "SAQ30",
+          "title": "Is there a documented system access policy which defines the access rights of each user or group of users?",
+          "guidance": "Access to information assets should follow the principles of need to know and least privilege. It is good practice to establish a documented policy which details the level of access for users and groups. Systems and services should grant users only the access and functionality they require to do their job.\n\nhttps://www.ncsc.gov.uk/guidance/avoiding-phishing-attacks,The NCSC's Small Business Guide: Avoiding Phishing Attacks\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-10-identity-and-authentication,The NCSC's Cloud Security Principles: Principle 10: Identity and Authentication",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 9
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Access Management"
+        },
+        {
+          "id": "SAQ34",
+          "title": "Are users only granted the level of access to information and systems that they require to perform their role?",
+          "guidance": "Users should only be able to access the information and systems they require to do their jobs.\n\n- The NCSC's Small Business Guide: Using Passwords to Protect Your Data NCSC's 10 Steps to Cyber Security: Secure Configuration,The NCSC’s 10 Steps to Cyber Security: Network Security,The NCSC's 10 Steps to Cyber Security: Managing User Privileges,The NCSC's NIS Cyber Assessment Framework: B2.a,The NCSC's NIS Cyber Assessment Framework: C The NCSC and ICO's GDPR Security Outcomes guidanceThe Principle 6: Personnel Security and Principle 9: Secure User Management",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Access Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ39"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ38",
+          "title": "Is multi-factor authentication implemented to authenticate users?",
+          "guidance": "2FA greatly improves the assurance of users during the authentication process, making it much more difficult for an intruder to masquerade as one of your genuine users.\n\n2FA should be used where the facility exists, but is especially pertinent to better protect privileged user accounts, access to sensitive information and some specific activities, where such access typically presents a higher than normal level of risk.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-10-identity-and-authentication ,The NCSC's Cloud Security Principles: Principle 10: Identity and Authentication",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "Not supported", "value": "notSupported", "points": 0 },
+            {
+              "name": "Implemented where available (on an ad hoc basis)",
+              "value": "implementedWhereAvailableOnAnAdHocBasis",
+              "points": 10
+            },
+            {
+              "name": "Required for administrative and especially service privileged accounts only",
+              "value": "requiredForAdministrativeAndEspeciallyServicePrivilegedAccountsOnly",
+              "points": 25
+            },
+            {
+              "name": "Required for all users",
+              "value": "requiredForAllUsers",
+              "minimumRequired": true,
+              "points": 41
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Access Management"
+        },
+        {
+          "id": "SAQ39",
+          "title": "Are there documented policies and technical controls to manage risks from remote and home working?",
+          "guidance": "Mobile working and remote access extends the transit and storage of information (or operation of systems) outside of the corporate infrastructure, typically over the Internet. Mobile devices will also typically be used in spaces that are subject to additional risks such as oversight of screens, or the theft/loss of devices. Organisations should establish documented mobile working and remote access policies and controls to manage related risks.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-home-and-mobile-working,The NCSC's 10 Steps to Cyber Security: Home and Mobile Working",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Policy only", "value": "policyOnly", "points": 5 },
+            {
+              "name": "Policy with technical controls in place",
+              "value": "policyWithTechnicalControlsInPlace",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Remote/Home Working",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ41"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ40",
+          "title": "When working remotely, are users required to authenticate before being allowed access to systems and information?",
+          "guidance": "Authentication should be verified at the network boundary, before access is permitted to information assets. You should use two-factor (or alternative mechanisms such as hardware-backed certificates) for higher risk activities such as remote users accessing your networks or information systems over the Internet.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Basic user authentication - two factor authentication is implemented, where available",
+              "value": "basicUserAuthenticationTwoFactorAuthenticationIsImplementedWhereAvailable",
+              "points": 35
+            },
+            {
+              "name": "Basic user authentication - two factor authentication is implemented, where available and for all privileged users",
+              "value": "basicUserAuthenticationTwoFactorAuthenticationIsImplementedWhereAvailableAndForAllPrivilegedUsers",
+              "points": 48
+            },
+            {
+              "name": "2FA used for all remote/home users",
+              "value": "2faUsedForAllRemotehomeUsers",
+              "minimumRequired": true,
+              "points": 65
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Remote/Home Working"
+        },
+        {
+          "id": "SAQ41",
+          "title": "When working remotely, is endpoint authentication used to ensure that only authorized devices are allowed to access relevant information and assets?\n",
+          "guidance": "Unmanaged devices present a number of risks to the security of organisational data. Only approved and managed devices should be allowed to access and process information. Devices should be authenticated before being allowed to connect to systems.\n\nExamples of relevant approaches include certificate based device identification, citric device interrogation, reverse proxy, CESG walled garden model, etc.\n\nThis control supports the objective for managing risks associated with remote and home working as set out in https://www.ncsc.gov.uk/guidance/10-steps-cyber-security,NCSC's 10 Steps guidance\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - devices are not authenticated or restricted",
+              "value": "noDevicesAreNotAuthenticatedOrRestricted",
+              "points": 0
+            },
+            {
+              "name": "Yes - devices are fully managed and authenticated using an appropriate method",
+              "value": "yesDevicesAreFullyManagedAndAuthenticatedUsingAnAppropriateMethod",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Remote/Home Working",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ43"
+              }
+            },
+
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ49"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ42",
+          "title": "Is each user given a unique ID and password when accessing relevant systems and information?",
+          "guidance": "Each user, and Administrator, should have their own user name so that activity can be tracked and accountable. For some accounts an additional authentication factor (such as a token) may be appropriate.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: User Access Control\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,\nThe NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-10-identity-and-authentication,The NCSC's Cloud Security Principles: Principle 10: Identity and Authentication\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ43",
+          "title": "Are all default passwords on all relevant devices and equipment changed to something more secure prior to being put into operation?",
+          "guidance": "A lot of equipment like routers, firewalls and network equipment come from the factory with known or easily guessable passwords. Any default or guessable passwords must be changed to something non-obvious. Devices (and software) should be checked regularly, specifically to detect unchanged default passwords.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ44",
+          "title": "Are users required to change passwords promptly if there is any suspicion that the account may have been compromised?",
+          "guidance": "Passwords MUST be changed when a compromise of login credentials is suspected.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ52"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ45",
+          "title": "Is there a documented password policy that is a fundamental part of user education, and that aligns with NCSC guidance in respect of normal and privileged users?",
+          "guidance": "You should have a documented password policy and user guidance stating the format and standard of passwords to be used, aligned with NCSC guidance.\n\nYour organisational arrangements should include user education and guidance on things such as password format, how to avoid bad passwords, not choosing common passwords, not using the same password anywhere else at work or home, not to enforce regular password changes, where and how staff may record passwords, which if any software password management tools are acceptable etc.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No formal documented policy",
+              "value": "noFormalDocumentedPolicy",
+              "points": 0
+            },
+            {
+              "name": "Documented policy and guidance provided",
+              "value": "documentedPolicyAndGuidanceProvided",
+              "points": 8
+            },
+            {
+              "name": "Documented policy and guidance provided and enforced by technical controls",
+              "value": "documentedPolicyAndGuidanceProvidedAndEnforcedByTechnicalControls",
+              "minimumRequired": true,
+              "points": 19
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ47",
+          "title": "Are password policies implemented and enforced by technical means (e.g. a  password blacklist to disallow the most common password choices?)",
+          "guidance": "NCSC guidance makes clear that organisations should consider implementing and enforcing password policies by technical means, e.g. using a password blacklist.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ48",
+          "title": "Is a limit enforced on the number of failed login attempts a user can make before restricting further attempts?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, for password-based authentication in Internet-facing services, organisations must protect against \"brute-force\" password guessing by using at least one of the following methods: (i) lock accounts after no more than 10 unsuccessful attempts (ii) limit the number of guesses allowed in a specified time period to no more than 10 guesses within 5 minutes.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No limit", "value": "noLimit", "points": 0 },
+            {
+              "name": "Yes - 10 or more attempts permitted",
+              "value": "yes10OrMoreAttemptsPermitted",
+              "points": 7
+            },
+            {
+              "name": "Yes - fewer than 10 attempts permitted",
+              "value": "yesFewerThan10AttemptsPermitted",
+              "minimumRequired": true,
+              "points": 18
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ49",
+          "title": "Are new users forced to change any TEMPORARY password when they first logon?",
+          "guidance": "New accounts set up should ask the user to change the password to one of their own choosing.  If technical controls are available, they should be used.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 11
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Password Policy"
+        },
+        {
+          "id": "SAQ52",
+          "title": "Are appliance / service accounts used by appliances, systems and applications revoked when they are no longer required?",
+          "guidance": "Your ICT arrangements should ensure that, once equipment used to deliver a service reaches the end of its useful life, it is disposed of in a way which does not compromise the security of the service, or user data stored in the service. This includes network credentials and network configuration detail being removed from old equipment.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,The NCSC's Cloud Security Principles: Principle 2: Asset Protection and Resilience",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Device Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ54"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ53",
+          "title": "Are network access controls used to restrict access to resources on relevant networks to trusted devices, servers, and infrastructure?",
+          "guidance": "Processing (local and remote access) of organisation data should be restricted to only trusted devices owned or in the control of the organisation and its suppliers. For example, certificate based device identity management and only allowing known devices (home/personal computers, third party computers, contractor computers, service partner untrusted devices, etc.) to access relevant networks and services.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Device Management"
+        },
+        {
+          "id": "SAQ54",
+          "title": "Are regular scans performed for unauthorised devices on relevant networks?",
+          "guidance": "There should be regular scans performed to detect unknown devices and investigate any findings.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 19
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Device Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ56"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ55",
+          "title": "Are employees permitted to connect devices involved in delivery of the contract to public, shared, unknown, or untrusted networks or Wi-Fi?",
+          "guidance": "When public Wi-Fi hotspots (for example in hotels or coffee shops) are used, there is no way to easily find out who controls the hotspot, or to prove that it belongs to who you think it does. When connecting to these hotspots, somebody else could access what you're working on whilst connected, or your private login details that many apps and web services maintain whilst you're logged on.<br/><br/>The simplest precaution is to not connect to the Internet using unknown hotspots, and instead use your mobile 3G or 4G mobile network, which will have built-in security. You can also use Virtual Private Networks (VPNs), a technique that encrypts your data before it is sent across the Internet.\n\nhttps://www.ncsc.gov.uk/guidance/keeping-your-smartphones-and-tablets-safe,The NCSC's Small Business Guide: Keeping Your Smartphones and Tablets Safe\nhttps://www.ncsc.gov.uk/guidance/10-steps-home-and-mobile-working,The NCSC's 10 Steps to Cyber Security: Home and Mobile Working",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Devices are able to connect to and access any network or WiFi captive portal",
+              "value": "devicesAreAbleToConnectToAndAccessAnyNetworkOrWifiCaptivePortal",
+              "points": 0
+            },
+            {
+              "name": "Devices can connect but communication is routed by VPN through the organisation’s network and an unmanaged Split tunnel (Minimum at Low)",
+              "value": "devicesCanConnectButCommunicationIsRoutedByVpnThroughTheOrganisationsNetworkAndAnUnmanagedSplitTunnelMinimumAtLow",
+              "points": 40
+            },
+            {
+              "name": "Devices can connect but all communication is routed securely by VPN through the organisation’s network or secure Split tunnel (Minimum at Moderate)",
+              "value": "devicesCanConnectButAllCommunicationIsRoutedSecurelyByVpnThroughTheOrganisationsNetworkOrSecureSplitTunnelMinimumAtModerate",
+              "points": 50
+            },
+            {
+              "name": "Devices can only connect to trusted networks",
+              "value": "devicesCanOnlyConnectToTrustedNetworks",
+              "minimumRequired": true,
+              "points": 55
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Device Management"
+        },
+        {
+          "id": "SAQ56",
+          "title": "Which of the following system administration models best describes how networks relevant to the contract are administered?",
+          "guidance": "There are a number of different architectural models that can be used to design the approach to administration of IT systems. Some models carry much more risk than others, and their use is discouraged by the NCSC, whose guidance identifies the most insecure models.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-12-secure-service-administration,The NCSC's Cloud Security Principles: Principle 12: Secure Service Administration\nNCSC Guidance on https://www.ncsc.gov.uk/guidance/systems-administration-architectures,systems administration architectures",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Unknown, or does not match any",
+              "value": "unknownOrDoesNotMatchAny",
+              "points": 0
+            },
+            {
+              "name": "Direct service administration",
+              "value": "directServiceAdministration",
+              "points": 25
+            },
+            {
+              "name": "Service administration via bastion hosts",
+              "value": "serviceAdministrationViaBastionHosts",
+              "minimumRequired": true,
+              "points": 25
+            },
+            {
+              "name": "Dedicated devices on a segregated network",
+              "value": "dedicatedDevicesOnASegregatedNetwork",
+              "minimumRequired": true,
+              "points": 29
+            },
+            {
+              "name": "Dedicated devices for community service administration",
+              "value": "dedicatedDevicesForCommunityServiceAdministration",
+              "points": 0
+            },
+            {
+              "name": "Dedicated devices for multiple community service administration",
+              "value": "dedicatedDevicesForMultipleCommunityServiceAdministration",
+              "points": 0
+            }
+          ],
+          "subsection": "Privileged Accounts",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ60"
+              }
+            },
+
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ58"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ57",
+          "title": "Do administrators have separate user accounts for (i) administrative work and (ii) lesser tasks, including browsing the Internet and sending email?",
+          "guidance": "An attacker having unauthorised access to an Administrator account can be far more damaging than accessing a standard user account. To reduce the damage that can be done by malware or loss of login details, ensure that staff don’t browse the web or check emails from an account with Administrator privileges.\n\nhttps://www.ncsc.gov.uk/guidance/avoiding-phishing-attacks,The NCSC's Small Business Guide: Avoiding Phishing Attacks\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: User Access Control\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 44
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Privileged Accounts"
+        },
+        {
+          "id": "SAQ58",
+          "title": "Are system administrators permitted to share accounts?",
+          "guidance": "This helps ensure full accountability for system administration activities and protects the integrity of individual system administrators. It is in line with the principle of \"least privilege\". Organisations should not require staff to share accounts or passwords to get their job done. Every user should have personal access to the right systems, and the level of access given should always be the lowest needed to do their job whilst minimising unnecessary exposure to systems they don't need access to.\n\nhttps://www.ncsc.gov.uk/guidance/using-passwords-protect-your-data,The NCSC's Small Business Guide: Using Passwords to Protect Your Data\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges, The NCSC’s 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No",
+              "value": "no",
+              "minimumRequired": true,
+              "points": 10
+            },
+            { "name": "Yes", "value": "yes", "points": 0 },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Privileged Accounts"
+        },
+        {
+          "id": "SAQ59",
+          "title": "Is administrator activity logged and monitored?",
+          "guidance": "System administrators hold a position of trust. However, NCSC guidance makes clear that privileged user access to essential service systems should  be carried out from dedicated separate accounts that are closely monitored and managed. Good practice is for their system activity to be logged or at least subject to review.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Logged", "value": "logged", "points": 5 },
+            {
+              "name": "Logged and monitored",
+              "value": "loggedAndMonitored",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Privileged Accounts"
+        },
+        {
+          "id": "SAQ60",
+          "title": "Is user management restricted to authorised users only?",
+          "guidance": "Because of the potential for attackers to create or alter user accounts for nefarious purposes, access to user management should be restricted to authorised users only.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-9-secure-user-management,The NCSC's Cloud Security Principles: Principle 9: Secure User Management",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ73"
+              }
+            },
+
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ62"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ61",
+          "title": "Are new accounts and access permissions authorised and recorded before they are created?",
+          "guidance": "Because of the potential for attackers to create or alter user accounts for nefarious purposes, there should be a robust authorisation process for creating each new user account and assigning permissions, with records kept and regularly audited.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: User Access Control\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.d",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management"
+        },
+        {
+          "id": "SAQ62",
+          "title": "Are passwords for new accounts issued to users in a secure manner?",
+          "guidance": "This helps minimise opportunities for compromise of new user accounts. Approaches may include distribution of initial passwords by telephone, or by email to registered business addresses only.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ64"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ63",
+          "title": "Do policies and procedures ensure the review and revocation of access privileges when an authorised user no longer requires access to information systems or leaves the organisation?",
+          "guidance": "Organisations must be in control of user accounts and the access privileges granted to each user account. This includes removing or disabling user accounts when no longer required (e.g. when a user changes role or moves to a different part of the organisation, after a defined period of account inactivity, or upon leaving the organisation).\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: User Access Control\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2. D\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NSCS and ICO’s GDPR Security Outcomes Guidance: B2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Leavers (Minimum at Low)",
+              "value": "leaversMinimumAtLow",
+              "points": 12
+            },
+            {
+              "name": "Leavers and long term absence",
+              "value": "leaversAndLongTermAbsence",
+              "minimumRequired": true,
+              "points": 30
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management"
+        },
+        {
+          "id": "SAQ64",
+          "title": "Are access rights to relevant systems reviewed on a regular basis?",
+          "guidance": "Organisations must be in control of user accounts and the access privileges granted to each user account. This includes reviewing or auditing the list of users with access to networks and systems supporting the services to be delivered on a regular basis, at least every six months.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management"
+        },
+        {
+          "id": "SAQ65",
+          "title": "Are user accounts automatically suspended after a given period of inactivity?",
+          "guidance": "Organisations must be in control of user accounts and the access privileges granted to each user account. This can include ensuring that systems automatically remove or disable user accounts when no longer required, which can be identified after a defined period of inactivity (e.g. via a 6-monthly scan for unused accounts).\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "User Management"
+        },
+        {
+          "id": "SAQ66",
+          "title": "Is there an information classification policy that specifies proportionate security controls for information of different sensitivities?",
+          "guidance": "Supporting protective marking for documents allows the organisation to classify data assets and apply appropriate and measured security and handling controls where they are required most.\n\nhttps://www.gov.uk/government/publications/government-security-classifications,The Government Security Classifications",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        },
+        {
+          "id": "SAQ67",
+          "title": "Is live data ever used for testing and development purposes?",
+          "guidance": "Test data should be carefully selected/generated and controlled. Testing with Live personal data could contravene data protection rules.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "Yes", "value": "yes", "points": 0 },
+            {
+              "name": "No - Live data will NOT be used for test purposes",
+              "value": "noLiveDataWillNotBeUsedForTestPurposes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        },
+        {
+          "id": "SAQ68",
+          "title": "Is all data in transit protected using current, proportionate and appropriate encryption products and standards?",
+          "guidance": "All forms of sensitive communication, including but not limited to Web browsing, email, secure shell, remote desktop etc., should be encrypted to prevent eavesdropping. Acceptable methods may include HTTPS/TLS 1.2, SFTP, SSH, enforced TLS over SMPT, etc.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-home-and-mobile-working,The NCSC's 10 Steps to Cyber Security: Home and Mobile Working\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.b\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        },
+        {
+          "id": "SAQ70",
+          "title": "Are relevant bulk data transfers encrypted using current, proportionate and appropriate encryption products and standards?",
+          "guidance": "Bulk data should be encrypted to protect it during transfer, data-in-transit Examples of standards that should be considered include FIPS140-2, CPA or CAPS solutions as may be appropriate.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        },
+        {
+          "id": "SAQ71",
+          "title": "Is all data at rest (including on personal electronic devices) protected using current, proportionate and appropriate encryption products and standards?\n",
+          "guidance": "Data at rest, i.e. data that is stored physically in any digital form (e.g. databases, data warehouses, archives, removable media, off-site backups, mobile devices etc.) should be encrypted at rest to protect it. Wherever data is stored, even temporarily, it may be vulnerable to unauthorised access, tampering or deletion.\n\nWhere dedicated systems and removable media are used, the storage devices can be hardware or software encrypted. You should take suitable measures to physically protect devices and media containing data supporting the delivery of essential services.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-removable-media-controls,The NCSC's 10 Steps to Cyber Security: Removable Media Controls\nhttps://www.ncsc.gov.uk/guidance/10-steps-home-and-mobile-working, The NCSC’s 10 Steps to Cyber Security: Home and Mobile Working\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        },
+        {
+          "id": "SAQ72",
+          "title": "Are all storage media that may contain relevant data, credentials, or configuration information securely erased prior to media being disposed of, re-used, taken out of service, at end of life or when requested by the organisation at the end of the contract?",
+          "guidance": "As part of your arrangements, you should consider all locations, devices and media that may hold organisation data. Include hard drives, storage array space, removable media, and storage space provided by cloud service providers before they reallocate space to another customer.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-removable-media-controls,The NCSC's 10 Steps to Cyber Security: Removable Media Controls\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B3\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-2-asset-protection-and-resilience,The NCSC's Cloud Security Principles: Principle 2.4 and 2.5",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 15
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Data Security"
+        }
+      ]
+    },
+    {
+      "name": "System Security",
+      "questions": [
+        {
+          "id": "SAQ73",
+          "title": "Is network segmentation and network segregation implemented appropriately in order to protect the integrity of relevant networks?\n",
+          "guidance": "Network segmentation involves partitioning a network into smaller networks; while network segregation involves developing and enforcing a ruleset for controlling communications between specific hosts and services. When implementing network segmentation and segregation, the aim is to restrict the level of access to sensitive information, hosts and services while ensuring an organisation can continue to operate effectively.\n\nNetwork segmentation and segregation are highly effective strategies to limit the impact of a network intrusion. If implemented correctly, they can make it significantly more difficult for an adversary to locate and gain access to sensitive information; and increase the likelihood of detecting an adversary’s activity in a timely manner.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.a and B5.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes -  network designed for security",
+              "value": "yesNetworkDesignedForSecurity",
+              "minimumRequired": true,
+              "points": 18
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Design",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ76"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ74",
+          "title": "Are there separate and secure environments for Live, Development and Test purposes?",
+          "guidance": "The Live system should not be used for test/development purposes to ensure that there is no unintentional disruption to service.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - the Live environment is not used for development/testing",
+              "value": "yesTheLiveEnvironmentIsNotUsedForDevelopmenttesting",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Design"
+        },
+        {
+          "id": "SAQ75",
+          "title": "Are secure development practices incorporated into relevant product or solution development life cycles?",
+          "guidance": "Services should be designed and developed to identify and mitigate threats to their security.\n\nThose which aren’t may be vulnerable to security issues which could compromise data, cause loss of service or enable other malicious activity. Examples of industry good practice standards include OWASP top 10, CPA Build Standard, ISO27034, ISO27001, CSA CCM v3.0.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-7-secure-development,The NCSC's Cloud Security Principles: Principle 7 Secure Development",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "We do not adopt these standards",
+              "value": "weDoNotAdoptTheseStandards",
+              "points": 0
+            },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 18
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Design"
+        },
+        {
+          "id": "SAQ76",
+          "title": "Have anti-spoofing controls - such as  DMARC, DKIM, and SPF - been implemented appropriately to prevent email spoofing?",
+          "guidance": "Using Domain based message authentication (DMARC), Sender Policy Framework (SPF) and DomainKeys Identified Mail (DKIM) records in place for the organisation's email, and enforcing DMARC on inbound messages can significantly improve spam and malware protection within organisation email.\n\nhttps://www.gov.uk/government/publications/the-minimum-cyber-security-standard,The Government Minimum Cyber Security Standard 6.C.2 and 6.C.3",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - DMARC with SPF (or equivalent)",
+              "value": "yesDmarcWithSpfOrEquivalent",
+              "points": 5
+            },
+            {
+              "name": "Yes - DMARC with DKIM, and SPF (or equivalent)",
+              "value": "yesDmarcWithDkimAndSpfOrEquivalent",
+              "minimumRequired": true,
+              "points": 22
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Design"
+        },
+        {
+          "id": "SAQ77",
+          "title": "Have application firewalls been deployed to protect relevant web services published to untrusted networks from cyber attacks?",
+          "guidance": "Application firewalls or firewall services can help protect web services from typical cyber attacks as listed by the OWASP top 10. Relevant examples include: Web application firewall appliance, server plugin, web service filter, etc.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.a\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 18
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Design",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ80"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ78",
+          "title": "Are all parts of the network used to deliver the service protected from the Internet and other networks by a Firewall?",
+          "guidance": "All devices used to deliver the service that can connect to the Internet must be protected by a correctly configured firewall (or equivalent network device).\n\nhttps://www.ncsc.gov.uk/guidance/protecting-your-organisation-malware,The NCSC's Small Business Guide: Protecting Your Organisation from Malware\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ80"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ79",
+          "title": "Are all network service ports blocked from the Internet and other networks, except for those that are safe and necessary to deliver the service?",
+          "guidance": "Only open ports to the Internet (or other untrusted networks) that are required to provide the service.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-9-secure-user-management,The NCSC's Cloud Security Principles: Principle 9: Secure User Management\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-11-external-interface-protection,The NCSC’s Cloud Security Principles: Principle 11: External Interface Protection",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ80",
+          "title": "Are relevant corporate Wi-Fi networks restricted to trusted and authenticated devices only?",
+          "guidance": "All wireless access points should be appropriately secured, only allowing known devices to connect to corporate Wi-Fi services.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ87"
+              }
+            },
+
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ89"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ81",
+          "title": "Are the default passwords for firewalls and network edge devices changed?",
+          "guidance": "All default vendor-supplied passwords that come with any system or software should be changed before deployment. Organisations should pay particular attention to essential infrastructure devices such as routers, wireless access points, and firewalls.\n\nhttps://www.ncsc.gov.uk/guidance/password-guidance-simplifying-your-approach,The NCSC's Password Guidance: Simplifying Your Approach",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ82",
+          "title": "Is administrative access to the firewall and/or network edge device blocked from the internet?",
+          "guidance": "Best practice is to manage firewalls and routers on the edge of the network from inside the network NOT from the Internet.\n\nThe NCSC's Cyber Essentials standard makes clear that, for all firewalls (or equivalent network devices), organisations must routinely prevent access to the administrative interface (used to manage firewall configuration) from the Internet, unless there is a clear and documented business need and the interface is protected by one of the following controls:\n- a second authentication factor, such as a one-time token\n- an IP whitelist that limits access to a small range of trusted addresses\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - unless there is a clear and documented business need and mitigating controls are in place",
+              "value": "yesUnlessThereIsAClearAndDocumentedBusinessNeedAndMitigatingControlsAreInPlace",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ83",
+          "title": "Are all inbound connections from the internet or other networks blocked by default?",
+          "guidance": "https://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ84",
+          "title": "Are all changes to firewall rules approved, authorised and documented, together with the business reason for the change?",
+          "guidance": "Firewall rule changes should be subject to appropriate change control.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - no such policies or processes",
+              "value": "noNoSuchPoliciesOrProcesses",
+              "points": 0
+            },
+            {
+              "name": "Yes - clear change control and authorisation policies and processes",
+              "value": "yesClearChangeControlAndAuthorisationPoliciesAndProcesses",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ85",
+          "title": "If overly permissive firewall rules are used, is this only in exceptional circumstances, and are they removed or disabled in a timely manner when they are no longer required?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that organisations remove or disable permissive firewall rules quickly, when they are no longer needed. Permissive firewall rules must only be used when authorised for special purposes.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ86",
+          "title": "Do relevant end user devices have host-based firewalls installed, and are they configured and enabled for all use outside trusted networks?",
+          "guidance": "Ensure that the host based firewall is configured and enabled when a laptop is used outside of the trusted office network. Both Windows and OSX have built in firewalls available.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Firewalls",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ87",
+          "title": "Is all relevant installed software fully licensed, supported, and from trusted sources?",
+          "guidance": "Vulnerabilities in unsupported software will never get fixed. Unlicensed software may be pirated or from other untrustworthy sources, and may contain malware or undesirable functionality.\n\nhttps://www.ncsc.gov.uk/guidance/keeping-your-smartphones-and-tablets-safe,The NCSC's Small Business Guide: Keeping Your Smartphones (and Tablets) Safe\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,\nThe NCSC's 10 Steps to Cyber Security: Secure Configuration\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ91"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ88",
+          "title": "Are appropriate steps taken to reduce available ways of attacking relevant systems, such as removing or disabling unnecessary software, services or user accounts?",
+          "guidance": "The NCSC's Cyber Essentials standard requires you to remove or disable unnecessary software (including applications, system utilities and network services). This helps to ensure that the possible attack surface is reduced.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ89",
+          "title": "Are regular audits performed to ensure that unlicensed, unsupported or unapproved software is investigated and removed (or otherwise resolved)?",
+          "guidance": "Software and licenses should be included within asset management processes to facilitate this.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Patch Management\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ90",
+          "title": "Are relevant users prevented from installing unauthorised software?",
+          "guidance": "Organisations should ensure that only permitted software can be installed and standard users cannot change settings that would impact security or business operation.\n\nSome malware can be avoided if users do not have sufficient privileges to install it.\n\nhttps://www.ncsc.gov.uk/guidance/protecting-your-organisation-malware,The NCSC's Small Business Guide: Protecting Your Organisation from Malware\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - No controls in place to prevent users  from installing unauthorised software",
+              "value": "noNoControlsInPlaceToPreventUsersFromInstallingUnauthorisedSoftware",
+              "points": 0
+            },
+            {
+              "name": "Yes - Users are prevented from installing unauthorised software",
+              "value": "yesUsersArePreventedFromInstallingUnauthorisedSoftware",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ92"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ91",
+          "title": "Are auto run features disabled for CD, DVD, USB devices and files downloaded from the Internet?",
+          "guidance": "Best practice is to disable autorun to prevent unexpected applications starting up and possibly installing malware.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,\nThe NCSC’s 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,\nThe NCSC's NIS Cyber Assessment Framework: B4.b\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration"
+        },
+        {
+          "id": "SAQ92",
+          "title": "Are all relevant systems and components, including hardware and software, built/configured using a documented and standardised secure baseline?",
+          "guidance": "Implement a secure baseline build for all systems and components, including hardware and software. Devices should conform to your secure, defined, baseline build, or the latest known good configuration version for your environment. Examples include \"Gold\" build images, template VMs, new devices wiped and built to agreed standards.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/10-steps-home-and-mobile-working,The NCSC’s 10 Steps to Cyber Security: Home and Mobile Working\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.b\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ100"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ94",
+          "title": "Are policies and /or procedures in place that ensure that all changes to relevant systems are carried out under agreed change control procedures that include security and privacy impact assessments?",
+          "guidance": "Change control processes and management groups that ensure that changes are necessary, planned, documented, consider interdependencies and are approved.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - unmanaged or undocumented decision making",
+              "value": "noUnmanagedOrUndocumentedDecisionMaking",
+              "points": 0
+            },
+            {
+              "name": "Yes - fully managed and documented control process",
+              "value": "yesFullyManagedAndDocumentedControlProcess",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus"]
+                },
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "NOT_INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ107"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ98",
+          "title": "Is anti-malware software active and installed on all appropriate end-user devices and servers, with signature files regularly updated?",
+          "guidance": "Antivirus or other anti-malware solution should be installed on all appropriate devices, and should support emergency updates. (Mobile phones may be an exception because of the limited processing power of these devices).\n\nhttps://www.ncsc.gov.uk/guidance/protecting-your-organisation-malware,The NCSC's Small Business Guide: Protecting Your Organisation From Malware\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,The NCSC's 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - updated at least daily",
+              "value": "yesUpdatedAtLeastDaily",
+              "points": 5
+            },
+            {
+              "name": "Yes - managed and updated hourly and emergency updates",
+              "value": "yesManagedAndUpdatedHourlyAndEmergencyUpdates",
+              "minimumRequired": true,
+              "points": 14
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ99",
+          "title": "Is anti-malware software configured to scan files from ALL sources automatically when they are read?",
+          "guidance": "All files should be scanned on read and execute, no matter where they are from. This includes, but is not limited to, files downloaded from the Internet, usb devices, network storage, etc.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,The NCSC's 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/10-steps-removable-media-controls,The NCSC’s 10 Steps to Cyber Security: Removable Media Controls\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ100",
+          "title": "Are emails scanned for malicious content, including malware and phishing and scam messages?",
+          "guidance": "Malware checking solutions and additional controls that may be available should be deployed to examine both inbound and outbound data at the perimeter in addition to protection deployed internally. Examples include gateway scanning, webmail scanning, email client software scanning, etc.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,The NCSC’s 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.a&c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ101",
+          "title": "Which of the following controls are used to protect against malware on relevant systems? Tick all that apply.",
+          "guidance": "",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Basic Antivirus software or Application sandboxing",
+              "value": "basicAntivirusSoftwareOrApplicationSandboxing",
+              "points": 3
+            },
+            {
+              "name": "Endpoint Detection and Response (EDR)",
+              "value": "endpointDetectionAndResponseEdr",
+              "points": 12
+            },
+            {
+              "name": "Extended Detection and Response (XDR)",
+              "value": "extendedDetectionAndResponseXdr",
+              "minimumRequired": true,
+              "points": 35
+            },
+            {
+              "name": "Application whitelisting",
+              "value": "applicationWhitelisting",
+              "points": 35
+            },
+            {
+              "name": "None of the above",
+              "value": "noneOfTheAbove",
+              "points": 0
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ104"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ102",
+          "title": "Is anti-malware software configured to scan web pages automatically when they are accessed through a web browser (whether by other software or by the browser itself)?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, if anti-malware software is used (one of three permitted malware protection mechanisms), web pages are scanned automatically when they are accessed through a web browser (whether by other software or by the browser itself).\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,The NCSC’s 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.a&c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Internet browsing is not available to users of the service",
+              "value": "internetBrowsingIsNotAvailableToUsersOfTheService",
+              "points": 8
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ103",
+          "title": "Is web browsing filtered to prevent connections to known malicious or inappropriate websites and content?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, if anti-malware software is used (one of three permitted malware protection mechanisms), it must prevent connections to malicious websites on the Internet (by means of blacklisting, for example). Any exceptions must be for a clear, documented business need.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/10-steps-malware-prevention,The NCSC’s 10 Steps to Cyber Security: Malware Prevention\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.a&c",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ104",
+          "title": "Are applications that are permitted to be present and active on relevant computer systems whitelisted?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, if application whitelisting is used (one of three permitted malware protection mechanisms), it must ensure that only approved applications, restricted by code signing, are allowed to execute on devices. The Applicant must: actively approve such applications before deploying them to devices, and maintain a current list of approved applications.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ105",
+          "title": "Are applications and scripts required to be digitally signed by the author before they are able to run on relevant computer systems?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, if application whitelisting is used (one of three permitted malware protection mechanisms), it must ensure that users cannot install any application that is unsigned or has an invalid signature.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ106",
+          "title": "Is any code of unknown origin run in a sandbox to prevent access to other relevant resources, unless permission is explicitly granted by the user?",
+          "guidance": "The NCSC's Cyber Essentials standard requires that, if application sandboxing is used (one of three permitted malware protection mechanisms), it must ensure that all code of unknown origin is run within a ‘sandbox’ that prevents access to other resources unless permission is explicitly granted by the user. This includes other sandboxed applications, data stores (such as those holding documents and photos), sensitive peripherals (such as the camera, microphone and GPS) and local network access. This is particularly relevant to smartphones.\n\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Malware Protection",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 6
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Secure Management"
+        },
+        {
+          "id": "SAQ107",
+          "title": "Are appropriate sources of information monitored to maintain awareness of threats, vulnerabilities and exploitation techniques that may apply to the service provided?",
+          "guidance": "Maintaining awareness of vulnerabilities and cyber threats can offer significant insight to ensure the ongoing resilience of services and solutions.\n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.d and B5.c\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5 Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Vulnerability Management"
+        },
+        {
+          "id": "SAQ108",
+          "title": "Is all relevant remedial action for vulnerabilities within the service recorded, assessed and tracked?",
+          "guidance": "You should have management processes in place to identify, triage and mitigate vulnerabilities, and track work to do so. Services which don’t, will quickly become vulnerable to attack using publicly known methods and tools. \n\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.d\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5 Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No - there is no systematic recording of patches or mitigations",
+              "value": "noThereIsNoSystematicRecordingOfPatchesOrMitigations",
+              "points": 0
+            },
+            {
+              "name": "Yes - assessment and remediation work is fully tracked",
+              "value": "yesAssessmentAndRemediationWorkIsFullyTracked",
+              "minimumRequired": true,
+              "points": 5
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Vulnerability Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["cyberEssentialPlus", "iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ110"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ109",
+          "title": "Are all relevant devices, servers, and appliances kept up to date (or ‘patched’) within timescales that are appropriate to risks?",
+          "guidance": "Patching and security updates of all hardware and software is a fundamental step towards ensuring systems cannot be hacked. The NCSC's Cyber Essentials standard requires that software must be patched within 14 days of an update being released, where the patch fixes a vulnerability with a severity the product vendor describes as \"critical\" or \"high risk\".\n\nhttps://www.ncsc.gov.uk/guidance/protecting-your-organisation-malware,The NCSC's Small Business Guide: Protecting Your Organisation From Malware\nhttps://www.ncsc.gov.uk/guidance/keeping-your-smartphones-and-tablets-safe,The NCSC’s Small Business Guide: Keeping Your Smartphones and Tablets Safe\nhttps://www.cyberessentials.ncsc.gov.uk/advice/,The NCSC's Cyber Essentials Standard: Patch Management\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.d\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,A4 and B4\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5: Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Patches are applied only on an Ad hoc basis",
+              "value": "patchesAreAppliedOnlyOnAnAdHocBasis",
+              "points": 0
+            },
+            {
+              "name": "Patches are only applied as part of the supplier's update roadmap",
+              "value": "patchesAreOnlyAppliedAsPartOfTheSuppliersUpdateRoadmap",
+              "points": 35
+            },
+            {
+              "name": "Full and timely patching regime",
+              "value": "fullAndTimelyPatchingRegime",
+              "minimumRequired": true,
+              "points": 55
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Vulnerability Management"
+        },
+        {
+          "id": "SAQ110",
+          "title": "Are vulnerability scans that cover the full scope of the service performed on a regular basis?",
+          "guidance": "Organisations should regularly run automated vulnerability scanning tools against all networked devices, to check that patches and security hotfixes have been updated within the service. This may be required for example for PCI compliance.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.d\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 7
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Vulnerability Management",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ118"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ111",
+          "title": "Are penetration tests that cover the full scope of the service performed on a regular basis?",
+          "guidance": "As part of assurance processes, organisations should conduct regular penetration tests of the network architecture to ensure that security controls have been well implemented and are effective. This should involve manual testing to see if the service can withstand attempts to breach the security controls. This may be required for example for PCI compliance.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-secure-configuration,The NCSC's 10 Steps to Cyber Security: Secure Configuration\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B4.d\nThe NCSC and ICO's GDPR Security Outcomes guidance https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,B4",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - penetration test prior to go live",
+              "value": "yesPenetrationTestPriorToGoLive",
+              "points": 7
+            },
+            {
+              "name": "Yes - to a documented schedule and following any significant change",
+              "value": "yesToADocumentedScheduleAndFollowingAnySignificantChange",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Vulnerability Management"
+        },
+        {
+          "id": "SAQ113",
+          "title": "Is there an up-to-date disaster recovery plan that is tested regularly?",
+          "guidance": "Organisations should have a disaster recovery plan that describes what would happen in the event of a serious incident impacting the availability of 'normal' IT resources. This needs to be tested to ensure it works in practice.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.c and B5.a\nhttps://www.ncsc.gov.uk/guidance/caf-objective-d,The NCSC's NIS Cyber Assessment Framework: D1\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance D1",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Plans in place", "value": "plansInPlace", "points": 10 },
+            {
+              "name": "Planned and tested",
+              "value": "plannedAndTested",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Resilient Networks and Systems"
+        },
+        {
+          "id": "SAQ114",
+          "title": "Is there an up-to-date Business continuity plan that is tested regularly?",
+          "guidance": "Organisations should have a business continuity plan in place that describes how the business will continue operating in the event of a serious incident impacting 'normal' IT resources. This needs to be tested to ensure it works in practice.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.c and B5.a\nhttps://www.ncsc.gov.uk/guidance/caf-objective-d,The NCSC's NIS Cyber Assessment Framework: D1\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance D1",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Plans in place", "value": "plansInPlace", "points": 10 },
+            {
+              "name": "Planned and tested",
+              "value": "plannedAndTested",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Resilient Networks and Systems"
+        },
+        {
+          "id": "SAQ115",
+          "title": "Are data backups taken regularly and secured in accordance with a backup policy?",
+          "guidance": "Backups should be taken on a regular basis and protected appropriately (e.g. through encryption, offsite storage, physical controls) to ensure that in the event of a system failure important data can be restored.\n\nhttps://www.ncsc.gov.uk/guidance/backing-your-data,The NCSC's Small Business Guide: Backing up your data\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B3.c and B5.c\nhttps://www.ncsc.gov.uk/guidance/caf-objective-d,The NCSC's NIS Cyber Assessment Framework: D1.b\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes ,The NCSC and ICO's GDPR Security Outcomes guidance B3 and D1",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Backups are taken on an ad hoc basis",
+              "value": "backupsAreTakenOnAnAdHocBasis",
+              "points": 0
+            },
+            {
+              "name": "Scheduled backups",
+              "value": "scheduledBackups",
+              "points": 38
+            },
+            {
+              "name": "Scheduled encrypted and stored offsite",
+              "value": "scheduledEncryptedAndStoredOffsite",
+              "minimumRequired": true,
+              "points": 58
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Resilient Networks and Systems"
+        },
+        {
+          "id": "SAQ116",
+          "title": "Are management, staff, and contractors provided with relevant information security education and awareness training?",
+          "guidance": "Users have a critical role to play in their organisation’s security. Organisation should promote a culture of information security. Examples of good practice include appropriate induction training, acceptable use policies, disciplinary process, regular guidance and awareness raising, promotion of a no-blame incident reporting culture.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-user-education-and-awareness,The NCSC's 10 Steps to Cyber Security: User Education and Awareness<br/> https://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B6.a and b<br/> https://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance B5",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            { "name": "Staff only", "value": "staffOnly", "points": 15 },
+            {
+              "name": "Staff and all relevant contractors",
+              "value": "staffAndAllRelevantContractors",
+              "minimumRequired": true,
+              "points": 25
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Staff Awareness and Training"
+        },
+        {
+          "id": "SAQ118",
+          "title": "Is there a regular information security awareness programme to remind users' understanding of security threats?",
+          "guidance": "Users' awareness can be supported by a systematic delivery of awareness programmes and training that deliver security expertise, as well helping to establish a security-conscious culture.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-user-education-and-awareness,The NCSC's 10 Steps to Cyber Security: User Education and Awareness\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B6.b",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 12
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Staff Awareness and Training",
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ126"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ120",
+          "title": "Are management, staff, and contractors required to secure unattended equipment?",
+          "guidance": "There should be clear requirements in place to help prevent sensitive data being accessed inappropriately as a result of, e.g. device theft or unauthorised use. Examples of good practice include requirements for laptops to be secured to tables with cable and lock, or locked away when not in use, and screen locks being applied by staff when they are away from their devices.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 24
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Staff Awareness and Training"
+        },
+        {
+          "id": "SAQ121",
+          "title": "Are relevant devices configured to lock automatically after a period of inactivity?",
+          "guidance": "Screen locks or automatic logouts after a timeout period can help prevent illicit access to data when staff are away from their devices.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes, guidance only",
+              "value": "yesGuidanceOnly",
+              "points": 8
+            },
+            {
+              "name": "Yes, and a technical timeout of 15 minutes or less is enforced",
+              "value": "yesAndATechnicalTimeoutOf15MinutesOrLessIsEnforced",
+              "minimumRequired": true,
+              "points": 19
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Staff Awareness and Training"
+        },
+        {
+          "id": "SAQ122",
+          "title": "Are all users instructed to ensure that devices and paperwork are protected to ensure work can not be overlooked by unauthorised users, including family members when working from home?",
+          "guidance": "Screens should not be visible to unauthorised users and a privacy screen employed where required.  Documents should not be left unattended on desktops.  Computer work accounts should not be used by anyone else, including family members.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "subsection": "Staff Awareness and Training"
+        }
+      ]
+    },
+    {
+      "name": "Detecting Security Events",
+      "questions": [
+        {
+          "id": "SAQ123",
+          "title": "Is there a documented logging standard which describes the system activity and events that will be logged, the reporting frequency and responsibility for reviewing the logs, and any action that may be required?",
+          "guidance": "Monitoring provides the means to assess how systems are being used and whether they are being attacked. Organisations should have a documented policy in place to ensure that things such as user and privileged access and activities, exceptions, faults and information security events are logged and protected.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-monitoring,The NCSC's 10 Steps to Cyber Security: Monitoring\nhttps://www.ncsc.gov.uk/guidance/caf-objective-c,The NCSC's NIS Cyber Assessment Framework: C1.a",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 4
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ124",
+          "title": "Are users made aware that their actions may be monitored and logged by relevant systems?",
+          "guidance": "You should ensure that users are aware their actions are traceable to discourage inappropriate activity and the sharing of login credentials. This may be done by, e.g. a disclaimer on the logon screen, sign off of an acceptable use policy, training prior to access, etc.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No special measures",
+              "value": "noSpecialMeasures",
+              "points": 10
+            },
+            {
+              "name": "Yes - users are made aware that their actions may be monitored and logged by relevant systems through warning banners, user training, disclaimers etc.",
+              "value": "yesUsersAreMadeAwareThatTheirActionsMayBeMonitoredAndLoggedByRelevantSystemsThroughWarningBannersUserTrainingDisclaimersEtc",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ126",
+          "title": "Are logs (a) sufficiently detailed to enable an effective investigation, and (b) protected from tampering/deletion/being overwritten?",
+          "guidance": "The configuration of event logging is key to ensuring that evidence is available and secure.",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Default settings used",
+              "value": "defaultSettingsUsed",
+              "points": 0
+            },
+            {
+              "name": "Settings appropriately configured",
+              "value": "settingsAppropriatelyConfigured",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ127",
+          "title": "Are logon attempts logged and monitored to identify the unauthorised or inappropriate misuse of systems or data?",
+          "guidance": "Organisations' monitoring capability should have the ability to identify the unauthorised or accidental misuse of systems or data. Critically, it should generate adequate audit events to be able to tie specific users to suspicious activity (e.g. logs of user authentication success and failure, file access permitted and denied, database access permitted and denied). Organisations should take care to ensure that all user monitoring complies with all legal or regulatory constraints.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-managing-user-privileges,The NCSC's 10 Steps to Cyber Security: Managing User Privileges\nhttps://www.ncsc.gov.uk/guidance/10-steps-monitoring,The NCSC’s 10 Steps to Cyber Security: Monitoring\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.d\nhttps://www.ncsc.gov.uk/guidance/caf-objective-c,The NCSC's NIS Cyber Assessment Framework: C1 .b\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance B2 and C1",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "No specific logging of these events",
+              "value": "noSpecificLoggingOfTheseEvents",
+              "points": 0
+            },
+            {
+              "name": "User logon successes are logged",
+              "value": "userLogonSuccessesAreLogged",
+              "points": 7
+            },
+            {
+              "name": "User logon success and failures are logged",
+              "value": "userLogonSuccessAndFailuresAreLogged",
+              "points": 15
+            },
+            {
+              "name": "User logon success and failures are logged, and are reviewed and/or alerted for incident management",
+              "value": "userLogonSuccessAndFailuresAreLoggedAndAreReviewedAndorAlertedForIncidentManagement",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ128",
+          "title": "Are logs from all relevant services and applications collected, aggregated, and analysed in order to identify security events?",
+          "guidance": "To ensure sufficient logs are available to allow security investigations, you should ensure that all networks, systems and services are included in your monitoring strategy and event logging arrangements.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-monitoring,The NCSC's 10 Steps to Cyber Security: Monitoring\nhttps://www.ncsc.gov.uk/guidance/caf-objective-b,The NCSC's NIS Cyber Assessment Framework: B2.d\nhttps://www.ncsc.gov.uk/guidance/caf-objective-c,The NCSC's NIS Cyber Assessment Framework: C1 and C2\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance C1",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "name": "Do not know/Default",
+              "value": "doNotKnowdefault",
+              "points": 0
+            },
+            {
+              "name": "Logging configured",
+              "value": "loggingConfigured",
+              "points": 7
+            },
+            {
+              "name": "Logging, alerting and daily review",
+              "value": "loggingAlertingAndDailyReview",
+              "points": 15
+            },
+            {
+              "name": "Proactive monitoring and analysis",
+              "value": "proactiveMonitoringAndAnalysis",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ129",
+          "title": "Is there a defined monitoring strategy and capability that includes the use of both signature-based capabilities to detect known attacks, and heuristic capabilities to detect unusual system behaviour?",
+          "guidance": "This may include the use of the use of network, host based Intrusion Detection Systems (IDS). These solutions should provide both signature-based capabilities to detect known attacks, and heuristic capabilities to detect unusual system behaviour.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-monitoring,The NCSC's 10 Steps to Cyber Security: Monitoring",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 4
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ130",
+          "title": "Are network event logs monitored for suspicious activity by a security operations centre that has the authority to proactively respond to incidents?",
+          "guidance": "There should be monitoring arrangements in place (e.g. Security Operations Centre or other Managed IDS/IPS service), that are responsible for the analysis, investigation and reporting of monitoring alerts covering both security and performance. Alerts generated by the system should be promptly managed by appropriately trained staff. The availability of staff (e.g. 24 hours) should take account of the need to respond quickly to security incidents.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-network-security,The NCSC's 10 Steps to Cyber Security: Network Security\nhttps://www.ncsc.gov.uk/guidance/caf-objective-c,The NCSC's NIS Cyber Assessment Framework: C1.e",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes - in working hours only (Minimum at Low/Moderate)",
+              "value": "yesInWorkingHoursOnlyMinimumAtLowmoderate",
+              "points": 5
+            },
+            {
+              "name": "Yes - full time 24/7",
+              "value": "yesFullTime247",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "SKIP",
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ132"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minimising the Impact of Security Incidents",
+      "questions": [
+        {
+          "id": "SAQ131",
+          "title": "Are there incident management policies and procedures to manage information security events and alerts?",
+          "guidance": "There should be policy and procedures to manage (report, assess, respond to and learn from) information security events, incidents and weaknesses consistently and effectively. These should identify such things as incident response planning, logging, response and escalation responsibilities, lessons learned, etc.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5: Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ132",
+          "title": "Have incident management roles and responsibilities been defined?",
+          "guidance": "Organisations should appoint and empower specific individuals (or suppliers) to handle incidents and provide them with clear terms of reference to make decisions and manage any incident that may occur. Ensure that the contact details of key personnel are readily available to use in the event of an incident.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 10
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ133",
+          "title": "Are policies and procedures in place to ensure that all relevant security incidents are reported to the contracting authority in an acceptable time frame?",
+          "guidance": "Organisations should have policies and procedures in place to ensure that relevant security incidents are reported in acceptable timescales and formats.\n\nhttps://www.ncsc.gov.uk/guidance/cloud-security-principle-5-operational-security,The NCSC's Cloud Security Principles: Principle 5: Operational Security",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 25
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "condition": [
+                {
+                  "questionId": "SAQ000-02",
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "action": "END",
+              "target": {
+                "type": "OUTCOME",
+                "value": "COMPLETE"
+              }
+            }
+          ]
+        },
+        {
+          "id": "SAQ134",
+          "title": "Are appropriate policies and procedures in place for the collection of forensic evidence to support investigation of security incidents?",
+          "guidance": "Forensics digital evidence should be processed appropriately in consideration of potential legal proceedings. Investigating staff should have appropriate training and collection of evidence should not impact on the business.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 20
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "SAQ135",
+          "title": "Are there policies and procedures that ensure that lessons learned from security incidents and weaknesses are fed into service improvement actions?",
+          "guidance": "Organisation should log the actions taken during an incident and review the performance of the incident management process post incident (or following a test) to see what aspects worked well and what could be improved. Review the organisational response and update any relevant policies or user training that could have prevented the incident from occurring.\n\nhttps://www.ncsc.gov.uk/guidance/10-steps-incident-management,The NCSC's 10 Steps to Cyber Security: Incident Management\nhttps://www.ncsc.gov.uk/guidance/caf-objective-a,The NCSC's NIS Cyber Assessment Framework: A2.b\nhttps://www.ncsc.gov.uk/guidance/caf-objective-d,The NCSC's NIS Cyber Assessment Framework:D2.b\nhttps://www.ncsc.gov.uk/guidance/gdpr-security-outcomes,The NCSC and ICO's GDPR Security Outcomes guidance D2",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            { "name": "No", "value": "no", "points": 0 },
+            {
+              "name": "Yes",
+              "value": "yes",
+              "minimumRequired": true,
+              "points": 30
+            },
+            {
+              "name": "Not applicable",
+              "value": "n/a",
+              "freeText": true,
+              "freeTextLabel": "Please provide an explanation if not applicable",
+              "points": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

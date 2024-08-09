@@ -1,0 +1,362 @@
+{
+  "id": "sdfgsdfg4353454",
+  "name": "Accessibility Assessment",
+  "status": "DRAFT",
+  "outcomes": {
+    "notValid": {
+      "title": "",
+      "body": ""
+    }
+  },
+  "sections": [
+    {
+      "name": "",
+      "questions": [
+        {
+          "id": "acc01",
+          "title": "What level of compliance does your product currently achieve?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "wcag2.1a",
+              "name": "WCAG 2.1 A",
+              "points": 0
+            },
+            {
+              "value": "wcag2.1aa",
+              "name": "WCAG 2.1 AA",
+              "points": 0
+            },
+            {
+              "value": "wcag2.1aaa",
+              "name": "WCAG 2.1 AAA",
+              "points": 0
+            },
+            {
+              "value": "section508",
+              "name": "Section 508",
+              "points": 0
+            },
+            {
+              "value": "other",
+              "name": "Other",
+              "freeTextLabel": "Please specify:",
+              "freeText": true,
+              "points": 0
+            },
+            {
+              "value": "dontKnow",
+              "name": "Don't know",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "acc02",
+          "title": "Do you have an accessibility officer?",
+          "guidance": "Is there someone in your organisation who is dedicated to ensuring good practise around accessibility is observed?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 0
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "acc03",
+          "title": "Do you undertake accessibility Training?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes-internal",
+              "name": "Yes, we have internal accessibility courses which we run for staff",
+              "points": 0
+            },
+            {
+              "value": "yes-external",
+              "name": "Yes, we attend external accessibility training",
+              "points": 0
+            },
+            {
+              "value": "yes-both",
+              "name": "Yes, we attend both internal and external accessibility training",
+              "points": 0
+            }
+          ],
+          "followUp": [
+            {
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["yes-internal", "yes-external", "yes-both"]
+                }
+              ],
+              "questions": [
+                {
+                  "id": "acc03-01",
+                  "title": "Name training providers?",
+                  "type": "TEXT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "acc04",
+          "title": "Do you have accessibility personas?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes",
+              "name": "Yes, we use accessibility personas as part of our UCD process",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "acc05",
+          "title": "Do you test with disabled users?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes-team",
+              "name": "Yes, with disabled team members",
+              "points": 0
+            },
+            {
+              "value": "yes-external",
+              "name": "Yes, with externally recruited disabled users",
+              "points": 0
+            },
+            {
+              "value": "yes-both",
+              "name": "Yes, with both disabled team members and externally recruited disabled users",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "acc06",
+          "title": "Do you do automated accessibility testing?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes-periodically",
+              "name": "Yes, periodically",
+              "points": 0
+            },
+            {
+              "value": "yes-version",
+              "name": "Yes, for each software version",
+              "points": 0
+            },
+            {
+              "value": "yes-sprint",
+              "name": "Yes, for each sprint or iteration",
+              "points": 0
+            }
+          ],
+          "followUp": [
+            {
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["yes-periodically", "yes-version", "yes-sprint"]
+                }
+              ],
+              "questions": [
+                {
+                  "id": "acc06-01",
+                  "title": "What tools did you use?",
+                  "type": "TEXT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "acc07",
+          "title": "Do you test your product with assistive technologies?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 0
+            }
+          ],
+          "followUp": [
+            {
+              "condition": [
+                {
+                  "op": "EQUAL",
+                  "value": "yes"
+                }
+              ],
+              "questions": [
+                {
+                  "id": "acc07-01",
+                  "title": "Check all that apply",
+                  "type": "MULTIPLE_CHOICE",
+                  "allowMultiple": true,
+                  "options": [
+                    {
+                      "value": "screenReaders",
+                      "name": "Screen Readers",
+                      "points": 0
+                    },
+                    {
+                      "value": "screenMagnifiers",
+                      "name": "Screen Magnifiers",
+                      "points": 0
+                    },
+                    {
+                      "value": "assistiveInputDevices",
+                      "name": "Assistive input devices",
+                      "points": 0
+                    },
+                    {
+                      "value": "keyboardOnly",
+                      "name": "Keyboard only",
+                      "points": 0
+                    },
+                    {
+                      "value": "speechRecognition",
+                      "name": "Speech Recognition",
+                      "points": 0
+                    },
+                    {
+                      "value": "textToSpeech",
+                      "name": "Text to Speech",
+                      "points": 0
+                    },
+                    {
+                      "value": "displayAdaptations",
+                      "name": "Display Adaptations",
+                      "points": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "acc08",
+          "title": "Do you conduct accessibility audits of your product?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes-internal",
+              "name": "Yes, internally only",
+              "points": 0
+            },
+            {
+              "value": "yes-specialist",
+              "name": "Yes, with a specialist third party accessibility evaluator.",
+              "points": 0
+            }
+          ],
+          "followUp": [
+            {
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["yes-internal", "yes-specialist"]
+                }
+              ],
+              "questions": [
+                {
+                  "id": "acc08-01",
+                  "title": "How often?",
+                  "type": "TEXT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "acc09",
+          "title": "Do you have a recent accessibility audit report for your product?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 0
+            }
+          ],
+          "followUp": [
+            {
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["yes", "yes"]
+                }
+              ],
+              "questions": [
+                {
+                  "id": "acc09-01",
+                  "title": "Can you provide us with a copy?",
+                  "type": "TEXT"
+                },
+                {
+                  "id": "acc09-02",
+                  "title": "Date of report?",
+                  "type": "TEXT"
+                },
+                {
+                  "id": "acc09-03",
+                  "title": "Auditor?",
+                  "type": "TEXT"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,846 @@
+{
+  "id": "03nfjds924",
+  "name": "Risk Profile Assessment",
+  "status": "DRAFT",
+  "outcomes": {
+    "topSecret": {
+      "title": "Sorry, your procurement need is too sensitive for this tool.",
+      "body": "Contact your cyber/information security adviors as traditional procurement routes may not be appropriate."
+    },
+    "basicCyberOnly": {
+      "title": "Only Basic Cyber Hygiene is required.",
+      "body": "Your procurement only requires basic cyber hygiene. There is no need to continue with this risk assessment."
+    },
+    "low": {
+      "title": "You have been given a low risk rating for your procurement."
+    },
+    "moderate": {
+      "title": "You have been given a moderate risk rating for your procurement."
+    },
+    "high": {
+      "title": "You have been given a high risk rating for your procurement."
+    }
+  },
+  "sections": [
+    {
+      "name": "Governance",
+      "questions": [
+        {
+          "id": "ga01",
+          "title": "Will delivery of the contract involve, support or rely upon the digital processing of information?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "'Digital processing' means doing anything with data using digital or computerised systems. This may include gathering, storing, altering, consulting, disseminating, etc. The supplier may process the information themselves, or they may provide you with services or products that support your organisation (or others) to process the information. Successful delivery of a contract may rely upon the supplier being able to process its own operational data effectively, using its own digital networks.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 7
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 1
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": "no",
+                  "op": "EQUAL"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "basicCyberOnly"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga02",
+          "title": "Will any of the information being processed include SECRET or TOP SECRET information? ",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Procurement for contracts involving highly classified material are likely to require a more specialised approach. You must speak to your information or cyber security advisers before continuing.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 7
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": "yes",
+                  "op": "EQUAL"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "topSecret"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga03",
+          "title": "Who will ultimately 'own' or be responsible for the information processed under the contract?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Public sector organisations will usually ultimately 'own' or be responsible for protection of all information or data that is directly related to the delivery of public services or public sector business, whether it is being processed by the public sector or its suppliers. NB: Where personal data is being processed on behalf of the public sector by a supplier, public sector data controllers will remain accountable for the protection of that data. A contract may rely upon the supplier's ability to process information that the supplier owns or is responsible for. Examples may include utilities companies, who rely on their digital systems to process operational data in order to supply services.",
+          "options": [
+            {
+              "value": "myOrg",
+              "name": "My organisation/the public sector",
+              "points": 3
+            },
+            {
+              "value": "supplier",
+              "name": "The supplier",
+              "points": 1
+            },
+            {
+              "value": "other",
+              "name": "Other",
+              "points": 4,
+              "freeTextLabel": "Please specify",
+              "freeText": true
+            }
+          ]
+        },
+        {
+          "id": "ga04",
+          "title": "Where will the information be processed?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Think about 'where' the information will be processed, and who will manage or control the cyber security of the digital networks or systems involved. Will the processing take place on the supplier's digital networks and systems (including any third party 'cloud' providers they rely on for their digital processing)? Or will the contract support processing on digital networks and systems that are under the control of the public sector (e.g. through the supply of products that will be connected to public sector networks)?",
+          "options": [
+            {
+              "value": "org",
+              "name": "Digital networks/systems owned or managed by my organisation/the public sector",
+              "points": 0
+            },
+            {
+              "value": "supplier",
+              "name": "Digital networks/systems owned or managed by the supplier",
+              "points": 7
+            },
+            {
+              "value": "both",
+              "name": "Both of the above",
+              "points": 8
+            }
+          ]
+        },
+        {
+          "id": "ga05",
+          "title": "Who will be enabled or required to process information under the contract?",
+          "type": "MULTIPLE_CHOICE",
+          "allowMultiple": true,
+          "options": [
+            {
+              "value": "publicSector",
+              "name": "Public sector staff",
+              "points": 1
+            },
+            {
+              "value": "supplierStaff",
+              "name": "Supplier staff",
+              "points": 2
+            },
+            {
+              "value": "contract",
+              "name": "Contract staff",
+              "points": 3
+            },
+            {
+              "value": "other",
+              "name": "Other",
+              "freeTextLabel": "Please specify",
+              "freeText": true,
+              "points": 4
+            }
+          ]
+        },
+        {
+          "id": "ga06",
+          "title": "If the supplier were unable to process their own data on their own digital networks/services, would there be a negative effect on delivery of the contract that could disrupt important or critical public services?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "A supplier may rely on the digital processing of their own information to deliver important or critical services to the public sector. Please make your own informed judgement about how important or critical the services under this contract are. If you believe the service is important to enough to warrant seeking assurances from suppliers as to the arrangements they have in place to protect their own digital networks/services against cyber threats, please select 'Yes'.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 4
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": "yes",
+                  "op": "EQUAL"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "low"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga08",
+          "title": "Will the supplier be providing your organisation with cloudbased products or solutions to support the processing of information?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Cloud computing is the delivery of computing services (e.g. servers, storage, databases, networking, software, etc.), often over the Internet. There are two main scenarios that may involve suppliers delivering services on the Internet/Cloud: Internet-hosted services such as Facebook, WordPress, Vimeo, Dropbox, etc. Cloud services including PaaS, IaaS, and SaaS from providers such as Amazon AWS, Google, Microsoft Azure, Pulsant, etc. If you do not know the answer to this question, seek advice from your security experts. If the answer is not yet clear at this stage, CSPST can ask suppliers this question.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 4
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "dontKnow",
+              "name": "Don't know - it depends on the supplier's proposals",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "id": "ga09",
+          "title": "Will the supplier provide any other (non-cloud-based) digital products or solutions, that your organisation will install on public sector networks or configure to support the processing of information?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Such products may be licensed or bought from the supplier, and installed on public sector networks. The products may be used by either supplier staff, public sector staff, or others to access and process information electronically. If you do not know the answer to this question, seek advice from your security experts. If the answer is not yet clear, this question can be asked of suppliers as part of their Supplier Assurance Questionnaire.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 4
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "dontKnow",
+              "name": "Don't know - it depends on the supplier's proposals",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "id": "ga10",
+          "title": "Is the supplier likely to have any ongoing access to those solutions or products that could allow them to access information?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Consider whether suppliers may be able to access any information processed using the products or solutions, including system development or maintenance information. In these circumstances, it may be necessary to seek assurances that the supplier has clear processes in place to mitigate risks around such access, that any such access will be subject to clear contractual agreements, and that the supplier's organisational cyber security, including their staff vetting procedures, is appropriate. If you do not know the answer to this question, seek advice from your security experts. If the answer is not yet clear, this question can be asked of suppliers at the start of the Supplier Assurance Questionnaire.",
+          "options": [
+            {
+              "value": "yes-developmentMaintenanceInfo",
+              "name": "Yes - system development and maintenance information only",
+              "points": 4
+            },
+            {
+              "value": "yes-sectorOwnedInfo",
+              "name": "Yes - including information which the public sector owns or is responsible for",
+              "points": 0
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 4
+            },
+            {
+              "value": "dontKnow",
+              "name": "Don't know - depends on supplier proposals",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "ga11",
+          "title": "As a result of the contract, is there the potential for information to be made accessible through the Internet?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Consider whether any of the services, products or solutions are likely to involve information for which the public sector is responsible potentially being made accessible through the Internet. This can significantly increase the likelihood of such information being compromised if appropriate protections are not put in place. If you do not know the answer to this question, seek advice from your security experts. If the answer is not yet clear, this question can be asked of suppliers at the start of the Supplier Assurance Questionnaire.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 7
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            },
+            {
+              "value": "dontKnow",
+              "name": "Don't know - depends on supplier proposals",
+              "points": 4
+            }
+          ]
+        },
+        {
+          "id": "ga12a",
+          "title": "Will the supplier have View/Read access and processing rights in respect of information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 2
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12b",
+          "title": "Will the supplier have the Ability to transfer, transmit or transport information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 5
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12c",
+          "title": "Will the supplier have the Ability to create information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 7
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12d",
+          "title": "Will the supplier have the Ability to collect, copy, manage or store the information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 5
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12e",
+          "title": "Will the supplier have the Ability to edit  the information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 5
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12f",
+          "title": "Will the supplier have the Ability to delete, destroy or wipe the information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 7
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12g",
+          "title": "Will the supplier have the Ability to Administer data systems hosting the the information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 5
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga12h",
+          "title": "Will the supplier provide System support for systems hosting the the information that the public sector 'owns' or is responsible for?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 5
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 0
+            }
+          ]
+        },
+        {
+          "id": "ga13",
+          "title": "Which of the following types of information will be accessed and processed under the contract?",
+          "type": "MULTIPLE_CHOICE",
+          "allowMultiple": true,
+          "guidance": "Certain types of information for which the public sector is responsible may be more attractive to hostile actors such as cyber criminals, political activists or hostile states. The consequences of information compromise may also be more serious for your organisation, the public sector, or members of the public depending on the type of data.  What is personal data? Personal data is information or a unique identifier that relates to an identified or identifiable individual. What identifies an individual could be a name or a number, or other factors. Personal data may also include special categories of personal data which require additional protection or criminal conviction and offences Data. Contracting authorities processing personal data must comply with the Data Protection Act, as amended by the General Data Protection Regulation, and complete a Data Protection Impact Assessment (DPIA). Please refer to your local/organisation's DPIA practices.",
+          "options": [
+            {
+              "value": "comm-sensitive",
+              "name": "Commercial/operationally sensitive data",
+              "points": 5
+            },
+            {
+              "value": "comm-in-conf",
+              "name": "Commercial-in-confidence data",
+              "points": 2
+            },
+            {
+              "value": "personal",
+              "name": "Personal data",
+              "points": 5
+            },
+            {
+              "value": "special-personal",
+              "name": "Special category personal data",
+              "points": 7
+            },
+            {
+              "value": "criminal",
+              "name": "Criminal offence data",
+              "points": 7
+            },
+            {
+              "value": "personal-finance",
+              "name": "Personal financial data",
+              "points": 7
+            },
+            {
+              "value": "pay-card",
+              "name": "Payment card data",
+              "points": 5
+            },
+            {
+              "value": "legal-priv",
+              "name": "Legally privileged information",
+              "points": 2
+            },
+            {
+              "value": "other-sens-crit",
+              "name": "Other sensitive or critical data",
+              "points": 0
+            },
+            {
+              "value": "non-sense",
+              "name": "Non-sensitive information",
+              "points": 0
+            },
+            {
+              "value": "dontKnow",
+              "name": "Do not know",
+              "points": 0
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "priority": 1,
+              "condition": [
+                {
+                  "value": ["special-personal", "criminal", "personal-finance"],
+                  "op": "INCLUDES"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "moderate"
+              }
+            },
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": ["personal"],
+                  "op": "INCLUDES"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "low"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga14",
+          "title": "Will the personal data accessed and processed under the contract be restricted only to the business contact details of your organisation's officials?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Your organisation's officials may share names, business email and business telephone contact details with the supplier to allow them to deliver the contract. Such details will likely constitute personal data, but for reasons of proportionality your organisation may be willing to allow lower levels of protection for such data than for, e.g. citizens' data or sensitive personal data. If you select 'No' in answer to this question, CSPST will automatically generate a minimum risk profile of 'moderate' to protect personal data.",
+          "options": [
+            {
+              "value": "yes",
+              "name": "Yes",
+              "points": 0
+            },
+            {
+              "value": "no",
+              "name": "No",
+              "points": 4
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": "no",
+                  "op": "EQUAL"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "moderate"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga15",
+          "title": "Which is the highest Protective Marking that will apply to the information processed under the contract?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Guidance on UK Government Security Classifications. For further information on the UK Government Security Classifications (GSC) visit: Government Security Classifications. Please refer to your local classifications, as your organisation may follow specific guidelines which differ to the GSC. If so, please select the option that most closely matches your local classifications. If you are including supplier-generated Scottish Public Sector information that is passed through the public sector, on behalf of the public sector or to the public sector, will be considered OFFICIAL as a minimum.",
+          "options": [
+            {
+              "value": "official-pub-free",
+              "name": "OFFICIAL information that is intended to be made freely available to the public",
+              "points": 2
+            },
+            {
+              "value": "official-not-pub",
+              "name": "OFFICIAL information that is not intended to be made freely available to the public ",
+              "points": 2
+            },
+            {
+              "value": "official-sensitive",
+              "name": "OFFICIAL information that warrants the handling instruction of SENSITIVE",
+              "points": 5
+            },
+            {
+              "value": "unknown",
+              "name": "Unknown",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "ga16",
+          "title": "At its greatest, will the volume of information accessed and processed under the contract be:",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Consider your answer in the context of the type of information and the size of other comparable datasets, as well as the amount of information usually held by your organisation. There is no set definition of what constitutes a very large or 'bulk' data set. However, larger datasets may require more protections, due to, e.g. the greater impact on individuals if personal data are compromised.",
+          "options": [
+            {
+              "value": "small",
+              "name": "Small (e.g. 1 to 1,000 records)",
+              "points": 2
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate (e.g. 1,001 to 100,000 records)",
+              "points": 2
+            },
+            {
+              "value": "large",
+              "name": "Large (e.g. 100,001 to 500,000 records)",
+              "points": 5
+            },
+            {
+              "value": "ex-large",
+              "name": "Extremely Large (e.g. 500,001 or more records)",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "ga17",
+          "title": "In the event of service disruption or data compromise related to the contract, how significant an impact would there be on the day to day operations, activities or rights and freedoms of users of public services and other external stakeholders?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Low Impact:  The services or operations that are dependent on the contract are of low importance. They could be easily and quickly replaced. There may be minor inconvenience to limited numbers of citizens, businesses or charities, but they would be able to continue their daily lives or operations largely unaffected. Moderate Impact: The services or operations that are dependent on the contract are of moderate importance. Effects would be noticeable, and would cause inconvenience, anxiety or trouble for greater numbers of citizens, businesses or charities. High Impact: The services or operations that are dependent on the contract are of high importance. Effects would be significant, and would cause major inconvenience, anxiety or trouble for citizens, businesses or charities. They may be unable to continue their daily lives or operations without alternative support being put in place. Critical Impact: The services or operations that are dependent on the contract are of critical importance. Effects would be severe. Citizens, businesses or charities would be unable to continue their daily lives or operations. There could be other very severe consequences, including potential loss of human life.",
+          "options": [
+            {
+              "value": "na",
+              "name": "No impact",
+              "points": 0
+            },
+            {
+              "value": "low",
+              "name": "Low impact",
+              "points": 0
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate impact",
+              "points": 0
+            },
+            {
+              "value": "high",
+              "name": "High impact",
+              "points": 0
+            },
+            {
+              "value": "crit",
+              "name": "Critical impact",
+              "points": 150
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": "crit",
+                  "op": "EQUAL"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "high"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga19",
+          "title": "In the event of any service disruption or data compromise related to the contract, how significant an impact would there be on the day to day operations, activities or rights and freedoms of Your organisation or its staff?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Low Impact: Your organisation's operations/objectives that are dependent on the contract are of relatively low importance. The supplier staff, solutions or services could be easily and quickly replaced. There may be minor inconvenience to your organisation/business area and its staff, but they would be able to continue their daily working lives or operations largely unaffected. Moderate Impact: Your organisation's operations/objectives that are dependent on the contract are of moderate importance. Effects would be noticeable, and would cause inconvenience, anxiety or trouble for greater numbers of staff. While your organisation/business area would be able to continue its daily operations, they would be negatively affected to a noticeable degree. High Impact: Your organisation's operations/objectives that are dependent on the contract are of high importance. Effects would be significant, and would cause major inconvenience, anxiety or trouble for large numbers of staff. Your organisation/business area may be unable to continue daily operations without alternative support being put in place. Critical Impact: Your organisation's operations/objectives that are dependent on the contract are of very high importance. Effects would be severe. Your organisation/business area would be unable to continue daily operations. There could be other very severe consequences, including potential loss of human life.",
+          "options": [
+            {
+              "value": "na",
+              "name": "No impact",
+              "points": 2
+            },
+            {
+              "value": "low",
+              "name": "Low impact",
+              "points": 5
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate impact",
+              "points": 6
+            },
+            {
+              "value": "high",
+              "name": "High impact",
+              "points": 179
+            },
+            {
+              "value": "crit",
+              "name": "Critical impact",
+              "points": 250
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": ["high", "crit"],
+                  "op": "INCLUDES"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "high"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga20",
+          "title": "In the event of any service disruption or data compromise related to the contract, how significant an impact would there be on the day to day operations, activities or rights and freedoms of The wider public sector or its staff?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Low Impact:  The wider public sector's operations/objectives that are dependent on the contract are of low importance. The supplier staff, solutions or services could be easily and quickly replaced. There may be minor inconvenience to the wider public sector and its staff, but they would be able to continue their daily working lives or operations largely unaffected. Moderate Impact: The wider public sector's operations/objectives that are dependent on the contract are of moderate importance. Effects would be noticeable, and would cause inconvenience, anxiety or trouble for greater numbers of staff. While the wider public sector would be able to continue its daily operations, they would be negatively affected to a noticeable degree. High Impact: The wider public sector's operations/objectives that are dependent on the contract are of high importance. Effects would be significant, and would cause major inconvenience, anxiety or trouble for large numbers of staff. Some key parts of the wider public sector may be unable to continue daily operations without alternative support being put in place. Critical Impact: The wider public sector's operations/objectives that are dependent on the contract are of critical importance. Effects would be severe. Significant areas of the wider public sector would be unable to continue daily operations. There could be other very severe consequences, including potential loss of human life.",
+          "options": [
+            {
+              "value": "na",
+              "name": "No impact",
+              "points": 2
+            },
+            {
+              "value": "low",
+              "name": "Low impact",
+              "points": 5
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate impact",
+              "points": 6
+            },
+            {
+              "value": "high",
+              "name": "High impact",
+              "points": 179
+            },
+            {
+              "value": "crit",
+              "name": "Critical impact",
+              "points": 250
+            }
+          ],
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "value": ["high", "crit"],
+                  "op": "INCLUDES"
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "high"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ga21",
+          "title": "In the event of any service disruption or data compromise related to the contract, how significant an impact would there be on the day to day operations, activities or rights and freedoms of Public services and other external stakeholders?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "Low Impact: E.g. leading to limited, non-publicised criticism or limited local media coverage. Moderate Impact: E.g. leading to publicised criticism from numerous important or credible sources. There may be low-to medium profile regional or national media coverage. High Impact: E.g. leading to publicised criticism from a large number of important or credible sources. There may be high profile regional or national media coverage.",
+          "options": [
+            {
+              "value": "na",
+              "name": "No impact",
+              "points": 0
+            },
+            {
+              "value": "low",
+              "name": "Low reputational impact",
+              "points": 2
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate reputational impact",
+              "points": 5
+            },
+            {
+              "value": "high",
+              "name": "High reputational impact",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "ga22",
+          "title": "In the event of any service disruption or data compromise related to the contract, would you expect there to be a significant financial impact on any of the following?",
+          "type": "MULTIPLE_CHOICE",
+          "guidance": "When answering, consider the potential for fines under, e.g. data protection or other legislation if regulatory bodies or courts judged that insufficient protections had been applied under the contract.",
+          "allowMultiple": true,
+          "options": [
+            {
+              "value": "public",
+              "name": "Users of public services and other external stakeholders",
+              "points": 2
+            },
+            {
+              "value": "yourOrg",
+              "name": "Your organisation",
+              "points": 5
+            },
+            {
+              "value": "widePublic",
+              "name": "The wider public sector",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "ga23",
+          "title": "In the event of any service disruption or data compromise related to the contract, how significant an impact would you expect there to be on the reputation of users of public services and other external stakeholders?",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "value": "na",
+              "name": "No impact",
+              "points": 0
+            },
+            {
+              "value": "low",
+              "name": "Low reputational impact",
+              "points": 2
+            },
+            {
+              "value": "moderate",
+              "name": "Moderate reputational impact",
+              "points": 5
+            },
+            {
+              "value": "high",
+              "name": "High reputational impact",
+              "points": 7
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
