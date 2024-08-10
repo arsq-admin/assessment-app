@@ -33,7 +33,7 @@ export const AssessmentPage = () => {
     questionId,
     setJourney,
   });
-  console.log(question);
+
   return (
     <AssessmentContext.Provider
       value={{
