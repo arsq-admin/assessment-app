@@ -43,7 +43,7 @@ export const ProgressBar = () => {
   const currentSection = config.sections[currentSectionIndex];
 
   return (
-    <Column span={3}>
+    <Column span={4}>
       <Title>Progress</Title>
       <p>
         You have completed {currentSectionIndex} out of{" "}

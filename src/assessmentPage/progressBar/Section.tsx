@@ -3,19 +3,25 @@ import { AssessmentContext } from "../context";
 import { useContext } from "react";
 import { Subsection } from "./Subsection";
 
+const IndicatorWrapper = styled.div`
+  height: 1.65rem;
+  display: flex;
+  align-items: center;
+  flex: 20px 0 0;
+`;
+
 const Indicator = styled.div<{ isActive: boolean }>`
   height: 20px;
   width: 20px;
   border-radius: 100%;
   background-color: #ffffff;
   border: #535353 2px solid;
-  flex: 20px 0 0;
   background-color: ${({ isActive }) => (isActive ? "#0065BD" : "#ffffff")};
 `;
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 `;
 
@@ -43,7 +49,9 @@ export const Section = ({ name, isCurrentSection }: Props) => {
   return (
     <>
       <Container>
-        <Indicator isActive={isCurrentSection} />
+        <IndicatorWrapper>
+          <Indicator isActive={isCurrentSection} />
+        </IndicatorWrapper>
         <Text>{name}</Text>
       </Container>
       {questions.map(({ title, id }) => (

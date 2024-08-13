@@ -41,7 +41,7 @@ export const AssessmentPage = () => {
         setCurrentAnswers,
       }}
     >
-      <Column span={9}>
+      <Column span={8}>
         {question ? (
           <>
             <AssessmentTtile
