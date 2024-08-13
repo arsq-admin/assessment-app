@@ -23,6 +23,8 @@ const QuestionTitle = styled.h1`
   font-weight: 700;
   margin: 0;
   margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
 `;
 
 const NavigationContainer = styled.div`
@@ -85,13 +87,16 @@ export const QuestionTemplate = ({
     return () => window.removeEventListener("keydown", keydownListener, true);
   }, [keydownListener]);
 
+  const currentQuestionPosition = questionOrder.findIndex(
+    (questionId) => questionId === id
+  );
   return (
     <Fragment>
       <SectionTitle section={sectionName} subsection={subsection} />
       <QuestionContainer>
         <QuestionTitle>
-          {/* {id}: */}
-          {title}
+          <span>{currentQuestionPosition + 1}.</span>
+          <span>{title}</span>
         </QuestionTitle>
 
         {guidance && <Guidance guidance={guidance} />}
