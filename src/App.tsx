@@ -9,7 +9,6 @@ const Header = styled(FluidContainer)`
 `;
 
 function App() {
-  // console.log(dsjs);
   return (
     <div>
       <Header>
