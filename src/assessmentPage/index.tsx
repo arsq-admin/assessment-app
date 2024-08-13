@@ -1,14 +1,9 @@
 import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "./context";
 import { useAssessment, useResetAssessment, useSetJourney } from "./hooks";
-import { Container } from "@/components";
+import { Column } from "@/components";
 import { AssessmentTtile } from "./components";
-import styled from "styled-components";
 import { ProgressBar } from "./progressBar";
-
-const QuestionContainer = styled.div`
-  width: 70%;
-`;
 
 export const AssessmentPage = () => {
   const {
@@ -46,26 +41,24 @@ export const AssessmentPage = () => {
         setCurrentAnswers,
       }}
     >
-      <Container style={{ paddingTop: "3rem", display: "flex", gap: "10rem" }}>
-        <QuestionContainer>
-          {question ? (
-            <>
-              <AssessmentTtile
-                title={assessmentConfig.name}
-                section={section}
-              />
-              <QuestionTemplate
-                sectionName={section}
-                question={question}
-                currentAnswers={currentAnswers}
-              />
-            </>
-          ) : (
-            <div>Missing question</div>
-          )}
-        </QuestionContainer>
-        <ProgressBar />
-      </Container>
+      <Column span={9}>
+        {question ? (
+          <>
+            <AssessmentTtile
+              question={question}
+              section={section}
+              title={assessmentConfig.name}
+            />
+            <QuestionTemplate
+              question={question}
+              currentAnswers={currentAnswers}
+            />
+          </>
+        ) : (
+          <div>Missing question</div>
+        )}
+      </Column>
+      <ProgressBar />
     </AssessmentContext.Provider>
   );
 };

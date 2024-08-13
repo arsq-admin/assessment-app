@@ -1,20 +1,25 @@
 import { AssessmentPage } from "./assessmentPage";
 import styled from "styled-components";
-import { Container, FluidContainer } from "./components";
+import { Column, Container, FluidContainer } from "./components";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 `;
 
 function App() {
   return (
     <div>
       <Header>
-        <Container>Tender name</Container>
+        <Container>
+          <Column span={12}>Tender name</Column>
+        </Container>
       </Header>
-      <AssessmentPage />
+      <Container>
+        <AssessmentPage />
+      </Container>
     </div>
   );
 }

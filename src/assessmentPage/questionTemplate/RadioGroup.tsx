@@ -1,9 +1,4 @@
-import {
-  RadioGroup as MuiRadioGroup,
-  TextField,
-  FormLabel,
-  Box,
-} from "@mui/material";
+import { TextField, FormLabel, Box } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
 
@@ -28,12 +23,7 @@ export const RadioGroup = ({
   questionId,
 }: Props) => {
   return (
-    <MuiRadioGroup
-      value={value || ""}
-      defaultValue={value || ""}
-      onChange={onChange}
-      sx={{ display: "flex", flexDirection: "column" }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       {options.map(
         ({
           name,
@@ -50,6 +40,8 @@ export const RadioGroup = ({
                   id={optionValue}
                   name={questionId}
                   type="radio"
+                  onChange={onChange}
+                  checked={value === optionValue}
                   value={optionValue}
                 />
                 <label className="ds_radio__label" htmlFor={optionValue}>
@@ -77,6 +69,6 @@ export const RadioGroup = ({
           );
         }
       )}
-    </MuiRadioGroup>
+    </Box>
   );
 };

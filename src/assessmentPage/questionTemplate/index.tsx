@@ -7,14 +7,14 @@ import { isMultipleChoiceQuestion } from "../services";
 import { useAssessmentAnswers, useAssessmentNavigation } from "./hooks";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
 import { AssessmentContext } from "../context";
-import { SectionTitle, Guidance } from "../components";
+import { Guidance } from "../components";
 import styled from "styled-components";
 
 const QuestionContainer = styled.div`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   align-items: flex-start;
 `;
 
@@ -22,7 +22,6 @@ const QuestionTitle = styled.h1`
   font-size: 1.7rem;
   font-weight: 700;
   margin: 0;
-  margin-bottom: 1rem;
   display: flex;
   gap: 0.5rem;
 `;
@@ -34,16 +33,11 @@ const NavigationContainer = styled.div`
 
 interface Props {
   question: Question;
-  sectionName?: string;
   currentAnswers: AssessmentAnswers;
 }
 
-export const QuestionTemplate = ({
-  sectionName,
-  question,
-  currentAnswers,
-}: Props) => {
-  const { title, guidance, id, followUp, subsection } = question;
+export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
+  const { title, guidance, id, followUp } = question;
   const { questionOrder } = useContext(AssessmentContext);
   const currentIndex = questionOrder.findIndex(
     (questionId) => questionId === id
@@ -92,7 +86,6 @@ export const QuestionTemplate = ({
   );
   return (
     <Fragment>
-      <SectionTitle section={sectionName} subsection={subsection} />
       <QuestionContainer>
         <QuestionTitle>
           <span>{currentQuestionPosition + 1}.</span>

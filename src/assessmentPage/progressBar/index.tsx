@@ -2,6 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { AssessmentContext } from "../context";
 import { Section } from "./Section";
+import { Column } from "@/components";
 
 const Title = styled.h4`
   font-size: 1.3rem;
@@ -29,10 +30,6 @@ const Line = styled.div`
   border-left: 2px solid #535353;
 `;
 
-const Container = styled.div`
-  width: 30%;
-`;
-
 export const ProgressBar = () => {
   const { config, questionId } = useContext(AssessmentContext);
 
@@ -46,7 +43,7 @@ export const ProgressBar = () => {
   const currentSection = config.sections[currentSectionIndex];
 
   return (
-    <Container>
+    <Column span={3}>
       <Title>Progress</Title>
       <p>
         You have completed {currentSectionIndex} out of{" "}
@@ -64,6 +61,6 @@ export const ProgressBar = () => {
           <Line />
         </LineWrapper>
       </Sections>
-    </Container>
+    </Column>
   );
 };
