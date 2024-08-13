@@ -1,14 +1,9 @@
-import {
-  Box,
-  Checkbox,
-  FormControlLabel,
-  FormLabel,
-  TextField,
-} from "@mui/material";
+import { Box, FormLabel, TextField } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
 
 interface Props {
+  questionId: string;
   value: (string | number)[];
   freeText: Record<string, string>;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,6 +15,7 @@ interface Props {
 }
 
 export const CheckboxGroup = ({
+  questionId,
   value,
   options,
   freeText: freeTextValue,
@@ -27,7 +23,7 @@ export const CheckboxGroup = ({
   freeTextOnChange,
 }: Props) => {
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" gap="1rem">
       {options.map(
         ({
           name,
@@ -37,13 +33,21 @@ export const CheckboxGroup = ({
           minimumRequired,
         }) => {
           return (
-            <Box key={name}>
-              <FormControlLabel
-                value={optionValue}
-                checked={value.includes(optionValue)}
-                control={<Checkbox onChange={onChange} />}
-                label={name}
-              />
+            <Box className="ds_field_group" key={name}>
+              <div className="ds_checkbox">
+                <input
+                  className="ds_checkbox__input"
+                  id={optionValue}
+                  onChange={onChange}
+                  value={optionValue}
+                  name={questionId}
+                  checked={value.includes(optionValue)}
+                  type="checkbox"
+                />
+                <label className="ds_checkbox__label" htmlFor={optionValue}>
+                  {name}
+                </label>
+              </div>
               {minimumRequired && <MinimumRequiredLabel />}
               {freeText && value.includes(optionValue) && (
                 <FormLabel

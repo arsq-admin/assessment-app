@@ -112,6 +112,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
 
         {isMultipleChoiceQuestion(question) && question.allowMultiple ? (
           <CheckboxGroup
+            questionId={id}
             value={answer}
             onChange={(event) => {
               const isChecked = event.target.checked;
