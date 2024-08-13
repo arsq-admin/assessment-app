@@ -1,7 +1,5 @@
 import {
-  Radio,
   RadioGroup as MuiRadioGroup,
-  FormControlLabel,
   TextField,
   FormLabel,
   Box,
@@ -46,12 +44,19 @@ export const RadioGroup = ({
         }) => {
           return (
             <Box key={`${questionId}-${name}`}>
-              <FormControlLabel
-                value={optionValue}
-                control={<Radio />}
-                label={name}
-              />
-              {minimumRequired && <MinimumRequiredLabel />}
+              <div className="ds_radio">
+                <input
+                  className="ds_radio__input"
+                  id={optionValue}
+                  name={questionId}
+                  type="radio"
+                  value={optionValue}
+                />
+                <label className="ds_radio__label" htmlFor={optionValue}>
+                  {name}
+                </label>
+                {minimumRequired && <MinimumRequiredLabel />}
+              </div>
               {freeText && value === optionValue && (
                 <FormLabel
                   sx={{
