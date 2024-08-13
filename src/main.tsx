@@ -8,9 +8,13 @@ import { Auth0Provider } from "@auth0/auth0-react";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Auth0Provider
+      useRefreshTokens
+      // cacheLocation="localstorage"
+      useRefreshTokensFallback
       domain="dev-z81t01f1zfr00fgx.us.auth0.com"
       clientId="7nOSTka7pBbrY77drVlce5BSwTeqmsIY"
       authorizationParams={{
+        audience: "https://dev-z81t01f1zfr00fgx.us.auth0.com/api/v2/",
         redirect_uri: window.location.origin,
       }}
     >
