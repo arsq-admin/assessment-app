@@ -35,15 +35,23 @@ const Container = styled.div`
 
 export const ProgressBar = () => {
   const { config, questionId } = useContext(AssessmentContext);
-  const sections = config?.sections.map((section) => section.name);
-  const currentSection = config?.sections.find((section) => {
+
+  if (!config) return null;
+
+  const sections = config.sections.map((section) => section.name);
+  const currentSectionIndex = config.sections.findIndex((section) => {
     return section.questions.find((question) => question.id === questionId);
   });
+
+  const currentSection = config.sections[currentSectionIndex];
 
   return (
     <Container>
       <Title>Progress</Title>
-      <p>You have completed x out of y sections.</p>
+      <p>
+        You have completed {currentSectionIndex} out of{" "}
+        {config?.sections.length} sections.
+      </p>
       <Sections>
         {sections?.map((section) => (
           <Section
