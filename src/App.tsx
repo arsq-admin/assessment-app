@@ -1,4 +1,4 @@
-import { AssessmentPage } from "./assessmentPage";
+import { AssessmentPage } from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer } from "./components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

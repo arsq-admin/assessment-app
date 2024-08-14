@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Question } from "../types/assessmentConfig";
-import { SectionTitle } from "../components";
+import { SectionTitle } from ".";
 
 interface Props {
   title: string;
