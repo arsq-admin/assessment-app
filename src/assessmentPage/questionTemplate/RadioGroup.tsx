@@ -1,4 +1,4 @@
-import { TextField, FormLabel, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
 
@@ -23,7 +23,14 @@ export const RadioGroup = ({
   questionId,
 }: Props) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.5rem",
+        width: "90%",
+      }}
+    >
       {options.map(
         ({
           name,
@@ -50,20 +57,27 @@ export const RadioGroup = ({
                 {minimumRequired && <MinimumRequiredLabel />}
               </div>
               {freeText && value === optionValue && (
-                <FormLabel
+                <Box
                   sx={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    flexDirection: "column",
-                    marginLeft: "1.9rem",
+                    paddingLeft: "3.5rem",
+                    width: "100%",
                   }}
                 >
-                  <i>{freeTextLabel}</i>
-                  <TextField
+                  <label
+                    className="ds_label"
+                    htmlFor={`${questionId}-freeText`}
+                  >
+                    {freeTextLabel}
+                  </label>
+                  <textarea
                     value={freeTextValue || ""}
                     onChange={(event) => freeTextOnChange(event, optionValue)}
-                  />
-                </FormLabel>
+                    className="ds_input"
+                    rows={3}
+                    id={`${questionId}-freeText`}
+                    name={`${questionId}-freeText`}
+                  ></textarea>
+                </Box>
               )}
             </Box>
           );
