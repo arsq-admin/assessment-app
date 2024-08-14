@@ -8,7 +8,6 @@ export interface FormattedAnswer extends AnswerValue {
 
 export const useAnswers = () => {
   const { currentAnswers, config } = useContext(AssessmentContext);
-  console.log(currentAnswers);
   const formattedAnswers: Record<
     string,
     { question: string; answers: FormattedAnswer[] }[]

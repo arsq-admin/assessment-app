@@ -39,6 +39,7 @@ export const useAssessmentNavigation = ({
 
     if (onLastQuestion) {
       navigate("/review");
+      return;
     }
 
     if (logic) {
@@ -50,7 +51,7 @@ export const useAssessmentNavigation = ({
         const { target, action } = logic[firstLogicMatchedIndex];
 
         if (action === LogicAction.END) {
-          // navigate(`/outcome?name=${target.value}`);
+          navigate(`/outcome?name=${target.value}`);
           return;
         }
 

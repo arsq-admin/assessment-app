@@ -57,6 +57,7 @@ export const FollowUpQuestions = ({
               <Typography variant="h5">{question.title}</Typography>
               {question.allowMultiple ? (
                 <CheckboxGroup
+                  questionId={question.id}
                   value={followUpValue?.[question.id] || []}
                   freeText={followUpFreeText?.[question.id] || {}}
                   onChange={(event) => {

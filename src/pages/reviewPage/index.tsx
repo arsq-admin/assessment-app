@@ -3,6 +3,7 @@ import { useAnswers } from "./useAnswers";
 import { ReviewSection } from "./ReviewSection";
 import { Column } from "@/components";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -11,6 +12,7 @@ const NavigationContainer = styled.div`
 
 export const ReviewPage = () => {
   const { answers } = useAnswers();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -26,7 +28,10 @@ export const ReviewPage = () => {
       })}
       <Column span={12}>
         <NavigationContainer>
-          <button className="ds_button ds_button--secondary">
+          <button
+            className="ds_button ds_button--secondary"
+            onClick={() => navigate("/")}
+          >
             Go back to the assessments
           </button>
           <button className="ds_button">Submit</button>
