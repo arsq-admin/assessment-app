@@ -23,7 +23,7 @@ export const RadioGroup = ({
   questionId,
 }: Props) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
       {options.map(
         ({
           name,

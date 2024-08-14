@@ -23,7 +23,7 @@ export const CheckboxGroup = ({
   freeTextOnChange,
 }: Props) => {
   return (
-    <Box display="flex" flexDirection="column" gap="1rem">
+    <Box display="flex" flexDirection="column" gap="0.5rem">
       {options.map(
         ({
           name,

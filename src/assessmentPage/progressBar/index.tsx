@@ -19,7 +19,7 @@ const Sections = styled.div`
 const LineWrapper = styled.div`
   top: 0px;
   left: 9px;
-  z-index: -1;
+  z-index: -2;
   position: absolute;
   height: 100%;
   padding: 0.5rem 0;
@@ -50,15 +50,21 @@ export const ProgressBar = () => {
         {config?.sections.length} sections.
       </p>
       <Sections>
-        {sections?.map((section, index, array) => (
+        {sections?.map((section, index) => (
           <Section
-            isLast={index === array.length - 1}
+            isLast={false}
             key={section}
             name={section}
             isCurrentSection={currentSection?.name === section}
             isComplete={index < currentSectionIndex}
           />
         ))}
+        <Section
+          isLast={true}
+          name={"Review"}
+          isCurrentSection={false}
+          isComplete={false}
+        />
         <LineWrapper>
           <Line />
         </LineWrapper>

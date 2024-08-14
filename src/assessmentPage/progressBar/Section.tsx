@@ -19,10 +19,11 @@ const Indicator = styled.div<{ isActive: boolean; isComplete: boolean }>`
     isActive ? "#0065BD" : isComplete ? "#428542" : "#ffffff"};
 `;
 
-const Container = styled.div`
+const SectionWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  position: relative;
 `;
 
 const Text = styled.span`
@@ -30,15 +31,27 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
-const LeftSide = styled.div`
-  align-self: stretch;
-`;
-
-const EndWhiteLine = styled.div`
+const CoverEndLine = styled.div`
   background-color: #ffffff;
   width: 100%;
   height: 100%;
   flex: 0 1 1;
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  z-index: -1;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`;
+
+const SubsectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 interface Props {
@@ -67,17 +80,19 @@ export const Section = ({
   return (
     <>
       <Container>
-        <LeftSide>
+        <SectionWrapper>
           <IndicatorWrapper>
             <Indicator isActive={isCurrentSection} isComplete={isComplete} />
           </IndicatorWrapper>
-          {isLast && <EndWhiteLine />}
-        </LeftSide>
-        <Text>{name}</Text>
+          {isLast && <CoverEndLine />}
+          <Text>{name}</Text>
+        </SectionWrapper>
+        <SubsectionContainer>
+          {questions.map(({ title, id }) => (
+            <Subsection key={id} title={title} isActive={id === questionId} />
+          ))}
+        </SubsectionContainer>
       </Container>
-      {questions.map(({ title, id }) => (
-        <Subsection key={id} title={title} isActive={id === questionId} />
-      ))}
     </>
   );
 };
