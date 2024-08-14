@@ -10,7 +10,7 @@ export const useAnswers = () => {
   const { currentAnswers, config } = useContext(AssessmentContext);
   const formattedAnswers: Record<
     string,
-    { question: string; answers: FormattedAnswer[] }[]
+    { id: string; question: string; answers: FormattedAnswer[] }[]
   > = {};
 
   Object.keys(currentAnswers).forEach((questionId) => {
@@ -32,6 +32,7 @@ export const useAnswers = () => {
 
     formattedAnswers[currentSection.name].push({
       question: currentQuestion.title,
+      id: questionId,
       answers: currentAnswers[questionId].answer.map((answer) => {
         const label =
           "options" in currentQuestion &&

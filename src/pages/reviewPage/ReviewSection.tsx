@@ -29,7 +29,10 @@ const Paragraph = styled.p`
 
 interface Props {
   name: string;
-  answers: Record<string, { question: string; answers: FormattedAnswer[] }[]>;
+  answers: Record<
+    string,
+    { id: string; question: string; answers: FormattedAnswer[] }[]
+  >;
 }
 
 export const ReviewSection = ({ name, answers }: Props) => {
@@ -37,13 +40,13 @@ export const ReviewSection = ({ name, answers }: Props) => {
     <OuterContainer span={12}>
       <h3>{name}</h3>
       <Divider />
-      {answers[name].map(({ question, answers }) => {
+      {answers[name].map(({ question, answers, id }) => {
         return (
-          <Container>
+          <Container key={id}>
             <QuestionColumn span={8}>{question}</QuestionColumn>
             <AnswerColumn span={3}>
               {answers.map((answer) => (
-                <div>
+                <div key={answer.value}>
                   <Paragraph>{answer.label}</Paragraph>
                   {answer.freeText && (
                     <Paragraph>
@@ -54,7 +57,7 @@ export const ReviewSection = ({ name, answers }: Props) => {
               ))}
             </AnswerColumn>
             <Column span={1}>
-              <a>Edit</a>
+              <a href={`/?id=${id}`}>Edit</a>
             </Column>
           </Container>
         );

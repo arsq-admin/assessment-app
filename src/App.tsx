@@ -1,7 +1,7 @@
 import { AssessmentPage, ReviewPage } from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer } from "./components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
 import {
   useAssessment,
@@ -42,32 +42,30 @@ function App() {
   });
 
   return (
-    <BrowserRouter>
-      <AssessmentContext.Provider
-        value={{
-          config: assessmentConfig,
-          questionId,
-          questionOrder,
-          setQuestionId,
-          journey,
-          currentAnswers,
-          setCurrentAnswers,
-          tenderName: tenderName,
-        }}
-      >
-        <Header>
-          <Container>
-            <Column span={12}>{tenderName}</Column>
-          </Container>
-        </Header>
+    <AssessmentContext.Provider
+      value={{
+        config: assessmentConfig,
+        questionId,
+        questionOrder,
+        setQuestionId,
+        journey,
+        currentAnswers,
+        setCurrentAnswers,
+        tenderName: tenderName,
+      }}
+    >
+      <Header>
         <Container>
-          <Routes>
-            <Route path="/" Component={AssessmentPage} />
-            <Route path="/review" Component={ReviewPage} />
-          </Routes>
+          <Column span={12}>{tenderName}</Column>
         </Container>
-      </AssessmentContext.Provider>
-    </BrowserRouter>
+      </Header>
+      <Container>
+        <Routes>
+          <Route path="/" Component={AssessmentPage} />
+          <Route path="/review" Component={ReviewPage} />
+        </Routes>
+      </Container>
+    </AssessmentContext.Provider>
   );
 }
 
