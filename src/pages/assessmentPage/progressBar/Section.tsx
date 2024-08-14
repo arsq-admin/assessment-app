@@ -51,7 +51,7 @@ const Container = styled.div`
 const SubsectionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 
 interface Props {

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   LogicAction,
   Question,
@@ -24,12 +24,14 @@ export const useAssessmentNavigation = ({
 }: Props) => {
   const { logic } = question;
   const navigate = useNavigate();
+  const [_, setSearchParams] = useSearchParams();
   const {
     setQuestionId,
     questionId,
     questionOrder,
     journey,
     setCurrentAnswers,
+    setReachedReviewPage,
   } = useContext(AssessmentContext);
   const onNext = () => {
     saveAnswer();
@@ -39,6 +41,7 @@ export const useAssessmentNavigation = ({
 
     if (onLastQuestion) {
       navigate("/review");
+      setReachedReviewPage(true);
       return;
     }
 
@@ -58,6 +61,7 @@ export const useAssessmentNavigation = ({
         if (action === LogicAction.SKIP) {
           if (target.type === TargetType.QUESTION) {
             setQuestionId(target.value);
+            setSearchParams({ id: target.value });
             return;
           }
         }
@@ -66,6 +70,7 @@ export const useAssessmentNavigation = ({
 
     const currentIndex = questionOrder.findIndex((id) => id === questionId);
     setQuestionId(questionOrder[currentIndex + 1]);
+    setSearchParams({ id: questionOrder[currentIndex + 1] });
   };
 
   const onPrev = () => {

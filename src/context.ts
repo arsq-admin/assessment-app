@@ -11,6 +11,8 @@ interface AssessmentContext {
   currentAnswers: AssessmentAnswers;
   setCurrentAnswers: Dispatch<SetStateAction<AssessmentAnswers>>;
   tenderName: string;
+  reachedReviewPage: boolean;
+  setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -22,4 +24,6 @@ export const AssessmentContext = createContext<AssessmentContext>({
   currentAnswers: {},
   setCurrentAnswers: () => {},
   tenderName: "",
+  reachedReviewPage: false,
+  setReachedReviewPage: () => {},
 });

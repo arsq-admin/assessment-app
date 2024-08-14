@@ -1,15 +1,14 @@
 // import { useParams } from "react-router-dom";
 import { getQuestionFromConfig, TEMP_assessmentConfigs } from "../services";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export const useAssessment = () => {
   // const { name: assessmentName = "" } = useParams();
   const assessmentName = "saql";
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
 
   const idInParam = searchParams.get("id");
 
@@ -17,6 +16,7 @@ export const useAssessment = () => {
   const assessmentConfig = TEMP_assessmentConfigs[assessmentName];
   const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
 
+  const [reachedReviewPage, setReachedReviewPage] = useState<boolean>(false);
   const [questionId, setQuestionId] = useState<string>(
     idInParam || firstQuestion.id || ""
   );
@@ -35,12 +35,6 @@ export const useAssessment = () => {
       ? getQuestionFromConfig(assessmentConfig, questionId)
       : { question: null, section: "" };
 
-  useEffect(() => {
-    if (pathname === "/") {
-      setSearchParams({ id: questionId });
-    }
-  }, [pathname, questionId, setSearchParams]);
-
   return {
     setQuestionId,
     questionId,
@@ -52,5 +46,7 @@ export const useAssessment = () => {
     section,
     questionOrder,
     assessmentConfig,
+    reachedReviewPage,
+    setReachedReviewPage,
   };
 };

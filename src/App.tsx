@@ -27,6 +27,8 @@ function App() {
     setJourney,
     questionOrder,
     assessmentConfig,
+    reachedReviewPage,
+    setReachedReviewPage,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -52,6 +54,8 @@ function App() {
         currentAnswers,
         setCurrentAnswers,
         tenderName: tenderName,
+        reachedReviewPage,
+        setReachedReviewPage,
       }}
     >
       <Header>

@@ -1,6 +1,7 @@
 import { Column, Container } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const OuterContainer = styled(Column)`
   margin-bottom: 3rem;
@@ -36,6 +37,7 @@ interface Props {
 }
 
 export const ReviewSection = ({ name, answers }: Props) => {
+  const navigate = useNavigate();
   return (
     <OuterContainer span={12}>
       <h3>{name}</h3>
@@ -57,7 +59,7 @@ export const ReviewSection = ({ name, answers }: Props) => {
               ))}
             </AnswerColumn>
             <Column span={1}>
-              <a href={`/?id=${id}`}>Edit</a>
+              <a onClick={() => navigate(`/?id=${id}`)}>Edit</a>
             </Column>
           </Container>
         );
