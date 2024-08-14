@@ -1,6 +1,5 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
-import { Question, Section } from "../assessmentPage/types/assessmentConfig";
 import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
 
 export interface FormattedAnswer extends AnswerValue {
@@ -16,21 +15,12 @@ export const useAnswers = () => {
   > = {};
 
   Object.keys(currentAnswers).forEach((questionId) => {
-    let currentQuestion: Question | null = null;
-    let currentSection: Section | null = null;
+    const currentSection = config?.sections.find((section) => {
+      return section.questions.find((question) => question.id === questionId);
+    });
 
-    config?.sections.find((section) => {
-      const question = section.questions.find(
-        (question) => question.id === questionId
-      );
-
-      if (question) {
-        currentQuestion = question;
-        currentSection = section;
-        return true;
-      }
-
-      return false;
+    const currentQuestion = currentSection?.questions.find((question) => {
+      return question.id === questionId;
     });
 
     if (!currentQuestion || !currentSection) {
@@ -40,16 +30,19 @@ export const useAnswers = () => {
     if (!formattedAnswers[currentSection.name]) {
       formattedAnswers[currentSection.name] = [];
     }
-    console.log(currentQuestion, currentAnswers[questionId].answer);
+
     formattedAnswers[currentSection.name].push({
       question: currentQuestion.title,
       answers: currentAnswers[questionId].answer.map((answer) => {
-        console.log(answer);
+        const label =
+          "options" in currentQuestion &&
+          currentQuestion.options.find(
+            (option) => option.value === answer.value
+          )?.name;
+
         return {
           ...answer,
-          label: currentQuestion.options.find(
-            (option) => option.value === answer.value
-          ).name,
+          label: label || "",
         };
       }),
     });
