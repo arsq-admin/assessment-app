@@ -1,53 +1,28 @@
 import { QuestionTemplate } from "./questionTemplate";
-import { AssessmentContext } from "./context";
-import { useAssessment, useResetAssessment, useSetJourney } from "./hooks";
+import { AssessmentContext } from "../../context";
 import { Column } from "@/components";
 import { AssessmentTtile } from "./components";
 import { ProgressBar } from "./progressBar";
+import { useContext } from "react";
+import { getQuestionFromConfig } from "./services";
 
 export const AssessmentPage = () => {
-  const {
-    setQuestionId,
-    questionId,
-    currentAnswers,
-    setCurrentAnswers,
-    journey,
-    setJourney,
-    question,
-    section,
-    questionOrder,
-    assessmentConfig,
-  } = useAssessment();
+  const { config, questionId, currentAnswers } = useContext(AssessmentContext);
 
-  useResetAssessment({
-    setJourney,
-    setQuestionId,
-  });
-
-  useSetJourney({
-    questionId,
-    setJourney,
-  });
+  const { question, section } =
+    config && questionId
+      ? getQuestionFromConfig(config, questionId)
+      : { question: null, section: "" };
 
   return (
-    <AssessmentContext.Provider
-      value={{
-        config: assessmentConfig,
-        questionId,
-        questionOrder,
-        setQuestionId,
-        journey,
-        currentAnswers,
-        setCurrentAnswers,
-      }}
-    >
+    <>
       <Column span={8}>
         {question ? (
           <>
             <AssessmentTtile
               question={question}
               section={section}
-              title={assessmentConfig.name}
+              title={config?.name || ""}
             />
             <QuestionTemplate
               question={question}
@@ -59,6 +34,6 @@ export const AssessmentPage = () => {
         )}
       </Column>
       <ProgressBar />
-    </AssessmentContext.Provider>
+    </>
   );
 };

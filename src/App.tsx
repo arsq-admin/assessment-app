@@ -1,7 +1,13 @@
-import { AssessmentPage } from "./pages";
+import { AssessmentPage, ReviewPage } from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer } from "./components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AssessmentContext } from "./context";
+import {
+  useAssessment,
+  useResetAssessment,
+  useSetJourney,
+} from "./pages/assessmentPage/hooks";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -11,18 +17,56 @@ const Header = styled(FluidContainer)`
 `;
 
 function App() {
+  const tenderName = "Mock Tender Name";
+  const {
+    setQuestionId,
+    questionId,
+    currentAnswers,
+    setCurrentAnswers,
+    journey,
+    setJourney,
+    questionOrder,
+    assessmentConfig,
+  } = useAssessment();
+
+  // Will need to correct when we dynamically pull configs based on url
+  useResetAssessment({
+    setJourney,
+    setQuestionId,
+  });
+
+  // Will probably need to review how the journey logic work now that it is moved to the top level
+  useSetJourney({
+    questionId,
+    setJourney,
+  });
+
   return (
     <BrowserRouter>
-      <Header>
+      <AssessmentContext.Provider
+        value={{
+          config: assessmentConfig,
+          questionId,
+          questionOrder,
+          setQuestionId,
+          journey,
+          currentAnswers,
+          setCurrentAnswers,
+          tenderName: tenderName,
+        }}
+      >
+        <Header>
+          <Container>
+            <Column span={12}>{tenderName}</Column>
+          </Container>
+        </Header>
         <Container>
-          <Column span={12}>Tender name</Column>
+          <Routes>
+            <Route path="/" Component={AssessmentPage} />
+            <Route path="/review" Component={ReviewPage} />
+          </Routes>
         </Container>
-      </Header>
-      <Container>
-        <Routes>
-          <Route path="/" Component={AssessmentPage} />
-        </Routes>
-      </Container>
+      </AssessmentContext.Provider>
     </BrowserRouter>
   );
 }

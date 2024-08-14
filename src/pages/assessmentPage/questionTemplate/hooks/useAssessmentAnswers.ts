@@ -6,7 +6,7 @@ import {
 } from "../../types/assessmentAnswers";
 import { isConditionMet } from "../../services";
 import { Question } from "../../types/assessmentConfig";
-import { AssessmentContext } from "../../context";
+import { AssessmentContext } from "../../../../context";
 
 interface Props {
   question: Question;

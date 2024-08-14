@@ -10,8 +10,9 @@ export const Container = styled.div`
   grid-column-gap: 2rem;
 `;
 
-export const Column = styled.div<{ span?: number }>`
+export const Column = styled.div<{ span?: number; margin?: string }>`
   grid-column: span ${({ span }) => span || 1};
+  margin: ${({ margin }) => margin || "0"};
 `;
 
 export const FluidContainer = styled.div`

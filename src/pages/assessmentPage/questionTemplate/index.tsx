@@ -6,7 +6,7 @@ import { Question } from "../types/assessmentConfig";
 import { isMultipleChoiceQuestion } from "../services";
 import { useAssessmentAnswers, useAssessmentNavigation } from "./hooks";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
-import { AssessmentContext } from "../context";
+import { AssessmentContext } from "../../../context";
 import { Guidance } from "../components";
 import styled from "styled-components";
 

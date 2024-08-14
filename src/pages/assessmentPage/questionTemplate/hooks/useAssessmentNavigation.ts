@@ -7,7 +7,7 @@ import {
 import { useContext } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
-import { AssessmentContext } from "../../context";
+import { AssessmentContext } from "../../../../context";
 
 interface Props {
   saveAnswer: (saveToCurrentAnswers?: boolean) => void;

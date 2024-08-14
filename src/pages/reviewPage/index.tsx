@@ -1,3 +1,37 @@
+import { Heading } from "./Heading";
+import { useAnswers } from "./useAnswers";
+import { ReviewSection } from "./ReviewSection";
+import { Column } from "@/components";
+import styled from "styled-components";
+
+const NavigationContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+`;
+
 export const ReviewPage = () => {
-  return <div>this is the review page</div>;
+  const { answers } = useAnswers();
+
+  return (
+    <>
+      <Heading />
+      {Object.keys(answers).map((sectionName) => {
+        return (
+          <ReviewSection
+            key={sectionName}
+            name={sectionName}
+            answers={answers}
+          />
+        );
+      })}
+      <Column span={12}>
+        <NavigationContainer>
+          <button className="ds_button ds_button--secondary">
+            Go back to the assessments
+          </button>
+          <button className="ds_button">Submit</button>
+        </NavigationContainer>
+      </Column>
+    </>
+  );
 };

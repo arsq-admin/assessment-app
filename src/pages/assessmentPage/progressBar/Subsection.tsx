@@ -8,10 +8,11 @@ const IndicatorWrapper = styled.div`
   margin-left: 11px;
 `;
 
-const Indicator = styled.div<{ isActive: boolean }>`
+const Indicator = styled.div<{ $isActive: boolean }>`
   border-top-width: 2px;
   border-top-style: solid;
-  border-top-color: ${({ isActive }) => (isActive ? "#535353" : "transparent")};
+  border-top-color: ${({ $isActive }) =>
+    $isActive ? "#535353" : "transparent"};
   width: 15px;
 `;
 
@@ -21,9 +22,9 @@ const Container = styled.div`
   gap: 1rem;
 `;
 
-const Text = styled.span<{ isActive: boolean }>`
+const Text = styled.span<{ $isActive: boolean }>`
   font-size: 0.9rem;
-  font-weight: ${({ isActive }) => (isActive ? "600" : "400")};
+  font-weight: ${({ $isActive }) => ($isActive ? "600" : "400")};
 `;
 
 interface Props {
@@ -35,9 +36,9 @@ export const Subsection = ({ title, isActive }: Props) => {
   return (
     <Container>
       <IndicatorWrapper>
-        <Indicator isActive={isActive} />
+        <Indicator $isActive={isActive} />
       </IndicatorWrapper>
-      <Text isActive={isActive}>{title}</Text>
+      <Text $isActive={isActive}>{title}</Text>
     </Container>
   );
 };

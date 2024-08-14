@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { AssessmentContext } from "../context";
+import { AssessmentContext } from "../../../context";
 import { Section } from "./Section";
 import { Column } from "@/components";
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AssessmentContext } from "../context";
+import { AssessmentContext } from "../../../context";
 import { useContext } from "react";
 import { Subsection } from "./Subsection";
 
@@ -9,14 +9,14 @@ const IndicatorWrapper = styled.div`
   align-items: center;
 `;
 
-const Indicator = styled.div<{ isActive: boolean; isComplete: boolean }>`
+const Indicator = styled.div<{ $isActive: boolean; $isComplete: boolean }>`
   height: 20px;
   width: 20px;
   border-radius: 100%;
   background-color: #ffffff;
   border: #535353 2px solid;
-  background-color: ${({ isActive, isComplete }) =>
-    isActive ? "#0065BD" : isComplete ? "#428542" : "#ffffff"};
+  background-color: ${({ $isActive, $isComplete }) =>
+    $isActive ? "#0065BD" : $isComplete ? "#428542" : "#ffffff"};
 `;
 
 const SectionWrapper = styled.div`
@@ -82,7 +82,7 @@ export const Section = ({
       <Container>
         <SectionWrapper>
           <IndicatorWrapper>
-            <Indicator isActive={isCurrentSection} isComplete={isComplete} />
+            <Indicator $isActive={isCurrentSection} $isComplete={isComplete} />
           </IndicatorWrapper>
           {isLast && <CoverEndLine />}
           <Text>{name}</Text>
