@@ -50,11 +50,13 @@ export const ProgressBar = () => {
         {config?.sections.length} sections.
       </p>
       <Sections>
-        {sections?.map((section) => (
+        {sections?.map((section, index, array) => (
           <Section
+            isLast={index === array.length - 1}
             key={section}
             name={section}
             isCurrentSection={currentSection?.name === section}
+            isComplete={index < currentSectionIndex}
           />
         ))}
         <LineWrapper>

@@ -7,16 +7,16 @@ const IndicatorWrapper = styled.div`
   height: 1.65rem;
   display: flex;
   align-items: center;
-  flex: 20px 0 0;
 `;
 
-const Indicator = styled.div<{ isActive: boolean }>`
+const Indicator = styled.div<{ isActive: boolean; isComplete: boolean }>`
   height: 20px;
   width: 20px;
   border-radius: 100%;
   background-color: #ffffff;
   border: #535353 2px solid;
-  background-color: ${({ isActive }) => (isActive ? "#0065BD" : "#ffffff")};
+  background-color: ${({ isActive, isComplete }) =>
+    isActive ? "#0065BD" : isComplete ? "#428542" : "#ffffff"};
 `;
 
 const Container = styled.div`
@@ -30,12 +30,30 @@ const Text = styled.span`
   font-weight: 500;
 `;
 
+const LeftSide = styled.div`
+  align-self: stretch;
+`;
+
+const EndWhiteLine = styled.div`
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  flex: 0 1 1;
+`;
+
 interface Props {
   name: string;
   isCurrentSection: boolean;
+  isLast: boolean;
+  isComplete: boolean;
 }
 
-export const Section = ({ name, isCurrentSection }: Props) => {
+export const Section = ({
+  name,
+  isCurrentSection,
+  isLast,
+  isComplete,
+}: Props) => {
   const { config, questionId } = useContext(AssessmentContext);
   const questions: { title: string; id: string }[] = [];
 
@@ -49,9 +67,12 @@ export const Section = ({ name, isCurrentSection }: Props) => {
   return (
     <>
       <Container>
-        <IndicatorWrapper>
-          <Indicator isActive={isCurrentSection} />
-        </IndicatorWrapper>
+        <LeftSide>
+          <IndicatorWrapper>
+            <Indicator isActive={isCurrentSection} isComplete={isComplete} />
+          </IndicatorWrapper>
+          {isLast && <EndWhiteLine />}
+        </LeftSide>
         <Text>{name}</Text>
       </Container>
       {questions.map(({ title, id }) => (
