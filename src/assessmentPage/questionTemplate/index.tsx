@@ -151,9 +151,8 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
         )}
         <NavigationContainer>
           <button
-            className="ds_button"
+            className="ds_button ds_button--secondary"
             type="button"
-            // variant="outlined"
             id="prev"
             onClick={onPrev}
             disabled={currentIndex <= 0}
@@ -163,12 +162,13 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
           <button
             className="ds_button"
             type="button"
-            // variant="contained"
             id="next"
             onClick={onNext}
             disabled={answer.length === 0}
           >
-            Next
+            {questionOrder[questionOrder.length - 1] === question.id
+              ? "Review your answers"
+              : "Next"}
           </button>
         </NavigationContainer>
       </QuestionContainer>

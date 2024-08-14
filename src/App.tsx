@@ -1,6 +1,7 @@
 import { AssessmentPage } from "./assessmentPage";
 import styled from "styled-components";
 import { Column, Container, FluidContainer } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -11,16 +12,18 @@ const Header = styled(FluidContainer)`
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header>
         <Container>
           <Column span={12}>Tender name</Column>
         </Container>
       </Header>
       <Container>
-        <AssessmentPage />
+        <Routes>
+          <Route path="/" Component={AssessmentPage} />
+        </Routes>
       </Container>
-    </div>
+    </BrowserRouter>
   );
 }
 

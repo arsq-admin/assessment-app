@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   LogicAction,
   Question,
@@ -23,7 +23,7 @@ export const useAssessmentNavigation = ({
   currentAnswers,
 }: Props) => {
   const { logic } = question;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     setQuestionId,
     questionId,
@@ -33,6 +33,14 @@ export const useAssessmentNavigation = ({
   } = useContext(AssessmentContext);
   const onNext = () => {
     saveAnswer();
+
+    const onLastQuestion =
+      questionId === questionOrder[questionOrder.length - 1];
+
+    if (onLastQuestion) {
+      navigate("/review");
+    }
+
     if (logic) {
       const firstLogicMatchedIndex = logic.findIndex(({ condition }) =>
         isConditionMet(condition, answer, currentAnswers)
