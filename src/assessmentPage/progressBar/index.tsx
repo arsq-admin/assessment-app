@@ -42,12 +42,14 @@ export const ProgressBar = () => {
 
   const currentSection = config.sections[currentSectionIndex];
 
+  const totalSectionsPlusReview = config?.sections.length + 1;
+
   return (
     <Column span={4}>
       <Title>Progress</Title>
       <p>
         You have completed {currentSectionIndex} out of{" "}
-        {config?.sections.length} sections.
+        {totalSectionsPlusReview} sections.
       </p>
       <Sections>
         {sections?.map((section, index) => (
