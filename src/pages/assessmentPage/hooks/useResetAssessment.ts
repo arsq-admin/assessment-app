@@ -20,6 +20,9 @@ export const useResetAssessment = ({ setQuestionId, setJourney }: Props) => {
     const assessmentConfig = TEMP_assessmentConfigs[assessmentName];
     const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
     setQuestionId(idInParam || firstQuestion.id || "");
-    setJourney([]);
   }, [assessmentName, setQuestionId, setJourney, idInParam]);
+
+  useEffect(() => {
+    setJourney([]);
+  }, [assessmentName, setJourney]);
 };

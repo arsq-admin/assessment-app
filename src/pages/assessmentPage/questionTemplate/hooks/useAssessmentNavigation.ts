@@ -84,5 +84,10 @@ export const useAssessmentNavigation = ({
     setQuestionId(journey[journey.length - 2]);
   };
 
-  return { onPrev, onNext };
+  const backToSummary = () => {
+    saveAnswer();
+    navigate("/review");
+  };
+
+  return { onPrev, onNext, backToSummary };
 };

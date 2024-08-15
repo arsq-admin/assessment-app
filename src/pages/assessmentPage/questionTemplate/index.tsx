@@ -9,7 +9,6 @@ import { AssessmentAnswers } from "../types/assessmentAnswers";
 import { AssessmentContext } from "../../../context";
 import { Guidance } from "../components";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = styled.div`
   margin-top: 1rem;
@@ -46,7 +45,6 @@ interface Props {
 
 export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
   const { title, guidance, id, followUp } = question;
-  const navigate = useNavigate();
   const { questionOrder, reachedReviewPage } = useContext(AssessmentContext);
   const currentIndex = questionOrder.findIndex(
     (questionId) => questionId === id
@@ -66,7 +64,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
     question,
   });
 
-  const { onNext, onPrev } = useAssessmentNavigation({
+  const { onNext, onPrev, backToSummary } = useAssessmentNavigation({
     currentAnswers,
     saveAnswer,
     question,
@@ -94,6 +92,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
   const currentQuestionPosition = questionOrder.findIndex(
     (questionId) => questionId === id
   );
+
   return (
     <Fragment>
       <QuestionContainer>
@@ -185,7 +184,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
           <BackToSummaryButton
             className="ds_button"
             type="button"
-            onClick={() => navigate("/review")}
+            onClick={backToSummary}
           >
             Back to Summary
           </BackToSummaryButton>
