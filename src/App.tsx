@@ -1,22 +1,75 @@
-import { AssessmentPage } from "./assessmentPage";
+import { AssessmentPage, ReviewPage } from "./pages";
 import styled from "styled-components";
-import { Container, FluidContainer } from "./components";
+import { Column, Container, FluidContainer } from "./components";
+import { Route, Routes } from "react-router-dom";
+import { AssessmentContext } from "./context";
+import {
+  useAssessment,
+  useResetAssessment,
+  useSetJourney,
+} from "./pages/assessmentPage/hooks";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
 `;
 
 function App() {
-  // console.log(dsjs);
+  const tenderName = "Mock Tender Name";
+  const {
+    setQuestionId,
+    questionId,
+    currentAnswers,
+    setCurrentAnswers,
+    journey,
+    setJourney,
+    questionOrder,
+    assessmentConfig,
+    reachedReviewPage,
+    setReachedReviewPage,
+  } = useAssessment();
+
+  // Will need to correct when we dynamically pull configs based on url
+  useResetAssessment({
+    setJourney,
+    setQuestionId,
+  });
+
+  // Will probably need to review how the journey logic work now that it is moved to the top level
+  useSetJourney({
+    questionId,
+    setJourney,
+  });
+
   return (
-    <div>
+    <AssessmentContext.Provider
+      value={{
+        config: assessmentConfig,
+        questionId,
+        questionOrder,
+        setQuestionId,
+        journey,
+        currentAnswers,
+        setCurrentAnswers,
+        tenderName: tenderName,
+        reachedReviewPage,
+        setReachedReviewPage,
+      }}
+    >
       <Header>
-        <Container>Tender name</Container>
+        <Container>
+          <Column span={12}>{tenderName}</Column>
+        </Container>
       </Header>
-      <AssessmentPage />
-    </div>
+      <Container>
+        <Routes>
+          <Route path="/" Component={AssessmentPage} />
+          <Route path="/review" Component={ReviewPage} />
+        </Routes>
+      </Container>
+    </AssessmentContext.Provider>
   );
 }
 

@@ -126,14 +126,16 @@ export interface Outcomes {
   body: string;
 }
 
+export interface Section {
+  name: string;
+  subsections: string[];
+  questions: Question[];
+}
+
 export interface AssessmentConfig {
   id: string;
   name: string;
   status: Status;
-  sections: {
-    name: string;
-    subsections: string[];
-    questions: Question[];
-  }[];
+  sections: Section[];
   outcomes: Record<string, Outcomes>;
 }

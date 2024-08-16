@@ -5,7 +5,7 @@ import { FreeText } from "./FreeText";
 import { CheckboxGroup } from "./CheckboxGroup";
 import { Typography } from "@mui/material";
 import { RadioGroup } from "./RadioGroup";
-import { AssessmentContext } from "../context";
+import { AssessmentContext } from "../../../context";
 
 interface Props {
   value: (string | number)[];
@@ -57,6 +57,7 @@ export const FollowUpQuestions = ({
               <Typography variant="h5">{question.title}</Typography>
               {question.allowMultiple ? (
                 <CheckboxGroup
+                  questionId={question.id}
                   value={followUpValue?.[question.id] || []}
                   freeText={followUpFreeText?.[question.id] || {}}
                   onChange={(event) => {

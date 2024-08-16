@@ -1,1 +1,1 @@
-export { Container, FluidContainer } from "./Container";
+export { Container, FluidContainer, Column } from "./Container";

@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { AssessmentConfig } from "./types/assessmentConfig";
-import { AssessmentAnswers } from "./types/assessmentAnswers";
+import { AssessmentConfig } from "./pages/assessmentPage/types/assessmentConfig";
+import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 
 interface AssessmentContext {
   config: AssessmentConfig | null;
@@ -10,6 +10,9 @@ interface AssessmentContext {
   journey: string[];
   currentAnswers: AssessmentAnswers;
   setCurrentAnswers: Dispatch<SetStateAction<AssessmentAnswers>>;
+  tenderName: string;
+  reachedReviewPage: boolean;
+  setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -20,4 +23,7 @@ export const AssessmentContext = createContext<AssessmentContext>({
   journey: [],
   currentAnswers: {},
   setCurrentAnswers: () => {},
+  tenderName: "",
+  reachedReviewPage: false,
+  setReachedReviewPage: () => {},
 });

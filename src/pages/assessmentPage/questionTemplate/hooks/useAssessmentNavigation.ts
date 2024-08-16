@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   LogicAction,
   Question,
@@ -7,7 +7,7 @@ import {
 import { useContext } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
-import { AssessmentContext } from "../../context";
+import { AssessmentContext } from "../../../../context";
 
 interface Props {
   saveAnswer: (saveToCurrentAnswers?: boolean) => void;
@@ -23,16 +23,28 @@ export const useAssessmentNavigation = ({
   currentAnswers,
 }: Props) => {
   const { logic } = question;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [_, setSearchParams] = useSearchParams();
   const {
     setQuestionId,
     questionId,
     questionOrder,
     journey,
     setCurrentAnswers,
+    setReachedReviewPage,
   } = useContext(AssessmentContext);
   const onNext = () => {
     saveAnswer();
+
+    const onLastQuestion =
+      questionId === questionOrder[questionOrder.length - 1];
+
+    if (onLastQuestion) {
+      navigate("/review");
+      setReachedReviewPage(true);
+      return;
+    }
+
     if (logic) {
       const firstLogicMatchedIndex = logic.findIndex(({ condition }) =>
         isConditionMet(condition, answer, currentAnswers)
@@ -42,13 +54,14 @@ export const useAssessmentNavigation = ({
         const { target, action } = logic[firstLogicMatchedIndex];
 
         if (action === LogicAction.END) {
-          // navigate(`/outcome?name=${target.value}`);
+          navigate(`/outcome?name=${target.value}`);
           return;
         }
 
         if (action === LogicAction.SKIP) {
           if (target.type === TargetType.QUESTION) {
             setQuestionId(target.value);
+            setSearchParams({ id: target.value });
             return;
           }
         }
@@ -57,6 +70,7 @@ export const useAssessmentNavigation = ({
 
     const currentIndex = questionOrder.findIndex((id) => id === questionId);
     setQuestionId(questionOrder[currentIndex + 1]);
+    setSearchParams({ id: questionOrder[currentIndex + 1] });
   };
 
   const onPrev = () => {
@@ -70,5 +84,10 @@ export const useAssessmentNavigation = ({
     setQuestionId(journey[journey.length - 2]);
   };
 
-  return { onPrev, onNext };
+  const backToSummary = () => {
+    saveAnswer();
+    navigate("/review");
+  };
+
+  return { onPrev, onNext, backToSummary };
 };

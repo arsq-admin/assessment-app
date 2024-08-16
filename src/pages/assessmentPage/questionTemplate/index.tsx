@@ -6,15 +6,15 @@ import { Question } from "../types/assessmentConfig";
 import { isMultipleChoiceQuestion } from "../services";
 import { useAssessmentAnswers, useAssessmentNavigation } from "./hooks";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
-import { AssessmentContext } from "../context";
-import { SectionTitle, Guidance } from "../components";
+import { AssessmentContext } from "../../../context";
+import { Guidance } from "../components";
 import styled from "styled-components";
 
 const QuestionContainer = styled.div`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   align-items: flex-start;
 `;
 
@@ -22,27 +22,30 @@ const QuestionTitle = styled.h1`
   font-size: 1.7rem;
   font-weight: 700;
   margin: 0;
-  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
 `;
 
 const NavigationContainer = styled.div`
   display: flex;
   gap: 2rem;
+  button {
+    margin: 1rem 0;
+  }
+`;
+
+const BackToSummaryButton = styled.button`
+  margin: 0;
 `;
 
 interface Props {
   question: Question;
-  sectionName?: string;
   currentAnswers: AssessmentAnswers;
 }
 
-export const QuestionTemplate = ({
-  sectionName,
-  question,
-  currentAnswers,
-}: Props) => {
-  const { title, guidance, id, followUp, subsection } = question;
-  const { questionOrder } = useContext(AssessmentContext);
+export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
+  const { title, guidance, id, followUp } = question;
+  const { questionOrder, reachedReviewPage } = useContext(AssessmentContext);
   const currentIndex = questionOrder.findIndex(
     (questionId) => questionId === id
   );
@@ -60,7 +63,8 @@ export const QuestionTemplate = ({
   } = useAssessmentAnswers({
     question,
   });
-  const { onNext, onPrev } = useAssessmentNavigation({
+
+  const { onNext, onPrev, backToSummary } = useAssessmentNavigation({
     currentAnswers,
     saveAnswer,
     question,
@@ -85,13 +89,16 @@ export const QuestionTemplate = ({
     return () => window.removeEventListener("keydown", keydownListener, true);
   }, [keydownListener]);
 
+  const currentQuestionPosition = questionOrder.findIndex(
+    (questionId) => questionId === id
+  );
+
   return (
     <Fragment>
-      <SectionTitle section={sectionName} subsection={subsection} />
       <QuestionContainer>
         <QuestionTitle>
-          {/* {id}: */}
-          {title}
+          <span>{currentQuestionPosition + 1}.</span>
+          <span>{title}</span>
         </QuestionTitle>
 
         {guidance && <Guidance guidance={guidance} />}
@@ -114,6 +121,7 @@ export const QuestionTemplate = ({
 
         {isMultipleChoiceQuestion(question) && question.allowMultiple ? (
           <CheckboxGroup
+            questionId={id}
             value={answer}
             onChange={(event) => {
               const isChecked = event.target.checked;
@@ -152,9 +160,8 @@ export const QuestionTemplate = ({
         )}
         <NavigationContainer>
           <button
-            className="ds_button"
+            className="ds_button ds_button--secondary"
             type="button"
-            // variant="outlined"
             id="prev"
             onClick={onPrev}
             disabled={currentIndex <= 0}
@@ -164,14 +171,24 @@ export const QuestionTemplate = ({
           <button
             className="ds_button"
             type="button"
-            // variant="contained"
             id="next"
             onClick={onNext}
             disabled={answer.length === 0}
           >
-            Next
+            {questionOrder[questionOrder.length - 1] === question.id
+              ? "Review your answers"
+              : "Next"}
           </button>
         </NavigationContainer>
+        {reachedReviewPage && (
+          <BackToSummaryButton
+            className="ds_button"
+            type="button"
+            onClick={backToSummary}
+          >
+            Back to Summary
+          </BackToSummaryButton>
+        )}
       </QuestionContainer>
     </Fragment>
   );

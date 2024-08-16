@@ -2,16 +2,24 @@
 import { getQuestionFromConfig, TEMP_assessmentConfigs } from "../services";
 import { useState } from "react";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
+import { useSearchParams } from "react-router-dom";
 
 export const useAssessment = () => {
   // const { name: assessmentName = "" } = useParams();
   const assessmentName = "saql";
 
+  const [searchParams] = useSearchParams();
+
+  const idInParam = searchParams.get("id");
+
   // Config will need to be fetched from db instead of local file
   const assessmentConfig = TEMP_assessmentConfigs[assessmentName];
   const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
 
-  const [questionId, setQuestionId] = useState<string>(firstQuestion.id || "");
+  const [reachedReviewPage, setReachedReviewPage] = useState<boolean>(false);
+  const [questionId, setQuestionId] = useState<string>(
+    idInParam || firstQuestion.id || ""
+  );
   const [currentAnswers, setCurrentAnswers] = useState<AssessmentAnswers>({});
   const [journey, setJourney] = useState<string[]>([]);
 
@@ -38,5 +46,7 @@ export const useAssessment = () => {
     section,
     questionOrder,
     assessmentConfig,
+    reachedReviewPage,
+    setReachedReviewPage,
   };
 };
