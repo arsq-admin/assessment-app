@@ -1,10 +1,11 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
+  Logic,
   LogicAction,
   Question,
   TargetType,
 } from "../../types/assessmentConfig";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
 import { AssessmentContext } from "../../../../context";
@@ -22,9 +23,11 @@ export const useAssessmentNavigation = ({
   answer,
   currentAnswers,
 }: Props) => {
+  const [inPreviewMode, setInPreviewMode] = useState(false);
+  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState("");
+
   const { logic } = question;
   const navigate = useNavigate();
-  const [_, setSearchParams] = useSearchParams();
   const {
     setQuestionId,
     questionId,
@@ -33,17 +36,40 @@ export const useAssessmentNavigation = ({
     setCurrentAnswers,
     setReachedReviewPage,
   } = useContext(AssessmentContext);
+
   const onNext = () => {
+    if (answer.length === 0) {
+      if (!inPreviewMode) {
+        setInPreviewMode(true);
+      }
+
+      const currentIndex = questionOrder.findIndex((id) => id === questionId);
+      setQuestionId(questionOrder[currentIndex + 1]);
+      navigate({
+        pathname: "/",
+        search: `id=${questionOrder[currentIndex + 1]}`,
+      });
+      return;
+    }
+
     saveAnswer();
+    setLastAnsweredQuestion(questionId);
 
     const onLastQuestion =
       questionId === questionOrder[questionOrder.length - 1];
 
     if (onLastQuestion) {
-      navigate("/review");
       setReachedReviewPage(true);
+      navigate("/review");
       return;
     }
+
+    const currentQuestionIndex = questionOrder.findIndex(
+      (id) => id === questionId
+    );
+    let nextQuestionId = questionOrder[currentQuestionIndex + 1];
+    let pathName = "/";
+    let searchParams = `id=${nextQuestionId}`;
 
     if (logic) {
       const firstLogicMatchedIndex = logic.findIndex(({ condition }) =>
@@ -54,23 +80,24 @@ export const useAssessmentNavigation = ({
         const { target, action } = logic[firstLogicMatchedIndex];
 
         if (action === LogicAction.END) {
-          navigate(`/outcome?name=${target.value}`);
-          return;
+          pathName = "/outcome";
+          searchParams = `name=${target.value}`;
         }
 
         if (action === LogicAction.SKIP) {
           if (target.type === TargetType.QUESTION) {
-            setQuestionId(target.value);
-            setSearchParams({ id: target.value });
-            return;
+            nextQuestionId = target.value;
+            searchParams = `id=${target.value}`;
           }
         }
       }
     }
 
-    const currentIndex = questionOrder.findIndex((id) => id === questionId);
-    setQuestionId(questionOrder[currentIndex + 1]);
-    setSearchParams({ id: questionOrder[currentIndex + 1] });
+    setQuestionId(nextQuestionId || questionId);
+    navigate({
+      pathname: pathName,
+      search: searchParams,
+    });
   };
 
   const onPrev = () => {
@@ -82,6 +109,10 @@ export const useAssessmentNavigation = ({
     });
 
     setQuestionId(journey[journey.length - 2]);
+    navigate({
+      pathname: "/",
+      search: `id=${journey[journey.length - 2]}`,
+    });
   };
 
   const backToSummary = () => {
@@ -89,5 +120,11 @@ export const useAssessmentNavigation = ({
     navigate("/review");
   };
 
-  return { onPrev, onNext, backToSummary };
+  useEffect(() => {
+    if (questionId === lastAnsweredQuestion) {
+      setInPreviewMode(false);
+    }
+  }, [questionId, lastAnsweredQuestion]);
+
+  return { onPrev, onNext, backToSummary, inPreviewMode };
 };

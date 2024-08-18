@@ -64,12 +64,13 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
     question,
   });
 
-  const { onNext, onPrev, backToSummary } = useAssessmentNavigation({
-    currentAnswers,
-    saveAnswer,
-    question,
-    answer,
-  });
+  const { onNext, onPrev, backToSummary, inPreviewMode } =
+    useAssessmentNavigation({
+      currentAnswers,
+      saveAnswer,
+      question,
+      answer,
+    });
 
   // Temporary keyboard control
   const keydownListener = useCallback(
@@ -116,6 +117,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
               }))
             }
             options={question.options}
+            disabled={inPreviewMode}
           />
         ) : null}
 
@@ -145,6 +147,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
             }
             freeText={freeText}
             options={question.options}
+            disabled={inPreviewMode}
           />
         ) : null}
 
@@ -173,7 +176,6 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
             type="button"
             id="next"
             onClick={onNext}
-            disabled={answer.length === 0}
           >
             {questionOrder[questionOrder.length - 1] === question.id
               ? "Review your answers"
