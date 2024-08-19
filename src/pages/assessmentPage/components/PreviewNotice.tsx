@@ -16,8 +16,10 @@ export const PreviewNotice = () => {
 
   return (
     <Notice>
-      You have skipped a question.{" "}
-      <Link to={href}>Click to return and continue your assessment.</Link>
+      You have skipped a question and are now in preview mode.{" "}
+      <Link to={href}>
+        Click to go to your last question and continue with your assessment.
+      </Link>
     </Notice>
   );
 };
