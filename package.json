@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:staging": "tsc && vite build --mode staging",
+    "build:qa": "tsc && vite build --mode qa",
+    "deploy:staging": "npm run build:staging && aws s3 sync ./dist s3://sg.assessment-staging.supply25.com --profile",
+    "deploy:qa": "npm run build:qa && aws s3 sync ./dist s3://sg.assessment-qa.supply25.com --profile"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
