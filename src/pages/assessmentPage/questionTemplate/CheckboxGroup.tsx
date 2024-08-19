@@ -12,6 +12,7 @@ interface Props {
     optionValue: string
   ) => void;
   options: Option[];
+  disabled: boolean;
 }
 
 export const CheckboxGroup = ({
@@ -21,6 +22,7 @@ export const CheckboxGroup = ({
   freeText: freeTextValue,
   onChange,
   freeTextOnChange,
+  disabled,
 }: Props) => {
   return (
     <Box display="flex" flexDirection="column" gap="0.5rem" width="90%">
@@ -43,6 +45,7 @@ export const CheckboxGroup = ({
                   name={questionId}
                   checked={value.includes(optionValue)}
                   type="checkbox"
+                  disabled={disabled}
                 />
                 <label className="ds_checkbox__label" htmlFor={optionValue}>
                   {name}

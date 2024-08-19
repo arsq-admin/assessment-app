@@ -12,6 +12,7 @@ interface Props {
   ) => void;
   options: Option[];
   questionId: string;
+  disabled: boolean;
 }
 
 export const RadioGroup = ({
@@ -21,6 +22,7 @@ export const RadioGroup = ({
   freeTextOnChange,
   options,
   questionId,
+  disabled,
 }: Props) => {
   return (
     <Box
@@ -50,6 +52,7 @@ export const RadioGroup = ({
                   onChange={onChange}
                   checked={value === optionValue}
                   value={optionValue}
+                  disabled={disabled}
                 />
                 <label className="ds_radio__label" htmlFor={optionValue}>
                   {name}
