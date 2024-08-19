@@ -42,14 +42,6 @@ export const useAssessmentNavigation = ({
       if (!inPreviewMode) {
         setInPreviewMode(true);
       }
-
-      const currentIndex = questionOrder.findIndex((id) => id === questionId);
-      setQuestionId(questionOrder[currentIndex + 1]);
-      navigate({
-        pathname: "/",
-        search: `id=${questionOrder[currentIndex + 1]}`,
-      });
-      return;
     }
 
     saveAnswer();
