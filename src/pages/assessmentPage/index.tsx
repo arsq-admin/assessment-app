@@ -1,13 +1,14 @@
 import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "../../context";
 import { Column } from "@/components";
-import { AssessmentTtile } from "./components";
+import { AssessmentTtile, PreviewNotice } from "./components";
 import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
 import { getQuestionFromConfig } from "./services";
 
 export const AssessmentPage = () => {
-  const { config, questionId, currentAnswers } = useContext(AssessmentContext);
+  const { config, questionId, currentAnswers, inPreviewMode } =
+    useContext(AssessmentContext);
 
   const { question, section } =
     config && questionId
@@ -16,6 +17,11 @@ export const AssessmentPage = () => {
 
   return (
     <>
+      {inPreviewMode && (
+        <Column span={12}>
+          <PreviewNotice />
+        </Column>
+      )}
       <Column span={8}>
         {question ? (
           <>

@@ -4,7 +4,7 @@ import {
   Question,
   TargetType,
 } from "../../types/assessmentConfig";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
 import { AssessmentContext } from "../../../../context";
@@ -22,9 +22,6 @@ export const useAssessmentNavigation = ({
   answer,
   currentAnswers,
 }: Props) => {
-  const [inPreviewMode, setInPreviewMode] = useState(false);
-  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState("");
-
   const { logic } = question;
   const navigate = useNavigate();
   const {
@@ -34,6 +31,10 @@ export const useAssessmentNavigation = ({
     journey,
     setCurrentAnswers,
     setReachedReviewPage,
+    inPreviewMode,
+    setInPreviewMode,
+    lastAnsweredQuestion,
+    setLastAnsweredQuestion,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
@@ -123,7 +124,7 @@ export const useAssessmentNavigation = ({
     if (questionId === lastAnsweredQuestion) {
       setInPreviewMode(false);
     }
-  }, [questionId, lastAnsweredQuestion]);
+  }, [questionId, lastAnsweredQuestion, setInPreviewMode]);
 
-  return { onPrev, onNext, backToSummary, inPreviewMode };
+  return { onPrev, onNext, backToSummary };
 };

@@ -22,6 +22,8 @@ export const useAssessment = () => {
   );
   const [currentAnswers, setCurrentAnswers] = useState<AssessmentAnswers>({});
   const [journey, setJourney] = useState<string[]>([]);
+  const [inPreviewMode, setInPreviewMode] = useState(false);
+  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState("");
 
   const questionOrder: string[] = [];
   assessmentConfig?.sections.forEach((section) => {
@@ -48,5 +50,9 @@ export const useAssessment = () => {
     assessmentConfig,
     reachedReviewPage,
     setReachedReviewPage,
+    inPreviewMode,
+    setInPreviewMode,
+    lastAnsweredQuestion,
+    setLastAnsweredQuestion,
   };
 };

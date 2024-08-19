@@ -13,7 +13,7 @@ const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 function App() {
@@ -29,6 +29,10 @@ function App() {
     assessmentConfig,
     reachedReviewPage,
     setReachedReviewPage,
+    inPreviewMode,
+    setInPreviewMode,
+    lastAnsweredQuestion,
+    setLastAnsweredQuestion,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -56,6 +60,10 @@ function App() {
         tenderName: tenderName,
         reachedReviewPage,
         setReachedReviewPage,
+        inPreviewMode,
+        setInPreviewMode,
+        lastAnsweredQuestion,
+        setLastAnsweredQuestion,
       }}
     >
       <Header>
