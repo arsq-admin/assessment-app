@@ -13,7 +13,8 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { inPreviewMode, config } = useContext(AssessmentContext);
+  const { inPreviewMode, config, setInPreviewMode, setlastSkippedQuestion } =
+    useContext(AssessmentContext);
   const { answers } = useAnswers();
   const navigate = useNavigate();
 
@@ -39,7 +40,11 @@ export const ReviewPage = () => {
         <NavigationContainer>
           <button
             className="ds_button ds_button--secondary"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              setInPreviewMode(false);
+              setlastSkippedQuestion("");
+              navigate("/");
+            }}
           >
             Go back to the assessments
           </button>

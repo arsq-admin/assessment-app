@@ -35,6 +35,7 @@ export const useAssessmentNavigation = ({
     setInPreviewMode,
     lastSkippedQuestion,
     setlastSkippedQuestion,
+    setIsComplete,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
@@ -55,6 +56,7 @@ export const useAssessmentNavigation = ({
       questionId === questionOrder[questionOrder.length - 1];
 
     if (onLastQuestion) {
+      setIsComplete(true);
       setReachedReviewPage(true);
       navigate("/review");
       return;

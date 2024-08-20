@@ -34,6 +34,8 @@ function App() {
     lastSkippedQuestion,
     setlastSkippedQuestion,
     questionsById,
+    isComplete,
+    setIsComplete,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -66,6 +68,8 @@ function App() {
         lastSkippedQuestion,
         setlastSkippedQuestion,
         questionsById,
+        isComplete,
+        setIsComplete,
       }}
     >
       <Header>

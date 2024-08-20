@@ -25,14 +25,14 @@ export const ReviewSection = ({ name, answers }: Props) => {
     questionsById,
     config,
     inPreviewMode,
+    isComplete,
   } = useContext(AssessmentContext);
+  console.log(lastSkippedQuestion);
   const lastSkippedQuestionIndex = questionOrder.findIndex(
     (id) => id === lastSkippedQuestion
   );
 
-  const remainingQuestionIds = questionOrder.slice(
-    lastSkippedQuestionIndex + 1
-  );
+  const remainingQuestionIds = questionOrder.slice(lastSkippedQuestionIndex);
   const currentSection = config?.sections.find(
     (section) => section.name === name
   );
@@ -53,7 +53,7 @@ export const ReviewSection = ({ name, answers }: Props) => {
           <AnswerRow key={id} id={id} question={question} answers={answers} />
         );
       })}
-      {inPreviewMode &&
+      {(inPreviewMode || isComplete) &&
         remainingQuestions.map(({ title, id }) => {
           return <AnswerRow key={id} id={id} question={title} answers={[]} />;
         })}

@@ -25,6 +25,7 @@ export const useAssessment = () => {
   const [journey, setJourney] = useState<string[]>([]);
   const [inPreviewMode, setInPreviewMode] = useState(false);
   const [lastSkippedQuestion, setlastSkippedQuestion] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
 
   const questionOrder: string[] = [];
   const questionsById: Record<string, Question> = {};
@@ -58,5 +59,7 @@ export const useAssessment = () => {
     lastSkippedQuestion,
     setlastSkippedQuestion,
     questionsById,
+    isComplete,
+    setIsComplete,
   };
 };

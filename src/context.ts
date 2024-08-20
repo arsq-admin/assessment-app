@@ -21,6 +21,8 @@ interface AssessmentContext {
   lastSkippedQuestion: string;
   setlastSkippedQuestion: Dispatch<SetStateAction<string>>;
   questionsById: Record<string, Question>;
+  isComplete: boolean;
+  setIsComplete: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -39,4 +41,6 @@ export const AssessmentContext = createContext<AssessmentContext>({
   lastSkippedQuestion: "",
   setlastSkippedQuestion: () => {},
   questionsById: {},
+  isComplete: false,
+  setIsComplete: () => {},
 });
