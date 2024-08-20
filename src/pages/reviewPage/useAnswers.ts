@@ -1,6 +1,7 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
+import { getQuestionJourneyFromAnswers } from "@/services/assessment";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -13,9 +14,13 @@ export type FormattedAnswers = Record<
 
 export const useAnswers = () => {
   const { currentAnswers, config } = useContext(AssessmentContext);
+
+  const questionIds =
+    (config && getQuestionJourneyFromAnswers(config, currentAnswers)) || [];
+
   const formattedAnswers: FormattedAnswers = {};
 
-  Object.keys(currentAnswers).forEach((questionId) => {
+  questionIds.forEach((questionId) => {
     const currentSection = config?.sections.find((section) => {
       return section.questions.find((question) => question.id === questionId);
     });
@@ -35,18 +40,19 @@ export const useAnswers = () => {
     formattedAnswers[currentSection.name].push({
       question: currentQuestion.title,
       id: questionId,
-      answers: currentAnswers[questionId].answer.map((answer) => {
-        const label =
-          "options" in currentQuestion &&
-          currentQuestion.options.find(
-            (option) => option.value === answer.value
-          )?.name;
+      answers:
+        currentAnswers[questionId]?.answer.map((answer) => {
+          const label =
+            "options" in currentQuestion &&
+            currentQuestion.options.find(
+              (option) => option.value === answer.value
+            )?.name;
 
-        return {
-          ...answer,
-          label: label || "",
-        };
-      }),
+          return {
+            ...answer,
+            label: label || "",
+          };
+        }) || [],
     });
   });
 

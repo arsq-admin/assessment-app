@@ -118,7 +118,8 @@ export const getNextQuestion = (
 
   if (logic) {
     const currentAnswer = answers?.[currentQuestionId] || {};
-    const formattedAnswer = currentAnswer?.answer?.map(({ value }) => value);
+    const formattedAnswer =
+      currentAnswer?.answer?.map(({ value }) => value) || [];
 
     const firstLogicMatchedIndex = logic.findIndex(({ condition }) =>
       isConditionMet(condition, formattedAnswer, answers)
@@ -211,4 +212,32 @@ export const isQuestionLaterInAssessment = (
   const indexB = order.findIndex((id) => id === questionBId);
 
   return indexA > indexB;
+};
+
+export const getQuestionJourneyFromAnswers = (
+  config: AssessmentConfig,
+  answers: AssessmentAnswers
+) => {
+  const allQuestions = indexQuestionById(config);
+
+  const currentAnswers: AssessmentAnswers = {};
+  const journey = [];
+
+  let questionId = config?.sections?.[0]?.questions?.[0]?.id;
+
+  while (questionId) {
+    const question = allQuestions[questionId];
+    journey.push(question.id);
+    currentAnswers[question.id] = answers[question.id];
+
+    const nextQuestion = getNextQuestion(config, questionId, currentAnswers);
+
+    if (!nextQuestion) {
+      break;
+    }
+
+    questionId = nextQuestion.id;
+  }
+
+  return journey;
 };
