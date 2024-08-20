@@ -6,12 +6,14 @@ export interface FormattedAnswer extends AnswerValue {
   label: string;
 }
 
+export type FormattedAnswers = Record<
+  string,
+  { id: string; question: string; answers: FormattedAnswer[] }[]
+>;
+
 export const useAnswers = () => {
   const { currentAnswers, config } = useContext(AssessmentContext);
-  const formattedAnswers: Record<
-    string,
-    { id: string; question: string; answers: FormattedAnswer[] }[]
-  > = {};
+  const formattedAnswers: FormattedAnswers = {};
 
   Object.keys(currentAnswers).forEach((questionId) => {
     const currentSection = config?.sections.find((section) => {

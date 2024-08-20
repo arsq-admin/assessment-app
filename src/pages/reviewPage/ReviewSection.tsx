@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { AnswerRow } from "./AnswerRow";
+import {
+  getLastAnsweredQuestion,
+  getNextQuestion,
+  getRemainingQuestionsInSection,
+} from "@/services/assessment";
 
 const OuterContainer = styled(Column)`
   margin-bottom: 3rem;
@@ -19,30 +24,12 @@ interface Props {
 }
 
 export const ReviewSection = ({ name, answers }: Props) => {
-  const {
-    lastSkippedQuestion,
-    questionOrder,
-    questionsById,
-    config,
-    inPreviewMode,
-    isComplete,
-  } = useContext(AssessmentContext);
-  console.log(lastSkippedQuestion);
-  const lastSkippedQuestionIndex = questionOrder.findIndex(
-    (id) => id === lastSkippedQuestion
-  );
+  const { config, inPreviewMode, isComplete, currentAnswers } =
+    useContext(AssessmentContext);
 
-  const remainingQuestionIds = questionOrder.slice(lastSkippedQuestionIndex);
-  const currentSection = config?.sections.find(
-    (section) => section.name === name
-  );
-  const remainingQuestionsInCurrentSection = remainingQuestionIds.filter((id) =>
-    currentSection?.questions.find((question) => question.id === id)
-  );
-
-  const remainingQuestions = remainingQuestionsInCurrentSection.map((id) => {
-    return questionsById[id];
-  });
+  const remainingQuestions = config
+    ? getRemainingQuestionsInSection(config, name, currentAnswers)
+    : [];
 
   return (
     <OuterContainer span={12}>
