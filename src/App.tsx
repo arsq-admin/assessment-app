@@ -29,13 +29,9 @@ function App() {
     assessmentConfig,
     reachedReviewPage,
     setReachedReviewPage,
-    inPreviewMode,
-    setInPreviewMode,
     lastSkippedQuestion,
     setlastSkippedQuestion,
     questionsById,
-    isComplete,
-    setIsComplete,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -63,13 +59,11 @@ function App() {
         tenderName: tenderName,
         reachedReviewPage,
         setReachedReviewPage,
-        inPreviewMode,
-        setInPreviewMode,
+        // inPreviewMode,
+        // setInPreviewMode,
         lastSkippedQuestion,
         setlastSkippedQuestion,
         questionsById,
-        isComplete,
-        setIsComplete,
       }}
     >
       <Header>

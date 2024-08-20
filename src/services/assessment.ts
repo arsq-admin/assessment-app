@@ -200,3 +200,15 @@ export const areThereUnansweredQuestions = (
 
   return Boolean(nextQuestion);
 };
+
+export const isQuestionLaterInAssessment = (
+  config: AssessmentConfig,
+  questionAId: string,
+  questionBId: string
+) => {
+  const order = getQuestionOrder(config);
+  const indexA = order.findIndex((id) => id === questionAId);
+  const indexB = order.findIndex((id) => id === questionBId);
+
+  return indexA > indexB;
+};

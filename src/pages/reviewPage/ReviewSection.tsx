@@ -33,7 +33,13 @@ export const ReviewSection = ({ name, answers, isComplete }: Props) => {
       <Divider />
       {answers.map(({ question, answers, id }) => {
         return (
-          <AnswerRow key={id} id={id} question={question} answers={answers} />
+          <AnswerRow
+            key={id}
+            id={id}
+            question={question}
+            answers={answers}
+            isAnswered
+          />
         );
       })}
       {!isComplete &&

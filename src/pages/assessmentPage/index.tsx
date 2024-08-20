@@ -5,10 +5,30 @@ import { AssessmentTtile, PreviewNotice } from "./components";
 import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
 import { getQuestionFromConfig } from "./services";
+import {
+  getLastAnsweredQuestion,
+  getNextQuestion,
+  isQuestionLaterInAssessment,
+} from "@/services/assessment";
 
 export const AssessmentPage = () => {
-  const { config, questionId, currentAnswers, inPreviewMode } =
+  const { config, questionId, currentAnswers, questionOrder } =
     useContext(AssessmentContext);
+
+  const lastAnsweredQuestion = getLastAnsweredQuestion(
+    questionOrder,
+    currentAnswers
+  );
+  const nextQuestion =
+    config && getNextQuestion(config, lastAnsweredQuestion.id, currentAnswers);
+
+  const isQuestionAfterLastAnsweredQuestion =
+    config &&
+    nextQuestion?.id &&
+    isQuestionLaterInAssessment(config, questionId, nextQuestion.id);
+
+  const hasSkippedQuestion =
+    nextQuestion?.id !== questionId && isQuestionAfterLastAnsweredQuestion;
 
   const { question, section } =
     config && questionId
@@ -17,7 +37,7 @@ export const AssessmentPage = () => {
 
   return (
     <>
-      {inPreviewMode && (
+      {hasSkippedQuestion && (
         <Column span={12}>
           <PreviewNotice />
         </Column>
@@ -33,6 +53,7 @@ export const AssessmentPage = () => {
             <QuestionTemplate
               question={question}
               currentAnswers={currentAnswers}
+              disabled={!!hasSkippedQuestion}
             />
           </>
         ) : (

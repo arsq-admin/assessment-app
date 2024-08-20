@@ -2,8 +2,6 @@ import { Column, Container } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AssessmentContext } from "@/context";
 
 const QuestionColumn = styled(Column)`
   font-weight: 500;
@@ -26,11 +24,12 @@ interface Props {
   question: string;
   answers: FormattedAnswer[];
   id: string;
+  isAnswered?: boolean;
 }
 
-export const AnswerRow = ({ question, answers, id }: Props) => {
+export const AnswerRow = ({ question, answers, id, isAnswered }: Props) => {
   const navigate = useNavigate();
-  const { inPreviewMode } = useContext(AssessmentContext);
+
   return (
     <Container>
       <QuestionColumn span={8}>
@@ -52,7 +51,7 @@ export const AnswerRow = ({ question, answers, id }: Props) => {
       </AnswerColumn>
       <Column span={1}>
         <a onClick={() => navigate(`/?id=${id}`)}>
-          {inPreviewMode && answers.length === 0 ? "View" : "Edit"}
+          {!isAnswered && answers.length === 0 ? "View" : "Edit"}
         </a>
       </Column>
     </Container>

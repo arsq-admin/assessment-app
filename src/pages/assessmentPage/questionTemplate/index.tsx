@@ -41,12 +41,16 @@ const BackToSummaryButton = styled.button`
 interface Props {
   question: Question;
   currentAnswers: AssessmentAnswers;
+  disabled: boolean;
 }
 
-export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
+export const QuestionTemplate = ({
+  question,
+  currentAnswers,
+  disabled,
+}: Props) => {
   const { title, guidance, id, followUp } = question;
-  const { questionOrder, reachedReviewPage, inPreviewMode } =
-    useContext(AssessmentContext);
+  const { questionOrder, reachedReviewPage } = useContext(AssessmentContext);
   const currentIndex = questionOrder.findIndex(
     (questionId) => questionId === id
   );
@@ -117,7 +121,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
               }))
             }
             options={question.options}
-            disabled={inPreviewMode}
+            disabled={disabled}
           />
         ) : null}
 
@@ -147,7 +151,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
             }
             freeText={freeText}
             options={question.options}
-            disabled={inPreviewMode}
+            disabled={disabled}
           />
         ) : null}
 

@@ -16,13 +16,9 @@ interface AssessmentContext {
   tenderName: string;
   reachedReviewPage: boolean;
   setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
-  inPreviewMode: boolean;
-  setInPreviewMode: Dispatch<SetStateAction<boolean>>;
   lastSkippedQuestion: string;
   setlastSkippedQuestion: Dispatch<SetStateAction<string>>;
   questionsById: Record<string, Question>;
-  isComplete: boolean;
-  setIsComplete: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -36,11 +32,7 @@ export const AssessmentContext = createContext<AssessmentContext>({
   tenderName: "",
   reachedReviewPage: false,
   setReachedReviewPage: () => {},
-  inPreviewMode: false,
-  setInPreviewMode: () => {},
   lastSkippedQuestion: "",
   setlastSkippedQuestion: () => {},
   questionsById: {},
-  isComplete: false,
-  setIsComplete: () => {},
 });

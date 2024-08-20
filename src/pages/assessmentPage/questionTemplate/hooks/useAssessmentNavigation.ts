@@ -4,7 +4,7 @@ import {
   Question,
   TargetType,
 } from "../../types/assessmentConfig";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
 import { AssessmentContext } from "../../../../context";
@@ -31,19 +31,12 @@ export const useAssessmentNavigation = ({
     journey,
     setCurrentAnswers,
     setReachedReviewPage,
-    inPreviewMode,
-    setInPreviewMode,
     lastSkippedQuestion,
     setlastSkippedQuestion,
-    setIsComplete,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
     if (answer.length === 0) {
-      if (!inPreviewMode) {
-        setInPreviewMode(true);
-      }
-
       if (!lastSkippedQuestion) {
         setlastSkippedQuestion(questionId);
       }
@@ -56,9 +49,6 @@ export const useAssessmentNavigation = ({
       questionId === questionOrder[questionOrder.length - 1];
 
     if (onLastQuestion) {
-      if (!inPreviewMode) {
-        setIsComplete(true);
-      }
       setReachedReviewPage(true);
       navigate("/review");
       return;
@@ -119,12 +109,6 @@ export const useAssessmentNavigation = ({
     saveAnswer();
     navigate("/review");
   };
-
-  useEffect(() => {
-    if (questionId === lastSkippedQuestion) {
-      setInPreviewMode(false);
-    }
-  }, [questionId, lastSkippedQuestion, setInPreviewMode]);
 
   return { onPrev, onNext, backToSummary };
 };
