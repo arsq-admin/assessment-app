@@ -1,4 +1,8 @@
 import { AssessmentContext } from "@/context";
+import {
+  getLastAnsweredQuestion,
+  getNextQuestion,
+} from "@/services/assessment";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -11,8 +15,17 @@ const Notice = styled.div`
 `;
 
 export const PreviewNotice = () => {
-  const { lastSkippedQuestion } = useContext(AssessmentContext);
-  const href = lastSkippedQuestion ? `/?id=${lastSkippedQuestion}` : "/";
+  const { config, currentAnswers, questionOrder } =
+    useContext(AssessmentContext);
+
+  const lastAnsweredQuestion = getLastAnsweredQuestion(
+    questionOrder,
+    currentAnswers
+  );
+  const nextQuestion =
+    config && getNextQuestion(config, lastAnsweredQuestion.id, currentAnswers);
+
+  const href = nextQuestion?.id ? `/?id=${nextQuestion.id}` : "/";
 
   return (
     <Notice>

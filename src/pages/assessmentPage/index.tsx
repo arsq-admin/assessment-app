@@ -19,6 +19,7 @@ export const AssessmentPage = () => {
     questionOrder,
     currentAnswers
   );
+
   const nextQuestion =
     config && getNextQuestion(config, lastAnsweredQuestion.id, currentAnswers);
 

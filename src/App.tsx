@@ -29,8 +29,6 @@ function App() {
     assessmentConfig,
     reachedReviewPage,
     setReachedReviewPage,
-    lastSkippedQuestion,
-    setlastSkippedQuestion,
     questionsById,
   } = useAssessment();
 
@@ -59,10 +57,6 @@ function App() {
         tenderName: tenderName,
         reachedReviewPage,
         setReachedReviewPage,
-        // inPreviewMode,
-        // setInPreviewMode,
-        lastSkippedQuestion,
-        setlastSkippedQuestion,
         questionsById,
       }}
     >

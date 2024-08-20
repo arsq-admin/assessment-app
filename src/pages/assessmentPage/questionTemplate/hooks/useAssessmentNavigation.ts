@@ -31,19 +31,10 @@ export const useAssessmentNavigation = ({
     journey,
     setCurrentAnswers,
     setReachedReviewPage,
-    lastSkippedQuestion,
-    setlastSkippedQuestion,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
-    if (answer.length === 0) {
-      if (!lastSkippedQuestion) {
-        setlastSkippedQuestion(questionId);
-      }
-    } else {
-      saveAnswer();
-      setlastSkippedQuestion("");
-    }
+    saveAnswer();
 
     const onLastQuestion =
       questionId === questionOrder[questionOrder.length - 1];

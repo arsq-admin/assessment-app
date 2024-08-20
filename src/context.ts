@@ -16,8 +16,6 @@ interface AssessmentContext {
   tenderName: string;
   reachedReviewPage: boolean;
   setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
-  lastSkippedQuestion: string;
-  setlastSkippedQuestion: Dispatch<SetStateAction<string>>;
   questionsById: Record<string, Question>;
 }
 
@@ -32,7 +30,5 @@ export const AssessmentContext = createContext<AssessmentContext>({
   tenderName: "",
   reachedReviewPage: false,
   setReachedReviewPage: () => {},
-  lastSkippedQuestion: "",
-  setlastSkippedQuestion: () => {},
   questionsById: {},
 });

@@ -24,7 +24,6 @@ export const useAssessment = () => {
   const [currentAnswers, setCurrentAnswers] = useState<AssessmentAnswers>({});
   const [journey, setJourney] = useState<string[]>([]);
   const [inPreviewMode, setInPreviewMode] = useState(false);
-  const [lastSkippedQuestion, setlastSkippedQuestion] = useState("");
 
   const questionOrder: string[] = [];
   const questionsById: Record<string, Question> = {};
@@ -55,8 +54,6 @@ export const useAssessment = () => {
     setReachedReviewPage,
     inPreviewMode,
     setInPreviewMode,
-    lastSkippedQuestion,
-    setlastSkippedQuestion,
     questionsById,
   };
 };
