@@ -1,5 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { AssessmentConfig } from "./pages/assessmentPage/types/assessmentConfig";
+import {
+  AssessmentConfig,
+  Question,
+} from "./pages/assessmentPage/types/assessmentConfig";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 
 interface AssessmentContext {
@@ -15,8 +18,9 @@ interface AssessmentContext {
   setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
   inPreviewMode: boolean;
   setInPreviewMode: Dispatch<SetStateAction<boolean>>;
-  lastAnsweredQuestion: string;
-  setLastAnsweredQuestion: Dispatch<SetStateAction<string>>;
+  lastSkippedQuestion: string;
+  setlastSkippedQuestion: Dispatch<SetStateAction<string>>;
+  questionsById: Record<string, Question>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -32,6 +36,7 @@ export const AssessmentContext = createContext<AssessmentContext>({
   setReachedReviewPage: () => {},
   inPreviewMode: false,
   setInPreviewMode: () => {},
-  lastAnsweredQuestion: "",
-  setLastAnsweredQuestion: () => {},
+  lastSkippedQuestion: "",
+  setlastSkippedQuestion: () => {},
+  questionsById: {},
 });

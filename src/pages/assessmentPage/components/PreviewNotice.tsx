@@ -11,15 +11,13 @@ const Notice = styled.div`
 `;
 
 export const PreviewNotice = () => {
-  const { lastAnsweredQuestion } = useContext(AssessmentContext);
-  const href = lastAnsweredQuestion ? `/?id=${lastAnsweredQuestion}` : "/";
+  const { lastSkippedQuestion } = useContext(AssessmentContext);
+  const href = lastSkippedQuestion ? `/?id=${lastSkippedQuestion}` : "/";
 
   return (
     <Notice>
       You have skipped a question and are now in preview mode.{" "}
-      <Link to={href}>
-        Click to go to your last question and continue with your assessment.
-      </Link>
+      <Link to={href}>Click to go to skipped question.</Link>
     </Notice>
   );
 };

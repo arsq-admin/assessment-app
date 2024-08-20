@@ -31,8 +31,9 @@ function App() {
     setReachedReviewPage,
     inPreviewMode,
     setInPreviewMode,
-    lastAnsweredQuestion,
-    setLastAnsweredQuestion,
+    lastSkippedQuestion,
+    setlastSkippedQuestion,
+    questionsById,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -62,8 +63,9 @@ function App() {
         setReachedReviewPage,
         inPreviewMode,
         setInPreviewMode,
-        lastAnsweredQuestion,
-        setLastAnsweredQuestion,
+        lastSkippedQuestion,
+        setlastSkippedQuestion,
+        questionsById,
       }}
     >
       <Header>

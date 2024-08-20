@@ -33,8 +33,8 @@ export const useAssessmentNavigation = ({
     setReachedReviewPage,
     inPreviewMode,
     setInPreviewMode,
-    lastAnsweredQuestion,
-    setLastAnsweredQuestion,
+    lastSkippedQuestion,
+    setlastSkippedQuestion,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
@@ -42,10 +42,14 @@ export const useAssessmentNavigation = ({
       if (!inPreviewMode) {
         setInPreviewMode(true);
       }
-    }
 
-    saveAnswer();
-    setLastAnsweredQuestion(questionId);
+      if (!lastSkippedQuestion) {
+        setlastSkippedQuestion(questionId);
+      }
+    } else {
+      saveAnswer();
+      setlastSkippedQuestion("");
+    }
 
     const onLastQuestion =
       questionId === questionOrder[questionOrder.length - 1];
@@ -113,10 +117,10 @@ export const useAssessmentNavigation = ({
   };
 
   useEffect(() => {
-    if (questionId === lastAnsweredQuestion) {
+    if (questionId === lastSkippedQuestion) {
       setInPreviewMode(false);
     }
-  }, [questionId, lastAnsweredQuestion, setInPreviewMode]);
+  }, [questionId, lastSkippedQuestion, setInPreviewMode]);
 
   return { onPrev, onNext, backToSummary };
 };

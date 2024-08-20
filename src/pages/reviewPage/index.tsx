@@ -4,6 +4,8 @@ import { ReviewSection } from "./ReviewSection";
 import { Column } from "@/components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AssessmentContext } from "@/context";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -11,18 +13,25 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
+  const { inPreviewMode, config } = useContext(AssessmentContext);
   const { answers } = useAnswers();
   const navigate = useNavigate();
+
+  const { sections: configSections = [] } = config || {};
+
+  const sections = inPreviewMode
+    ? configSections.map((section) => section.name)
+    : Object.keys(answers);
 
   return (
     <>
       <Heading />
-      {Object.keys(answers).map((sectionName) => {
+      {sections.map((sectionName) => {
         return (
           <ReviewSection
             key={sectionName}
             name={sectionName}
-            answers={answers}
+            answers={answers[sectionName] || []}
           />
         );
       })}

@@ -1,7 +1,9 @@
-import { Column, Container } from "@/components";
+import { Column } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AssessmentContext } from "@/context";
+import { AnswerRow } from "./AnswerRow";
 
 const OuterContainer = styled(Column)`
   margin-bottom: 3rem;
@@ -11,59 +13,50 @@ const Divider = styled.hr`
   margin: 0.5rem 0;
 `;
 
-const QuestionColumn = styled(Column)`
-  font-weight: 500;
-`;
-
-const AnswerColumn = styled(Column)`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const Paragraph = styled.p`
-  margin: 0 0 0.25rem;
-  > i {
-    color: #727272;
-  }
-`;
-
 interface Props {
   name: string;
-  answers: Record<
-    string,
-    { id: string; question: string; answers: FormattedAnswer[] }[]
-  >;
+  answers: { id: string; question: string; answers: FormattedAnswer[] }[];
 }
 
 export const ReviewSection = ({ name, answers }: Props) => {
-  const navigate = useNavigate();
+  const {
+    lastSkippedQuestion,
+    questionOrder,
+    questionsById,
+    config,
+    inPreviewMode,
+  } = useContext(AssessmentContext);
+  const lastSkippedQuestionIndex = questionOrder.findIndex(
+    (id) => id === lastSkippedQuestion
+  );
+
+  const remainingQuestionIds = questionOrder.slice(
+    lastSkippedQuestionIndex + 1
+  );
+  const currentSection = config?.sections.find(
+    (section) => section.name === name
+  );
+  const remainingQuestionsInCurrentSection = remainingQuestionIds.filter((id) =>
+    currentSection?.questions.find((question) => question.id === id)
+  );
+
+  const remainingQuestions = remainingQuestionsInCurrentSection.map((id) => {
+    return questionsById[id];
+  });
+
   return (
     <OuterContainer span={12}>
       <h3>{name}</h3>
       <Divider />
-      {answers[name].map(({ question, answers, id }) => {
+      {answers.map(({ question, answers, id }) => {
         return (
-          <Container key={id}>
-            <QuestionColumn span={8}>{question}</QuestionColumn>
-            <AnswerColumn span={3}>
-              {answers.map((answer) => (
-                <div key={answer.value}>
-                  <Paragraph>{answer.label}</Paragraph>
-                  {answer.freeText && (
-                    <Paragraph>
-                      <i>{answer.freeText}</i>
-                    </Paragraph>
-                  )}
-                </div>
-              ))}
-            </AnswerColumn>
-            <Column span={1}>
-              <a onClick={() => navigate(`/?id=${id}`)}>Edit</a>
-            </Column>
-          </Container>
+          <AnswerRow key={id} id={id} question={question} answers={answers} />
         );
       })}
+      {inPreviewMode &&
+        remainingQuestions.map(({ title, id }) => {
+          return <AnswerRow key={id} id={id} question={title} answers={[]} />;
+        })}
     </OuterContainer>
   );
 };

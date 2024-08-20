@@ -3,6 +3,7 @@ import { getQuestionFromConfig, TEMP_assessmentConfigs } from "../services";
 import { useState } from "react";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
 import { useSearchParams } from "react-router-dom";
+import { Question } from "../types/assessmentConfig";
 
 export const useAssessment = () => {
   // const { name: assessmentName = "" } = useParams();
@@ -23,12 +24,14 @@ export const useAssessment = () => {
   const [currentAnswers, setCurrentAnswers] = useState<AssessmentAnswers>({});
   const [journey, setJourney] = useState<string[]>([]);
   const [inPreviewMode, setInPreviewMode] = useState(false);
-  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState("");
+  const [lastSkippedQuestion, setlastSkippedQuestion] = useState("");
 
   const questionOrder: string[] = [];
+  const questionsById: Record<string, Question> = {};
   assessmentConfig?.sections.forEach((section) => {
     section.questions.forEach((question) => {
       questionOrder.push(question.id);
+      questionsById[question.id] = question;
     });
   });
 
@@ -52,7 +55,8 @@ export const useAssessment = () => {
     setReachedReviewPage,
     inPreviewMode,
     setInPreviewMode,
-    lastAnsweredQuestion,
-    setLastAnsweredQuestion,
+    lastSkippedQuestion,
+    setlastSkippedQuestion,
+    questionsById,
   };
 };
