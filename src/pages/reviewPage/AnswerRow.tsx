@@ -33,7 +33,9 @@ export const AnswerRow = ({ question, answers, id }: Props) => {
   const { inPreviewMode } = useContext(AssessmentContext);
   return (
     <Container>
-      <QuestionColumn span={8}>{question}</QuestionColumn>
+      <QuestionColumn span={8}>
+        {id} -{question}
+      </QuestionColumn>
       <AnswerColumn span={3}>
         {answers.length > 0
           ? answers.map((answer) => (

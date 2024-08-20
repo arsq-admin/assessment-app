@@ -4,11 +4,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { AnswerRow } from "./AnswerRow";
-import {
-  getLastAnsweredQuestion,
-  getNextQuestion,
-  getRemainingQuestionsInSection,
-} from "@/services/assessment";
+import { getRemainingQuestionsInSection } from "@/services/assessment";
 
 const OuterContainer = styled(Column)`
   margin-bottom: 3rem;
@@ -20,12 +16,12 @@ const Divider = styled.hr`
 
 interface Props {
   name: string;
+  isComplete: boolean;
   answers: { id: string; question: string; answers: FormattedAnswer[] }[];
 }
 
-export const ReviewSection = ({ name, answers }: Props) => {
-  const { config, inPreviewMode, isComplete, currentAnswers } =
-    useContext(AssessmentContext);
+export const ReviewSection = ({ name, answers, isComplete }: Props) => {
+  const { config, currentAnswers } = useContext(AssessmentContext);
 
   const remainingQuestions = config
     ? getRemainingQuestionsInSection(config, name, currentAnswers)
@@ -40,7 +36,7 @@ export const ReviewSection = ({ name, answers }: Props) => {
           <AnswerRow key={id} id={id} question={question} answers={answers} />
         );
       })}
-      {(inPreviewMode || isComplete) &&
+      {!isComplete &&
         remainingQuestions.map(({ title, id }) => {
           return <AnswerRow key={id} id={id} question={title} answers={[]} />;
         })}

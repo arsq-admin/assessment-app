@@ -56,7 +56,9 @@ export const useAssessmentNavigation = ({
       questionId === questionOrder[questionOrder.length - 1];
 
     if (onLastQuestion) {
-      setIsComplete(true);
+      if (!inPreviewMode) {
+        setIsComplete(true);
+      }
       setReachedReviewPage(true);
       navigate("/review");
       return;

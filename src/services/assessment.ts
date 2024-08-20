@@ -182,3 +182,21 @@ export const getRemainingQuestionsInSection = (
     }) || []
   );
 };
+
+export const areThereUnansweredQuestions = (
+  config: AssessmentConfig,
+  answers: AssessmentAnswers
+) => {
+  const order = getQuestionOrder(config);
+  const lastAnsweredQuestion = getLastAnsweredQuestion(order, answers);
+
+  if (!lastAnsweredQuestion.id) return false;
+
+  const nextQuestion = getNextQuestion(
+    config,
+    lastAnsweredQuestion.id,
+    answers
+  );
+
+  return Boolean(nextQuestion);
+};

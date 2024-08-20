@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
+import { areThereUnansweredQuestions } from "@/services/assessment";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -13,14 +14,17 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { inPreviewMode, config, setInPreviewMode, setlastSkippedQuestion } =
+  const { config, setInPreviewMode, currentAnswers } =
     useContext(AssessmentContext);
   const { answers } = useAnswers();
   const navigate = useNavigate();
 
   const { sections: configSections = [] } = config || {};
 
-  const sections = inPreviewMode
+  const isAssessmentIncomplete =
+    config && areThereUnansweredQuestions(config, currentAnswers);
+
+  const sections = isAssessmentIncomplete
     ? configSections.map((section) => section.name)
     : Object.keys(answers);
 
@@ -33,6 +37,7 @@ export const ReviewPage = () => {
             key={sectionName}
             name={sectionName}
             answers={answers[sectionName] || []}
+            isComplete={!isAssessmentIncomplete}
           />
         );
       })}
@@ -42,7 +47,6 @@ export const ReviewPage = () => {
             className="ds_button ds_button--secondary"
             onClick={() => {
               setInPreviewMode(false);
-              setlastSkippedQuestion("");
               navigate("/");
             }}
           >
