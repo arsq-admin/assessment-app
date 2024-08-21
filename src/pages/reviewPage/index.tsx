@@ -1,7 +1,7 @@
 import { Heading } from "./Heading";
 import { useAnswers } from "./useAnswers";
 import { ReviewSection } from "./ReviewSection";
-import { Column } from "@/components";
+import { Column, PreviewNotice } from "@/components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,11 @@ export const ReviewPage = () => {
   return (
     <>
       <Heading />
+      {skippedQuestionId && (
+        <Column span={12}>
+          <PreviewNotice skippedQuestionId={skippedQuestionId} />
+        </Column>
+      )}
       {sections.map((sectionName) => {
         return (
           <ReviewSection

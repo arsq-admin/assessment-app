@@ -1,15 +1,7 @@
-import { AssessmentContext } from "@/context";
-import {
-  getFirstUnansweredQuestion,
-  getLastAnsweredQuestion,
-  getNextQuestion,
-  getQuestionJourneyFromAnswers,
-} from "@/services/assessment";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Notice = styled.div`
+export const Notice = styled.div`
   background-color: #ebebeb;
   padding: 1rem 2rem;
   margin: 0 0 2rem;

@@ -1,7 +1,8 @@
 import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "../../context";
 import { Column } from "@/components";
-import { AssessmentTtile, PreviewNotice } from "./components";
+import { AssessmentTtile } from "./components";
+import { PreviewNotice } from "@/components";
 import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
 import { getQuestionFromConfig } from "./services";
