@@ -216,14 +216,16 @@ export const isQuestionLaterInAssessment = (
 
 export const getQuestionJourneyFromAnswers = (
   config: AssessmentConfig,
-  answers: AssessmentAnswers
+  answers: AssessmentAnswers,
+  startingQuestionId?: string
 ) => {
   const allQuestions = indexQuestionById(config);
 
   const currentAnswers: AssessmentAnswers = {};
   const journey = [];
 
-  let questionId = config?.sections?.[0]?.questions?.[0]?.id;
+  let questionId =
+    startingQuestionId || config?.sections?.[0]?.questions?.[0]?.id;
 
   while (questionId) {
     const question = allQuestions[questionId];

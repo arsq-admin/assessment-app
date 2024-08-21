@@ -24,19 +24,17 @@ interface Props {
   question: string;
   answers: FormattedAnswer[];
   id: string;
-  isAnswered?: boolean;
 }
 
-export const AnswerRow = ({ question, answers, id, isAnswered }: Props) => {
+export const AnswerRow = ({ question, answers, id }: Props) => {
   const navigate = useNavigate();
+  const isMissingAnswer = answers.length === 0;
 
   return (
     <Container>
-      <QuestionColumn span={8}>
-        {id} -{question}
-      </QuestionColumn>
+      <QuestionColumn span={8}>{question}</QuestionColumn>
       <AnswerColumn span={3}>
-        {answers.length > 0
+        {!isMissingAnswer
           ? answers.map((answer) => (
               <div key={answer.value}>
                 <Paragraph>{answer.label || "-"}</Paragraph>
@@ -51,7 +49,7 @@ export const AnswerRow = ({ question, answers, id, isAnswered }: Props) => {
       </AnswerColumn>
       <Column span={1}>
         <a onClick={() => navigate(`/?id=${id}`)}>
-          {!isAnswered && answers.length === 0 ? "View" : "Edit"}
+          {isMissingAnswer ? "View" : "Edit"}
         </a>
       </Column>
     </Container>

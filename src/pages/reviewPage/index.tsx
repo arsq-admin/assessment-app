@@ -4,9 +4,6 @@ import { ReviewSection } from "./ReviewSection";
 import { Column } from "@/components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AssessmentContext } from "@/context";
-import { areThereUnansweredQuestions } from "@/services/assessment";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -14,18 +11,10 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { config, currentAnswers } = useContext(AssessmentContext);
   const { answers } = useAnswers();
   const navigate = useNavigate();
 
-  const { sections: configSections = [] } = config || {};
-
-  const isAssessmentIncomplete =
-    config && areThereUnansweredQuestions(config, currentAnswers);
-
-  const sections = isAssessmentIncomplete
-    ? configSections.map((section) => section.name)
-    : Object.keys(answers);
+  const sections = Object.keys(answers);
 
   return (
     <>
@@ -36,7 +25,6 @@ export const ReviewPage = () => {
             key={sectionName}
             name={sectionName}
             answers={answers[sectionName] || []}
-            isComplete={!isAssessmentIncomplete}
           />
         );
       })}
