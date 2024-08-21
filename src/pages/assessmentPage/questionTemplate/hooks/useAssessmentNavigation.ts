@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
 import { AssessmentContext } from "../../../../context";
+import { getQuestionJourneyFromAnswers } from "@/services/assessment";
 
 interface Props {
   saveAnswer: (saveToCurrentAnswers?: boolean) => void;
@@ -25,10 +26,10 @@ export const useAssessmentNavigation = ({
   const { logic } = question;
   const navigate = useNavigate();
   const {
+    config,
     setQuestionId,
     questionId,
     questionOrder,
-    journey,
     setCurrentAnswers,
     setReachedReviewPage,
   } = useContext(AssessmentContext);
@@ -82,6 +83,9 @@ export const useAssessmentNavigation = ({
   };
 
   const onPrev = () => {
+    const order = config
+      ? getQuestionJourneyFromAnswers(config, currentAnswers)
+      : [];
     saveAnswer(false);
     setCurrentAnswers((prevState) => {
       const newState = { ...prevState };
@@ -89,10 +93,13 @@ export const useAssessmentNavigation = ({
       return newState;
     });
 
-    setQuestionId(journey[journey.length - 2]);
+    const currentIndex = order.findIndex((id) => id === questionId);
+    const prevQuestionId = order[currentIndex - 1] || order[0];
+
+    setQuestionId(prevQuestionId);
     navigate({
       pathname: "/",
-      search: `id=${journey[journey.length - 2]}`,
+      search: `id=${prevQuestionId}`,
     });
   };
 
