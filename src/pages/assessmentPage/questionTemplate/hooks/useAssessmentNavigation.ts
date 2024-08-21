@@ -30,7 +30,6 @@ export const useAssessmentNavigation = ({
     setQuestionId,
     questionId,
     questionOrder,
-    setCurrentAnswers,
     setReachedReviewPage,
   } = useContext(AssessmentContext);
 
@@ -83,15 +82,11 @@ export const useAssessmentNavigation = ({
   };
 
   const onPrev = () => {
+    saveAnswer();
+
     const order = config
       ? getQuestionJourneyFromAnswers(config, currentAnswers)
       : [];
-    saveAnswer(false);
-    setCurrentAnswers((prevState) => {
-      const newState = { ...prevState };
-      delete newState[question.id];
-      return newState;
-    });
 
     const currentIndex = order.findIndex((id) => id === questionId);
     const prevQuestionId = order[currentIndex - 1] || order[0];
