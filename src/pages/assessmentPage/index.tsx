@@ -6,30 +6,32 @@ import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
 import { getQuestionFromConfig } from "./services";
 import {
-  getLastAnsweredQuestion,
-  getNextQuestion,
-  isQuestionLaterInAssessment,
+  getFirstUnansweredQuestion,
+  getQuestionJourneyFromAnswers,
 } from "@/services/assessment";
 
 export const AssessmentPage = () => {
-  const { config, questionId, currentAnswers, questionOrder } =
-    useContext(AssessmentContext);
+  const { config, questionId, currentAnswers } = useContext(AssessmentContext);
 
-  const lastAnsweredQuestion = getLastAnsweredQuestion(
-    questionOrder,
+  const journey = config
+    ? getQuestionJourneyFromAnswers(config, currentAnswers)
+    : [];
+
+  const firstSkippedQuestionId = getFirstUnansweredQuestion(
+    journey,
     currentAnswers
   );
 
-  const nextQuestion =
-    config && getNextQuestion(config, lastAnsweredQuestion.id, currentAnswers);
+  const currentQuestionIndex = journey.findIndex((id) => id === questionId);
+  const skippedQuestionIndex = journey.findIndex(
+    (id) => id === firstSkippedQuestionId
+  );
 
-  const isQuestionAfterLastAnsweredQuestion =
-    config &&
-    nextQuestion?.id &&
-    isQuestionLaterInAssessment(config, questionId, nextQuestion.id);
+  const isCurrentQuestionAfterSkippedQuestion =
+    currentQuestionIndex > skippedQuestionIndex;
 
-  const hasSkippedQuestion =
-    nextQuestion?.id !== questionId && isQuestionAfterLastAnsweredQuestion;
+  const isDisabled =
+    firstSkippedQuestionId && isCurrentQuestionAfterSkippedQuestion;
 
   const { question, section } =
     config && questionId
@@ -38,9 +40,9 @@ export const AssessmentPage = () => {
 
   return (
     <>
-      {hasSkippedQuestion && (
+      {isDisabled && (
         <Column span={12}>
-          <PreviewNotice />
+          <PreviewNotice skippedQuestionId={firstSkippedQuestionId} />
         </Column>
       )}
       <Column span={8}>
@@ -54,7 +56,7 @@ export const AssessmentPage = () => {
             <QuestionTemplate
               question={question}
               currentAnswers={currentAnswers}
-              disabled={!!hasSkippedQuestion}
+              disabled={!!isDisabled}
             />
           </>
         ) : (

@@ -1,7 +1,9 @@
 import { AssessmentContext } from "@/context";
 import {
+  getFirstUnansweredQuestion,
   getLastAnsweredQuestion,
   getNextQuestion,
+  getQuestionJourneyFromAnswers,
 } from "@/services/assessment";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -14,18 +16,12 @@ const Notice = styled.div`
   font-size: 0.95rem;
 `;
 
-export const PreviewNotice = () => {
-  const { config, currentAnswers, questionOrder } =
-    useContext(AssessmentContext);
+interface Props {
+  skippedQuestionId: string;
+}
 
-  const lastAnsweredQuestion = getLastAnsweredQuestion(
-    questionOrder,
-    currentAnswers
-  );
-  const nextQuestion =
-    config && getNextQuestion(config, lastAnsweredQuestion.id, currentAnswers);
-
-  const href = nextQuestion?.id ? `/?id=${nextQuestion.id}` : "/";
+export const PreviewNotice = ({ skippedQuestionId }: Props) => {
+  const href = skippedQuestionId ? `/?id=${skippedQuestionId}` : "/";
 
   return (
     <Notice>

@@ -56,5 +56,7 @@ export const useAnswers = () => {
     });
   });
 
-  return { answers: formattedAnswers };
+  return {
+    answers: formattedAnswers,
+  };
 };

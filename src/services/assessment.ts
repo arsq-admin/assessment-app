@@ -243,3 +243,30 @@ export const getQuestionJourneyFromAnswers = (
 
   return journey;
 };
+
+export const hasMissingAnswers = (
+  journey: string[],
+  answers: AssessmentAnswers
+) => {
+  return !journey.every((questionId) => {
+    return answers[questionId]?.answer?.length > 0;
+  });
+};
+
+export const getFirstUnansweredQuestion = (
+  journey: string[],
+  answers: AssessmentAnswers
+) => {
+  let unansweredQuestion = "";
+
+  journey.find((questionId) => {
+    if (answers[questionId]?.answer?.length > 0) {
+      return false;
+    }
+
+    unansweredQuestion = questionId;
+    return true;
+  });
+
+  return unansweredQuestion;
+};
