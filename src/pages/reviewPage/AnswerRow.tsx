@@ -24,17 +24,17 @@ interface Props {
   question: string;
   answers: FormattedAnswer[];
   id: string;
+  previewOnly: boolean;
 }
 
-export const AnswerRow = ({ question, answers, id }: Props) => {
+export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
   const navigate = useNavigate();
-  const hasAnswers = answers.length > 0;
 
   return (
     <Container>
       <QuestionColumn span={8}>{question}</QuestionColumn>
       <AnswerColumn span={3}>
-        {hasAnswers
+        {answers.length > 0
           ? answers.map((answer) => (
               <div key={answer.value}>
                 <Paragraph>{answer.label || "-"}</Paragraph>
@@ -49,7 +49,7 @@ export const AnswerRow = ({ question, answers, id }: Props) => {
       </AnswerColumn>
       <Column span={1}>
         <a onClick={() => navigate(`/?id=${id}`)}>
-          {hasAnswers ? "Edit" : "View"}
+          {!previewOnly ? "Edit" : "View"}
         </a>
       </Column>
     </Container>

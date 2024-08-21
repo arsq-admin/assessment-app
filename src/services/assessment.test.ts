@@ -5,7 +5,7 @@ import {
   getLastAnsweredQuestion,
   getNextQuestion,
 } from "./assessment";
-import { mockAnswers, mockConfig, mockFormattedAnswers } from "./mocks";
+import { mockAnswers, mockConfig } from "./mocks";
 
 describe("getQuestionOrder", () => {
   it("should get the id of all the questions in the config in order", () => {

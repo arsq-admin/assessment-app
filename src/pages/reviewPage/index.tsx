@@ -11,7 +11,7 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { answers } = useAnswers();
+  const { answers, journey, skippedQuestionId } = useAnswers();
   const navigate = useNavigate();
 
   const sections = Object.keys(answers);
@@ -25,6 +25,8 @@ export const ReviewPage = () => {
             key={sectionName}
             name={sectionName}
             answers={answers[sectionName] || []}
+            journey={journey}
+            skippedQuestionId={skippedQuestionId}
           />
         );
       })}

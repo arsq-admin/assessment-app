@@ -1,7 +1,10 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
-import { getQuestionJourneyFromAnswers } from "@/services/assessment";
+import {
+  getFirstUnansweredQuestion,
+  getQuestionJourneyFromAnswers,
+} from "@/services/assessment";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -56,7 +59,14 @@ export const useAnswers = () => {
     });
   });
 
+  const skippedQuestionId = getFirstUnansweredQuestion(
+    questionIds,
+    currentAnswers
+  );
+
   return {
     answers: formattedAnswers,
+    journey: questionIds,
+    skippedQuestionId,
   };
 };
