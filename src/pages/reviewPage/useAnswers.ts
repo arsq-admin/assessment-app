@@ -4,6 +4,7 @@ import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
 import {
   getFirstUnansweredQuestion,
   getQuestionJourneyFromAnswers,
+  isAssessmentComplete,
 } from "@/services/assessment";
 
 export interface FormattedAnswer extends AnswerValue {
@@ -64,9 +65,12 @@ export const useAnswers = () => {
     currentAnswers
   );
 
+  const isComplete = isAssessmentComplete(questionIds, currentAnswers);
+
   return {
     answers: formattedAnswers,
     journey: questionIds,
     skippedQuestionId,
+    isComplete,
   };
 };

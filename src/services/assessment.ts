@@ -270,3 +270,12 @@ export const getFirstUnansweredQuestion = (
 
   return unansweredQuestion;
 };
+
+export const isAssessmentComplete = (
+  questionJourney: string[],
+  answers: AssessmentAnswers
+) => {
+  return questionJourney.every((questionId) => {
+    return answers[questionId];
+  });
+};

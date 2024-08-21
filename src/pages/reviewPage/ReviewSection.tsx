@@ -16,6 +16,7 @@ interface Props {
   answers: { id: string; question: string; answers: FormattedAnswer[] }[];
   journey: string[];
   skippedQuestionId: string;
+  isComplete: boolean;
 }
 
 export const ReviewSection = ({
@@ -23,6 +24,7 @@ export const ReviewSection = ({
   answers,
   journey,
   skippedQuestionId,
+  isComplete,
 }: Props) => {
   return (
     <OuterContainer span={12}>
@@ -45,7 +47,7 @@ export const ReviewSection = ({
             id={id}
             question={question}
             answers={answers}
-            previewOnly={isCurrentQuestionAfterSkippedQuestion}
+            previewOnly={!isComplete && isCurrentQuestionAfterSkippedQuestion}
           />
         );
       })}
