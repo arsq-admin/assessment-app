@@ -28,13 +28,13 @@ interface Props {
 
 export const AnswerRow = ({ question, answers, id }: Props) => {
   const navigate = useNavigate();
-  const isMissingAnswer = answers.length === 0;
+  const hasAnswers = answers.length > 0;
 
   return (
     <Container>
       <QuestionColumn span={8}>{question}</QuestionColumn>
       <AnswerColumn span={3}>
-        {!isMissingAnswer
+        {hasAnswers
           ? answers.map((answer) => (
               <div key={answer.value}>
                 <Paragraph>{answer.label || "-"}</Paragraph>
@@ -49,7 +49,7 @@ export const AnswerRow = ({ question, answers, id }: Props) => {
       </AnswerColumn>
       <Column span={1}>
         <a onClick={() => navigate(`/?id=${id}`)}>
-          {isMissingAnswer ? "View" : "Edit"}
+          {hasAnswers ? "Edit" : "View"}
         </a>
       </Column>
     </Container>
