@@ -41,7 +41,9 @@ export const ReviewPage = () => {
           >
             Go back to the assessments
           </button>
-          <button className="ds_button">Submit</button>
+          <button className="ds_button" disabled={!isComplete}>
+            Submit
+          </button>
         </NavigationContainer>
       </Column>
     </>
