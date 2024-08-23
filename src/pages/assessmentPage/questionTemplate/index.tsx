@@ -41,9 +41,14 @@ const BackToSummaryButton = styled.button`
 interface Props {
   question: Question;
   currentAnswers: AssessmentAnswers;
+  disabled: boolean;
 }
 
-export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
+export const QuestionTemplate = ({
+  question,
+  currentAnswers,
+  disabled,
+}: Props) => {
   const { title, guidance, id, followUp } = question;
   const { questionOrder, reachedReviewPage } = useContext(AssessmentContext);
   const currentIndex = questionOrder.findIndex(
@@ -64,13 +69,12 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
     question,
   });
 
-  const { onNext, onPrev, backToSummary, inPreviewMode } =
-    useAssessmentNavigation({
-      currentAnswers,
-      saveAnswer,
-      question,
-      answer,
-    });
+  const { onNext, onPrev, backToSummary } = useAssessmentNavigation({
+    currentAnswers,
+    saveAnswer,
+    question,
+    answer,
+  });
 
   // Temporary keyboard control
   const keydownListener = useCallback(
@@ -117,7 +121,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
               }))
             }
             options={question.options}
-            disabled={inPreviewMode}
+            disabled={disabled}
           />
         ) : null}
 
@@ -147,7 +151,7 @@ export const QuestionTemplate = ({ question, currentAnswers }: Props) => {
             }
             freeText={freeText}
             options={question.options}
-            disabled={inPreviewMode}
+            disabled={disabled}
           />
         ) : null}
 

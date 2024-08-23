@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AssessmentContext } from "../../../context";
 import { Section } from "./Section";
 import { Column } from "@/components";
+import { getQuestionJourneyFromAnswers } from "@/services/assessment";
 
 const Title = styled.h4`
   font-size: 1.3rem;
@@ -31,11 +32,12 @@ const Line = styled.div`
 `;
 
 export const ProgressBar = () => {
-  const { config, questionId } = useContext(AssessmentContext);
+  const { config, questionId, currentAnswers } = useContext(AssessmentContext);
 
   if (!config) return null;
 
-  const sections = config.sections.map((section) => section.name);
+  const journey = getQuestionJourneyFromAnswers(config, currentAnswers);
+
   const currentSectionIndex = config.sections.findIndex((section) => {
     return section.questions.find((question) => question.id === questionId);
   });
@@ -52,15 +54,23 @@ export const ProgressBar = () => {
         {totalSectionsPlusReview} sections.
       </p>
       <Sections>
-        {sections?.map((section, index) => (
-          <Section
-            isLast={false}
-            key={section}
-            name={section}
-            isCurrentSection={currentSection?.name === section}
-            isComplete={index < currentSectionIndex}
-          />
-        ))}
+        {config.sections?.map(({ name, questions }) => {
+          const questionsInJourney = questions.filter((question) =>
+            journey.includes(question.id)
+          );
+          const isComplete = questionsInJourney.every(
+            (question) => currentAnswers[question.id]
+          );
+          return (
+            <Section
+              isLast={false}
+              key={name}
+              name={name}
+              isCurrentSection={currentSection?.name === name}
+              isComplete={isComplete}
+            />
+          );
+        })}
         <Section
           isLast={true}
           name={"Review"}

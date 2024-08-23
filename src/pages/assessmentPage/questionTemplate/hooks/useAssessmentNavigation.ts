@@ -4,10 +4,11 @@ import {
   Question,
   TargetType,
 } from "../../types/assessmentConfig";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { isConditionMet } from "../../services";
 import { AssessmentAnswers } from "../../types/assessmentAnswers";
 import { AssessmentContext } from "../../../../context";
+import { getQuestionJourneyFromAnswers } from "@/services/assessment";
 
 interface Props {
   saveAnswer: (saveToCurrentAnswers?: boolean) => void;
@@ -22,37 +23,18 @@ export const useAssessmentNavigation = ({
   answer,
   currentAnswers,
 }: Props) => {
-  const [inPreviewMode, setInPreviewMode] = useState(false);
-  const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState("");
-
   const { logic } = question;
   const navigate = useNavigate();
   const {
+    config,
     setQuestionId,
     questionId,
     questionOrder,
-    journey,
-    setCurrentAnswers,
     setReachedReviewPage,
   } = useContext(AssessmentContext);
 
   const onNext = () => {
-    if (answer.length === 0) {
-      if (!inPreviewMode) {
-        setInPreviewMode(true);
-      }
-
-      const currentIndex = questionOrder.findIndex((id) => id === questionId);
-      setQuestionId(questionOrder[currentIndex + 1]);
-      navigate({
-        pathname: "/",
-        search: `id=${questionOrder[currentIndex + 1]}`,
-      });
-      return;
-    }
-
     saveAnswer();
-    setLastAnsweredQuestion(questionId);
 
     const onLastQuestion =
       questionId === questionOrder[questionOrder.length - 1];
@@ -100,17 +82,19 @@ export const useAssessmentNavigation = ({
   };
 
   const onPrev = () => {
-    saveAnswer(false);
-    setCurrentAnswers((prevState) => {
-      const newState = { ...prevState };
-      delete newState[question.id];
-      return newState;
-    });
+    saveAnswer();
 
-    setQuestionId(journey[journey.length - 2]);
+    const order = config
+      ? getQuestionJourneyFromAnswers(config, currentAnswers)
+      : [];
+
+    const currentIndex = order.findIndex((id) => id === questionId);
+    const prevQuestionId = order[currentIndex - 1] || order[0];
+
+    setQuestionId(prevQuestionId);
     navigate({
       pathname: "/",
-      search: `id=${journey[journey.length - 2]}`,
+      search: `id=${prevQuestionId}`,
     });
   };
 
@@ -119,11 +103,5 @@ export const useAssessmentNavigation = ({
     navigate("/review");
   };
 
-  useEffect(() => {
-    if (questionId === lastAnsweredQuestion) {
-      setInPreviewMode(false);
-    }
-  }, [questionId, lastAnsweredQuestion]);
-
-  return { onPrev, onNext, backToSummary, inPreviewMode };
+  return { onPrev, onNext, backToSummary };
 };

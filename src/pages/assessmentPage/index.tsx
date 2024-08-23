@@ -2,12 +2,37 @@ import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "../../context";
 import { Column } from "@/components";
 import { AssessmentTtile } from "./components";
+import { PreviewNotice } from "@/components";
 import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
 import { getQuestionFromConfig } from "./services";
+import {
+  getFirstUnansweredQuestion,
+  getQuestionJourneyFromAnswers,
+} from "@/services/assessment";
 
 export const AssessmentPage = () => {
   const { config, questionId, currentAnswers } = useContext(AssessmentContext);
+
+  const journey = config
+    ? getQuestionJourneyFromAnswers(config, currentAnswers)
+    : [];
+
+  const firstSkippedQuestionId = getFirstUnansweredQuestion(
+    journey,
+    currentAnswers
+  );
+
+  const currentQuestionIndex = journey.findIndex((id) => id === questionId);
+  const skippedQuestionIndex = journey.findIndex(
+    (id) => id === firstSkippedQuestionId
+  );
+
+  const isCurrentQuestionAfterSkippedQuestion =
+    currentQuestionIndex > skippedQuestionIndex;
+
+  const isDisabled =
+    firstSkippedQuestionId && isCurrentQuestionAfterSkippedQuestion;
 
   const { question, section } =
     config && questionId
@@ -16,6 +41,11 @@ export const AssessmentPage = () => {
 
   return (
     <>
+      {isDisabled && (
+        <Column span={12}>
+          <PreviewNotice skippedQuestionId={firstSkippedQuestionId} />
+        </Column>
+      )}
       <Column span={8}>
         {question ? (
           <>
@@ -27,6 +57,7 @@ export const AssessmentPage = () => {
             <QuestionTemplate
               question={question}
               currentAnswers={currentAnswers}
+              disabled={!!isDisabled}
             />
           </>
         ) : (

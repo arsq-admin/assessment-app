@@ -1,7 +1,7 @@
 import { Heading } from "./Heading";
 import { useAnswers } from "./useAnswers";
 import { ReviewSection } from "./ReviewSection";
-import { Column } from "@/components";
+import { Column, PreviewNotice } from "@/components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -11,18 +11,28 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { answers } = useAnswers();
+  const { answers, journey, skippedQuestionId, isComplete } = useAnswers();
   const navigate = useNavigate();
+
+  const sections = Object.keys(answers);
 
   return (
     <>
       <Heading />
-      {Object.keys(answers).map((sectionName) => {
+      {skippedQuestionId && (
+        <Column span={12}>
+          <PreviewNotice skippedQuestionId={skippedQuestionId} />
+        </Column>
+      )}
+      {sections.map((sectionName) => {
         return (
           <ReviewSection
             key={sectionName}
             name={sectionName}
-            answers={answers}
+            answers={answers[sectionName] || []}
+            journey={journey}
+            skippedQuestionId={skippedQuestionId}
+            isComplete={isComplete}
           />
         );
       })}
@@ -30,11 +40,15 @@ export const ReviewPage = () => {
         <NavigationContainer>
           <button
             className="ds_button ds_button--secondary"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+            }}
           >
             Go back to the assessments
           </button>
-          <button className="ds_button">Submit</button>
+          <button className="ds_button" disabled={!isComplete}>
+            Submit
+          </button>
         </NavigationContainer>
       </Column>
     </>

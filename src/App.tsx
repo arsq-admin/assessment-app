@@ -1,6 +1,6 @@
 import { AssessmentPage, ReviewPage } from "./pages";
 import styled from "styled-components";
-import { Column, Container, FluidContainer } from "./components";
+import { Column, Container, FluidContainer, Footer } from "./components";
 import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
 import {
@@ -13,7 +13,7 @@ const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
     assessmentConfig,
     reachedReviewPage,
     setReachedReviewPage,
+    questionsById,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -56,6 +57,7 @@ function App() {
         tenderName: tenderName,
         reachedReviewPage,
         setReachedReviewPage,
+        questionsById,
       }}
     >
       <Header>
@@ -69,6 +71,7 @@ function App() {
           <Route path="/review" Component={ReviewPage} />
         </Routes>
       </Container>
+      <Footer />
     </AssessmentContext.Provider>
   );
 }

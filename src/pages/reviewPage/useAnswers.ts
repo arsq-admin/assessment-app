@@ -1,19 +1,30 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
+import {
+  getFirstUnansweredQuestion,
+  getQuestionJourneyFromAnswers,
+  isAssessmentComplete,
+} from "@/services/assessment";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
 }
 
+export type FormattedAnswers = Record<
+  string,
+  { id: string; question: string; answers: FormattedAnswer[] }[]
+>;
+
 export const useAnswers = () => {
   const { currentAnswers, config } = useContext(AssessmentContext);
-  const formattedAnswers: Record<
-    string,
-    { id: string; question: string; answers: FormattedAnswer[] }[]
-  > = {};
 
-  Object.keys(currentAnswers).forEach((questionId) => {
+  const questionIds =
+    (config && getQuestionJourneyFromAnswers(config, currentAnswers)) || [];
+
+  const formattedAnswers: FormattedAnswers = {};
+
+  questionIds.forEach((questionId) => {
     const currentSection = config?.sections.find((section) => {
       return section.questions.find((question) => question.id === questionId);
     });
@@ -33,20 +44,33 @@ export const useAnswers = () => {
     formattedAnswers[currentSection.name].push({
       question: currentQuestion.title,
       id: questionId,
-      answers: currentAnswers[questionId].answer.map((answer) => {
-        const label =
-          "options" in currentQuestion &&
-          currentQuestion.options.find(
-            (option) => option.value === answer.value
-          )?.name;
+      answers:
+        currentAnswers[questionId]?.answer.map((answer) => {
+          const label =
+            "options" in currentQuestion &&
+            currentQuestion.options.find(
+              (option) => option.value === answer.value
+            )?.name;
 
-        return {
-          ...answer,
-          label: label || "",
-        };
-      }),
+          return {
+            ...answer,
+            label: label || "",
+          };
+        }) || [],
     });
   });
 
-  return { answers: formattedAnswers };
+  const skippedQuestionId = getFirstUnansweredQuestion(
+    questionIds,
+    currentAnswers
+  );
+
+  const isComplete = isAssessmentComplete(questionIds, currentAnswers);
+
+  return {
+    answers: formattedAnswers,
+    journey: questionIds,
+    skippedQuestionId,
+    isComplete,
+  };
 };
