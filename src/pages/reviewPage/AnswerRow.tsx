@@ -2,6 +2,8 @@ import { Column, Container } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AssessmentContext } from "@/context";
 
 const QuestionColumn = styled(Column)`
   font-weight: 500;
@@ -29,10 +31,17 @@ interface Props {
 
 export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
   const navigate = useNavigate();
+  const { questionOrder } = useContext(AssessmentContext);
+
+  const currentQuestionPosition =
+    questionOrder.findIndex((questionId) => questionId === id) + 1;
 
   return (
     <Container>
-      <QuestionColumn span={8}>{question}</QuestionColumn>
+      <QuestionColumn span={8}>
+        {currentQuestionPosition > 0 && `${currentQuestionPosition}. `}
+        {question}
+      </QuestionColumn>
       <AnswerColumn span={3}>
         {answers.length > 0
           ? answers.map((answer) => (

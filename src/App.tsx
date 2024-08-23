@@ -1,6 +1,6 @@
 import { AssessmentPage, ReviewPage } from "./pages";
 import styled from "styled-components";
-import { Column, Container, FluidContainer } from "./components";
+import { Column, Container, FluidContainer, Footer } from "./components";
 import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
 import {
@@ -71,6 +71,7 @@ function App() {
           <Route path="/review" Component={ReviewPage} />
         </Routes>
       </Container>
+      <Footer />
     </AssessmentContext.Provider>
   );
 }
