@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Question } from "../types/assessmentConfig";
 import { SectionTitle } from ".";
 
@@ -8,18 +7,11 @@ interface Props {
   question: Question;
 }
 
-const Title = styled.h2`
-  margin: 0;
-  font-size: 1.7rem;
-  font-weight: 400;
-  margin-bottom: 0.25rem;
-`;
-
 export const AssessmentTtile = ({ title, section, question }: Props) => {
   return (
-    <>
-      <Title>{title}</Title>
+    <header className="ds_page-header">
+      <h1 className="ds_page-header__title">{title}</h1>
       <SectionTitle section={section} subsection={question.subsection} />
-    </>
+    </header>
   );
 };

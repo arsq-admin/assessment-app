@@ -1,15 +1,7 @@
-import styled from "styled-components";
-
 interface Props {
   subsection?: string;
   section?: string;
 }
-
-const Section = styled.h3`
-  margin: 0 !important;
-  font-size: 1.2rem;
-  font-weight: 400;
-`;
 
 export const SectionTitle = ({ section, subsection }: Props) => {
   const heading: string[] = [];
@@ -17,6 +9,8 @@ export const SectionTitle = ({ section, subsection }: Props) => {
   if (subsection) heading.push(subsection);
 
   return section || subsection ? (
-    <Section>{heading.join(" - ")}</Section>
+    <span className="ds_page-header__label  ds_content-label">
+      {heading.join(" - ")}
+    </span>
   ) : null;
 };
