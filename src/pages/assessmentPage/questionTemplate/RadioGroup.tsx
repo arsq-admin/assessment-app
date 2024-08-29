@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
+import { Fragment } from "react";
 
 interface Props {
   value: string | number;
@@ -26,6 +27,7 @@ export const RadioGroup = ({
 }: Props) => {
   return (
     <Box
+      className="ds_field-group"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -42,7 +44,7 @@ export const RadioGroup = ({
           minimumRequired,
         }) => {
           return (
-            <Box key={`${questionId}-${name}`}>
+            <Fragment key={`${questionId}-${name}`}>
               <div className="ds_radio">
                 <input
                   className="ds_radio__input"
@@ -82,7 +84,7 @@ export const RadioGroup = ({
                   ></textarea>
                 </Box>
               )}
-            </Box>
+            </Fragment>
           );
         }
       )}

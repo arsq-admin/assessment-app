@@ -11,22 +11,24 @@ import { Guidance } from "../components";
 import styled from "styled-components";
 
 const QuestionContainer = styled.div`
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   align-items: flex-start;
 `;
 
-const QuestionTitle = styled.h1`
-  font-size: 1.7rem;
-  font-weight: 700;
-  margin: 0;
+const InputContainer = styled.div`
+  width: 100%;
+  padding: 1.5rem 0;
+`;
+
+const QuestionTitle = styled.legend`
   display: flex;
   gap: 0.5rem;
 `;
 
 const NavigationContainer = styled.div`
+  margin-top: 1.5rem;
   display: flex;
   gap: 2rem;
   button {
@@ -100,102 +102,108 @@ export const QuestionTemplate = ({
 
   return (
     <Fragment>
-      <QuestionContainer>
-        <QuestionTitle>
-          <span>{currentQuestionPosition + 1}.</span>
-          <span>{title}</span>
-        </QuestionTitle>
+      <fieldset>
+        <QuestionContainer className="ds_question">
+          <QuestionTitle>
+            <span>{currentQuestionPosition + 1}.</span>
+            <span>{title}</span>
+          </QuestionTitle>
 
-        {guidance && <Guidance guidance={guidance} />}
+          {guidance && <Guidance guidance={guidance} />}
 
-        {isMultipleChoiceQuestion(question) && !question.allowMultiple ? (
-          <RadioGroup
-            questionId={id}
-            value={answer[0]}
-            freeText={freeText[answer[0]]}
-            onChange={(event) => setAnswer([event.target.value])}
-            freeTextOnChange={(event, optionValue) =>
-              setFreeText((prevState) => ({
-                ...prevState,
-                [optionValue]: event.target.value,
-              }))
-            }
-            options={question.options}
-            disabled={disabled}
-          />
-        ) : null}
-
-        {isMultipleChoiceQuestion(question) && question.allowMultiple ? (
-          <CheckboxGroup
-            questionId={id}
-            value={answer}
-            onChange={(event) => {
-              const isChecked = event.target.checked;
-              setAnswer((prevValue) => {
-                const answer = Array.isArray(prevValue)
-                  ? prevValue.filter((option) => option !== event.target.value)
-                  : [];
-
-                if (isChecked) {
-                  answer.push(event.target.value);
+          <InputContainer>
+            {isMultipleChoiceQuestion(question) && !question.allowMultiple ? (
+              <RadioGroup
+                questionId={id}
+                value={answer[0]}
+                freeText={freeText[answer[0]]}
+                onChange={(event) => setAnswer([event.target.value])}
+                freeTextOnChange={(event, optionValue) =>
+                  setFreeText((prevState) => ({
+                    ...prevState,
+                    [optionValue]: event.target.value,
+                  }))
                 }
+                options={question.options}
+                disabled={disabled}
+              />
+            ) : null}
 
-                return answer;
-              });
-            }}
-            freeTextOnChange={(event, optionValue) =>
-              setFreeText((prevState) => ({
-                ...prevState,
-                [optionValue]: event.target.value,
-              }))
-            }
-            freeText={freeText}
-            options={question.options}
-            disabled={disabled}
-          />
-        ) : null}
+            {isMultipleChoiceQuestion(question) && question.allowMultiple ? (
+              <CheckboxGroup
+                questionId={id}
+                value={answer}
+                onChange={(event) => {
+                  const isChecked = event.target.checked;
+                  setAnswer((prevValue) => {
+                    const answer = Array.isArray(prevValue)
+                      ? prevValue.filter(
+                          (option) => option !== event.target.value
+                        )
+                      : [];
 
-        {followUp && (
-          <FollowUpQuestions
-            value={answer}
-            config={followUp}
-            setFollowUpValue={setFollowUpValue}
-            followUpValue={followUpValue}
-            followUpFreeText={followUpFreeText}
-            setFollowUpFreeText={setFollowUpFreeText}
-          />
-        )}
-        <NavigationContainer>
-          <button
-            className="ds_button ds_button--secondary"
-            type="button"
-            id="prev"
-            onClick={onPrev}
-            disabled={currentIndex <= 0}
-          >
-            Previous
-          </button>
-          <button
-            className="ds_button"
-            type="button"
-            id="next"
-            onClick={onNext}
-          >
-            {questionOrder[questionOrder.length - 1] === question.id
-              ? "Review your answers"
-              : "Next"}
-          </button>
-        </NavigationContainer>
-        {reachedReviewPage && (
-          <BackToSummaryButton
-            className="ds_button"
-            type="button"
-            onClick={backToSummary}
-          >
-            Back to Summary
-          </BackToSummaryButton>
-        )}
-      </QuestionContainer>
+                    if (isChecked) {
+                      answer.push(event.target.value);
+                    }
+
+                    return answer;
+                  });
+                }}
+                freeTextOnChange={(event, optionValue) =>
+                  setFreeText((prevState) => ({
+                    ...prevState,
+                    [optionValue]: event.target.value,
+                  }))
+                }
+                freeText={freeText}
+                options={question.options}
+                disabled={disabled}
+              />
+            ) : null}
+
+            {followUp && (
+              <FollowUpQuestions
+                value={answer}
+                config={followUp}
+                setFollowUpValue={setFollowUpValue}
+                followUpValue={followUpValue}
+                followUpFreeText={followUpFreeText}
+                setFollowUpFreeText={setFollowUpFreeText}
+              />
+            )}
+          </InputContainer>
+          <NavigationContainer>
+            <button
+              className="ds_button ds_button--secondary"
+              type="button"
+              id="prev"
+              onClick={onPrev}
+              disabled={currentIndex <= 0}
+            >
+              Previous
+            </button>
+            <button
+              className="ds_button"
+              type="button"
+              id="next"
+              onClick={onNext}
+            >
+              {questionOrder[questionOrder.length - 1] === question.id
+                ? "Review your answers"
+                : "Next"}
+            </button>
+          </NavigationContainer>
+          {reachedReviewPage && (
+            <BackToSummaryButton
+              className="ds_button"
+              type="button"
+              onClick={backToSummary}
+            >
+              Back to Summary
+            </BackToSummaryButton>
+          )}
+        </QuestionContainer>
+      </fieldset>
     </Fragment>
   );
 };

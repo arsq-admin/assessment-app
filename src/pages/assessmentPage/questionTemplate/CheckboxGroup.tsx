@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
+import { Fragment } from "react";
 
 interface Props {
   questionId: string;
@@ -25,7 +26,13 @@ export const CheckboxGroup = ({
   disabled,
 }: Props) => {
   return (
-    <Box display="flex" flexDirection="column" gap="0.5rem" width="90%">
+    <Box
+      display="flex"
+      className="ds_field_group"
+      flexDirection="column"
+      gap="0.5rem"
+      width="90%"
+    >
       {options.map(
         ({
           name,
@@ -35,7 +42,7 @@ export const CheckboxGroup = ({
           minimumRequired,
         }) => {
           return (
-            <Box className="ds_field_group" key={name}>
+            <Fragment key={name}>
               <div className="ds_checkbox">
                 <input
                   className="ds_checkbox__input"
@@ -75,7 +82,7 @@ export const CheckboxGroup = ({
                   ></textarea>
                 </Box>
               )}
-            </Box>
+            </Fragment>
           );
         }
       )}
