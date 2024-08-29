@@ -27,7 +27,7 @@ const QuestionTitle = styled.legend`
   gap: 0.5rem;
 `;
 
-const NavigationContainer = styled.div`
+const NavigationContainer = styled.nav`
   margin-top: 1.5rem;
   display: flex;
   gap: 2rem;
