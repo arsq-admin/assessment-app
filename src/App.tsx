@@ -8,8 +8,7 @@ import {
   useResetAssessment,
   useSetJourney,
 } from "./pages/assessmentPage/hooks";
-import introPage from "./pages/introductionPage";
-import IntroPage from "./pages/introductionPage";
+
 import IntroductionPage from "./pages/introductionPage";
 
 const Header = styled(FluidContainer)`
