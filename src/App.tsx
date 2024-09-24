@@ -8,7 +8,8 @@ import {
   useResetAssessment,
   useSetJourney,
 } from "./pages/assessmentPage/hooks";
-import IntroductionPage from "./pages/introductionPage";
+import { IntroductionPage } from "./pages/introductionPage";
+
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
