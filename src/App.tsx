@@ -70,7 +70,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" Component={IntroductionPage} />
-          <Route path="/assesment" Component={AssessmentPage} />
+          <Route path="/assessment" Component={AssessmentPage} />
           <Route path="/review" Component={ReviewPage} />
         </Routes>
       </Container>
