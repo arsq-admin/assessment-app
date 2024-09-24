@@ -8,6 +8,7 @@ import {
   useResetAssessment,
   useSetJourney,
 } from "./pages/assessmentPage/hooks";
+import IntroductionPage from "./pages/introductionPage";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -67,7 +68,8 @@ function App() {
       </Header>
       <Container>
         <Routes>
-          <Route path="/" Component={AssessmentPage} />
+          <Route path="/" Component={IntroductionPage} />
+          <Route path="/assesment" Component={AssessmentPage} />
           <Route path="/review" Component={ReviewPage} />
         </Routes>
       </Container>
