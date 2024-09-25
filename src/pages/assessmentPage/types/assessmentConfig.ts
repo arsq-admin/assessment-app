@@ -138,4 +138,5 @@ export interface AssessmentConfig {
   status: Status;
   sections: Section[];
   outcomes: Record<string, Outcomes>;
+  introduction: unknown[];
 }

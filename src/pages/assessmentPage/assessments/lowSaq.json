@@ -8,6 +8,24 @@
       "body": ""
     }
   },
+  "introduction": [
+    {
+      "type": "TEXT",
+      "heading": "What is the assessment for?",
+      "content": [
+        "sjdfhasdhfakshdhas, am aiosdjfa nsdfa skdjfaskdf",
+        "asdfhkashdklfa, asdfh akjsdfh aklsdf as."
+      ]
+    },
+    {
+      "type": "TEXT",
+      "heading": "What you will need to complete the assessment",
+      "content": [
+        "sjdfhasdhfakshdhas, am aiosdjfa nsdfa skdjfaskdf",
+        "asdfhkashdklfa, asdfh akjsdfh aklsdf as."
+      ]
+    }
+  ],
   "sections": [
     {
       "name": "Certification",
