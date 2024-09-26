@@ -2756,6 +2756,7 @@
           "title": "Which of the following controls are used to protect against malware on relevant systems? Tick all that apply.",
           "guidance": "",
           "type": "MULTIPLE_CHOICE",
+          "allowMultiple": true,
           "options": [
             {
               "name": "Basic Antivirus software or Application sandboxing",
