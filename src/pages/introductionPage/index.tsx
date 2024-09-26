@@ -9,6 +9,7 @@ export const IntroductionPage = () => {
   const beginAssessment = () => {
     navigate("/assessment");
   };
+
   return (
     <Column span={12}>
       <p>
@@ -16,17 +17,19 @@ export const IntroductionPage = () => {
       </p>
       <h2>{config?.name}</h2>
       <p>{tenderName}</p>
-      {config?.introduction.map((intro) => {
+      {config?.introduction.map((intro, introIndex) => {
         return (
-          <div>
+          <div key={introIndex}>
             <h3>{intro.heading}</h3>
-            <p>{intro.content}</p>
+            {intro.content.map((element, contentIndex) => {
+              return <p key={contentIndex}>{element}</p>;
+            })}
           </div>
         );
       })}
 
       <button
-        className="ds_button ds_button--secondary"
+        className="ds_button"
         type="button"
         id="begin-assessement"
         onClick={beginAssessment}
