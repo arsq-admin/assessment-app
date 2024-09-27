@@ -138,4 +138,17 @@ export interface AssessmentConfig {
   status: Status;
   sections: Section[];
   outcomes: Record<string, Outcomes>;
+  introduction: IntroTextSection[];
+}
+
+export enum IntroSectionType {
+  TEXT = "TEXT",
+  VIDEO = "VIDEO",
+  IMAGE = "IMAGE",
+}
+
+export interface IntroTextSection {
+  type: IntroSectionType;
+  heading: string;
+  content: string[];
 }

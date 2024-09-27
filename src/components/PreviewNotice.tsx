@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const PreviewNotice = ({ skippedQuestionId }: Props) => {
-  const href = skippedQuestionId ? `/?id=${skippedQuestionId}` : "/";
+  const href = skippedQuestionId ? `/assessment?id=${skippedQuestionId}` : "/";
 
   return (
     <Notice>

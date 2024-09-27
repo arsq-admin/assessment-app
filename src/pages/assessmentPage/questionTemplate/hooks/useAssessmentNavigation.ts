@@ -49,7 +49,7 @@ export const useAssessmentNavigation = ({
       (id) => id === questionId
     );
     let nextQuestionId = questionOrder[currentQuestionIndex + 1];
-    let pathName = "/";
+    let pathName = "/assessment";
     let searchParams = `id=${nextQuestionId}`;
 
     if (logic) {
@@ -93,7 +93,7 @@ export const useAssessmentNavigation = ({
 
     setQuestionId(prevQuestionId);
     navigate({
-      pathname: "/",
+      pathname: "/assessment",
       search: `id=${prevQuestionId}`,
     });
   };
