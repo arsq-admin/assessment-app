@@ -122,8 +122,11 @@ export type Question =
   | NumberQuestion;
 
 export interface Outcomes {
+  name: string;
+  logic?: Logic[];
   title: string;
   body: string;
+  minimumScore: number;
 }
 
 export interface Section {
@@ -137,7 +140,7 @@ export interface AssessmentConfig {
   name: string;
   status: Status;
   sections: Section[];
-  outcomes: Record<string, Outcomes>;
+  outcomes: Outcomes[];
   introduction: IntroTextSection[];
 }
 

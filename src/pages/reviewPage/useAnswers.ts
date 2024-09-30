@@ -7,6 +7,8 @@ import {
   isAssessmentComplete,
 } from "@/services/assessment";
 import { QuestionType } from "../assessmentPage/types/assessmentConfig";
+import { isConditionMet } from "../assessmentPage/services";
+import { useNavigate } from "react-router-dom";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -18,6 +20,7 @@ export type FormattedAnswers = Record<
 >;
 
 export const useAnswers = () => {
+  const navigate = useNavigate();
   const { currentAnswers, config, questionsById } =
     useContext(AssessmentContext);
 
@@ -70,10 +73,10 @@ export const useAnswers = () => {
   const isComplete = isAssessmentComplete(questionIds, currentAnswers);
 
   const resolveAssessment = () => {
-    console.group("resolve answers");
+    // Probably should go to an error page
+    if (!config) return;
+
     const answers = Object.values(formattedAnswers).flat();
-    console.log("config", questionsById);
-    console.log("answers", answers);
 
     let finalScore = 0;
 
@@ -97,8 +100,25 @@ export const useAnswers = () => {
       finalScore += questionScore;
     });
 
-    console.log("finalScore:: ", finalScore);
-    console.groupEnd();
+    const { outcomes } = config;
+
+    const formattedCurrentAnswers = answers.reduce((acc, value) => {
+      return {
+        ...acc,
+        [value.id]: { answer: value.answers },
+      };
+    }, {});
+
+    const matchOutcome = outcomes.find((outcome) => {
+      const { logic = [], minimumScore } = outcome;
+      const matchLogic = logic.every(({ condition }) => {
+        return isConditionMet(condition, [], formattedCurrentAnswers);
+      });
+
+      return matchLogic && finalScore >= minimumScore;
+    });
+
+    navigate(`/result?outcome=${matchOutcome?.name || "failed"}`);
   };
 
   return {
