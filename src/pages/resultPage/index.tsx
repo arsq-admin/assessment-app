@@ -1,3 +1,7 @@
+import { Column } from "@/components";
+import { useAssessmentResult } from "./hooks";
+
 export const ResultPage = () => {
-  return <div>result page</div>;
+  const {} = useAssessmentResult();
+  return <Column span={12}>result page</Column>;
 };

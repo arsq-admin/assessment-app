@@ -6,6 +6,7 @@ import {
   getQuestionJourneyFromAnswers,
   isAssessmentComplete,
 } from "@/services/assessment";
+import { QuestionType } from "../assessmentPage/types/assessmentConfig";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -17,7 +18,8 @@ export type FormattedAnswers = Record<
 >;
 
 export const useAnswers = () => {
-  const { currentAnswers, config } = useContext(AssessmentContext);
+  const { currentAnswers, config, questionsById } =
+    useContext(AssessmentContext);
 
   const questionIds =
     (config && getQuestionJourneyFromAnswers(config, currentAnswers)) || [];
@@ -67,10 +69,43 @@ export const useAnswers = () => {
 
   const isComplete = isAssessmentComplete(questionIds, currentAnswers);
 
+  const resolveAssessment = () => {
+    console.group("resolve answers");
+    const answers = Object.values(formattedAnswers).flat();
+    console.log("config", questionsById);
+    console.log("answers", answers);
+
+    let finalScore = 0;
+
+    answers.forEach((answer) => {
+      const { id, answers: questionAnswer } = answer;
+      const questionConfig = questionsById[id];
+      let questionScore = 0;
+
+      if (questionConfig.type === QuestionType.MULTIPLE_CHOICE) {
+        questionAnswer.forEach(({ value }) => {
+          const optionConfig = questionConfig.options.find(
+            (option) => value === option.value
+          );
+
+          if (optionConfig) {
+            questionScore += optionConfig.points;
+          }
+        });
+      }
+
+      finalScore += questionScore;
+    });
+
+    console.log("finalScore:: ", finalScore);
+    console.groupEnd();
+  };
+
   return {
     answers: formattedAnswers,
     journey: questionIds,
     skippedQuestionId,
     isComplete,
+    resolveAssessment,
   };
 };

@@ -11,7 +11,8 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { answers, journey, skippedQuestionId, isComplete } = useAnswers();
+  const { answers, journey, skippedQuestionId, isComplete, resolveAssessment } =
+    useAnswers();
   const navigate = useNavigate();
 
   const sections = Object.keys(answers);
@@ -46,7 +47,13 @@ export const ReviewPage = () => {
           >
             Go back to the assessments
           </button>
-          <button className="ds_button" disabled={!isComplete}>
+          <button
+            className="ds_button"
+            disabled={!isComplete}
+            onClick={() => {
+              resolveAssessment();
+            }}
+          >
             Submit
           </button>
         </NavigationContainer>
