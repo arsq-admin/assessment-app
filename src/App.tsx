@@ -1,4 +1,9 @@
-import { AssessmentPage, ReviewPage } from "./pages";
+import {
+  AssessmentPage,
+  ReviewPage,
+  IntroductionPage,
+  ResultPage,
+} from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer, Footer } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -8,8 +13,6 @@ import {
   useResetAssessment,
   useSetJourney,
 } from "./pages/assessmentPage/hooks";
-import { IntroductionPage } from "./pages/introductionPage";
-
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -72,6 +75,7 @@ function App() {
           <Route path="/" Component={IntroductionPage} />
           <Route path="/assessment" Component={AssessmentPage} />
           <Route path="/review" Component={ReviewPage} />
+          <Route path="/result" Component={ResultPage} />
         </Routes>
       </Container>
       <Footer />
