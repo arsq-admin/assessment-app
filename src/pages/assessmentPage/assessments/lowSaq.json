@@ -5,8 +5,8 @@
   "outcomes": [
     {
       "name": "passIso27001",
-      "title": "Thank you for completing the assessment. (IS027001)",
-      "body": "",
+      "title": "You meet the requirements. (IS027001)",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
       "minimumScore": 150,
       "logic": [
         {
@@ -22,8 +22,8 @@
     },
     {
       "name": "passCyberEssential",
-      "title": "Thank you for completing the assessment. (CE+)",
-      "body": "",
+      "title": "You meet the requirements. (CE+)",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
       "minimumScore": 160,
       "logic": [
         {
@@ -39,8 +39,8 @@
     },
     {
       "name": "pass",
-      "title": "Thank you for completing the assessment.",
-      "body": "",
+      "title": "You meet the requirements.",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
       "minimumScore": 300
     }
   ],

@@ -1,7 +1,29 @@
 import { Column } from "@/components";
-import { useAssessmentResult } from "./hooks";
+import { AssessmentContext } from "@/context";
+import { useContext } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const ResultPage = () => {
-  const {} = useAssessmentResult();
-  return <Column span={12}>result page</Column>;
+  const navigate = useNavigate();
+  const { config } = useContext(AssessmentContext);
+  const [searchParam] = useSearchParams();
+
+  const outcomeName = searchParam.get("outcome");
+
+  const matchedOutcome =
+    (outcomeName &&
+      config?.outcomes.find((outcome) => outcome.name === outcomeName)) ||
+    -1;
+
+  if (!outcomeName || matchedOutcome === -1) {
+    navigate("/");
+    return;
+  }
+
+  return (
+    <Column span={12}>
+      <h1>{matchedOutcome.title}</h1>
+      <p>{matchedOutcome.body}</p>
+    </Column>
+  );
 };
