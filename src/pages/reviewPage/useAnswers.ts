@@ -6,6 +6,8 @@ import {
   getQuestionJourneyFromAnswers,
   isAssessmentComplete,
 } from "@/services/assessment";
+import { QuestionType } from "../assessmentPage/types/assessmentConfig";
+import { useNavigate } from "react-router-dom";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -17,7 +19,9 @@ export type FormattedAnswers = Record<
 >;
 
 export const useAnswers = () => {
-  const { currentAnswers, config } = useContext(AssessmentContext);
+  const navigate = useNavigate();
+  const { currentAnswers, config, questionsById } =
+    useContext(AssessmentContext);
 
   const questionIds =
     (config && getQuestionJourneyFromAnswers(config, currentAnswers)) || [];
@@ -67,10 +71,43 @@ export const useAnswers = () => {
 
   const isComplete = isAssessmentComplete(questionIds, currentAnswers);
 
+  const resolveAssessment = () => {
+    // Probably should go to an error page
+    if (!config) return;
+
+    const answers = Object.values(formattedAnswers).flat();
+
+    let hasPassed = true;
+    const failedQuestionIds = new Set();
+
+    answers.forEach((answer) => {
+      const { id, answers: questionAnswer } = answer;
+      const questionConfig = questionsById[id];
+
+      if (questionConfig.type === QuestionType.MULTIPLE_CHOICE) {
+        questionAnswer.forEach(({ value }) => {
+          const optionConfig = questionConfig.options.find(
+            (option) => value === option.value
+          );
+
+          if (optionConfig && !optionConfig.isAcceptable) {
+            hasPassed = false;
+            failedQuestionIds.add(id);
+          }
+        });
+      }
+    });
+
+    return navigate(
+      `/result?outcome=${hasPassed ? "successful" : "unsuccessful"}`
+    );
+  };
+
   return {
     answers: formattedAnswers,
     journey: questionIds,
     skippedQuestionId,
     isComplete,
+    resolveAssessment,
   };
 };

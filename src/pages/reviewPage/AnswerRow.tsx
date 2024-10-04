@@ -57,7 +57,7 @@ export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
           : "—"}
       </AnswerColumn>
       <Column span={1}>
-        <a onClick={() => navigate(`/?id=${id}`)}>
+        <a onClick={() => navigate(`/assessment?id=${id}`)}>
           {!previewOnly ? "Edit" : "View"}
         </a>
       </Column>
