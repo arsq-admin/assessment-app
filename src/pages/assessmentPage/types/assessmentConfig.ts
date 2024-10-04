@@ -22,6 +22,7 @@ export interface Option {
   freeText?: boolean;
   freeTextLabel?: string;
   minimumRequired?: boolean;
+  isAcceptable?: boolean;
 }
 
 export enum LogicAction {

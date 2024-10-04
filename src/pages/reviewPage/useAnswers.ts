@@ -7,7 +7,6 @@ import {
   isAssessmentComplete,
 } from "@/services/assessment";
 import { QuestionType } from "../assessmentPage/types/assessmentConfig";
-import { isConditionMet } from "../assessmentPage/services";
 import { useNavigate } from "react-router-dom";
 
 export interface FormattedAnswer extends AnswerValue {
@@ -78,12 +77,12 @@ export const useAnswers = () => {
 
     const answers = Object.values(formattedAnswers).flat();
 
-    let finalScore = 0;
+    let hasPassed = true;
+    const failedQuestionIds = new Set();
 
     answers.forEach((answer) => {
       const { id, answers: questionAnswer } = answer;
       const questionConfig = questionsById[id];
-      let questionScore = 0;
 
       if (questionConfig.type === QuestionType.MULTIPLE_CHOICE) {
         questionAnswer.forEach(({ value }) => {
@@ -91,34 +90,17 @@ export const useAnswers = () => {
             (option) => value === option.value
           );
 
-          if (optionConfig) {
-            questionScore += optionConfig.points;
+          if (optionConfig && !optionConfig.isAcceptable) {
+            hasPassed = false;
+            failedQuestionIds.add(id);
           }
         });
       }
-
-      finalScore += questionScore;
     });
 
-    const { outcomes } = config;
-
-    const formattedCurrentAnswers = answers.reduce((acc, value) => {
-      return {
-        ...acc,
-        [value.id]: { answer: value.answers },
-      };
-    }, {});
-
-    const matchOutcome = outcomes.find((outcome) => {
-      const { logic = [], minimumScore } = outcome;
-      const matchLogic = logic.every(({ condition }) => {
-        return isConditionMet(condition, [], formattedCurrentAnswers);
-      });
-
-      return matchLogic && finalScore >= minimumScore;
-    });
-
-    navigate(`/result?outcome=${matchOutcome?.name || "failed"}`);
+    return navigate(
+      `/result?outcome=${hasPassed ? "successful" : "unsuccessful"}`
+    );
   };
 
   return {

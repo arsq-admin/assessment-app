@@ -4,44 +4,16 @@
   "status": "DRAFT",
   "outcomes": [
     {
-      "name": "passIso27001",
-      "title": "You meet the requirements. (IS027001)",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
-      "minimumScore": 150,
-      "logic": [
-        {
-          "condition": [
-            {
-              "questionId": "SAQ000-02",
-              "op": "INCLUDES",
-              "value": ["iso27001"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "passCyberEssential",
-      "title": "You meet the requirements. (CE+)",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
-      "minimumScore": 160,
-      "logic": [
-        {
-          "condition": [
-            {
-              "questionId": "SAQ000-02",
-              "op": "INCLUDES",
-              "value": ["cyberEssentialPlus"]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "pass",
+      "name": "successful",
+      "type": "SUCCESSFUL",
       "title": "You meet the requirements.",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna.",
-      "minimumScore": 300
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna."
+    },
+    {
+      "name": "unsuccessful",
+      "type": "UNSUCCESSFUL",
+      "title": "You do not meet the requirements.",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae nibh orci. Nulla sed arcu elementum, feugiat lectus ut, tempus lacus. Cras ut augue lectus. Sed leo purus, pellentesque vel tincidunt ac, pharetra vitae tellus. Sed lectus ligula, aliquam eget mi id, sodales volutpat sem. Nulla eget enim massa. Aliquam eu elit luctus, scelerisque risus pellentesque, dapibus magna."
     }
   ],
   "introduction": [
@@ -75,27 +47,16 @@
             {
               "name": "Yes",
               "value": "yes",
-              "points": 0
+              "points": 0,
+              "isAcceptable": true
             },
-            {
-              "name": "No",
-              "value": "no",
-              "points": 0
-            }
+            { "name": "No", "value": "no", "points": 0, "isAcceptable": true }
           ],
           "logic": [
             {
-              "condition": [
-                {
-                  "op": "EQUAL",
-                  "value": "no"
-                }
-              ],
+              "condition": [{ "op": "EQUAL", "value": "no" }],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ2"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ2" }
             }
           ]
         },
@@ -108,34 +69,29 @@
             {
               "name": "Cyber Essential (Plus)",
               "value": "cyberEssentialPlus",
-              "points": 0
+              "points": 0,
+              "isAcceptable": true
             },
             {
               "name": "ISO 27001",
               "value": "iso27001",
-              "points": 0
+              "points": 0,
+              "isAcceptable": true
             },
             {
               "name": "Other",
               "value": "other",
               "freeText": true,
               "freeTextLabel": "Please name the certificate providers.",
-              "points": 0
+              "points": 0,
+              "isAcceptable": true
             }
           ],
           "logic": [
             {
-              "condition": [
-                {
-                  "op": "INCLUDES",
-                  "value": ["iso27001"]
-                }
-              ],
+              "condition": [{ "op": "INCLUDES", "value": ["iso27001"] }],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ6"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ6" }
             }
           ]
         }
@@ -159,12 +115,14 @@
               "name": "Partial – Responsibilities are understood but not formalised",
               "value": "partialResponsibilitiesAreUnderstoodButNotFormalised",
               "minimumRequired": true,
-              "points": 25
+              "points": 25,
+              "isAcceptable": true
             },
             {
               "name": "Yes – Clearly assigned roles and responsibilities, including senior levels",
               "value": "yesClearlyAssignedRolesAndResponsibilitiesIncludingSeniorLevels",
-              "points": 35
+              "points": 35,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -187,7 +145,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 15
+              "points": 15,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -214,12 +173,14 @@
               "name": "ICT risk assessment and management processes are done on an ad hoc basis",
               "value": "ictRiskAssessmentAndManagementProcessesAreDoneOnAnAdHocBasis",
               "minimumRequired": true,
-              "points": 19
+              "points": 19,
+              "isAcceptable": true
             },
             {
               "name": "Fully governed and using a repeatable formal assessment process",
               "value": "fullyGovernedAndUsingARepeatableFormalAssessmentProcess",
-              "points": 30
+              "points": 30,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -240,10 +201,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ11"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ11" }
             }
           ]
         },
@@ -258,7 +216,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 20
+              "points": 20,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -290,10 +249,21 @@
               "name": "Non EEA with adequacy agreement",
               "value": "nonEeaWithAdequacyAgreement",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
-            { "name": "EEA", "value": "eea", "points": 15 },
-            { "name": "UK Only", "value": "ukOnly", "points": 25 },
+            {
+              "name": "EEA",
+              "value": "eea",
+              "points": 15,
+              "isAcceptable": true
+            },
+            {
+              "name": "UK Only",
+              "value": "ukOnly",
+              "points": 25,
+              "isAcceptable": true
+            },
             {
               "name": "Not applicable",
               "value": "n/a",
@@ -313,10 +283,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ17"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ17" }
             }
           ]
         },
@@ -331,7 +298,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -354,7 +322,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -377,7 +346,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -398,10 +368,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ40"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ40" }
             }
           ]
         },
@@ -416,7 +383,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 40
+              "points": 40,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -442,10 +410,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ34"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ34" }
             }
           ]
         }
@@ -465,7 +430,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 20
+              "points": 20,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -488,7 +454,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 20
+              "points": 20,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -514,10 +481,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ55"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ55" }
             }
           ]
         },
@@ -532,17 +496,20 @@
               "name": "Implemented where available (on an ad hoc basis)",
               "value": "implementedWhereAvailableOnAnAdHocBasis",
               "minimumRequired": true,
-              "points": 10
+              "points": 10,
+              "isAcceptable": true
             },
             {
               "name": "Required for administrative and especially service privileged accounts only",
               "value": "requiredForAdministrativeAndEspeciallyServicePrivilegedAccountsOnly",
-              "points": 25
+              "points": 25,
+              "isAcceptable": true
             },
             {
               "name": "Required for all users",
               "value": "requiredForAllUsers",
-              "points": 41
+              "points": 41,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -565,17 +532,20 @@
               "name": "Basic user authentication - two factor authentication is implemented, where available",
               "value": "basicUserAuthenticationTwoFactorAuthenticationIsImplementedWhereAvailable",
               "minimumRequired": true,
-              "points": 35
+              "points": 35,
+              "isAcceptable": true
             },
             {
               "name": "Basic user authentication - two factor authentication is implemented, where available and for all privileged users",
               "value": "basicUserAuthenticationTwoFactorAuthenticationIsImplementedWhereAvailableAndForAllPrivilegedUsers",
-              "points": 48
+              "points": 48,
+              "isAcceptable": true
             },
             {
               "name": "2FA used for all remote/home users",
               "value": "2faUsedForAllRemotehomeUsers",
-              "points": 65
+              "points": 65,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -596,10 +566,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ43"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ43" }
             }
           ]
         },
@@ -614,7 +581,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -637,7 +605,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -658,10 +627,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ60"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ60" }
             }
           ]
         },
@@ -680,12 +646,14 @@
               "name": "Documented policy and guidance provided",
               "value": "documentedPolicyAndGuidanceProvided",
               "minimumRequired": true,
-              "points": 8
+              "points": 8,
+              "isAcceptable": true
             },
             {
               "name": "Documented policy and guidance provided and enforced by technical controls",
               "value": "documentedPolicyAndGuidanceProvidedAndEnforcedByTechnicalControls",
-              "points": 19
+              "points": 19,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -708,7 +676,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -731,12 +700,14 @@
               "name": "Yes - 10 or more attempts permitted",
               "value": "yes10OrMoreAttemptsPermitted",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Yes - fewer than 10 attempts permitted",
               "value": "yesFewerThan10AttemptsPermitted",
-              "points": 18
+              "points": 18,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -763,17 +734,20 @@
               "name": "Devices can connect but communication is routed by VPN through the organisation’s network and an unmanaged Split tunnel (Minimum at Low)",
               "value": "devicesCanConnectButCommunicationIsRoutedByVpnThroughTheOrganisationsNetworkAndAnUnmanagedSplitTunnelMinimumAtLow",
               "minimumRequired": true,
-              "points": 40
+              "points": 40,
+              "isAcceptable": true
             },
             {
               "name": "Devices can connect but all communication is routed securely by VPN through the organisation’s network or secure Split tunnel (Minimum at Moderate)",
               "value": "devicesCanConnectButAllCommunicationIsRoutedSecurelyByVpnThroughTheOrganisationsNetworkOrSecureSplitTunnelMinimumAtModerate",
-              "points": 50
+              "points": 50,
+              "isAcceptable": true
             },
             {
               "name": "Devices can only connect to trusted networks",
               "value": "devicesCanOnlyConnectToTrustedNetworks",
-              "points": 55
+              "points": 55,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -799,10 +773,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ60"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ60" }
             }
           ]
         },
@@ -817,7 +788,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 44
+              "points": 44,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -840,7 +812,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -861,10 +834,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ78"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ78" }
             },
             {
               "condition": [
@@ -880,10 +850,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ115"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ115" }
             }
           ]
         },
@@ -898,7 +865,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -921,12 +889,14 @@
               "name": "Leavers",
               "value": "leavers",
               "minimumRequired": true,
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Leavers and long term absence",
               "value": "leaversAndLongTermAbsence",
-              "points": 30
+              "points": 30,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -954,7 +924,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -975,10 +946,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ87"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ87" }
             }
           ]
         },
@@ -993,7 +961,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1016,7 +985,8 @@
               "name": "Yes - unless there is a clear and documented business need and mitigating controls are in place",
               "value": "yesUnlessThereIsAClearAndDocumentedBusinessNeedAndMitigatingControlsAreInPlace",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1039,7 +1009,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1066,7 +1037,8 @@
               "name": "Yes - clear change control and authorisation policies and processes",
               "value": "yesClearChangeControlAndAuthorisationPoliciesAndProcesses",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1089,7 +1061,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1112,7 +1085,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1135,7 +1109,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 7
+              "points": 7,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1156,10 +1131,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ100"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ100" }
             }
           ]
         },
@@ -1174,12 +1146,14 @@
               "name": "Yes - updated at least daily",
               "value": "yesUpdatedAtLeastDaily",
               "minimumRequired": true,
-              "points": 5
+              "points": 5,
+              "isAcceptable": true
             },
             {
               "name": "Yes - managed and updated hourly and emergency updates",
               "value": "yesManagedAndUpdatedHourlyAndEmergencyUpdates",
-              "points": 14
+              "points": 14,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1202,7 +1176,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1225,7 +1200,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1248,22 +1224,26 @@
               "name": "Basic Antivirus software or Application sandboxing",
               "value": "basicAntivirusSoftwareOrApplicationSandboxing",
               "minimumRequired": true,
-              "points": 3
+              "points": 3,
+              "isAcceptable": true
             },
             {
               "name": "Endpoint Detection and Response (EDR)",
               "value": "endpointDetectionAndResponseEdr",
-              "points": 12
+              "points": 12,
+              "isAcceptable": true
             },
             {
               "name": "Extended Detection and Response (XDR)",
               "value": "extendedDetectionAndResponseXdr",
-              "points": 35
+              "points": 35,
+              "isAcceptable": true
             },
             {
               "name": "Application whitelisting",
               "value": "applicationWhitelisting",
-              "points": 35
+              "points": 35,
+              "isAcceptable": true
             },
             {
               "name": "None of the above",
@@ -1289,10 +1269,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ104"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ104" }
             }
           ]
         },
@@ -1307,12 +1284,14 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Internet browsing is not available to users of the service",
               "value": "internetBrowsingIsNotAvailableToUsersOfTheService",
-              "points": 8
+              "points": 8,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1335,7 +1314,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1358,7 +1338,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1381,7 +1362,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1404,7 +1386,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 6
+              "points": 6,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1425,10 +1408,7 @@
                 }
               ],
               "action": "SKIP",
-              "target": {
-                "type": "QUESTION",
-                "value": "SAQ132"
-              }
+              "target": { "type": "QUESTION", "value": "SAQ132" }
             }
           ]
         },
@@ -1447,12 +1427,14 @@
               "name": "Patches are only applied as part of the supplier's update roadmap",
               "value": "patchesAreOnlyAppliedAsPartOfTheSuppliersUpdateRoadmap",
               "minimumRequired": true,
-              "points": 35
+              "points": 35,
+              "isAcceptable": true
             },
             {
               "name": "Full and timely patching regime",
               "value": "fullAndTimelyPatchingRegime",
-              "points": 55
+              "points": 55,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1479,12 +1461,14 @@
               "name": "Scheduled backups",
               "value": "scheduledBackups",
               "minimumRequired": true,
-              "points": 38
+              "points": 38,
+              "isAcceptable": true
             },
             {
               "name": "Scheduled encrypted and stored offsite",
               "value": "scheduledEncryptedAndStoredOffsite",
-              "points": 58
+              "points": 58,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1507,12 +1491,14 @@
               "name": "Staff only",
               "value": "staffOnly",
               "minimumRequired": true,
-              "points": 15
+              "points": 15,
+              "isAcceptable": true
             },
             {
               "name": "Staff and all relevant contractors",
               "value": "staffAndAllRelevantContractors",
-              "points": 25
+              "points": 25,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1535,7 +1521,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 24
+              "points": 24,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1558,12 +1545,14 @@
               "name": "Yes, guidance only",
               "value": "yesGuidanceOnly",
               "minimumRequired": true,
-              "points": 8
+              "points": 8,
+              "isAcceptable": true
             },
             {
               "name": "Yes, and a technical timeout of 15 minutes or less is enforced",
               "value": "yesAndATechnicalTimeoutOf15MinutesOrLessIsEnforced",
-              "points": 19
+              "points": 19,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1586,7 +1575,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 10
+              "points": 10,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1614,7 +1604,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 10
+              "points": 10,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1636,7 +1627,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 10
+              "points": 10,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1658,7 +1650,8 @@
               "name": "Yes",
               "value": "yes",
               "minimumRequired": true,
-              "points": 25
+              "points": 25,
+              "isAcceptable": true
             },
             {
               "name": "Not applicable",
@@ -1678,10 +1671,7 @@
                 }
               ],
               "action": "END",
-              "target": {
-                "type": "OUTCOME",
-                "value": "COMPLETE"
-              }
+              "target": { "type": "OUTCOME", "value": "COMPLETE" }
             }
           ]
         }

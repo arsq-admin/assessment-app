@@ -1,6 +1,6 @@
 import { Column } from "@/components";
 import { AssessmentContext } from "@/context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const ResultPage = () => {
@@ -11,19 +11,19 @@ export const ResultPage = () => {
   const outcomeName = searchParam.get("outcome");
 
   const matchedOutcome =
-    (outcomeName &&
-      config?.outcomes.find((outcome) => outcome.name === outcomeName)) ||
-    -1;
+    outcomeName &&
+    config?.outcomes.find((outcome) => outcome.name === outcomeName);
 
-  if (!outcomeName || matchedOutcome === -1) {
-    navigate("/");
-    return;
-  }
+  useEffect(() => {
+    if (!outcomeName || !matchedOutcome) {
+      navigate("/");
+    }
+  }, [matchedOutcome, navigate, outcomeName]);
 
   return (
     <Column span={12}>
-      <h1>{matchedOutcome.title}</h1>
-      <p>{matchedOutcome.body}</p>
+      <h1>{matchedOutcome ? matchedOutcome.title : ""}</h1>
+      <p>{matchedOutcome ? matchedOutcome.body : ""}</p>
     </Column>
   );
 };
