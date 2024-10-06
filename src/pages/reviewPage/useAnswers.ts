@@ -99,7 +99,11 @@ export const useAnswers = () => {
     });
 
     return navigate(
-      `/result?outcome=${hasPassed ? "successful" : "unsuccessful"}`
+      `/result?outcome=${
+        hasPassed
+          ? "successful"
+          : `unsuccessful&fail-count=${failedQuestionIds.size}`
+      }`
     );
   };
 

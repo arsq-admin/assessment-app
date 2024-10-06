@@ -1,11 +1,14 @@
 import { ImprovementPlanSection } from "./ImprovementPlanSection";
 
-export const UnsuccessfulPage = () => {
+interface Props {
+  failedCount?: number;
+}
+export const UnsuccessfulPage = ({ failedCount }: Props) => {
   return (
     <>
       <div>Thank you for your submission</div>
       <h1>Currently, you do not meet the standards for this submission</h1>
-      <ImprovementPlanSection />
+      <ImprovementPlanSection failedCount={failedCount} />
       <h2>What is an improvement plan?</h2>
       <p>
         Laculis vulputate eu urna sed. Non at nunc tristique sollicitudin massa

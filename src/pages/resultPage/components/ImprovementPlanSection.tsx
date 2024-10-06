@@ -1,4 +1,8 @@
-export const ImprovementPlanSection = () => {
+interface Props {
+  failedCount?: number;
+}
+
+export const ImprovementPlanSection = ({ failedCount }: Props) => {
   return (
     <div className="ds_inset-text">
       <p className="ds_inset-text__text">
@@ -6,7 +10,8 @@ export const ImprovementPlanSection = () => {
         will make to meet the requirements of the tender.
       </p>
       <p className="ds_inset-text__text">
-        You are required to submit an improvement plan for 3 questions.
+        You are required to submit an improvement plan for {failedCount || 1}{" "}
+        questions.
       </p>
       <button className="ds_button" type="button">
         Start your improvement plan

@@ -12,6 +12,7 @@ export const ResultPage = () => {
   const [searchParam] = useSearchParams();
 
   const outcomeName = searchParam.get("outcome");
+  const failedCount = searchParam.get("fail-count");
 
   const matchedOutcome =
     outcomeName &&
@@ -32,7 +33,7 @@ export const ResultPage = () => {
         />
       )}
       {matchedOutcome && matchedOutcome.type === OutcomeType.UNSUCCESSFUL && (
-        <UnsuccessfulPage />
+        <UnsuccessfulPage failedCount={parseInt(failedCount || "1")} />
       )}
     </Column>
   );
