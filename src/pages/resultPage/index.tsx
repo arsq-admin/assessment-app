@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { OutcomeType } from "../assessmentPage/types/assessmentConfig";
 import { UnsuccessfulPage } from "./components";
 import { SuccessfulPage } from "./components/SuccessfulPage";
+import { Container } from "@/components";
 
 export const ResultPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const ResultPage = () => {
   }, [matchedOutcome, navigate, outcomeName]);
 
   return (
-    <>
+    <Container padding="4rem">
       {matchedOutcome && matchedOutcome.type === OutcomeType.SUCCESSFUL && (
         <SuccessfulPage
           title={matchedOutcome.title}
@@ -34,6 +35,6 @@ export const ResultPage = () => {
       {matchedOutcome && matchedOutcome.type === OutcomeType.UNSUCCESSFUL && (
         <UnsuccessfulPage failedCount={parseInt(failedCount || "1")} />
       )}
-    </>
+    </Container>
   );
 };

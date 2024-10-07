@@ -70,14 +70,14 @@ function App() {
           <Column span={12}>{tenderName}</Column>
         </Container>
       </Header>
-      <Container padding="4rem">
-        <Routes>
-          <Route path="/" Component={IntroductionPage} />
-          <Route path="/assessment" Component={AssessmentPage} />
-          <Route path="/review" Component={ReviewPage} />
-          <Route path="/result" Component={ResultPage} />
-        </Routes>
-      </Container>
+
+      <Routes>
+        <Route path="/" Component={IntroductionPage} />
+        <Route path="/assessment" Component={AssessmentPage} />
+        <Route path="/review" Component={ReviewPage} />
+        <Route path="/result" Component={ResultPage} />
+      </Routes>
+
       <Footer />
     </AssessmentContext.Provider>
   );

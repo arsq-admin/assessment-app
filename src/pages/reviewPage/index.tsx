@@ -1,7 +1,7 @@
 import { Heading } from "./Heading";
 import { useAnswers } from "./useAnswers";
 import { ReviewSection } from "./ReviewSection";
-import { Column, PreviewNotice } from "@/components";
+import { Column, Container, PreviewNotice } from "@/components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export const ReviewPage = () => {
   const sections = Object.keys(answers);
 
   return (
-    <>
+    <Container padding="2rem">
       <Heading />
       {skippedQuestionId && (
         <Column span={12}>
@@ -58,6 +58,6 @@ export const ReviewPage = () => {
           </button>
         </NavigationContainer>
       </Column>
-    </>
+    </Container>
   );
 };
