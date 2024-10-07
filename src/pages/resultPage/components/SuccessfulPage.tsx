@@ -1,4 +1,4 @@
-import { Column } from "@/components";
+import { Column, PoweredBySupply25 } from "@/components";
 import { scotGovColour } from "@/themes/scotGov";
 
 interface Props {
@@ -44,6 +44,7 @@ export const SuccessfulPage = ({ title = "", body = "" }: Props) => {
         <p style={{ color: secondaryText }}>
           If you’d like to track your progress please visit app.supply25.com
         </p>
+        <PoweredBySupply25 margin="5rem auto 0" />
       </Column>
     </>
   );

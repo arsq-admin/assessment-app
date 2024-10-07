@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { AssessmentContext } from "../../../context";
 import { Section } from "./Section";
-import { Column } from "@/components";
+import { Column, PoweredBySupply25 } from "@/components";
 import { getQuestionJourneyFromAnswers } from "@/services/assessment";
 
 const Title = styled.h4`
@@ -48,6 +48,7 @@ export const ProgressBar = () => {
 
   return (
     <Column span={4}>
+      <PoweredBySupply25 margin="0 auto 2rem" />
       <Title>Progress</Title>
       <p>
         You have completed {currentSectionIndex} out of{" "}
