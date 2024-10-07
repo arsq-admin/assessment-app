@@ -42,7 +42,8 @@ export const SuccessfulPage = ({ title = "", body = "" }: Props) => {
           remaining assessments to complete.
         </p>
         <p style={{ color: secondaryText }}>
-          If you’d like to track your progress please visit app.supply25.com
+          If you’d like to track your progress please visit{" "}
+          <a href="https://app-staging.supply25.com">app.supply25.com</a>
         </p>
         <PoweredBySupply25 margin="5rem auto 0" />
       </Column>
