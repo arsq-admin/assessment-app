@@ -5,4 +5,6 @@ export const scotGovColour = {
   secondaryText: "#727272",
   positive: "#428542",
   white: "#ffffff",
+  background: "#ffffff",
+  secondaryBackground: "#f8f8f8",
 };

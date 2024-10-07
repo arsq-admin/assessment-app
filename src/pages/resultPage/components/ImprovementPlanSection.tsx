@@ -5,9 +5,15 @@ interface Props {
 }
 
 export const ImprovementPlanSection = ({ failedCount }: Props) => {
-  const { text, secondaryText, primary } = scotGovColour;
+  const { text, secondaryText, primary, secondaryBackground } = scotGovColour;
   return (
-    <div className="ds_inset-text" style={{ borderLeftColor: primary }}>
+    <div
+      className="ds_inset-text"
+      style={{
+        borderLeftColor: primary,
+        backgroundColor: secondaryBackground,
+      }}
+    >
       <p className="ds_inset-text__text" style={{ color: secondaryText }}>
         However, you can complete an{" "}
         <strong style={{ color: text }}>Improvement plan</strong> to detail the
