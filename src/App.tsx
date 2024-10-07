@@ -70,7 +70,7 @@ function App() {
           <Column span={12}>{tenderName}</Column>
         </Container>
       </Header>
-      <Container>
+      <Container padding="4rem">
         <Routes>
           <Route path="/" Component={IntroductionPage} />
           <Route path="/assessment" Component={AssessmentPage} />

@@ -1,4 +1,3 @@
-import { Column } from "@/components";
 import { AssessmentContext } from "@/context";
 import { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -25,7 +24,7 @@ export const ResultPage = () => {
   }, [matchedOutcome, navigate, outcomeName]);
 
   return (
-    <Column span={12}>
+    <>
       {matchedOutcome && matchedOutcome.type === OutcomeType.SUCCESSFUL && (
         <SuccessfulPage
           title={matchedOutcome.title}
@@ -35,6 +34,6 @@ export const ResultPage = () => {
       {matchedOutcome && matchedOutcome.type === OutcomeType.UNSUCCESSFUL && (
         <UnsuccessfulPage failedCount={parseInt(failedCount || "1")} />
       )}
-    </Column>
+    </>
   );
 };
