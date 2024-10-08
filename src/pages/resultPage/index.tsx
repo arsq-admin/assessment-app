@@ -2,8 +2,7 @@ import { AssessmentContext } from "@/context";
 import { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { OutcomeType } from "../assessmentPage/types/assessmentConfig";
-import { UnsuccessfulPage } from "./components";
-import { SuccessfulPage } from "./components/SuccessfulPage";
+import { UnsuccessfulPage, SuccessfulPage } from "./components";
 import { Container } from "@/components";
 
 export const ResultPage = () => {

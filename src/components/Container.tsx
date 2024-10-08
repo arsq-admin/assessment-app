@@ -10,7 +10,6 @@ export const Container = styled.div<{ padding?: string }>`
   grid-column-gap: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  position: relative;
 `;
 
 export const Column = styled.div<{
@@ -23,7 +22,6 @@ export const Column = styled.div<{
     return typeof span === "number" ? `span ${span}` : span;
   }};
   margin: ${({ margin }) => margin || "0"};
-  position: ${({ position }) => position || "relative"};
 `;
 
 export const FluidContainer = styled.div`

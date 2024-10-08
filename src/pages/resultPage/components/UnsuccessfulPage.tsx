@@ -1,4 +1,4 @@
-import { scotGovColour } from "@/themes/scotGov";
+import { scotGovColour } from "@/themes";
 import { ImprovementPlanSection } from "./ImprovementPlanSection";
 import { Column, PoweredBySupply25 } from "@/components";
 

@@ -1,4 +1,4 @@
-import { scotGovColour } from "@/themes/scotGov";
+import { scotGovColour } from "@/themes";
 
 interface Props {
   failedCount?: number;

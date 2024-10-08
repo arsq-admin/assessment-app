@@ -1,5 +1,5 @@
 import { Column, PoweredBySupply25 } from "@/components";
-import { scotGovColour } from "@/themes/scotGov";
+import { scotGovColour } from "@/themes";
 
 interface Props {
   title?: string;
