@@ -1,6 +1,6 @@
 import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "../../context";
-import { Column } from "@/components";
+import { Column, Container } from "@/components";
 import { AssessmentTtile } from "./components";
 import { PreviewNotice } from "@/components";
 import { ProgressBar } from "./progressBar";
@@ -42,29 +42,33 @@ export const AssessmentPage = () => {
   return (
     <>
       {isDisabled && (
-        <Column span={12}>
-          <PreviewNotice skippedQuestionId={firstSkippedQuestionId} />
-        </Column>
+        <Container>
+          <Column span={12}>
+            <PreviewNotice skippedQuestionId={firstSkippedQuestionId} />
+          </Column>
+        </Container>
       )}
-      <Column span={8}>
-        {question ? (
-          <>
-            <AssessmentTtile
-              question={question}
-              section={section}
-              title={config?.name || ""}
-            />
-            <QuestionTemplate
-              question={question}
-              currentAnswers={currentAnswers}
-              disabled={!!isDisabled}
-            />
-          </>
-        ) : (
-          <div>Missing question</div>
-        )}
-      </Column>
-      <ProgressBar />
+      <Container padding={isDisabled ? "1rem" : "3rem"}>
+        <Column span={8}>
+          {question ? (
+            <>
+              <AssessmentTtile
+                question={question}
+                section={section}
+                title={config?.name || ""}
+              />
+              <QuestionTemplate
+                question={question}
+                currentAnswers={currentAnswers}
+                disabled={!!isDisabled}
+              />
+            </>
+          ) : (
+            <div>Missing question</div>
+          )}
+        </Column>
+        <ProgressBar />
+      </Container>
     </>
   );
 };

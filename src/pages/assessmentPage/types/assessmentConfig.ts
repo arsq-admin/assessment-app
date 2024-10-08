@@ -122,12 +122,16 @@ export type Question =
   | MultipleChoiceQuestion
   | NumberQuestion;
 
+export enum OutcomeType {
+  SUCCESSFUL = "SUCCESSFUL",
+  UNSUCCESSFUL = "UNSUCCESSFUL",
+}
+
 export interface Outcomes {
   name: string;
-  logic?: Logic[];
+  type: OutcomeType;
   title: string;
   body: string;
-  minimumScore: number;
 }
 
 export interface Section {
