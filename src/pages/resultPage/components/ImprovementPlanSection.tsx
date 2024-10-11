@@ -1,4 +1,5 @@
 import { scotGovColour } from "@/themes";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   failedCount?: number;
@@ -6,6 +7,8 @@ interface Props {
 
 export const ImprovementPlanSection = ({ failedCount }: Props) => {
   const { text, secondaryText, primary, secondaryBackground } = scotGovColour;
+  const navigate = useNavigate();
+
   return (
     <div
       className="ds_inset-text"
@@ -23,7 +26,12 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
         You are required to submit an improvement plan for{" "}
         <strong style={{ color: text }}>{failedCount || 1} questions</strong>.
       </p>
-      <button className="ds_button" type="button" style={{ margin: "1rem" }}>
+      <button
+        onClick={() => navigate("/improvement-plan")}
+        className="ds_button"
+        type="button"
+        style={{ margin: "1rem" }}
+      >
         Start your improvement plan
       </button>
     </div>
