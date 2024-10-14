@@ -9,6 +9,6 @@ interface Props {
   guidance: string;
 }
 
-export const Guidance = ({ guidance }: Props) => {
+export const QuestionGuidance = ({ guidance }: Props) => {
   return <Wrapper>{guidance}</Wrapper>;
 };

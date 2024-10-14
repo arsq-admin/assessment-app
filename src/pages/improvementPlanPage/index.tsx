@@ -4,6 +4,7 @@ import { ImprovementPlanBanner } from "./ImprovementPlanBanner";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { getQuestionFromConfig } from "@/services/assessment";
+import { ImprovementPlanQuestionTemplate } from "./ImprovementPlanQuestionTemplate";
 
 export const ImprovementPlanPage = () => {
   useImprovementPlan();
@@ -18,7 +19,12 @@ export const ImprovementPlanPage = () => {
     <>
       <ImprovementPlanBanner />
       <Container padding="2rem">
-        <Column span={12}>
+        <Column span={8}>
+          <h3>
+            Please detail the improvements you will make to reach at least the
+            minimum requirement for this question.
+          </h3>
+
           {question && (
             <AssessmentTitle
               question={question}
@@ -26,8 +32,9 @@ export const ImprovementPlanPage = () => {
               title={`${config?.name} - Improvement Plan`}
             />
           )}
+
+          {question && <ImprovementPlanQuestionTemplate question={question} />}
         </Column>
-        <Column span={12}>improvement plan</Column>
       </Container>
     </>
   );
