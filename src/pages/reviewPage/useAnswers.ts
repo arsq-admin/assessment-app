@@ -23,7 +23,7 @@ export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
   const navigate = useNavigate();
-  const { currentAnswers, config, questionsById } =
+  const { currentAnswers, config, questionsById, setQuestionId } =
     useContext(AssessmentContext);
 
   const questionIds =
@@ -101,6 +101,8 @@ export const useAnswers = () => {
         });
       }
     });
+
+    setQuestionId(Object.values(failedAnswers)[0].id);
 
     localStorage.setItem(
       `failed-questions-${config.id}`,

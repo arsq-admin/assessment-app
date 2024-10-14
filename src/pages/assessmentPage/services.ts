@@ -99,32 +99,3 @@ export const formatAnswer = (
     return { value, freeText: freeTextAnswers[value] || undefined };
   });
 };
-
-export const getQuestionFromConfig = (
-  config: AssessmentConfig,
-  questionId: string
-): {
-  question: Question | null;
-  section: string;
-} => {
-  if (!questionId) {
-    return {
-      question: null,
-      section: "",
-    };
-  }
-
-  for (let i = 0; i <= config.sections.length - 1; i++) {
-    const { questions } = config.sections[i];
-    for (let j = 0; j <= questions.length - 1; j++) {
-      if (questions[j].id === questionId) {
-        return { question: questions[j], section: config.sections[i].name };
-      }
-    }
-  }
-
-  return {
-    question: null,
-    section: "",
-  };
-};
