@@ -10,8 +10,8 @@ interface Props {
 
 const Title = styled.h2`
   margin: 0;
-  font-size: 1.7rem;
-  font-weight: 400;
+  font-size: 1.1875rem;
+  font-weight: 700;
   margin-bottom: 0.25rem;
 `;
 
