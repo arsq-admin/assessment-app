@@ -1,14 +1,24 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
+import { QuestionAndAnswer } from "../reviewPage/useAnswers";
+
+interface SavedFailedQuestions {
+  questionIds: QuestionAndAnswer[];
+}
 
 export const useImprovementPlan = () => {
-  const { config } = useContext(AssessmentContext);
+  const { config, questionId } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(
     `failed-questions-${config?.id}`
   );
 
-  const failedAnswers = JSON.parse(failedAnswersJson || "");
+  const { questionIds: failedAnswers } = JSON.parse(
+    failedAnswersJson || ""
+  ) as SavedFailedQuestions;
 
-  console.log(failedAnswers);
-  return {};
+  const failedAnswer = failedAnswers.find((answer) => {
+    return answer?.id === questionId;
+  });
+
+  return { failedAnswer };
 };

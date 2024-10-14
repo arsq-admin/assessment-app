@@ -7,7 +7,7 @@ import { getQuestionFromConfig } from "@/services/assessment";
 import { ImprovementPlanQuestionTemplate } from "./ImprovementPlanQuestionTemplate";
 
 export const ImprovementPlanPage = () => {
-  useImprovementPlan();
+  const { failedAnswer } = useImprovementPlan();
   const { config, questionId } = useContext(AssessmentContext);
 
   const { question, section } =
@@ -33,7 +33,12 @@ export const ImprovementPlanPage = () => {
             />
           )}
 
-          {question && <ImprovementPlanQuestionTemplate question={question} />}
+          {question && (
+            <ImprovementPlanQuestionTemplate
+              failedAnswer={failedAnswer}
+              question={question}
+            />
+          )}
         </Column>
       </Container>
     </>

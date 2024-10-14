@@ -2,6 +2,7 @@ import {
   AssessmentConfig,
   LogicAction,
   Question,
+  QuestionType,
   TargetType,
 } from "@/pages/assessmentPage/types/assessmentConfig";
 import { AssessmentAnswers } from "@/pages/assessmentPage/types/assessmentAnswers";
@@ -307,4 +308,18 @@ export const getQuestionFromConfig = (
     question: null,
     section: "",
   };
+};
+
+export const getQuestionMinimumRequiredAnswer = (question: Question) => {
+  const { type } = question;
+
+  if (type === QuestionType.MULTIPLE_CHOICE) {
+    const minOption = question.options.find((option) => {
+      return option.minimumRequired === true;
+    });
+
+    return minOption?.name;
+  }
+
+  return undefined;
 };
