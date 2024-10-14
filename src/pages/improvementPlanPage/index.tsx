@@ -1,6 +1,6 @@
 import { AssessmentTitle, Column, Container } from "@/components";
 import { useImprovementPlan } from "./useImprovementPlan";
-import { ImprovementPlanBanner } from "./improvementPlanBanner";
+import { ImprovementPlanBanner } from "./ImprovementPlanBanner";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { getQuestionFromConfig } from "@/services/assessment";
