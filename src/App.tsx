@@ -19,7 +19,6 @@ const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
 `;
 
 function App() {
