@@ -1,4 +1,9 @@
-import { Column, Container, PoweredBySupply25 } from "@/components";
+import {
+  Column,
+  Container,
+  PoweredBySupply25,
+  ImprovementPlanBanner,
+} from "@/components";
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { useImprovementPlanAnswers } from "./useImprovementPlanAnswers";
@@ -21,44 +26,47 @@ export const ImprovementPlanReviewPage = () => {
   const { sections, answers } = useImprovementPlanAnswers();
 
   return (
-    <Container padding="2rem">
-      <Column span={9}>
-        <p>{config?.name} - Improvement Plan</p>
-        <h1>Review your assessment answers</h1>
-        <p>
-          Thanks you for completing laculis vulputate eu urna sed. Non at nunc
-          tristique sollicitudin massa semper hac rutrum. Nam mauris turpis duis
-          tincidunt nisl a morbi quam vitae.
-        </p>
-        <br />
+    <>
+      <ImprovementPlanBanner />
+      <Container padding="2rem">
+        <Column span={9}>
+          <p>{config?.name} - Improvement Plan</p>
+          <h1>Review your assessment answers</h1>
+          <p>
+            Thanks you for completing laculis vulputate eu urna sed. Non at nunc
+            tristique sollicitudin massa semper hac rutrum. Nam mauris turpis
+            duis tincidunt nisl a morbi quam vitae.
+          </p>
+          <br />
 
-        {sections.map((section) => {
-          return (
-            <ImprovementPlanSection
-              key={section.name}
-              section={section}
-              answers={answers}
-            />
-          );
-        })}
-        <NavigationContainer>
-          <button
-            className="ds_button ds_button--secondary"
-            type="button"
-            onClick={() => {
-              navigate("/improvement-plan");
-            }}
-          >
-            Previous
-          </button>
-          <button className="ds_button" type="button">
-            Submit Improvement Plan
-          </button>
-        </NavigationContainer>
-      </Column>
-      <Column span={3}>
-        <PoweredBySupply25 />
-      </Column>
-    </Container>
+          {sections.map((section) => {
+            return (
+              <ImprovementPlanSection
+                key={section.name}
+                section={section}
+                answers={answers}
+              />
+            );
+          })}
+          <NavigationContainer>
+            <button
+              className="ds_button ds_button--secondary"
+              type="button"
+              onClick={() => {
+                navigate("/improvement-plan");
+              }}
+            >
+              Previous
+            </button>
+            <button className="ds_button" type="button">
+              Submit Improvement Plan
+            </button>
+          </NavigationContainer>
+        </Column>
+        <Column span={3}>
+          <PoweredBySupply25 />
+        </Column>
+      </Container>
+    </>
   );
 };

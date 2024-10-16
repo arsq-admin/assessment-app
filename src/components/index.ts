@@ -6,3 +6,5 @@ export { AssessmentTitle } from "./AssessmentTitle";
 export { QuestionTitle } from "./styledComponents";
 export { QuestionGuidance } from "./QuestionGuidance";
 export { FreeTextInput } from "./FreeTextInput";
+export { ImprovementPlanBanner } from "./ImprovementPlanBanner";
+export { ReviewAnswerRow } from "./ReviewAnswerRow";

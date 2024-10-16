@@ -1,4 +1,4 @@
-import { ReviewAnswerRow } from "@/components/ReviewAnswerRow";
+import { ReviewAnswerRow } from "@/components";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import styled from "styled-components";
 

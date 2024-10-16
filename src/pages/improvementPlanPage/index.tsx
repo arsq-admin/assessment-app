@@ -1,6 +1,11 @@
-import { AssessmentTitle, Column, Container } from "@/components";
+import {
+  AssessmentTitle,
+  Column,
+  Container,
+  ImprovementPlanBanner,
+  PoweredBySupply25,
+} from "@/components";
 import { useImprovementPlan } from "./useImprovementPlan";
-import { ImprovementPlanBanner } from "./ImprovementPlanBanner";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { getQuestionFromConfig } from "@/services/assessment";
@@ -43,6 +48,9 @@ export const ImprovementPlanPage = () => {
               improvementAction={improvementAction}
             />
           )}
+        </Column>
+        <Column span={4}>
+          <PoweredBySupply25 />
         </Column>
       </Container>
     </>
