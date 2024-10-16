@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { QuestionAndAnswer } from "../reviewPage/useAnswers";
 import { YourAnswer } from "./YourAnswer";
 import { MinimumRequiredAnswer } from "./MinimumRequiredAnswer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AssessmentContext } from "@/context";
+import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = styled.div`
   padding: 1rem 0;
@@ -39,9 +41,10 @@ export const ImprovementPlanQuestionTemplate = ({
   failedAnswer,
   onPrev,
   onNext,
-
   improvementAction,
 }: Props) => {
+  const { reachedImprovementPlanReviewPage } = useContext(AssessmentContext);
+  const navigate = useNavigate();
   const { title, guidance, id } = question;
   const [ipValue, setIpValue] = useState(improvementAction || "");
 
@@ -107,6 +110,18 @@ export const ImprovementPlanQuestionTemplate = ({
           Next
         </button>
       </NavigationContainer>
+      {reachedImprovementPlanReviewPage && (
+        <div>
+          <button
+            style={{ margin: "0" }}
+            className="ds_button"
+            type="button"
+            onClick={() => navigate("/improvement-plan/review")}
+          >
+            Back to Summary
+          </button>
+        </div>
+      )}
     </QuestionContainer>
   );
 };

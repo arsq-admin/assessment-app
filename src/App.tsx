@@ -32,6 +32,8 @@ function App() {
     reachedReviewPage,
     setReachedReviewPage,
     questionsById,
+    reachedImprovementPlanReviewPage,
+    setReachedImprovementPlanReviewPage,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -60,6 +62,8 @@ function App() {
         reachedReviewPage,
         setReachedReviewPage,
         questionsById,
+        reachedImprovementPlanReviewPage,
+        setReachedImprovementPlanReviewPage,
       }}
     >
       <Header>

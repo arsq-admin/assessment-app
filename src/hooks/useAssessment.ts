@@ -18,6 +18,10 @@ export const useAssessment = () => {
   const assessmentConfig = TEMP_assessmentConfigs[assessmentName];
   const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
 
+  const [
+    reachedImprovementPlanReviewPage,
+    setReachedImprovementPlanReviewPage,
+  ] = useState<boolean>(false);
   const [reachedReviewPage, setReachedReviewPage] = useState<boolean>(false);
   const [questionId, setQuestionId] = useState<string>(
     idInParam || firstQuestion.id || ""
@@ -56,5 +60,7 @@ export const useAssessment = () => {
     inPreviewMode,
     setInPreviewMode,
     questionsById,
+    reachedImprovementPlanReviewPage,
+    setReachedImprovementPlanReviewPage,
   };
 };

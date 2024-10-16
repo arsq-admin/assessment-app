@@ -10,7 +10,12 @@ interface SavedFailedQuestions {
 export const useImprovementPlan = () => {
   const navigate = useNavigate();
 
-  const { config, questionId, setQuestionId } = useContext(AssessmentContext);
+  const {
+    config,
+    questionId,
+    setQuestionId,
+    setReachedImprovementPlanReviewPage,
+  } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(
     `failed-questions-${config?.id}`
   );
@@ -47,6 +52,7 @@ export const useImprovementPlan = () => {
     const isLastQuestion = currentIndex === failedAnswers.length - 1;
 
     if (isLastQuestion) {
+      setReachedImprovementPlanReviewPage(true);
       navigate("/improvement-plan/review");
       callback();
     }
