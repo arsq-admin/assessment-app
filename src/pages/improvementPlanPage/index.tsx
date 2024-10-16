@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { getQuestionFromConfig } from "@/services/assessment";
 import { ImprovementPlanQuestionTemplate } from "./ImprovementPlanQuestionTemplate";
-import { ProgressBar } from "../assessmentPage/progressBar";
 
 export const ImprovementPlanPage = () => {
   const { failedAnswer } = useImprovementPlan();
@@ -41,7 +40,6 @@ export const ImprovementPlanPage = () => {
             />
           )}
         </Column>
-        <ProgressBar />
       </Container>
     </>
   );
