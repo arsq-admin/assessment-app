@@ -20,9 +20,7 @@ export const SuccessfulPage = ({ title = "", body = "" }: Props) => {
           </h1>
           <div className="ds_notification-panel__content">
             <p style={{ margin: "0 0 2rem" }}>
-              <strong>
-                You have met the requirements for this assessment.
-              </strong>
+              <b>You have met the requirements for this assessment.</b>
             </p>
             <p style={{ margin: "0" }}>We’ve sent you a confirmation email.</p>
             <p>Check your spam inbox if you do not get an email.</p>

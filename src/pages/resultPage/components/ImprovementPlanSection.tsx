@@ -19,12 +19,12 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
     >
       <p className="ds_inset-text__text" style={{ color: secondaryText }}>
         However, you can complete an{" "}
-        <strong style={{ color: text }}>Improvement plan</strong> to detail the
-        changes you will make to meet the requirements of the tender.
+        <b style={{ color: text }}>Improvement plan</b> to detail the changes
+        you will make to meet the requirements of the tender.
       </p>
       <p className="ds_inset-text__text" style={{ color: secondaryText }}>
         You are required to submit an improvement plan for{" "}
-        <strong style={{ color: text }}>{failedCount || 1} questions</strong>.
+        <b style={{ color: text }}>{failedCount || 1} questions</b>.
       </p>
       <button
         onClick={() => navigate("/improvement-plan")}

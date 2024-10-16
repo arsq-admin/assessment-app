@@ -116,7 +116,11 @@ export const ImprovementPlanQuestionTemplate = ({
             style={{ margin: "0" }}
             className="ds_button"
             type="button"
-            onClick={() => navigate("/improvement-plan/review")}
+            onClick={() => {
+              setIpValue("");
+              saveImprovementAction(id, ipValue);
+              navigate("/improvement-plan/review");
+            }}
           >
             Back to Summary
           </button>
