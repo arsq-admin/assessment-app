@@ -5,6 +5,10 @@ import { Section } from "../assessmentPage/types/assessmentConfig";
 export const useImprovementPlanAnswers = () => {
   const { config } = useContext(AssessmentContext);
 
+  const failedAnswers = JSON.parse(
+    localStorage.getItem(`failed-questions-${config?.id}`) || "{}"
+  );
+
   const improvementPlanAnswers = JSON.parse(
     localStorage.getItem("improvement-plan-answers") || "{}"
   );
@@ -12,7 +16,9 @@ export const useImprovementPlanAnswers = () => {
   const sections: Section[] = [];
   config?.sections.forEach((section) => {
     const improvementPlanQuestions = section.questions.filter((question) => {
-      return question.id in improvementPlanAnswers;
+      return failedAnswers?.questionIds.find((answer) => {
+        return answer.id === question.id;
+      });
     });
 
     if (improvementPlanQuestions.length > 0) {
