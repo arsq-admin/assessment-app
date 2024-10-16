@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { QuestionAndAnswer } from "../reviewPage/useAnswers";
 import { YourAnswer } from "./YourAnswer";
 import { MinimumRequiredAnswer } from "./MinimumRequiredAnswer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const QuestionContainer = styled.div`
   padding: 1rem 0;
@@ -29,8 +29,9 @@ const NavigationContainer = styled.div`
 interface Props {
   question: Question;
   failedAnswer?: QuestionAndAnswer;
-  onPrev: () => void;
-  onNext: () => void;
+  onPrev: (callback: () => void) => void;
+  onNext: (callback: () => void) => void;
+  improvementAction: string;
 }
 
 export const ImprovementPlanQuestionTemplate = ({
@@ -38,9 +39,30 @@ export const ImprovementPlanQuestionTemplate = ({
   failedAnswer,
   onPrev,
   onNext,
+
+  improvementAction,
 }: Props) => {
   const { title, guidance, id } = question;
-  const [ipValue, setIpValue] = useState("");
+  const [ipValue, setIpValue] = useState(improvementAction || "");
+
+  const saveImprovementAction = (questionId: string, answer: string) => {
+    const currentImprovementPlan = JSON.parse(
+      localStorage.getItem("improvement-plan-answers") || "{}"
+    );
+    const improvementPlanAnswers = {
+      ...currentImprovementPlan,
+      [questionId]: answer,
+    };
+
+    localStorage.setItem(
+      "improvement-plan-answers",
+      JSON.stringify(improvementPlanAnswers)
+    );
+  };
+
+  useEffect(() => {
+    setIpValue(improvementAction);
+  }, [improvementAction]);
 
   return (
     <QuestionContainer>
@@ -61,10 +83,12 @@ export const ImprovementPlanQuestionTemplate = ({
         <button
           className="ds_button ds_button--secondary"
           type="button"
-          id="next"
+          id="previous"
           onClick={() => {
-            setIpValue("");
-            onPrev();
+            onPrev(() => {
+              saveImprovementAction(id, ipValue);
+              setIpValue("");
+            });
           }}
         >
           Previous
@@ -74,8 +98,10 @@ export const ImprovementPlanQuestionTemplate = ({
           type="button"
           id="next"
           onClick={() => {
-            setIpValue("");
-            onNext();
+            onNext(() => {
+              setIpValue("");
+              saveImprovementAction(id, ipValue);
+            });
           }}
         >
           Next

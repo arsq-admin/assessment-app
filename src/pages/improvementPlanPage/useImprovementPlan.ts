@@ -20,7 +20,7 @@ export const useImprovementPlan = () => {
     return answer?.id === questionId;
   });
 
-  const onPrev = () => {
+  const onPrev = (callback: () => void) => {
     const currentIndex = failedAnswers.findIndex((answer) => {
       return answer.id === questionId;
     });
@@ -28,10 +28,11 @@ export const useImprovementPlan = () => {
     const prevQuestion = failedAnswers[currentIndex - 1];
     if (prevQuestion) {
       setQuestionId(prevQuestion.id);
+      callback();
     }
   };
 
-  const onNext = () => {
+  const onNext = (callback: () => void) => {
     const currentIndex = failedAnswers.findIndex((answer) => {
       return answer.id === questionId;
     });
@@ -39,8 +40,18 @@ export const useImprovementPlan = () => {
     const nextQuestion = failedAnswers[currentIndex + 1];
     if (nextQuestion) {
       setQuestionId(nextQuestion.id);
+      callback();
     }
   };
 
-  return { failedAnswer, onNext, onPrev };
+  const improvementAction = JSON.parse(
+    localStorage.getItem("improvement-plan-answers") || "{}"
+  )?.[questionId];
+
+  return {
+    failedAnswer,
+    onNext,
+    onPrev,
+    improvementAction,
+  };
 };

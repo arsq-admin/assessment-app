@@ -27,7 +27,9 @@ export const YourAnswer = ({ failedAnswer }: Props) => {
         return (
           <React.Fragment key={answer.value}>
             <p style={{ color: secondaryText }}>{answer.label}</p>
-            {answer.freeText && <p>{answer.freeText}</p>}
+            {answer.freeText && (
+              <p style={{ color: secondaryText }}>{answer.freeText}</p>
+            )}
           </React.Fragment>
         );
       })}
