@@ -1,11 +1,10 @@
 import { QuestionTemplate } from "./questionTemplate";
 import { AssessmentContext } from "../../context";
-import { Column, Container } from "@/components";
-import { AssessmentTtile } from "./components";
+import { Column, Container, AssessmentTitle } from "@/components";
 import { PreviewNotice } from "@/components";
 import { ProgressBar } from "./progressBar";
 import { useContext } from "react";
-import { getQuestionFromConfig } from "./services";
+import { getQuestionFromConfig } from "@/services/assessment";
 import {
   getFirstUnansweredQuestion,
   getQuestionJourneyFromAnswers,
@@ -52,7 +51,7 @@ export const AssessmentPage = () => {
         <Column span={8}>
           {question ? (
             <>
-              <AssessmentTtile
+              <AssessmentTitle
                 question={question}
                 section={section}
                 title={config?.name || ""}

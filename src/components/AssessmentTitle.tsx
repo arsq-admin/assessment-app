@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Question } from "../types/assessmentConfig";
-import { SectionTitle } from ".";
+import { Question } from "../pages/assessmentPage/types/assessmentConfig";
+import { SectionTitle } from "../pages/assessmentPage/components";
 
 interface Props {
   title: string;
@@ -10,12 +10,12 @@ interface Props {
 
 const Title = styled.h2`
   margin: 0;
-  font-size: 1.7rem;
-  font-weight: 400;
+  font-size: 1.1875rem;
+  font-weight: 700;
   margin-bottom: 0.25rem;
 `;
 
-export const AssessmentTtile = ({ title, section, question }: Props) => {
+export const AssessmentTitle = ({ title, section, question }: Props) => {
   return (
     <>
       <Title>{title}</Title>

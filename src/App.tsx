@@ -3,6 +3,7 @@ import {
   ReviewPage,
   IntroductionPage,
   ResultPage,
+  ImprovementPlanPage,
 } from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer, Footer } from "./components";
@@ -18,7 +19,6 @@ const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
 `;
 
 function App() {
@@ -76,6 +76,7 @@ function App() {
         <Route path="/assessment" Component={AssessmentPage} />
         <Route path="/review" Component={ReviewPage} />
         <Route path="/result" Component={ResultPage} />
+        <Route path="/improvement-plan" Component={ImprovementPlanPage} />
       </Routes>
 
       <Footer />

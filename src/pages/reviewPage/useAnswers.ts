@@ -13,14 +13,17 @@ export interface FormattedAnswer extends AnswerValue {
   label: string;
 }
 
-export type FormattedAnswers = Record<
-  string,
-  { id: string; question: string; answers: FormattedAnswer[] }[]
->;
+export interface QuestionAndAnswer {
+  id: string;
+  question: string;
+  answers: FormattedAnswer[];
+}
+
+export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
   const navigate = useNavigate();
-  const { currentAnswers, config, questionsById } =
+  const { currentAnswers, config, questionsById, setQuestionId } =
     useContext(AssessmentContext);
 
   const questionIds =
@@ -78,7 +81,8 @@ export const useAnswers = () => {
     const answers = Object.values(formattedAnswers).flat();
 
     let hasPassed = true;
-    const failedQuestionIds = new Set();
+
+    const failedAnswers: Record<string, QuestionAndAnswer> = {};
 
     answers.forEach((answer) => {
       const { id, answers: questionAnswer } = answer;
@@ -92,17 +96,24 @@ export const useAnswers = () => {
 
           if (optionConfig && !optionConfig.isAcceptable) {
             hasPassed = false;
-            failedQuestionIds.add(id);
+            failedAnswers[id] = answer;
           }
         });
       }
     });
 
+    setQuestionId(Object.values(failedAnswers)[0].id);
+
+    localStorage.setItem(
+      `failed-questions-${config.id}`,
+      JSON.stringify({ questionIds: Object.values(failedAnswers) })
+    );
+
     return navigate(
       `/result?outcome=${
         hasPassed
           ? "successful"
-          : `unsuccessful&fail-count=${failedQuestionIds.size}`
+          : `unsuccessful&fail-count=${Object.keys(failedAnswers).length}`
       }`
     );
   };

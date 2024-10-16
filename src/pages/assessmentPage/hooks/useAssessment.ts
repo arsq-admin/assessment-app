@@ -1,5 +1,6 @@
 // import { useParams } from "react-router-dom";
-import { getQuestionFromConfig, TEMP_assessmentConfigs } from "../services";
+import { TEMP_assessmentConfigs } from "../services";
+import { getQuestionFromConfig } from "@/services/assessment";
 import { useState } from "react";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
 import { useSearchParams } from "react-router-dom";

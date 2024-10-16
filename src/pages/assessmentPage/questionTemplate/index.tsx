@@ -7,8 +7,8 @@ import { isMultipleChoiceQuestion } from "../services";
 import { useAssessmentAnswers, useAssessmentNavigation } from "./hooks";
 import { AssessmentAnswers } from "../types/assessmentAnswers";
 import { AssessmentContext } from "../../../context";
-import { Guidance } from "../components";
 import styled from "styled-components";
+import { QuestionTitle, QuestionGuidance } from "@/components";
 
 const QuestionContainer = styled.div`
   margin-top: 1rem;
@@ -16,14 +16,6 @@ const QuestionContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
   align-items: flex-start;
-`;
-
-const QuestionTitle = styled.h1`
-  font-size: 1.7rem;
-  font-weight: 700;
-  margin: 0;
-  display: flex;
-  gap: 0.5rem;
 `;
 
 const NavigationContainer = styled.div`
@@ -106,7 +98,7 @@ export const QuestionTemplate = ({
           <span>{title}</span>
         </QuestionTitle>
 
-        {guidance && <Guidance guidance={guidance} />}
+        {guidance && <QuestionGuidance guidance={guidance} />}
 
         {isMultipleChoiceQuestion(question) && !question.allowMultiple ? (
           <RadioGroup

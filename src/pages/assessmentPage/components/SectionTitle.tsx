@@ -7,7 +7,7 @@ interface Props {
 
 const Section = styled.h3`
   margin: 0 !important;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
 `;
 

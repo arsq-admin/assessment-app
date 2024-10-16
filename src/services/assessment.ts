@@ -2,6 +2,7 @@ import {
   AssessmentConfig,
   LogicAction,
   Question,
+  QuestionType,
   TargetType,
 } from "@/pages/assessmentPage/types/assessmentConfig";
 import { AssessmentAnswers } from "@/pages/assessmentPage/types/assessmentAnswers";
@@ -278,4 +279,47 @@ export const isAssessmentComplete = (
   return questionJourney.every((questionId) => {
     return answers[questionId];
   });
+};
+
+export const getQuestionFromConfig = (
+  config: AssessmentConfig,
+  questionId: string
+): {
+  question: Question | null;
+  section: string;
+} => {
+  if (!questionId) {
+    return {
+      question: null,
+      section: "",
+    };
+  }
+
+  for (let i = 0; i <= config.sections.length - 1; i++) {
+    const { questions } = config.sections[i];
+    for (let j = 0; j <= questions.length - 1; j++) {
+      if (questions[j].id === questionId) {
+        return { question: questions[j], section: config.sections[i].name };
+      }
+    }
+  }
+
+  return {
+    question: null,
+    section: "",
+  };
+};
+
+export const getQuestionMinimumRequiredAnswer = (question: Question) => {
+  const { type } = question;
+
+  if (type === QuestionType.MULTIPLE_CHOICE) {
+    const minOption = question.options.find((option) => {
+      return option.minimumRequired === true;
+    });
+
+    return minOption?.name;
+  }
+
+  return undefined;
 };
