@@ -29,8 +29,11 @@ export const useImprovementPlanAnswers = () => {
     }
   });
 
+  const journey = failedAnswers.questionIds.map((question) => question.id);
+
   return {
     sections,
     answers: improvementPlanAnswers,
+    journey,
   };
 };

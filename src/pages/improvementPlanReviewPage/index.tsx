@@ -22,8 +22,9 @@ const NavigationContainer = styled.div`
 
 export const ImprovementPlanReviewPage = () => {
   const { config } = useContext(AssessmentContext);
+
   const navigate = useNavigate();
-  const { sections, answers } = useImprovementPlanAnswers();
+  const { sections, answers, journey } = useImprovementPlanAnswers();
 
   return (
     <>
@@ -53,7 +54,7 @@ export const ImprovementPlanReviewPage = () => {
               className="ds_button ds_button--secondary"
               type="button"
               onClick={() => {
-                navigate("/improvement-plan");
+                navigate(`/improvement-plan?id=${journey[journey.length - 1]}`);
               }}
             >
               Previous
