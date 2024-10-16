@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { TEMP_assessmentConfigs } from "../services";
+import { TEMP_assessmentConfigs } from "../pages/assessmentPage/services";
 import { useSearchParams } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 

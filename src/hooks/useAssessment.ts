@@ -1,10 +1,10 @@
 // import { useParams } from "react-router-dom";
-import { TEMP_assessmentConfigs } from "../services";
+import { TEMP_assessmentConfigs } from "../pages/assessmentPage/services";
 import { getQuestionFromConfig } from "@/services/assessment";
 import { useState } from "react";
-import { AssessmentAnswers } from "../types/assessmentAnswers";
+import { AssessmentAnswers } from "../pages/assessmentPage/types/assessmentAnswers";
 import { useSearchParams } from "react-router-dom";
-import { Question } from "../types/assessmentConfig";
+import { Question } from "../pages/assessmentPage/types/assessmentConfig";
 
 export const useAssessment = () => {
   // const { name: assessmentName = "" } = useParams();

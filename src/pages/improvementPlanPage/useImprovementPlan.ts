@@ -31,6 +31,10 @@ export const useImprovementPlan = () => {
     const prevQuestion = failedAnswers[currentIndex - 1];
     if (prevQuestion) {
       setQuestionId(prevQuestion.id);
+      navigate({
+        pathname: "/improvement-plan",
+        search: `id=${prevQuestion.id}`,
+      });
       callback();
     }
   };
@@ -50,6 +54,10 @@ export const useImprovementPlan = () => {
     const nextQuestion = failedAnswers[currentIndex + 1];
     if (nextQuestion) {
       setQuestionId(nextQuestion.id);
+      navigate({
+        pathname: "/improvement-plan",
+        search: `id=${nextQuestion.id}`,
+      });
       callback();
     }
   };

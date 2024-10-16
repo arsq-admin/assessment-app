@@ -37,6 +37,7 @@ export const ImprovementPlanSection = ({ section, answers }: Props) => {
               key={question.id}
               question={question.title}
               answer={answers[question.id]}
+              editUrl={`/improvement-plan?id=${question.id}`}
             />
           );
         })}

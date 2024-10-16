@@ -10,11 +10,7 @@ import styled from "styled-components";
 import { Column, Container, FluidContainer, Footer } from "./components";
 import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
-import {
-  useAssessment,
-  useResetAssessment,
-  useSetJourney,
-} from "./pages/assessmentPage/hooks";
+import { useAssessment, useResetAssessment, useSetJourney } from "./hooks";
 
 const Header = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
