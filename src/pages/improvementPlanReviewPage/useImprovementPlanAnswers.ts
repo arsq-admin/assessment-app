@@ -7,7 +7,7 @@ export const useImprovementPlanAnswers = () => {
 
   const failedAnswers = JSON.parse(
     localStorage.getItem(`failed-questions-${config?.id}`) || "{}"
-  );
+  ) as { questionIds: { id: string }[] };
 
   const improvementPlanAnswers = JSON.parse(
     localStorage.getItem("improvement-plan-answers") || "{}"
