@@ -7,7 +7,7 @@ interface SavedFailedQuestions {
 }
 
 export const useImprovementPlan = () => {
-  const { config, questionId } = useContext(AssessmentContext);
+  const { config, questionId, setQuestionId } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(
     `failed-questions-${config?.id}`
   );
@@ -20,5 +20,27 @@ export const useImprovementPlan = () => {
     return answer?.id === questionId;
   });
 
-  return { failedAnswer };
+  const onPrev = () => {
+    const currentIndex = failedAnswers.findIndex((answer) => {
+      return answer.id === questionId;
+    });
+
+    const prevQuestion = failedAnswers[currentIndex - 1];
+    if (prevQuestion) {
+      setQuestionId(prevQuestion.id);
+    }
+  };
+
+  const onNext = () => {
+    const currentIndex = failedAnswers.findIndex((answer) => {
+      return answer.id === questionId;
+    });
+
+    const nextQuestion = failedAnswers[currentIndex + 1];
+    if (nextQuestion) {
+      setQuestionId(nextQuestion.id);
+    }
+  };
+
+  return { failedAnswer, onNext, onPrev };
 };

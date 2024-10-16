@@ -18,16 +18,28 @@ const Divider = styled.hr`
   border-color: #ebebeb;
 `;
 
+const NavigationContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  button {
+    margin: 0;
+  }
+`;
+
 interface Props {
   question: Question;
   failedAnswer?: QuestionAndAnswer;
+  onPrev: () => void;
+  onNext: () => void;
 }
 
 export const ImprovementPlanQuestionTemplate = ({
   question,
   failedAnswer,
+  onPrev,
+  onNext,
 }: Props) => {
-  const { title, guidance } = question;
+  const { title, guidance, id } = question;
   const [ipValue, setIpValue] = useState("");
 
   return (
@@ -43,8 +55,32 @@ export const ImprovementPlanQuestionTemplate = ({
         label="Please outline the improvements you will make"
         value={ipValue}
         setValue={setIpValue}
-        name="improvementPlan"
+        name={`improvementPlan-${id}`}
       />
+      <NavigationContainer>
+        <button
+          className="ds_button ds_button--secondary"
+          type="button"
+          id="next"
+          onClick={() => {
+            setIpValue("");
+            onPrev();
+          }}
+        >
+          Previous
+        </button>
+        <button
+          className="ds_button"
+          type="button"
+          id="next"
+          onClick={() => {
+            setIpValue("");
+            onNext();
+          }}
+        >
+          Next
+        </button>
+      </NavigationContainer>
     </QuestionContainer>
   );
 };
