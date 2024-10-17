@@ -16,6 +16,8 @@ interface AssessmentContext {
   tenderName: string;
   reachedReviewPage: boolean;
   setReachedReviewPage: Dispatch<SetStateAction<boolean>>;
+  reachedImprovementPlanReviewPage: boolean;
+  setReachedImprovementPlanReviewPage: Dispatch<SetStateAction<boolean>>;
   questionsById: Record<string, Question>;
 }
 
@@ -30,5 +32,7 @@ export const AssessmentContext = createContext<AssessmentContext>({
   tenderName: "",
   reachedReviewPage: false,
   setReachedReviewPage: () => {},
+  reachedImprovementPlanReviewPage: false,
+  setReachedImprovementPlanReviewPage: () => {},
   questionsById: {},
 });

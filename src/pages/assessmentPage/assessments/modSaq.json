@@ -102,13 +102,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -135,13 +128,6 @@
               "minimumRequired": true,
               "points": 35,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -159,13 +145,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance",
@@ -196,13 +175,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -226,13 +198,6 @@
               "value": "yesIncludingMembershipOfCispOrIntelligenceSharingPartnership",
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -259,13 +224,6 @@
               "minimumRequired": true,
               "points": 30,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance",
@@ -296,13 +254,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -320,13 +271,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Governance"
@@ -364,13 +308,6 @@
               "value": "ukOnly",
               "points": 25,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management",
@@ -421,13 +358,6 @@
               "value": "asAbovePlusFaultTolerantAndRedundancyForEveryComponent",
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management"
@@ -450,13 +380,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management",
@@ -487,13 +410,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management"
@@ -511,13 +427,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management"
@@ -535,13 +444,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management"
@@ -559,13 +461,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Asset management",
@@ -596,13 +491,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -620,13 +508,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -644,13 +525,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -668,13 +542,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management",
@@ -719,13 +586,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -752,13 +612,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -785,13 +638,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -809,13 +655,6 @@
               "minimumRequired": true,
               "points": 40,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -833,13 +672,6 @@
               "minimumRequired": true,
               "points": 3,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Supplier Management"
@@ -871,13 +703,6 @@
               "minimumRequired": true,
               "points": 45,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Personnel Security"
@@ -895,13 +720,6 @@
               "minimumRequired": true,
               "points": 40,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Personnel Security",
@@ -949,13 +767,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Access Management"
@@ -973,13 +784,6 @@
               "minimumRequired": true,
               "points": 9,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Access Management"
@@ -997,13 +801,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Access Management",
@@ -1050,13 +847,6 @@
               "value": "requiredForAllUsers",
               "points": 41,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Access Management"
@@ -1075,13 +865,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Remote/Home Working",
@@ -1128,13 +911,6 @@
               "value": "2faUsedForAllRemotehomeUsers",
               "points": 65,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Remote/Home Working",
@@ -1165,13 +941,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy"
@@ -1189,13 +958,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy"
@@ -1213,13 +975,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy",
@@ -1259,13 +1014,6 @@
               "minimumRequired": true,
               "points": 19,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy"
@@ -1283,13 +1031,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy"
@@ -1312,13 +1053,6 @@
               "minimumRequired": true,
               "points": 18,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Password Policy"
@@ -1336,13 +1070,6 @@
               "minimumRequired": true,
               "points": 19,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Device Management",
@@ -1388,13 +1115,6 @@
               "value": "devicesCanOnlyConnectToTrustedNetworks",
               "points": 55,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Device Management",
@@ -1430,13 +1150,6 @@
               "minimumRequired": true,
               "points": 44,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Privileged Accounts"
@@ -1454,14 +1167,7 @@
               "points": 10,
               "isAcceptable": true
             },
-            { "name": "Yes", "value": "yes", "points": 0 },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
-            }
+            { "name": "Yes", "value": "yes", "points": 0 }
           ],
           "subsection": "Privileged Accounts"
         },
@@ -1479,13 +1185,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Privileged Accounts"
@@ -1503,13 +1202,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management",
@@ -1557,13 +1249,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management"
@@ -1581,13 +1266,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management",
@@ -1628,13 +1306,6 @@
               "minimumRequired": true,
               "points": 30,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management"
@@ -1652,13 +1323,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management"
@@ -1676,13 +1340,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "User Management"
@@ -1700,13 +1357,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Data Security"
@@ -1724,13 +1374,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Data Security"
@@ -1748,13 +1391,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Data Security"
@@ -1772,13 +1408,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Data Security"
@@ -1796,13 +1425,6 @@
               "minimumRequired": true,
               "points": 15,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Data Security"
@@ -1825,13 +1447,6 @@
               "minimumRequired": true,
               "points": 18,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Design",
@@ -1866,13 +1481,6 @@
               "minimumRequired": true,
               "points": 18,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Design"
@@ -1895,13 +1503,6 @@
               "minimumRequired": true,
               "points": 22,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Design"
@@ -1919,13 +1520,6 @@
               "minimumRequired": true,
               "points": 18,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Design",
@@ -1961,13 +1555,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -1998,13 +1585,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2022,13 +1602,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -2076,13 +1649,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2100,13 +1666,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2124,13 +1683,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2152,13 +1704,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2176,13 +1721,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2200,13 +1738,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2224,13 +1755,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -2261,13 +1785,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2285,13 +1802,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2313,13 +1823,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -2355,13 +1858,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration"
@@ -2379,13 +1875,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -2437,13 +1926,6 @@
               "minimumRequired": true,
               "points": 5,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Configuration",
@@ -2484,13 +1966,6 @@
               "minimumRequired": true,
               "points": 14,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2508,13 +1983,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2532,13 +2000,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2578,13 +2039,6 @@
               "name": "None of the above",
               "value": "noneOfTheAbove",
               "points": 0
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management",
@@ -2621,13 +2075,6 @@
               "value": "internetBrowsingIsNotAvailableToUsersOfTheService",
               "points": 8,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2645,13 +2092,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2669,13 +2109,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2693,13 +2126,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management"
@@ -2717,13 +2143,6 @@
               "minimumRequired": true,
               "points": 6,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Secure Management",
@@ -2763,13 +2182,6 @@
               "minimumRequired": true,
               "points": 55,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Vulnerability Management"
@@ -2787,13 +2199,6 @@
               "minimumRequired": true,
               "points": 7,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Vulnerability Management",
@@ -2830,13 +2235,6 @@
               "value": "yesToADocumentedScheduleAndFollowingAnySignificantChange",
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Vulnerability Management"
@@ -2860,13 +2258,6 @@
               "value": "plannedAndTested",
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Resilient Networks and Systems"
@@ -2890,13 +2281,6 @@
               "value": "plannedAndTested",
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Resilient Networks and Systems"
@@ -2923,13 +2307,6 @@
               "minimumRequired": true,
               "points": 58,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Resilient Networks and Systems"
@@ -2948,13 +2325,6 @@
               "minimumRequired": true,
               "points": 25,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Staff Awareness and Training"
@@ -2972,13 +2342,6 @@
               "minimumRequired": true,
               "points": 12,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Staff Awareness and Training",
@@ -3009,13 +2372,6 @@
               "minimumRequired": true,
               "points": 24,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Staff Awareness and Training"
@@ -3038,13 +2394,6 @@
               "minimumRequired": true,
               "points": 19,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Staff Awareness and Training"
@@ -3062,13 +2411,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "subsection": "Staff Awareness and Training"
@@ -3095,13 +2437,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         },
@@ -3122,13 +2457,6 @@
               "minimumRequired": true,
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         },
@@ -3160,13 +2488,6 @@
               "value": "userLogonSuccessAndFailuresAreLoggedAndAreReviewedAndorAlertedForIncidentManagement",
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         },
@@ -3198,13 +2519,6 @@
               "value": "proactiveMonitoringAndAnalysis",
               "points": 20,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "logic": [
@@ -3239,13 +2553,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         },
@@ -3262,13 +2569,6 @@
               "minimumRequired": true,
               "points": 10,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         },
@@ -3285,13 +2585,6 @@
               "minimumRequired": true,
               "points": 25,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ],
           "logic": [
@@ -3321,13 +2614,6 @@
               "minimumRequired": true,
               "points": 30,
               "isAcceptable": true
-            },
-            {
-              "name": "Not applicable",
-              "value": "n/a",
-              "freeText": true,
-              "freeTextLabel": "Please provide an explanation if not applicable",
-              "points": 0
             }
           ]
         }

@@ -1,13 +1,21 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { QuestionAndAnswer } from "../reviewPage/useAnswers";
+import { useNavigate } from "react-router-dom";
 
 interface SavedFailedQuestions {
   questionIds: QuestionAndAnswer[];
 }
 
 export const useImprovementPlan = () => {
-  const { config, questionId, setQuestionId } = useContext(AssessmentContext);
+  const navigate = useNavigate();
+
+  const {
+    config,
+    questionId,
+    setQuestionId,
+    setReachedImprovementPlanReviewPage,
+  } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(
     `failed-questions-${config?.id}`
   );
@@ -28,6 +36,10 @@ export const useImprovementPlan = () => {
     const prevQuestion = failedAnswers[currentIndex - 1];
     if (prevQuestion) {
       setQuestionId(prevQuestion.id);
+      navigate({
+        pathname: "/improvement-plan",
+        search: `id=${prevQuestion.id}`,
+      });
       callback();
     }
   };
@@ -37,9 +49,21 @@ export const useImprovementPlan = () => {
       return answer.id === questionId;
     });
 
+    const isLastQuestion = currentIndex === failedAnswers.length - 1;
+
+    if (isLastQuestion) {
+      setReachedImprovementPlanReviewPage(true);
+      navigate("/improvement-plan/review");
+      callback();
+    }
+
     const nextQuestion = failedAnswers[currentIndex + 1];
     if (nextQuestion) {
       setQuestionId(nextQuestion.id);
+      navigate({
+        pathname: "/improvement-plan",
+        search: `id=${nextQuestion.id}`,
+      });
       callback();
     }
   };

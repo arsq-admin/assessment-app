@@ -24,7 +24,7 @@ export const FreeTextInput = ({ label, value, setValue, name }: Props) => {
       </label>
       <textarea
         className="ds_input"
-        rows={5}
+        rows={8}
         id={name}
         name={name}
         value={value}
