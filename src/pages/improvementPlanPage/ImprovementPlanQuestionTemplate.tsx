@@ -43,7 +43,8 @@ export const ImprovementPlanQuestionTemplate = ({
   onNext,
   improvementAction,
 }: Props) => {
-  const { reachedImprovementPlanReviewPage } = useContext(AssessmentContext);
+  const { reachedImprovementPlanReviewPage, questionOrder } =
+    useContext(AssessmentContext);
   const navigate = useNavigate();
   const { title, guidance, id } = question;
   const [ipValue, setIpValue] = useState(improvementAction || "");
@@ -70,6 +71,9 @@ export const ImprovementPlanQuestionTemplate = ({
   return (
     <QuestionContainer>
       <QuestionTitle>
+        <span>
+          {questionOrder.findIndex((questionId) => questionId === id) + 1}.
+        </span>
         <span>{title}</span>
       </QuestionTitle>
       {guidance && <QuestionGuidance guidance={guidance} />}

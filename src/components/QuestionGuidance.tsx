@@ -10,5 +10,10 @@ interface Props {
 }
 
 export const QuestionGuidance = ({ guidance }: Props) => {
-  return <Wrapper>{guidance}</Wrapper>;
+  return (
+    <details className="ds_details" style={{ margin: 0 }}>
+      <summary className="ds_details__summary">Additional guidance</summary>
+      <div className="ds_details__text">{guidance}</div>
+    </details>
+  );
 };
