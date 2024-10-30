@@ -3,6 +3,7 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import { StatusLabel } from "./StatusLabel";
+import { useNavigate } from "react-router-dom";
 
 interface FailedQuestions {
   questionIds: {
@@ -56,6 +57,8 @@ export const ImprovementPlanSummary = () => {
       answeredCount++;
     }
   });
+
+  const navigate = useNavigate();
 
   return (
     <Container padding="3rem 0">
@@ -113,6 +116,30 @@ export const ImprovementPlanSummary = () => {
               </div>
             );
           })}
+        </div>
+        <div style={{ display: "flex", gap: "2rem" }}>
+          <button
+            style={{ margin: "0" }}
+            className="ds_button ds_button--secondary"
+            type="button"
+            onClick={() => {
+              navigate("/improvement-plan/introduction");
+            }}
+          >
+            Previous
+          </button>
+
+          <button
+            disabled={answeredCount !== questionIds.length}
+            style={{ margin: "0" }}
+            className="ds_button"
+            type="button"
+            onClick={() => {
+              navigate("/improvement-plan/review");
+            }}
+          >
+            See summary
+          </button>
         </div>
       </Column>
       <Column span="10 / span 3">
