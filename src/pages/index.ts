@@ -6,3 +6,4 @@ export { ImprovementPlanPage } from "./improvementPlanPage";
 export { ImprovementPlanReviewPage } from "./improvementPlanReviewPage";
 export { ImprovementPlanIntroPage } from "./improvementPlanIntroPage";
 export { ImprovementPlanSummary } from "./improvementPlanSummary";
+export { ImprovementPlanResultPage } from "./improvementPlanResultPage";

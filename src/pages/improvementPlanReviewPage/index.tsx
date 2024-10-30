@@ -52,7 +52,13 @@ export const ImprovementPlanReviewPage = () => {
           >
             Previous
           </button>
-          <button className="ds_button" type="button">
+          <button
+            className="ds_button"
+            type="button"
+            onClick={() => {
+              navigate(`/improvement-plan/result`);
+            }}
+          >
             Save and download Improvement Plan
           </button>
         </NavigationContainer>

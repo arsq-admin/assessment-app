@@ -7,6 +7,7 @@ import {
   ImprovementPlanReviewPage,
   ImprovementPlanIntroPage,
   ImprovementPlanSummary,
+  ImprovementPlanResultPage,
 } from "./pages";
 import styled from "styled-components";
 import { Column, Container, FluidContainer, Footer } from "./components";
@@ -80,6 +81,10 @@ function App() {
         <Route path="/review" Component={ReviewPage} />
         <Route path="/result" Component={ResultPage} />
         <Route path="/improvement-plan/:id" Component={ImprovementPlanPage} />
+        <Route
+          path="/improvement-plan/result"
+          Component={ImprovementPlanResultPage}
+        />
         <Route
           path="/improvement-plan/summary"
           Component={ImprovementPlanSummary}
