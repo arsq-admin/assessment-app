@@ -10,7 +10,13 @@ import {
   ImprovementPlanResultPage,
 } from "./pages";
 import styled from "styled-components";
-import { Column, Container, FluidContainer, Footer } from "./components";
+import {
+  Column,
+  Container,
+  FluidContainer,
+  Footer,
+  ScrollToTop,
+} from "./components";
 import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
 import { useAssessment, useResetAssessment, useSetJourney } from "./hooks";
@@ -69,6 +75,7 @@ function App() {
         setReachedImprovementPlanReviewPage,
       }}
     >
+      <ScrollToTop />
       <Header>
         <Container>
           <Column span={12}>{tenderName}</Column>

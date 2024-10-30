@@ -17,7 +17,7 @@ export const ImprovementPlanIntroPage = ({
   const navigate = useNavigate();
   return (
     <Container padding="4rem">
-      <Column span="2 / span 10" margin="0 0 4rem">
+      <Column span="3 / span 8" margin="0 0 4rem">
         <h1>Improvement Plan</h1>
         <h2>What is an Improvement Plan</h2>
         <p style={{ color: secondaryText }}>
