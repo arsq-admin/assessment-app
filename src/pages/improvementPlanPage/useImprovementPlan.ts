@@ -1,7 +1,7 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { QuestionAndAnswer } from "../reviewPage/useAnswers";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface SavedFailedQuestions {
   questionIds: QuestionAndAnswer[];
@@ -9,6 +9,7 @@ interface SavedFailedQuestions {
 
 export const useImprovementPlan = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const {
     config,
@@ -20,17 +21,19 @@ export const useImprovementPlan = () => {
     `failed-questions-${config?.id}`
   );
 
+  const currentId = id || questionId;
+
   const { questionIds: failedAnswers } = JSON.parse(
     failedAnswersJson || ""
   ) as SavedFailedQuestions;
 
   const failedAnswer = failedAnswers.find((answer) => {
-    return answer?.id === questionId;
+    return answer?.id === currentId;
   });
 
   const onPrev = (callback: () => void) => {
     const currentIndex = failedAnswers.findIndex((answer) => {
-      return answer.id === questionId;
+      return answer.id === currentId;
     });
 
     const prevQuestion = failedAnswers[currentIndex - 1];
@@ -46,7 +49,7 @@ export const useImprovementPlan = () => {
 
   const onNext = (callback: () => void) => {
     const currentIndex = failedAnswers.findIndex((answer) => {
-      return answer.id === questionId;
+      return answer.id === currentId;
     });
 
     const isLastQuestion = currentIndex === failedAnswers.length - 1;
@@ -70,12 +73,13 @@ export const useImprovementPlan = () => {
 
   const improvementAction = JSON.parse(
     localStorage.getItem("improvement-plan-answers") || "{}"
-  )?.[questionId];
+  )?.[currentId];
 
   return {
     failedAnswer,
     onNext,
     onPrev,
     improvementAction,
+    currentQuestionId: currentId,
   };
 };

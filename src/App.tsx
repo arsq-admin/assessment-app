@@ -79,7 +79,7 @@ function App() {
         <Route path="/assessment" Component={AssessmentPage} />
         <Route path="/review" Component={ReviewPage} />
         <Route path="/result" Component={ResultPage} />
-        <Route path="/improvement-plan" Component={ImprovementPlanPage} />
+        <Route path="/improvement-plan/:id" Component={ImprovementPlanPage} />
         <Route
           path="/improvement-plan/summary"
           Component={ImprovementPlanSummary}

@@ -16,7 +16,7 @@ interface FailedQuestions {
 }
 
 export const ImprovementPlanSummary = () => {
-  const { config } = useContext(AssessmentContext);
+  const { config, questionOrder } = useContext(AssessmentContext);
   const data = localStorage.getItem(`failed-questions-${config?.id}`);
 
   const failedQuestions: FailedQuestions = JSON.parse(
@@ -45,6 +45,18 @@ export const ImprovementPlanSummary = () => {
     return acc;
   }, []);
 
+  const currentImprovementPlan = JSON.parse(
+    localStorage.getItem("improvement-plan-answers") || "{}"
+  );
+
+  let answeredCount = 0;
+
+  questionIds.forEach((id) => {
+    if (currentImprovementPlan[id]) {
+      answeredCount++;
+    }
+  });
+
   return (
     <Container padding="3rem 0">
       <Column span="1 / span 9" margin="0 0 4rem">
@@ -58,7 +70,8 @@ export const ImprovementPlanSummary = () => {
         </h2>
 
         <p>
-          You have completed <b>0</b> out of <b>3</b> improvement plan answers.
+          You have completed <b>{answeredCount}</b> out of{" "}
+          <b>{questionIds.length}</b> improvement plan answers.
         </p>
         <div style={{ padding: "2rem 0" }}>
           {questionConfig?.map((section) => {
@@ -82,8 +95,15 @@ export const ImprovementPlanSummary = () => {
                           alignItems: "center",
                         }}
                       >
-                        <a href={`/improvement-plan`}>{question.title}</a>
-                        <StatusLabel />
+                        <a href={`/improvement-plan/${question.id}`}>
+                          {questionOrder.findIndex((id) => id === question.id)}.{" "}
+                          {question.title}
+                        </a>
+                        <StatusLabel
+                          hasAnswer={Boolean(
+                            currentImprovementPlan?.[question.id]
+                          )}
+                        />
                       </div>
                     );
                   })}
