@@ -32,7 +32,10 @@ export const ResultPage = () => {
         />
       )}
       {matchedOutcome && matchedOutcome.type === OutcomeType.UNSUCCESSFUL && (
-        <UnsuccessfulPage failedCount={parseInt(failedCount || "1")} />
+        <UnsuccessfulPage
+          failedCount={parseInt(failedCount || "1")}
+          name={config?.name || ""}
+        />
       )}
     </Container>
   );
