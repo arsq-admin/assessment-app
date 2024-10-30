@@ -82,7 +82,7 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
       </p>
 
       <button
-        onClick={() => navigate("/improvement-plan")}
+        onClick={() => navigate("/improvement-plan/introduction")}
         className="ds_button"
         type="button"
       >
