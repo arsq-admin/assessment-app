@@ -21,13 +21,8 @@ export const ImprovementPlanPage = () => {
       : { question: null, section: "" };
 
   return (
-    <Container padding="2rem">
+    <Container padding="4rem">
       <Column span={8}>
-        <h3>
-          Please detail the improvements you will make to reach at least the
-          minimum requirement for this question.
-        </h3>
-
         {question && (
           <AssessmentTitle
             question={question}

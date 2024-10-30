@@ -96,8 +96,9 @@ export const ImprovementPlanSummary = () => {
                         }}
                       >
                         <a href={`/improvement-plan/${question.id}`}>
-                          {questionOrder.findIndex((id) => id === question.id)}.{" "}
-                          {question.title}
+                          {questionOrder.findIndex((id) => id === question.id) +
+                            1}
+                          . {question.title}
                         </a>
                         <StatusLabel
                           hasAnswer={Boolean(

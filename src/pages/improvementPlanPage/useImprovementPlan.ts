@@ -11,12 +11,7 @@ export const useImprovementPlan = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const {
-    config,
-    questionId,
-    setQuestionId,
-    setReachedImprovementPlanReviewPage,
-  } = useContext(AssessmentContext);
+  const { config, questionId } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(
     `failed-questions-${config?.id}`
   );
@@ -32,43 +27,17 @@ export const useImprovementPlan = () => {
   });
 
   const onPrev = (callback: () => void) => {
-    const currentIndex = failedAnswers.findIndex((answer) => {
-      return answer.id === currentId;
+    navigate({
+      pathname: "/improvement-plan/summary",
     });
-
-    const prevQuestion = failedAnswers[currentIndex - 1];
-    if (prevQuestion) {
-      setQuestionId(prevQuestion.id);
-      navigate({
-        pathname: "/improvement-plan",
-        search: `id=${prevQuestion.id}`,
-      });
-      callback();
-    }
+    callback();
   };
 
   const onNext = (callback: () => void) => {
-    const currentIndex = failedAnswers.findIndex((answer) => {
-      return answer.id === currentId;
+    navigate({
+      pathname: "/improvement-plan/summary",
     });
-
-    const isLastQuestion = currentIndex === failedAnswers.length - 1;
-
-    if (isLastQuestion) {
-      setReachedImprovementPlanReviewPage(true);
-      navigate("/improvement-plan/review");
-      callback();
-    }
-
-    const nextQuestion = failedAnswers[currentIndex + 1];
-    if (nextQuestion) {
-      setQuestionId(nextQuestion.id);
-      navigate({
-        pathname: "/improvement-plan",
-        search: `id=${nextQuestion.id}`,
-      });
-      callback();
-    }
+    callback();
   };
 
   const improvementAction = JSON.parse(

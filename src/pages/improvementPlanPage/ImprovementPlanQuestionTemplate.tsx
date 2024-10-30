@@ -9,7 +9,7 @@ import { AssessmentContext } from "@/context";
 import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = styled.div`
-  padding: 1rem 0;
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -93,12 +93,11 @@ export const ImprovementPlanQuestionTemplate = ({
           id="previous"
           onClick={() => {
             onPrev(() => {
-              saveImprovementAction(id, ipValue);
               setIpValue("");
             });
           }}
         >
-          Previous
+          Back
         </button>
         <button
           className="ds_button"
@@ -111,7 +110,7 @@ export const ImprovementPlanQuestionTemplate = ({
             });
           }}
         >
-          Next
+          Save Answer
         </button>
       </NavigationContainer>
       {reachedImprovementPlanReviewPage && (
