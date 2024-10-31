@@ -8,3 +8,4 @@ export { QuestionGuidance } from "./QuestionGuidance";
 export { FreeTextInput } from "./FreeTextInput";
 export { ImprovementPlanBanner } from "./ImprovementPlanBanner";
 export { ReviewAnswerRow } from "./ReviewAnswerRow";
+export { ScrollToTop } from "./ScrollToTop";

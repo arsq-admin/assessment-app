@@ -2,7 +2,6 @@ import {
   AssessmentTitle,
   Column,
   Container,
-  ImprovementPlanBanner,
   PoweredBySupply25,
 } from "@/components";
 import { useImprovementPlan } from "./useImprovementPlan";
@@ -12,47 +11,39 @@ import { getQuestionFromConfig } from "@/services/assessment";
 import { ImprovementPlanQuestionTemplate } from "./ImprovementPlanQuestionTemplate";
 
 export const ImprovementPlanPage = () => {
-  const { failedAnswer, onNext, onPrev, improvementAction } =
+  const { failedAnswer, onNext, onPrev, improvementAction, currentQuestionId } =
     useImprovementPlan();
-  const { config, questionId } = useContext(AssessmentContext);
+  const { config } = useContext(AssessmentContext);
 
   const { question, section } =
-    config && questionId
-      ? getQuestionFromConfig(config, questionId)
+    config && currentQuestionId
+      ? getQuestionFromConfig(config, currentQuestionId)
       : { question: null, section: "" };
 
   return (
-    <>
-      <ImprovementPlanBanner />
-      <Container padding="2rem">
-        <Column span={8}>
-          <h3>
-            Please detail the improvements you will make to reach at least the
-            minimum requirement for this question.
-          </h3>
+    <Container padding="4rem">
+      <Column span={8}>
+        {question && (
+          <AssessmentTitle
+            question={question}
+            section={section}
+            title={`${config?.name} - Improvement Plan`}
+          />
+        )}
 
-          {question && (
-            <AssessmentTitle
-              question={question}
-              section={section}
-              title={`${config?.name} - Improvement Plan`}
-            />
-          )}
-
-          {question && (
-            <ImprovementPlanQuestionTemplate
-              failedAnswer={failedAnswer}
-              question={question}
-              onPrev={onPrev}
-              onNext={onNext}
-              improvementAction={improvementAction}
-            />
-          )}
-        </Column>
-        <Column span={4}>
-          <PoweredBySupply25 />
-        </Column>
-      </Container>
-    </>
+        {question && (
+          <ImprovementPlanQuestionTemplate
+            failedAnswer={failedAnswer}
+            question={question}
+            onPrev={onPrev}
+            onNext={onNext}
+            improvementAction={improvementAction}
+          />
+        )}
+      </Column>
+      <Column span={4}>
+        <PoweredBySupply25 />
+      </Column>
+    </Container>
   );
 };

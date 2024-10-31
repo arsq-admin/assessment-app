@@ -5,9 +5,18 @@ import {
   ResultPage,
   ImprovementPlanPage,
   ImprovementPlanReviewPage,
+  ImprovementPlanIntroPage,
+  ImprovementPlanSummary,
+  ImprovementPlanResultPage,
 } from "./pages";
 import styled from "styled-components";
-import { Column, Container, FluidContainer, Footer } from "./components";
+import {
+  Column,
+  Container,
+  FluidContainer,
+  Footer,
+  ScrollToTop,
+} from "./components";
 import { Route, Routes } from "react-router-dom";
 import { AssessmentContext } from "./context";
 import { useAssessment, useResetAssessment, useSetJourney } from "./hooks";
@@ -66,6 +75,7 @@ function App() {
         setReachedImprovementPlanReviewPage,
       }}
     >
+      <ScrollToTop />
       <Header>
         <Container>
           <Column span={12}>{tenderName}</Column>
@@ -77,7 +87,24 @@ function App() {
         <Route path="/assessment" Component={AssessmentPage} />
         <Route path="/review" Component={ReviewPage} />
         <Route path="/result" Component={ResultPage} />
-        <Route path="/improvement-plan" Component={ImprovementPlanPage} />
+        <Route path="/improvement-plan/:id" Component={ImprovementPlanPage} />
+        <Route
+          path="/improvement-plan/result"
+          Component={ImprovementPlanResultPage}
+        />
+        <Route
+          path="/improvement-plan/summary"
+          Component={ImprovementPlanSummary}
+        />
+        <Route
+          path="/improvement-plan/introduction"
+          Component={() => (
+            <ImprovementPlanIntroPage
+              buttonName="Continue"
+              redirectUrl="/improvement-plan/summary"
+            />
+          )}
+        />
         <Route
           path="/improvement-plan/review"
           Component={ImprovementPlanReviewPage}
