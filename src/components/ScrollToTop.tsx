@@ -6,7 +6,10 @@ export const ScrollToTop = () => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
   }, [pathname, searchParams]);
 
   return null;
