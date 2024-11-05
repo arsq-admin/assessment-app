@@ -1,18 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const OauthCallbackPage = () => {
+  const navigate = useNavigate();
+
   const [searchParams] = useSearchParams();
   const code = searchParams.get("code");
-  const { data } = useQuery({
+  const { isSuccess } = useQuery({
     queryKey: [code],
     queryFn: () => {
       return fetch(
         `https://user-wong.supply25.com/login?code=${code}&redirect=http://localhost:5173/oauth/callback`
       );
     },
+    enabled: Boolean(code),
   });
 
-  console.log("data", data);
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/");
+    }
+  }, [isSuccess, navigate]);
+
   return <div>oauth callback</div>;
 };
