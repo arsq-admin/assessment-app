@@ -4,12 +4,21 @@ import { useContext } from "react";
 import { UserContext } from "@/context";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "@/api/user";
-// import { useUser } from "@/hooks";
 
 const FullContainer = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
   display: flex;
   align-items: center;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  * {
+    margin: 0;
+  }
 `;
 
 interface Props {
@@ -37,20 +46,29 @@ export const Header = ({ tenderName }: Props) => {
   return (
     <FullContainer>
       <Container>
-        <Column span={9}>{tenderName}</Column>
-        <Column span={3}>
-          {user ? (
-            <>
-              <p>{user.name}</p>
-              <button onClick={() => mutate()}>Log out</button>
-            </>
-          ) : (
-            <a
-              href={`https://auth-${VITE_STAGE}.supply25.com/authorize?client_id=${VITE_PUBLIC_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}`}
-            >
-              Log in
-            </a>
-          )}
+        <Column span={12}>
+          <Wrapper>
+            <div>{tenderName}</div>
+            <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+              {user ? (
+                <>
+                  <p>{user.name}</p>
+                  <button
+                    className="ds_button ds_button--secondary"
+                    onClick={() => mutate()}
+                  >
+                    Log out
+                  </button>
+                </>
+              ) : (
+                <a
+                  href={`https://auth-${VITE_STAGE}.supply25.com/authorize?client_id=${VITE_PUBLIC_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}`}
+                >
+                  Log in
+                </a>
+              )}
+            </div>
+          </Wrapper>
         </Column>
       </Container>
     </FullContainer>
