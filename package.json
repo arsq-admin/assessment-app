@@ -11,8 +11,10 @@
     "test": "vitest --config ./vite.config.ts",
     "build:staging": "tsc && vite build --mode staging",
     "build:qa": "tsc && vite build --mode qa",
+    "build:wong": "tsc && vite build --mode wong",
     "deploy:staging": "npm run build:staging && aws s3 sync ./dist s3://sg.assessment-staging.supply25.com --profile",
-    "deploy:qa": "npm run build:qa && aws s3 sync ./dist s3://sg.assessment-qa.supply25.com --profile"
+    "deploy:qa": "npm run build:qa && aws s3 sync ./dist s3://sg.assessment-qa.supply25.com --profile",
+    "deploy:wong": "npm run build:wong && aws s3 sync ./dist s3://assessment-app-wong.supply25.com --profile"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
