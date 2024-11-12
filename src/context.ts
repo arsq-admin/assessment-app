@@ -2,6 +2,7 @@ import { createContext, Dispatch, SetStateAction } from "react";
 import { AssessmentConfig, Question } from "@/api/assessment/types";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 import { User } from "./api/user/types";
+import { PublicTenderPackage } from "./api/tenderPackage/type";
 
 interface AssessmentContext {
   config: AssessmentConfig | null;
@@ -45,4 +46,14 @@ interface UserContext {
 export const UserContext = createContext<UserContext>({
   user: null,
   setUser: () => {},
+});
+
+interface TenderPackageContext {
+  tenderPackage: null | PublicTenderPackage;
+  setTenderPackage: Dispatch<SetStateAction<PublicTenderPackage | null>>;
+}
+
+export const TenderPackageContext = createContext<TenderPackageContext>({
+  tenderPackage: null,
+  setTenderPackage: () => {},
 });
