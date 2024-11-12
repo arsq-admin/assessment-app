@@ -5,7 +5,7 @@ import { AssessmentConfig } from "@/api/assessment/types";
 interface Props {
   setQuestionId: Dispatch<SetStateAction<string>>;
   setJourney: Dispatch<SetStateAction<string[]>>;
-  assessmentConfig: AssessmentConfig;
+  assessmentConfig: AssessmentConfig | null;
 }
 
 export const useResetAssessment = ({
@@ -19,7 +19,7 @@ export const useResetAssessment = ({
   useEffect(() => {
     // Reset when a different assessment is loaded
     const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
-    setQuestionId(idInParam || firstQuestion.id || "");
+    setQuestionId(idInParam || firstQuestion?.id || "");
   }, [setQuestionId, setJourney, idInParam, assessmentConfig]);
 
   useEffect(() => {
