@@ -9,6 +9,7 @@ import {
   ImprovementPlanSummary,
   ImprovementPlanResultPage,
   OauthCallbackPage,
+  HomePage,
 } from "./pages";
 import { Footer, Header, ScrollToTop } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -38,12 +39,14 @@ function App() {
     questionsById,
     reachedImprovementPlanReviewPage,
     setReachedImprovementPlanReviewPage,
+    setAssessmentConfig,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
   useResetAssessment({
     setJourney,
     setQuestionId,
+    assessmentConfig,
   });
 
   // Will probably need to review how the journey logic work now that it is moved to the top level
@@ -69,12 +72,14 @@ function App() {
           questionsById,
           reachedImprovementPlanReviewPage,
           setReachedImprovementPlanReviewPage,
+          setAssessmentConfig,
         }}
       >
         <ScrollToTop />
         <Header tenderName={tenderName} />
         <Routes>
-          <Route path="/" Component={IntroductionPage} />
+          <Route path="/" Component={HomePage} />
+          <Route path="/introduction" Component={IntroductionPage} />
           <Route path="/assessment" Component={AssessmentPage} />
           <Route path="/review" Component={ReviewPage} />
           <Route path="/result" Component={ResultPage} />

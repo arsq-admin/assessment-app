@@ -1,8 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import {
-  AssessmentConfig,
-  Question,
-} from "./pages/assessmentPage/types/assessmentConfig";
+import { AssessmentConfig, Question } from "@/api/assessment/types";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 import { User } from "./api/user/types";
 
@@ -20,6 +17,7 @@ interface AssessmentContext {
   reachedImprovementPlanReviewPage: boolean;
   setReachedImprovementPlanReviewPage: Dispatch<SetStateAction<boolean>>;
   questionsById: Record<string, Question>;
+  setAssessmentConfig: Dispatch<SetStateAction<AssessmentConfig | null>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -36,6 +34,7 @@ export const AssessmentContext = createContext<AssessmentContext>({
   reachedImprovementPlanReviewPage: false,
   setReachedImprovementPlanReviewPage: () => {},
   questionsById: {},
+  setAssessmentConfig: () => {},
 });
 
 interface UserContext {
