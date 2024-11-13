@@ -6,7 +6,7 @@ import {
 } from "../../types/assessmentAnswers";
 import { isConditionMet } from "../../services";
 import { Question } from "../../types/assessmentConfig";
-import { AssessmentContext } from "../../../../context";
+import { AssessmentContext, TenderPackageContext } from "../../../../context";
 import { useMutation } from "@tanstack/react-query";
 import { saveQuestionAnswer } from "@/api/assessment";
 
@@ -20,6 +20,7 @@ export const useAssessmentAnswers = ({ question }: Props) => {
   });
   const { config, setCurrentAnswers, currentAnswers } =
     useContext(AssessmentContext);
+  const { tenderPackage } = useContext(TenderPackageContext);
   const assessmentId = config?.id;
 
   const { id: questionId, followUp: followUpConfig, title } = question;
@@ -126,9 +127,10 @@ export const useAssessmentAnswers = ({ question }: Props) => {
 
     if (response.answer.length > 0) {
       mutate({
+        organisationId: tenderPackage?.organisationId || "",
         assessmentId: config?.id || "",
         questionId,
-        answer: response,
+        answer: response.answer,
         title,
       });
 

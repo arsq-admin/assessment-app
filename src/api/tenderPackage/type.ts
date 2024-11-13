@@ -12,4 +12,5 @@ export interface PublicTenderPackage {
   submissionDeadline: string;
   pcsId: string;
   status: TenderPackageStatus;
+  organisationId: string;
 }

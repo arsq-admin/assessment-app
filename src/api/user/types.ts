@@ -5,3 +5,8 @@ export interface User {
   dateJoined: string;
   avatar?: string;
 }
+
+export interface Organisation {
+  name: string;
+  id: string;
+}

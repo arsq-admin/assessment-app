@@ -1,6 +1,6 @@
 import { QueryFunctionContext } from "@tanstack/react-query";
 import { ASSESSMENT_SERVICE_URL } from "../index";
-import { QuestionAnswer } from "@/pages/assessmentPage/types/assessmentAnswers";
+import { AnswerValue } from "@/pages/assessmentPage/types/assessmentAnswers";
 
 export const publicGetAssessmentById = async ({
   queryKey,
@@ -21,11 +21,13 @@ export const publicGetAssessmentById = async ({
 interface SaveQuestionAnswer {
   assessmentId: string;
   questionId: string;
-  answer: QuestionAnswer;
+  answer: AnswerValue[];
   title: string;
+  organisationId: string;
 }
 
 export const saveQuestionAnswer = async ({
+  organisationId,
   assessmentId,
   questionId,
   answer,
@@ -33,7 +35,7 @@ export const saveQuestionAnswer = async ({
 }: SaveQuestionAnswer) => {
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
-  headers.append("Organisation-Id", "");
+  headers.append("Organisation-Id", organisationId);
 
   const res = await fetch(`${ASSESSMENT_SERVICE_URL}/answer`, {
     method: "POST",

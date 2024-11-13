@@ -28,7 +28,7 @@ import {
 } from "./hooks";
 
 function App() {
-  const { user, setUser } = useAuthenticated();
+  const { user, setUser, organisations, setOrganisations } = useAuthenticated();
 
   const {
     setQuestionId,
@@ -63,7 +63,9 @@ function App() {
   });
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, organisations, setOrganisations }}
+    >
       <TenderPackageContext.Provider
         value={{ tenderPackage, setTenderPackage }}
       >

@@ -1,7 +1,7 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 import { AssessmentConfig, Question } from "@/api/assessment/types";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
-import { User } from "./api/user/types";
+import { Organisation, User } from "./api/user/types";
 import { PublicTenderPackage } from "./api/tenderPackage/type";
 
 interface AssessmentContext {
@@ -41,11 +41,15 @@ export const AssessmentContext = createContext<AssessmentContext>({
 interface UserContext {
   user: null | User;
   setUser: Dispatch<SetStateAction<User | null>>;
+  organisations: Organisation[];
+  setOrganisations: Dispatch<SetStateAction<Organisation[]>>;
 }
 
 export const UserContext = createContext<UserContext>({
   user: null,
   setUser: () => {},
+  organisations: [],
+  setOrganisations: () => {},
 });
 
 interface TenderPackageContext {
