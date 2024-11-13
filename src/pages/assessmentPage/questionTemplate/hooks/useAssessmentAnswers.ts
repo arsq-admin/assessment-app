@@ -7,17 +7,22 @@ import {
 import { isConditionMet } from "../../services";
 import { Question } from "../../types/assessmentConfig";
 import { AssessmentContext } from "../../../../context";
+import { useMutation } from "@tanstack/react-query";
+import { saveQuestionAnswer } from "@/api/assessment";
 
 interface Props {
   question: Question;
 }
 
 export const useAssessmentAnswers = ({ question }: Props) => {
+  const { mutate } = useMutation({
+    mutationFn: saveQuestionAnswer,
+  });
   const { config, setCurrentAnswers, currentAnswers } =
     useContext(AssessmentContext);
   const assessmentId = config?.id;
 
-  const { id: questionId, followUp: followUpConfig } = question;
+  const { id: questionId, followUp: followUpConfig, title } = question;
 
   const [answer, setAnswer] = useState<(string | number)[]>([]);
   const [freeText, setFreeText] = useState<Record<string, string>>({});
@@ -120,6 +125,14 @@ export const useAssessmentAnswers = ({ question }: Props) => {
     }
 
     if (response.answer.length > 0) {
+      mutate({
+        assessmentId: config?.id || "",
+        questionId,
+        answer: response,
+        title,
+      });
+
+      // To be removed
       const storedAnswers = JSON.parse(
         localStorage.getItem(`assessment-${assessmentId}`) || "{}"
       );
