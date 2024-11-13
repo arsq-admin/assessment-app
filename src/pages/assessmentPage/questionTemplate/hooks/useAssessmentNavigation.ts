@@ -62,7 +62,7 @@ export const useAssessmentNavigation = ({
         const { target, action } = logic[firstLogicMatchedIndex];
 
         if (action === LogicAction.END) {
-          pathName = "outcome";
+          pathName = "review";
           searchParams = `name=${target.value}`;
         }
 

@@ -43,7 +43,7 @@ export const ReviewPage = () => {
           <button
             className="ds_button ds_button--secondary"
             onClick={() => {
-              navigate(`${urlId}/assessment`);
+              navigate(`/${urlId}/assessment`);
             }}
           >
             Go back to the assessments
