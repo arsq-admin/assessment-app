@@ -3,7 +3,7 @@ import { useAnswers } from "./useAnswers";
 import { ReviewSection } from "./ReviewSection";
 import { Column, Container, PreviewNotice } from "@/components";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ const NavigationContainer = styled.div`
 export const ReviewPage = () => {
   const { answers, journey, skippedQuestionId, isComplete, resolveAssessment } =
     useAnswers();
+  const { urlId } = useParams();
   const navigate = useNavigate();
 
   const sections = Object.keys(answers);
@@ -42,7 +43,7 @@ export const ReviewPage = () => {
           <button
             className="ds_button ds_button--secondary"
             onClick={() => {
-              navigate("/assessment");
+              navigate(`${urlId}/assessment`);
             }}
           >
             Go back to the assessments

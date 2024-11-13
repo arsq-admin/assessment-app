@@ -3,7 +3,7 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import { StatusLabel } from "./StatusLabel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface FailedQuestions {
   questionIds: {
@@ -18,6 +18,7 @@ interface FailedQuestions {
 
 export const ImprovementPlanSummary = () => {
   const { config, questionOrder } = useContext(AssessmentContext);
+  const { urlId } = useParams();
   const data = localStorage.getItem(`failed-questions-${config?.id}`);
 
   const failedQuestions: FailedQuestions = JSON.parse(
@@ -123,7 +124,7 @@ export const ImprovementPlanSummary = () => {
             className="ds_button ds_button--secondary"
             type="button"
             onClick={() => {
-              navigate("/improvement-plan/introduction");
+              navigate(`/${urlId}/improvement-plan/introduction`);
             }}
           >
             Previous
@@ -135,7 +136,7 @@ export const ImprovementPlanSummary = () => {
             className="ds_button"
             type="button"
             onClick={() => {
-              navigate("/improvement-plan/review");
+              navigate(`/${urlId}/improvement-plan/review`);
             }}
           >
             See summary

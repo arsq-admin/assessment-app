@@ -5,15 +5,14 @@ import { AssessmentContext, TenderPackageContext } from "@/context";
 import { Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const HomePage = () => {
   const { setAssessmentConfig } = useContext(AssessmentContext);
   const { setTenderPackage } = useContext(TenderPackageContext);
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const urlId = searchParams.get("id");
+  const { urlId } = useParams();
 
   const { data: assessment } = useQuery({
     queryKey: [urlId],
@@ -33,7 +32,7 @@ export const HomePage = () => {
     if (assessment?.data.length === 1 && tenderPackage?.data.length === 1) {
       setAssessmentConfig(assessment.data[0]);
       setTenderPackage(tenderPackage.data[0]);
-      navigate("/introduction");
+      navigate(`/${urlId}/introduction`);
     }
   }, [
     setAssessmentConfig,
@@ -41,6 +40,7 @@ export const HomePage = () => {
     navigate,
     tenderPackage,
     setTenderPackage,
+    urlId,
   ]);
 
   return (

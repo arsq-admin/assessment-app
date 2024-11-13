@@ -6,7 +6,7 @@ import { YourAnswer } from "./YourAnswer";
 import { MinimumRequiredAnswer } from "./MinimumRequiredAnswer";
 import { useContext, useEffect, useState } from "react";
 import { AssessmentContext } from "@/context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const QuestionContainer = styled.div`
   padding: 2rem 0;
@@ -43,6 +43,7 @@ export const ImprovementPlanQuestionTemplate = ({
   onNext,
   improvementAction,
 }: Props) => {
+  const { urlId } = useParams();
   const { reachedImprovementPlanReviewPage, questionOrder } =
     useContext(AssessmentContext);
   const navigate = useNavigate();
@@ -122,7 +123,7 @@ export const ImprovementPlanQuestionTemplate = ({
             onClick={() => {
               setIpValue("");
               saveImprovementAction(id, ipValue);
-              navigate("/improvement-plan/review");
+              navigate(`/${urlId}/improvement-plan/review`);
             }}
           >
             Back to Summary

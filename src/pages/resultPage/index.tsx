@@ -19,7 +19,8 @@ export const ResultPage = () => {
 
   useEffect(() => {
     if (!outcomeName || !matchedOutcome) {
-      navigate("/");
+      // TODO: Error here, what should happen
+      // navigate("/");
     }
   }, [matchedOutcome, navigate, outcomeName]);
 

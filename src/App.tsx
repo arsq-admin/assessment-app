@@ -88,41 +88,43 @@ function App() {
           <ScrollToTop />
           <Header tenderName={tenderPackage?.name || ""} />
           <Routes>
-            <Route path="/" Component={HomePage} />
-            <Route path="/:urlId" Component={PrepareAssessmentPage} />
-            <Route path="/:urlId/introduction" Component={IntroductionPage} />
-            <Route path="/:urlId/assessment" Component={AssessmentPage} />
-            <Route path="/:urlId/review" Component={ReviewPage} />
-            <Route path="/:urlId/result" Component={ResultPage} />
-            <Route
-              path="/:urlId/oauth/callback"
-              Component={OauthCallbackPage}
-            />
-            <Route
-              path="/:urlId/improvement-plan/:id"
-              Component={ImprovementPlanPage}
-            />
-            <Route
-              path="/:urlId/improvement-plan/result"
-              Component={ImprovementPlanResultPage}
-            />
-            <Route
-              path="/:urlId/improvement-plan/summary"
-              Component={ImprovementPlanSummary}
-            />
-            <Route
-              path="/:urlId/improvement-plan/introduction"
-              Component={() => (
-                <ImprovementPlanIntroPage
-                  buttonName="Continue"
-                  redirectUrl="/improvement-plan/summary"
-                />
-              )}
-            />
-            <Route
-              path="/:urlId/improvement-plan/review"
-              Component={ImprovementPlanReviewPage}
-            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/oauth/callback" element={<OauthCallbackPage />} />
+
+            <Route path="/:urlId" element={<PrepareAssessmentPage />}>
+              <Route
+                path="/:urlId/introduction"
+                element={<IntroductionPage />}
+              />
+              <Route path="/:urlId/assessment" element={<AssessmentPage />} />
+              <Route path="/:urlId/review" element={<ReviewPage />} />
+              <Route path="/:urlId/result" element={<ResultPage />} />
+              <Route
+                path="/:urlId/improvement-plan/:id"
+                element={<ImprovementPlanPage />}
+              />
+              <Route
+                path="/:urlId/improvement-plan/result"
+                element={<ImprovementPlanResultPage />}
+              />
+              <Route
+                path="/:urlId/improvement-plan/summary"
+                element={<ImprovementPlanSummary />}
+              />
+              <Route
+                path="/:urlId/improvement-plan/introduction"
+                element={
+                  <ImprovementPlanIntroPage
+                    buttonName="Continue"
+                    redirectUrl="/improvement-plan/summary"
+                  />
+                }
+              />
+              <Route
+                path="/:urlId/improvement-plan/review"
+                element={<ImprovementPlanReviewPage />}
+              />
+            </Route>
           </Routes>
 
           <Footer />

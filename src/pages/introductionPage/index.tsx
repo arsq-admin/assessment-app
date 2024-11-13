@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 import { Column, Container } from "@/components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const IntroductionPage = () => {
   const { config, tenderName } = useContext(AssessmentContext);
+  const { urlId } = useParams();
   const navigate = useNavigate();
   const beginAssessment = () => {
-    navigate("/assessment");
+    navigate(`/${urlId}/assessment`);
   };
 
   return (

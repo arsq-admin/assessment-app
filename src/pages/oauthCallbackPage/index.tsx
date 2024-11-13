@@ -14,6 +14,7 @@ export const OauthCallbackPage = () => {
     enabled: Boolean(code),
   });
 
+  // TODO: Need to include the state maybe?
   useEffect(() => {
     if (isSuccess) {
       navigate("/");

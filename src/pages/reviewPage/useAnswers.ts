@@ -7,7 +7,7 @@ import {
   isAssessmentComplete,
 } from "@/services/assessment";
 import { QuestionType } from "../assessmentPage/types/assessmentConfig";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export interface FormattedAnswer extends AnswerValue {
   label: string;
@@ -23,6 +23,7 @@ export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
   const navigate = useNavigate();
+  const { urlId } = useParams();
   const { currentAnswers, config, questionsById, setQuestionId } =
     useContext(AssessmentContext);
 
@@ -110,7 +111,7 @@ export const useAnswers = () => {
     );
 
     return navigate(
-      `/result?outcome=${
+      `/${urlId}/result?outcome=${
         hasPassed
           ? "successful"
           : `unsuccessful&fail-count=${Object.keys(failedAnswers).length}`

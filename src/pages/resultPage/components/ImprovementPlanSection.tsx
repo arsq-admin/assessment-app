@@ -3,7 +3,7 @@ import { Section } from "@/pages/assessmentPage/types/assessmentConfig";
 
 import { scotGovColour } from "@/themes";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface FailedQuestions {
   questionIds: {
@@ -21,6 +21,7 @@ interface Props {
 }
 
 export const ImprovementPlanSection = ({ failedCount }: Props) => {
+  const { urlId } = useParams();
   const { config, questionOrder } = useContext(AssessmentContext);
 
   const { secondaryText } = scotGovColour;
@@ -82,7 +83,7 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
       </p>
 
       <button
-        onClick={() => navigate("/improvement-plan/introduction")}
+        onClick={() => navigate(`/${urlId}/improvement-plan/introduction`)}
         className="ds_button"
         type="button"
       >

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useImprovementPlanAnswers } from "./useImprovementPlanAnswers";
 import { ImprovementPlanSection } from "./ImprovementPlanSection";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const NavigationContainer = styled.div`
 
 export const ImprovementPlanReviewPage = () => {
   const { config } = useContext(AssessmentContext);
-
+  const { urlId } = useParams();
   const navigate = useNavigate();
   const { sections, answers } = useImprovementPlanAnswers();
 
@@ -47,7 +47,7 @@ export const ImprovementPlanReviewPage = () => {
             className="ds_button ds_button--secondary"
             type="button"
             onClick={() => {
-              navigate(`/improvement-plan/summary`);
+              navigate(`/${urlId}/improvement-plan/summary`);
             }}
           >
             Previous
@@ -56,7 +56,7 @@ export const ImprovementPlanReviewPage = () => {
             className="ds_button"
             type="button"
             onClick={() => {
-              navigate(`/improvement-plan/result`);
+              navigate(`/${urlId}/improvement-plan/result`);
             }}
           >
             Save and download Improvement Plan
