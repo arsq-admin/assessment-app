@@ -27,7 +27,6 @@ export const useAssessment = () => {
   const questionOrder: string[] = [];
   const questionsById: Record<string, Question> = {};
 
-  console.log(assessmentConfig);
   assessmentConfig?.sections.forEach((section) => {
     section.questions.forEach((question) => {
       questionOrder.push(question.id);

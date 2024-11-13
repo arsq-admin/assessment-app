@@ -47,7 +47,7 @@ export const PrepareAssessmentPage = () => {
     pathname,
   ]);
 
-  return isAssessmentLoading && isTenderPackageLoading ? (
+  return isAssessmentLoading || isTenderPackageLoading ? (
     <Box sx={{ p: "5rem 0" }}>
       <FullPageLoading />
     </Box>

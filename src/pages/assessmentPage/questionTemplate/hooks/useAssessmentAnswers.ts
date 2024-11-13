@@ -9,12 +9,14 @@ import { Question } from "../../types/assessmentConfig";
 import { AssessmentContext, TenderPackageContext } from "../../../../context";
 import { useMutation } from "@tanstack/react-query";
 import { saveQuestionAnswer } from "@/api/assessment";
+import { useParams } from "react-router-dom";
 
 interface Props {
   question: Question;
 }
 
 export const useAssessmentAnswers = ({ question }: Props) => {
+  const { urlId } = useParams();
   const { mutate } = useMutation({
     mutationFn: saveQuestionAnswer,
   });
@@ -128,7 +130,7 @@ export const useAssessmentAnswers = ({ question }: Props) => {
     if (response.answer.length > 0) {
       mutate({
         organisationId: tenderPackage?.organisationId || "",
-        assessmentId: config?.id || "",
+        assessmentId: urlId || "",
         questionId,
         answer: response.answer,
         title,

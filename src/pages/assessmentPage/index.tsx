@@ -32,12 +32,12 @@ export const AssessmentPage = () => {
 
   const isDisabled =
     firstSkippedQuestionId && isCurrentQuestionAfterSkippedQuestion;
-  console.log(config, questionId);
+
   const { question, section } =
     config && questionId
       ? getQuestionFromConfig(config, questionId)
       : { question: null, section: "" };
-  console.log("question", question);
+
   return (
     <>
       {isDisabled && (

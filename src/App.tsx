@@ -26,6 +26,7 @@ import {
   useSetJourney,
   useTenderPackage,
 } from "./hooks";
+import { Box } from "@mui/material";
 
 function App() {
   const { user, setUser, organisations, setOrganisations } = useAuthenticated();
@@ -88,48 +89,61 @@ function App() {
           }}
         >
           <ScrollToTop />
-          <Header tenderName={tenderPackage?.name || ""} />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/oauth/callback" element={<OauthCallbackPage />} />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100vh",
+              width: "100%",
+            }}
+          >
+            <Header tenderName={tenderPackage?.name || ""} />
+            <Box sx={{ flexGrow: 1 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/oauth/callback" element={<OauthCallbackPage />} />
 
-            <Route path="/:urlId" element={<PrepareAssessmentPage />}>
-              <Route
-                path="/:urlId/introduction"
-                element={<IntroductionPage />}
-              />
-              <Route path="/:urlId/assessment" element={<AssessmentPage />} />
-              <Route path="/:urlId/review" element={<ReviewPage />} />
-              <Route path="/:urlId/result" element={<ResultPage />} />
-              <Route
-                path="/:urlId/improvement-plan/:id"
-                element={<ImprovementPlanPage />}
-              />
-              <Route
-                path="/:urlId/improvement-plan/result"
-                element={<ImprovementPlanResultPage />}
-              />
-              <Route
-                path="/:urlId/improvement-plan/summary"
-                element={<ImprovementPlanSummary />}
-              />
-              <Route
-                path="/:urlId/improvement-plan/introduction"
-                element={
-                  <ImprovementPlanIntroPage
-                    buttonName="Continue"
-                    redirectUrl="/improvement-plan/summary"
+                <Route path="/:urlId" element={<PrepareAssessmentPage />}>
+                  <Route
+                    path="/:urlId/introduction"
+                    element={<IntroductionPage />}
                   />
-                }
-              />
-              <Route
-                path="/:urlId/improvement-plan/review"
-                element={<ImprovementPlanReviewPage />}
-              />
-            </Route>
-          </Routes>
-
-          <Footer />
+                  <Route
+                    path="/:urlId/assessment"
+                    element={<AssessmentPage />}
+                  />
+                  <Route path="/:urlId/review" element={<ReviewPage />} />
+                  <Route path="/:urlId/result" element={<ResultPage />} />
+                  <Route
+                    path="/:urlId/improvement-plan/:id"
+                    element={<ImprovementPlanPage />}
+                  />
+                  <Route
+                    path="/:urlId/improvement-plan/result"
+                    element={<ImprovementPlanResultPage />}
+                  />
+                  <Route
+                    path="/:urlId/improvement-plan/summary"
+                    element={<ImprovementPlanSummary />}
+                  />
+                  <Route
+                    path="/:urlId/improvement-plan/introduction"
+                    element={
+                      <ImprovementPlanIntroPage
+                        buttonName="Continue"
+                        redirectUrl="/improvement-plan/summary"
+                      />
+                    }
+                  />
+                  <Route
+                    path="/:urlId/improvement-plan/review"
+                    element={<ImprovementPlanReviewPage />}
+                  />
+                </Route>
+              </Routes>
+            </Box>
+            <Footer />
+          </Box>
         </AssessmentContext.Provider>
       </TenderPackageContext.Provider>
     </UserContext.Provider>
