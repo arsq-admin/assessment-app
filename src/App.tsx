@@ -10,6 +10,7 @@ import {
   ImprovementPlanResultPage,
   OauthCallbackPage,
   HomePage,
+  PrepareAssessmentPage,
 } from "./pages";
 import { Footer, Header, ScrollToTop } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -28,7 +29,6 @@ import {
 
 function App() {
   const { user, setUser } = useAuthenticated();
-  const tenderName = "Mock Tender Name";
 
   const {
     setQuestionId,
@@ -76,7 +76,7 @@ function App() {
             journey,
             currentAnswers,
             setCurrentAnswers,
-            tenderName: tenderName,
+            tenderName: tenderPackage?.name || "",
             reachedReviewPage,
             setReachedReviewPage,
             questionsById,
@@ -89,25 +89,29 @@ function App() {
           <Header tenderName={tenderPackage?.name || ""} />
           <Routes>
             <Route path="/" Component={HomePage} />
-            <Route path="/introduction" Component={IntroductionPage} />
-            <Route path="/assessment" Component={AssessmentPage} />
-            <Route path="/review" Component={ReviewPage} />
-            <Route path="/result" Component={ResultPage} />
-            <Route path="/oauth/callback" Component={OauthCallbackPage} />
+            <Route path="/:urlId" Component={PrepareAssessmentPage} />
+            <Route path="/:urlId/introduction" Component={IntroductionPage} />
+            <Route path="/:urlId/assessment" Component={AssessmentPage} />
+            <Route path="/:urlId/review" Component={ReviewPage} />
+            <Route path="/:urlId/result" Component={ResultPage} />
             <Route
-              path="/improvement-plan/:id"
+              path="/:urlId/oauth/callback"
+              Component={OauthCallbackPage}
+            />
+            <Route
+              path="/:urlId/improvement-plan/:id"
               Component={ImprovementPlanPage}
             />
             <Route
-              path="/improvement-plan/result"
+              path="/:urlId/improvement-plan/result"
               Component={ImprovementPlanResultPage}
             />
             <Route
-              path="/improvement-plan/summary"
+              path="/:urlId/improvement-plan/summary"
               Component={ImprovementPlanSummary}
             />
             <Route
-              path="/improvement-plan/introduction"
+              path="/:urlId/improvement-plan/introduction"
               Component={() => (
                 <ImprovementPlanIntroPage
                   buttonName="Continue"
@@ -116,7 +120,7 @@ function App() {
               )}
             />
             <Route
-              path="/improvement-plan/review"
+              path="/:urlId/improvement-plan/review"
               Component={ImprovementPlanReviewPage}
             />
           </Routes>

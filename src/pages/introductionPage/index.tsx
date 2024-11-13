@@ -32,10 +32,10 @@ export const IntroductionPage = () => {
         <button
           className="ds_button"
           type="button"
-          id="begin-assessement"
+          id="begin-assessment"
           onClick={beginAssessment}
         >
-          Begin assessement
+          Begin assessment
         </button>
       </Column>
     </Container>
