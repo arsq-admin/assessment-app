@@ -4,6 +4,7 @@ import {
   Question,
 } from "./pages/assessmentPage/types/assessmentConfig";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
+import { User } from "./api/user/types";
 
 interface AssessmentContext {
   config: AssessmentConfig | null;
@@ -35,4 +36,14 @@ export const AssessmentContext = createContext<AssessmentContext>({
   reachedImprovementPlanReviewPage: false,
   setReachedImprovementPlanReviewPage: () => {},
   questionsById: {},
+});
+
+interface UserContext {
+  user: null | User;
+  setUser: Dispatch<SetStateAction<User | null>>;
+}
+
+export const UserContext = createContext<UserContext>({
+  user: null,
+  setUser: () => {},
 });
