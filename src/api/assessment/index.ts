@@ -51,3 +51,28 @@ export const saveQuestionAnswer = async ({
 
   return await res.json();
 };
+
+interface SubmitAssessment {
+  organisationId: string;
+  urlId: string;
+}
+
+export const submitAssessment = async ({
+  organisationId,
+  urlId,
+}: SubmitAssessment) => {
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Organisation-Id", organisationId);
+
+  const res = await fetch(`${ASSESSMENT_SERVICE_URL}/submit`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      urlId,
+    }),
+    credentials: "include",
+  });
+
+  return await res.json();
+};

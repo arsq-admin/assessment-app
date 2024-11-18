@@ -1,3 +1,8 @@
+export enum AssessmentType {
+  BUYER = "BUYER",
+  SUPPLIER = "SUPPLIER",
+}
+
 export enum Op {
   EQUAL = "EQUAL",
   INCLUDES = "INCLUDES",
@@ -134,6 +139,7 @@ export enum OutcomeType {
 }
 
 export interface Outcomes {
+  id: string;
   name: string;
   type: OutcomeType;
   title: string;
@@ -159,4 +165,5 @@ export interface AssessmentConfig {
   sections: Section[];
   outcomes: Outcomes[];
   introduction: IntroTextSection[];
+  assessmentType: AssessmentType;
 }

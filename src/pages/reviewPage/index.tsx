@@ -4,6 +4,7 @@ import { ReviewSection } from "./ReviewSection";
 import { Column, Container, PreviewNotice } from "@/components";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -11,12 +12,25 @@ const NavigationContainer = styled.div`
 `;
 
 export const ReviewPage = () => {
-  const { answers, journey, skippedQuestionId, isComplete, resolveAssessment } =
-    useAnswers();
+  const {
+    answers,
+    journey,
+    skippedQuestionId,
+    isComplete,
+    resolveAssessment,
+    submitResponse,
+  } = useAnswers();
   const { urlId } = useParams();
   const navigate = useNavigate();
 
   const sections = Object.keys(answers);
+
+  useEffect(() => {
+    if (submitResponse) {
+      const outcomeName = submitResponse.outcome?.id || "error";
+      navigate(`/${urlId}/result?outcome=${outcomeName}`);
+    }
+  }, [navigate, submitResponse, urlId]);
 
   return (
     <Container padding="2rem">

@@ -4,7 +4,7 @@ import {
   Question,
   QuestionType,
   TargetType,
-} from "@/pages/assessmentPage/types/assessmentConfig";
+} from "@/api/assessment/types";
 import { AssessmentAnswers } from "@/pages/assessmentPage/types/assessmentAnswers";
 import { FormattedAnswers } from "@/pages/reviewPage/useAnswers";
 import { isConditionMet } from "@/pages/assessmentPage/services";
