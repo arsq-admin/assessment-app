@@ -127,7 +127,7 @@ export enum OutcomeType {
   UNSUCCESSFUL = "UNSUCCESSFUL",
 }
 
-export interface Outcomes {
+export interface Outcome {
   name: string;
   type: OutcomeType;
   title: string;
@@ -145,7 +145,7 @@ export interface AssessmentConfig {
   name: string;
   status: Status;
   sections: Section[];
-  outcomes: Outcomes[];
+  outcomes: Outcome[];
   introduction: IntroTextSection[];
 }
 

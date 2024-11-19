@@ -1,9 +1,9 @@
 import { AssessmentContext } from "@/context";
 import { useContext, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { OutcomeType } from "../assessmentPage/types/assessmentConfig";
-import { UnsuccessfulPage, SuccessfulPage } from "./components";
+import { BuyerResult, SupplierResult } from "./components";
 import { Container } from "@/components";
+import { AssessmentType } from "@/api/assessment/types";
 
 export const ResultPage = () => {
   const navigate = useNavigate();
@@ -11,7 +11,6 @@ export const ResultPage = () => {
   const [searchParam] = useSearchParams();
 
   const outcomeName = searchParam.get("outcome");
-  const failedCount = searchParam.get("fail-count");
 
   const matchedOutcome =
     outcomeName &&
@@ -28,17 +27,11 @@ export const ResultPage = () => {
 
   return (
     <Container padding="4rem">
-      {matchedOutcome && matchedOutcome.type === OutcomeType.SUCCESSFUL && (
-        <SuccessfulPage
-          title={matchedOutcome.title}
-          body={matchedOutcome.body}
-        />
+      {config?.assessmentType === AssessmentType.BUYER && matchedOutcome && (
+        <BuyerResult outcome={matchedOutcome} />
       )}
-      {matchedOutcome && matchedOutcome.type === OutcomeType.UNSUCCESSFUL && (
-        <UnsuccessfulPage
-          failedCount={parseInt(failedCount || "1")}
-          name={config?.name || ""}
-        />
+      {config?.assessmentType === AssessmentType.SUPPLIER && matchedOutcome && (
+        <SupplierResult outcome={matchedOutcome} />
       )}
     </Container>
   );
