@@ -17,7 +17,7 @@ export const ResultPage = () => {
     config?.outcomes.find(
       (outcome) => outcome.name === outcomeName || outcome.id === outcomeName
     );
-
+  console.log(outcomeName, matchedOutcome, config?.outcomes);
   useEffect(() => {
     if (!outcomeName || !matchedOutcome) {
       // TODO: Error here, what should happen

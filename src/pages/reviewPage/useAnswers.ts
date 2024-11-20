@@ -8,7 +8,7 @@ import {
 } from "@/services/assessment";
 import { QuestionType } from "../assessmentPage/types/assessmentConfig";
 import { useNavigate, useParams } from "react-router-dom";
-import { AssessmentType } from "@/api/assessment/types";
+import { AssessmentType, OutcomeType } from "@/api/assessment/types";
 import { submitAssessment } from "@/api/assessment";
 import { useMutation } from "@tanstack/react-query";
 
@@ -87,8 +87,6 @@ export const useAnswers = () => {
     // Probably should go to an error page
     if (!config) return;
 
-    console.log(config);
-
     if (config.assessmentType === AssessmentType.BUYER) {
       if (!urlId || !tenderPackage?.organisationId)
         throw new Error("Missing org id or url id");
@@ -129,11 +127,20 @@ export const useAnswers = () => {
         JSON.stringify({ questionIds: Object.values(failedAnswers) })
       );
 
+      const outcomeType = hasPassed
+        ? OutcomeType.SUCCESSFUL
+        : OutcomeType.UNSUCCESSFUL;
+
+      const finalOutcome = config.outcomes.find(
+        (outcome) => outcome.type === outcomeType
+      );
+
+      if (!finalOutcome)
+        throw new Error("Unable to find outcome. Please check your config.");
+
       return navigate(
-        `/${urlId}/result?outcome=${
-          hasPassed
-            ? "successful"
-            : `unsuccessful&fail-count=${Object.keys(failedAnswers).length}`
+        `/${urlId}/result?outcome=${finalOutcome.id}${
+          hasPassed ? `&fail-count=${Object.keys(failedAnswers).length}` : ""
         }`
       );
     }
