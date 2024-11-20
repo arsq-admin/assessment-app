@@ -114,10 +114,7 @@ function App() {
                   />
                   <Route path="/:urlId/review" element={<ReviewPage />} />
                   <Route path="/:urlId/result" element={<ResultPage />} />
-                  <Route
-                    path="/:urlId/improvement-plan/:id"
-                    element={<ImprovementPlanPage />}
-                  />
+
                   <Route
                     path="/:urlId/improvement-plan/result"
                     element={<ImprovementPlanResultPage />}
@@ -138,6 +135,10 @@ function App() {
                   <Route
                     path="/:urlId/improvement-plan/review"
                     element={<ImprovementPlanReviewPage />}
+                  />
+                  <Route
+                    path="/:urlId/improvement-plan/:id"
+                    element={<ImprovementPlanPage />}
                   />
                 </Route>
               </Routes>

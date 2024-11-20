@@ -138,7 +138,7 @@ export const useAssessmentAnswers = ({ question }: Props) => {
 
       // To be removed
       const storedAnswers = JSON.parse(
-        localStorage.getItem(`assessment-${assessmentId}`) || "{}"
+        localStorage.getItem(`assessment-${urlId}`) || "{}"
       );
 
       localStorage.setItem(

@@ -2,7 +2,7 @@ import { Column, Container } from "@/components";
 
 import { scotGovColour } from "@/themes";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Props {
   redirectUrl?: string;
@@ -15,6 +15,7 @@ export const ImprovementPlanIntroPage = ({
 }: Props) => {
   const { secondaryText } = scotGovColour;
   const navigate = useNavigate();
+  const { urlId } = useParams();
   return (
     <Container padding="4rem">
       <Column span="3 / span 8" margin="0 0 4rem">
@@ -54,7 +55,10 @@ export const ImprovementPlanIntroPage = ({
         </p>
 
         {buttonName && redirectUrl && (
-          <button className="ds_button" onClick={() => navigate(redirectUrl)}>
+          <button
+            className="ds_button"
+            onClick={() => navigate(`/${urlId}${redirectUrl}`)}
+          >
             {buttonName}
           </button>
         )}

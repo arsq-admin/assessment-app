@@ -60,7 +60,7 @@ export const ImprovementPlanSummary = () => {
   });
 
   const navigate = useNavigate();
-
+  console.log("urld", urlId);
   return (
     <Container padding="3rem 0">
       <Column span="1 / span 9" margin="0 0 4rem">
@@ -80,7 +80,7 @@ export const ImprovementPlanSummary = () => {
         <div style={{ padding: "2rem 0" }}>
           {questionConfig?.map((section) => {
             return (
-              <div>
+              <div key={section.name}>
                 <h3 style={{ marginBottom: "1rem" }}>{section.name}</h3>
                 <div
                   style={{
@@ -92,6 +92,7 @@ export const ImprovementPlanSummary = () => {
                   {section.questions.map((question) => {
                     return (
                       <div
+                        key={question.id}
                         style={{
                           display: "flex",
                           gap: "4rem",
@@ -99,7 +100,7 @@ export const ImprovementPlanSummary = () => {
                           alignItems: "center",
                         }}
                       >
-                        <a href={`/improvement-plan/${question.id}`}>
+                        <a href={`/${urlId}/improvement-plan/${question.id}`}>
                           {questionOrder.findIndex((id) => id === question.id) +
                             1}
                           . {question.title}

@@ -86,7 +86,7 @@ export const useAnswers = () => {
   const resolveAssessment = async () => {
     // Probably should go to an error page
     if (!config) return;
-
+    console.log(config);
     if (config.assessmentType === AssessmentType.BUYER) {
       if (!urlId || !tenderPackage?.organisationId)
         throw new Error("Missing org id or url id");
@@ -123,7 +123,7 @@ export const useAnswers = () => {
       setQuestionId(Object.values(failedAnswers)[0].id);
 
       localStorage.setItem(
-        `failed-questions-${config.id}`,
+        `failed-questions-${urlId}`,
         JSON.stringify({ questionIds: Object.values(failedAnswers) })
       );
 

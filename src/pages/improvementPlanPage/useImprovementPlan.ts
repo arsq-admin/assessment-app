@@ -12,9 +12,7 @@ export const useImprovementPlan = () => {
   const { id, urlId } = useParams();
 
   const { config, questionId } = useContext(AssessmentContext);
-  const failedAnswersJson = localStorage.getItem(
-    `failed-questions-${config?.id}`
-  );
+  const failedAnswersJson = localStorage.getItem(`failed-questions-${urlId}`);
 
   const currentId = id || questionId;
 
