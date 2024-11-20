@@ -19,7 +19,7 @@ interface FailedQuestions {
 export const ImprovementPlanSummary = () => {
   const { config, questionOrder } = useContext(AssessmentContext);
   const { urlId } = useParams();
-  const data = localStorage.getItem(`failed-questions-${config?.id}`);
+  const data = localStorage.getItem(`failed-questions-${urlId}`);
 
   const failedQuestions: FailedQuestions = JSON.parse(
     data || '{"questionIds": []}'

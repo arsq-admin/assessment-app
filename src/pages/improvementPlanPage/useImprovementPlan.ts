@@ -11,7 +11,7 @@ export const useImprovementPlan = () => {
   const navigate = useNavigate();
   const { id, urlId } = useParams();
 
-  const { config, questionId } = useContext(AssessmentContext);
+  const { questionId } = useContext(AssessmentContext);
   const failedAnswersJson = localStorage.getItem(`failed-questions-${urlId}`);
 
   const currentId = id || questionId;

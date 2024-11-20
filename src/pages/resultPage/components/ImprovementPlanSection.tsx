@@ -26,7 +26,7 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
 
   const { secondaryText } = scotGovColour;
 
-  const data = localStorage.getItem(`failed-questions-${config?.id}`);
+  const data = localStorage.getItem(`failed-questions-${urlId}`);
 
   const failedQuestions: FailedQuestions = JSON.parse(data || "{}");
 

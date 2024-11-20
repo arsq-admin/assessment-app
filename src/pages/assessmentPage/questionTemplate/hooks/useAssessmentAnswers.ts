@@ -20,10 +20,9 @@ export const useAssessmentAnswers = ({ question }: Props) => {
   const { mutate } = useMutation({
     mutationFn: saveQuestionAnswer,
   });
-  const { config, setCurrentAnswers, currentAnswers } =
-    useContext(AssessmentContext);
+  const { setCurrentAnswers, currentAnswers } = useContext(AssessmentContext);
   const { tenderPackage } = useContext(TenderPackageContext);
-  const assessmentId = config?.id;
+  const assessmentId = urlId;
 
   const { id: questionId, followUp: followUpConfig, title } = question;
 
