@@ -1,6 +1,6 @@
 import { Outcome } from "@/api/assessment/types";
 import { Column, PoweredBySupply25 } from "@/components";
-import { AssessmentContext } from "@/context";
+import { AssessmentContext, TenderPackageContext } from "@/context";
 import { scotGovColour } from "@/themes";
 import { useContext } from "react";
 
@@ -10,6 +10,7 @@ interface Props {
 
 export const BuyerResult = ({ outcome }: Props) => {
   const { config } = useContext(AssessmentContext);
+  const { tenderPackage } = useContext(TenderPackageContext);
   const { secondaryText, positive, white } = scotGovColour;
   const { title } = outcome;
   const { name } = config || {};
@@ -35,7 +36,13 @@ export const BuyerResult = ({ outcome }: Props) => {
         </p>
         <p style={{ color: secondaryText }}>
           Please go back to the{" "}
-          <a href={`https://app-${import.meta.env.VITE_STAGE}.supply25.com`}>
+          <a
+            href={`https://app-${
+              import.meta.env.VITE_STAGE
+            }.supply25.com/tender-assessment-package/summary?id=${
+              tenderPackage?.id
+            }`}
+          >
             Supply25
           </a>{" "}
           app to complete your assessment package set up for your tender.
