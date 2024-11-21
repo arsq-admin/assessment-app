@@ -8,3 +8,5 @@ export { ImprovementPlanIntroPage } from "./improvementPlanIntroPage";
 export { ImprovementPlanSummary } from "./improvementPlanSummary";
 export { ImprovementPlanResultPage } from "./improvementPlanResultPage";
 export { OauthCallbackPage } from "./oauthCallbackPage";
+export { HomePage } from "./homePage";
+export { PrepareAssessmentPage } from "./prepareAssessmentPage";

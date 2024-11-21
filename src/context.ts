@@ -1,10 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import {
-  AssessmentConfig,
-  Question,
-} from "./pages/assessmentPage/types/assessmentConfig";
+import { AssessmentConfig, Question } from "@/api/assessment/types";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
-import { User } from "./api/user/types";
+import { Organisation, User } from "./api/user/types";
+import { PublicTenderPackage } from "./api/tenderPackage/type";
 
 interface AssessmentContext {
   config: AssessmentConfig | null;
@@ -20,6 +18,7 @@ interface AssessmentContext {
   reachedImprovementPlanReviewPage: boolean;
   setReachedImprovementPlanReviewPage: Dispatch<SetStateAction<boolean>>;
   questionsById: Record<string, Question>;
+  setAssessmentConfig: Dispatch<SetStateAction<AssessmentConfig | null>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -36,14 +35,29 @@ export const AssessmentContext = createContext<AssessmentContext>({
   reachedImprovementPlanReviewPage: false,
   setReachedImprovementPlanReviewPage: () => {},
   questionsById: {},
+  setAssessmentConfig: () => {},
 });
 
 interface UserContext {
   user: null | User;
   setUser: Dispatch<SetStateAction<User | null>>;
+  organisations: Organisation[];
+  setOrganisations: Dispatch<SetStateAction<Organisation[]>>;
 }
 
 export const UserContext = createContext<UserContext>({
   user: null,
   setUser: () => {},
+  organisations: [],
+  setOrganisations: () => {},
+});
+
+interface TenderPackageContext {
+  tenderPackage: null | PublicTenderPackage;
+  setTenderPackage: Dispatch<SetStateAction<PublicTenderPackage | null>>;
+}
+
+export const TenderPackageContext = createContext<TenderPackageContext>({
+  tenderPackage: null,
+  setTenderPackage: () => {},
 });

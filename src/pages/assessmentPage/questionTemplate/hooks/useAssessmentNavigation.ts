@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   LogicAction,
   Question,
@@ -24,6 +24,7 @@ export const useAssessmentNavigation = ({
   currentAnswers,
 }: Props) => {
   const { logic } = question;
+  const { urlId } = useParams();
   const navigate = useNavigate();
   const {
     config,
@@ -41,7 +42,7 @@ export const useAssessmentNavigation = ({
 
     if (onLastQuestion) {
       setReachedReviewPage(true);
-      navigate("/review");
+      navigate(`/${urlId}/review`);
       return;
     }
 
@@ -49,7 +50,7 @@ export const useAssessmentNavigation = ({
       (id) => id === questionId
     );
     let nextQuestionId = questionOrder[currentQuestionIndex + 1];
-    let pathName = "/assessment";
+    let pathName = "assessment";
     let searchParams = `id=${nextQuestionId}`;
 
     if (logic) {
@@ -61,7 +62,7 @@ export const useAssessmentNavigation = ({
         const { target, action } = logic[firstLogicMatchedIndex];
 
         if (action === LogicAction.END) {
-          pathName = "/outcome";
+          pathName = "review";
           searchParams = `name=${target.value}`;
         }
 
@@ -76,7 +77,7 @@ export const useAssessmentNavigation = ({
 
     setQuestionId(nextQuestionId || questionId);
     navigate({
-      pathname: pathName,
+      pathname: `/${urlId}/${pathName}`,
       search: searchParams,
     });
   };
@@ -93,14 +94,14 @@ export const useAssessmentNavigation = ({
 
     setQuestionId(prevQuestionId);
     navigate({
-      pathname: "/assessment",
+      pathname: `/${urlId}/assessment`,
       search: `id=${prevQuestionId}`,
     });
   };
 
   const backToSummary = () => {
     saveAnswer();
-    navigate("/review");
+    navigate(`/${urlId}/review`);
   };
 
   return { onPrev, onNext, backToSummary };

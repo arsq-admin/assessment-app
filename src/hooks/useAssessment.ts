@@ -1,30 +1,24 @@
-// import { useParams } from "react-router-dom";
-import { TEMP_assessmentConfigs } from "../pages/assessmentPage/services";
 import { getQuestionFromConfig } from "@/services/assessment";
 import { useState } from "react";
 import { AssessmentAnswers } from "../pages/assessmentPage/types/assessmentAnswers";
 import { useSearchParams } from "react-router-dom";
-import { Question } from "../pages/assessmentPage/types/assessmentConfig";
+import { AssessmentConfig, Question } from "@/api/assessment/types";
 
 export const useAssessment = () => {
-  // const { name: assessmentName = "" } = useParams();
-  const assessmentName = "saql";
-
   const [searchParams] = useSearchParams();
-
   const idInParam = searchParams.get("id");
 
-  // Config will need to be fetched from db instead of local file
-  const assessmentConfig = TEMP_assessmentConfigs[assessmentName];
-  const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
+  const [assessmentConfig, setAssessmentConfig] =
+    useState<null | AssessmentConfig>(null);
 
+  const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
   const [
     reachedImprovementPlanReviewPage,
     setReachedImprovementPlanReviewPage,
   ] = useState<boolean>(false);
   const [reachedReviewPage, setReachedReviewPage] = useState<boolean>(false);
   const [questionId, setQuestionId] = useState<string>(
-    idInParam || firstQuestion.id || ""
+    idInParam || firstQuestion?.id || ""
   );
   const [currentAnswers, setCurrentAnswers] = useState<AssessmentAnswers>({});
   const [journey, setJourney] = useState<string[]>([]);
@@ -32,6 +26,7 @@ export const useAssessment = () => {
 
   const questionOrder: string[] = [];
   const questionsById: Record<string, Question> = {};
+
   assessmentConfig?.sections.forEach((section) => {
     section.questions.forEach((question) => {
       questionOrder.push(question.id);
@@ -62,5 +57,6 @@ export const useAssessment = () => {
     questionsById,
     reachedImprovementPlanReviewPage,
     setReachedImprovementPlanReviewPage,
+    setAssessmentConfig,
   };
 };

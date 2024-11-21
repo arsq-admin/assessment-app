@@ -1,3 +1,8 @@
+export enum AssessmentType {
+  BUYER = "BUYER",
+  SUPPLIER = "SUPPLIER",
+}
+
 export enum Op {
   EQUAL = "EQUAL",
   INCLUDES = "INCLUDES",
@@ -13,6 +18,12 @@ export enum QuestionType {
   TEXT = "TEXT",
   MULTIPLE_CHOICE = "MULTIPLE_CHOICE",
   NUMBER = "NUMBER",
+}
+
+export enum IntroSectionType {
+  TEXT = "TEXT",
+  VIDEO = "VIDEO",
+  IMAGE = "IMAGE",
 }
 
 export interface Option {
@@ -127,17 +138,29 @@ export enum OutcomeType {
   UNSUCCESSFUL = "UNSUCCESSFUL",
 }
 
+interface OutcomeContent {
+  heading: string;
+  body: string;
+}
+
 export interface Outcome {
+  id: string;
   name: string;
   type: OutcomeType;
   title: string;
-  body: string;
+  content: OutcomeContent[];
 }
 
 export interface Section {
   name: string;
   subsections: string[];
   questions: Question[];
+}
+
+export interface IntroTextSection {
+  type: IntroSectionType;
+  heading: string;
+  content: string[] | string[][];
 }
 
 export interface AssessmentConfig {
@@ -147,16 +170,6 @@ export interface AssessmentConfig {
   sections: Section[];
   outcomes: Outcome[];
   introduction: IntroTextSection[];
-}
-
-export enum IntroSectionType {
-  TEXT = "TEXT",
-  VIDEO = "VIDEO",
-  IMAGE = "IMAGE",
-}
-
-export interface IntroTextSection {
-  type: IntroSectionType;
-  heading: string;
-  content: string[];
+  assessmentType: AssessmentType;
+  isTemplate?: boolean;
 }

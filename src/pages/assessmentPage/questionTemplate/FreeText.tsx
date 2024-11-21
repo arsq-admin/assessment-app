@@ -1,4 +1,3 @@
-import { globalTheme } from "@/themes";
 import { Box, InputLabel, TextField } from "@mui/material";
 
 interface Props {
@@ -17,7 +16,7 @@ export const FreeText = ({ value, label, onChange }: Props) => {
           display: "flex",
           flexDirection: "column",
           gap: "0.5rem",
-          color: globalTheme.body,
+          color: "#A6217A",
         }}
       >
         {label}

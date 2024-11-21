@@ -2,6 +2,7 @@
   "id": "03nfjds924",
   "name": "Risk Profile Assessment",
   "status": "DRAFT",
+  "evaluationType": "POINTS",
   "introduction": [
     {
       "type": "TEXT",
@@ -29,14 +30,28 @@
       "title": "Only Basic Cyber Hygiene is required.",
       "body": "Your procurement only requires basic cyber hygiene. There is no need to continue with this risk assessment."
     },
+    "notApplicable": {
+      "title": "You have been given a low risk rating for your procurement.",
+      "maxScore": 6
+    },
+    "veryLow": {
+      "title": "You have been given a low risk rating for your procurement.",
+      "minScore": 7,
+      "maxScore": 41
+    },
     "low": {
-      "title": "You have been given a low risk rating for your procurement."
+      "title": "You have been given a low risk rating for your procurement.",
+      "minScore": 42,
+      "maxScore": 90
     },
     "moderate": {
-      "title": "You have been given a moderate risk rating for your procurement."
+      "title": "You have been given a moderate risk rating for your procurement.",
+      "minScore": 91,
+      "maxScore": 130
     },
     "high": {
-      "title": "You have been given a high risk rating for your procurement."
+      "title": "You have been given a high risk rating for your procurement.",
+      "minScore": 131
     }
   },
   "sections": [
@@ -206,7 +221,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": "yes",
@@ -518,7 +533,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "priority": 1,
               "condition": [
                 {
@@ -532,7 +547,7 @@
               }
             },
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": ["personal"],
@@ -565,7 +580,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": "no",
@@ -669,7 +684,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": "crit",
@@ -717,7 +732,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": ["high", "crit"],
@@ -765,7 +780,7 @@
           ],
           "logic": [
             {
-              "action": "END",
+              "action": "SET_MIN",
               "condition": [
                 {
                   "value": ["high", "crit"],

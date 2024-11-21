@@ -1,4 +1,5 @@
 import { login } from "@/api/user";
+import { FullPageLoading } from "@/components";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -14,11 +15,12 @@ export const OauthCallbackPage = () => {
     enabled: Boolean(code),
   });
 
+  // TODO: Need to include the state maybe?
   useEffect(() => {
     if (isSuccess) {
       navigate("/");
     }
   }, [isSuccess, navigate]);
 
-  return <div>oauth callback</div>;
+  return <FullPageLoading />;
 };

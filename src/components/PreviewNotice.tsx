@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export const Notice = styled.div`
@@ -13,7 +13,10 @@ interface Props {
 }
 
 export const PreviewNotice = ({ skippedQuestionId }: Props) => {
-  const href = skippedQuestionId ? `/assessment?id=${skippedQuestionId}` : "/";
+  const { urlId } = useParams();
+  const href = skippedQuestionId
+    ? `/${urlId}/assessment?id=${skippedQuestionId}`
+    : "/";
 
   return (
     <Notice>

@@ -6,18 +6,25 @@ import {
 } from "../../types/assessmentAnswers";
 import { isConditionMet } from "../../services";
 import { Question } from "../../types/assessmentConfig";
-import { AssessmentContext } from "../../../../context";
+import { AssessmentContext, TenderPackageContext } from "../../../../context";
+import { useMutation } from "@tanstack/react-query";
+import { saveQuestionAnswer } from "@/api/assessment";
+import { useParams } from "react-router-dom";
 
 interface Props {
   question: Question;
 }
 
 export const useAssessmentAnswers = ({ question }: Props) => {
-  const { config, setCurrentAnswers, currentAnswers } =
-    useContext(AssessmentContext);
-  const assessmentId = config?.id;
+  const { urlId } = useParams();
+  const { mutate } = useMutation({
+    mutationFn: saveQuestionAnswer,
+  });
+  const { setCurrentAnswers, currentAnswers } = useContext(AssessmentContext);
+  const { tenderPackage } = useContext(TenderPackageContext);
+  const assessmentId = urlId;
 
-  const { id: questionId, followUp: followUpConfig } = question;
+  const { id: questionId, followUp: followUpConfig, title } = question;
 
   const [answer, setAnswer] = useState<(string | number)[]>([]);
   const [freeText, setFreeText] = useState<Record<string, string>>({});
@@ -120,8 +127,17 @@ export const useAssessmentAnswers = ({ question }: Props) => {
     }
 
     if (response.answer.length > 0) {
+      mutate({
+        organisationId: tenderPackage?.organisationId || "",
+        assessmentId: urlId || "",
+        questionId,
+        answer: response.answer,
+        title,
+      });
+
+      // To be removed
       const storedAnswers = JSON.parse(
-        localStorage.getItem(`assessment-${assessmentId}`) || "{}"
+        localStorage.getItem(`assessment-${urlId}`) || "{}"
       );
 
       localStorage.setItem(

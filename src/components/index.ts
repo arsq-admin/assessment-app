@@ -10,3 +10,4 @@ export { ImprovementPlanBanner } from "./ImprovementPlanBanner";
 export { ReviewAnswerRow } from "./ReviewAnswerRow";
 export { ScrollToTop } from "./ScrollToTop";
 export { Header } from "./Header";
+export { FullPageLoading } from "./FullPageLoading";

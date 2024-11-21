@@ -1,12 +1,14 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
+import { useParams } from "react-router-dom";
 
 export const useImprovementPlanAnswers = () => {
+  const { urlId } = useParams();
   const { config } = useContext(AssessmentContext);
 
   const failedAnswers = JSON.parse(
-    localStorage.getItem(`failed-questions-${config?.id}`) || "{}"
+    localStorage.getItem(`failed-questions-${urlId}`) || "{}"
   ) as { questionIds: { id: string }[] };
 
   const improvementPlanAnswers = JSON.parse(

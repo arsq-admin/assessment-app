@@ -45,3 +45,16 @@ export const getMyUserInfo = async () => {
 
   return res.json();
 };
+
+export const getMyOrganisations = async () => {
+  const headers = new Headers();
+
+  headers.append("Content-Type", "application/json");
+
+  const res = await fetch(`${USER_SERVICE_URL}/organisation`, {
+    headers: headers,
+    credentials: "include",
+  });
+
+  return res.json();
+};

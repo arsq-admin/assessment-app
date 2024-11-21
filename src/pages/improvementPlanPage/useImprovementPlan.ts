@@ -9,12 +9,10 @@ interface SavedFailedQuestions {
 
 export const useImprovementPlan = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, urlId } = useParams();
 
-  const { config, questionId } = useContext(AssessmentContext);
-  const failedAnswersJson = localStorage.getItem(
-    `failed-questions-${config?.id}`
-  );
+  const { questionId } = useContext(AssessmentContext);
+  const failedAnswersJson = localStorage.getItem(`failed-questions-${urlId}`);
 
   const currentId = id || questionId;
 
@@ -28,14 +26,14 @@ export const useImprovementPlan = () => {
 
   const onPrev = (callback: () => void) => {
     navigate({
-      pathname: "/improvement-plan/summary",
+      pathname: `/${urlId}/improvement-plan/summary`,
     });
     callback();
   };
 
   const onNext = (callback: () => void) => {
     navigate({
-      pathname: "/improvement-plan/summary",
+      pathname: `/${urlId}/improvement-plan/summary`,
     });
     callback();
   };

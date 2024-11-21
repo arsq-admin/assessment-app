@@ -3,7 +3,7 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import { StatusLabel } from "./StatusLabel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface FailedQuestions {
   questionIds: {
@@ -18,7 +18,8 @@ interface FailedQuestions {
 
 export const ImprovementPlanSummary = () => {
   const { config, questionOrder } = useContext(AssessmentContext);
-  const data = localStorage.getItem(`failed-questions-${config?.id}`);
+  const { urlId } = useParams();
+  const data = localStorage.getItem(`failed-questions-${urlId}`);
 
   const failedQuestions: FailedQuestions = JSON.parse(
     data || '{"questionIds": []}'
@@ -79,7 +80,7 @@ export const ImprovementPlanSummary = () => {
         <div style={{ padding: "2rem 0" }}>
           {questionConfig?.map((section) => {
             return (
-              <div>
+              <div key={section.name}>
                 <h3 style={{ marginBottom: "1rem" }}>{section.name}</h3>
                 <div
                   style={{
@@ -91,6 +92,7 @@ export const ImprovementPlanSummary = () => {
                   {section.questions.map((question) => {
                     return (
                       <div
+                        key={question.id}
                         style={{
                           display: "flex",
                           gap: "4rem",
@@ -98,7 +100,7 @@ export const ImprovementPlanSummary = () => {
                           alignItems: "center",
                         }}
                       >
-                        <a href={`/improvement-plan/${question.id}`}>
+                        <a href={`/${urlId}/improvement-plan/${question.id}`}>
                           {questionOrder.findIndex((id) => id === question.id) +
                             1}
                           . {question.title}
@@ -123,7 +125,7 @@ export const ImprovementPlanSummary = () => {
             className="ds_button ds_button--secondary"
             type="button"
             onClick={() => {
-              navigate("/improvement-plan/introduction");
+              navigate(`/${urlId}/improvement-plan/introduction`);
             }}
           >
             Previous
@@ -135,7 +137,7 @@ export const ImprovementPlanSummary = () => {
             className="ds_button"
             type="button"
             onClick={() => {
-              navigate("/improvement-plan/review");
+              navigate(`/${urlId}/improvement-plan/review`);
             }}
           >
             See summary
