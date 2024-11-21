@@ -29,10 +29,16 @@ export const HomePage = () => {
   });
 
   useEffect(() => {
-    if (assessment?.data.length === 1 && tenderPackage?.data.length === 1) {
-      setAssessmentConfig(assessment.data[0]);
-      setTenderPackage(tenderPackage.data[0]);
-      navigate(`/${urlId}/introduction`);
+    if (assessment?.data.length === 1) {
+      if (tenderPackage?.data.length === 1) {
+        setAssessmentConfig(assessment.data[0]);
+        setTenderPackage(tenderPackage.data[0]);
+        navigate(`/${urlId}/introduction`);
+      }
+      if (assessment.data[0].isTemplate) {
+        setAssessmentConfig(assessment.data[0]);
+        navigate(`/${urlId}/introduction`);
+      }
     }
   }, [
     setAssessmentConfig,

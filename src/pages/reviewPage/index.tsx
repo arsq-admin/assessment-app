@@ -4,7 +4,8 @@ import { ReviewSection } from "./ReviewSection";
 import { Column, Container, PreviewNotice } from "@/components";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AssessmentContext } from "@/context";
 
 const NavigationContainer = styled.div`
   display: flex;
@@ -22,6 +23,9 @@ export const ReviewPage = () => {
   } = useAnswers();
   const { urlId } = useParams();
   const navigate = useNavigate();
+
+  const { config } = useContext(AssessmentContext);
+  const { isTemplate } = config || {};
 
   const sections = Object.keys(answers);
 
@@ -64,7 +68,7 @@ export const ReviewPage = () => {
           </button>
           <button
             className="ds_button"
-            disabled={!isComplete}
+            disabled={!isComplete || isTemplate}
             onClick={() => {
               resolveAssessment();
             }}

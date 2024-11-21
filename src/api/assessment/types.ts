@@ -171,4 +171,5 @@ export interface AssessmentConfig {
   outcomes: Outcome[];
   introduction: IntroTextSection[];
   assessmentType: AssessmentType;
+  isTemplate?: boolean;
 }

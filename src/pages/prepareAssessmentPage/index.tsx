@@ -29,10 +29,12 @@ export const PrepareAssessmentPage = () => {
   });
 
   useEffect(() => {
-    if (assessment?.data?.length === 1 && tenderPackage?.data?.length === 1) {
-      setAssessmentConfig(assessment.data[0]);
-      setTenderPackage(tenderPackage.data[0]);
+    if (assessment?.data?.length === 1) {
+      if (tenderPackage?.data?.length === 1) {
+        setTenderPackage(tenderPackage.data[0]);
+      }
 
+      setAssessmentConfig(assessment.data[0]);
       if (pathname === `/${urlId}`) {
         navigate(`/${urlId}/introduction`);
       }

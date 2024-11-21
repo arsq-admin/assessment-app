@@ -2,7 +2,7 @@ import { Outcome } from "@/api/assessment/types";
 import { Column, PoweredBySupply25 } from "@/components";
 import { AssessmentContext } from "@/context";
 import { scotGovColour } from "@/themes";
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 
 interface Props {
   outcome: Outcome;
@@ -34,12 +34,12 @@ export const BuyerResult = ({ outcome }: Props) => {
         </div>
       </Column>
       <Column span="3 / span 8">
-        {content.map(({ heading, body }) => {
+        {content.map(({ heading, body }, index) => {
           return (
-            <>
+            <Fragment key={`result-content-${index}`}>
               <h2>{heading}</h2>
               <p style={{ color: secondaryText }}>{body}</p>
-            </>
+            </Fragment>
           );
         })}
         <br />

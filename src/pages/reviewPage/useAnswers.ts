@@ -86,7 +86,9 @@ export const useAnswers = () => {
   const resolveAssessment = async () => {
     // Probably should go to an error page
     if (!config) return;
-    console.log(config);
+
+    if (config.isTemplate) return;
+
     if (config.assessmentType === AssessmentType.BUYER) {
       if (!urlId || !tenderPackage?.organisationId)
         throw new Error("Missing org id or url id");

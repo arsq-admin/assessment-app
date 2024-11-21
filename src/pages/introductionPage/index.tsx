@@ -24,9 +24,13 @@ export const IntroductionPage = () => {
               <h3>{intro.heading}</h3>
               {intro.content.map((element, contentIndex) => {
                 return Array.isArray(element) ? (
-                  <ul style={{ marginLeft: "3rem" }}>
-                    {element.map((innerElement) => {
-                      return <li>{innerElement}</li>;
+                  <ul key={contentIndex} style={{ marginLeft: "3rem" }}>
+                    {element.map((innerElement, innerIndex) => {
+                      return (
+                        <li key={`${contentIndex}-inner-${innerIndex}`}>
+                          {innerElement}
+                        </li>
+                      );
                     })}
                   </ul>
                 ) : (

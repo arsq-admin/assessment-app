@@ -60,7 +60,7 @@ export const ImprovementPlanSummary = () => {
   });
 
   const navigate = useNavigate();
-  console.log("urld", urlId);
+
   return (
     <Container padding="3rem 0">
       <Column span="1 / span 9" margin="0 0 4rem">
