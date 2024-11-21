@@ -138,12 +138,17 @@ export enum OutcomeType {
   UNSUCCESSFUL = "UNSUCCESSFUL",
 }
 
+interface OutcomeContent {
+  heading: string;
+  body: string;
+}
+
 export interface Outcome {
   id: string;
   name: string;
   type: OutcomeType;
   title: string;
-  body: string;
+  content: OutcomeContent[];
 }
 
 export interface Section {
@@ -155,7 +160,7 @@ export interface Section {
 export interface IntroTextSection {
   type: IntroSectionType;
   heading: string;
-  content: string[];
+  content: string[] | string[][];
 }
 
 export interface AssessmentConfig {
