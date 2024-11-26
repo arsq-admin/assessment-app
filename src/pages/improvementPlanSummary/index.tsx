@@ -3,43 +3,26 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import { StatusLabel } from "./StatusLabel";
-import { useNavigate, useParams } from "react-router-dom";
-
-interface FailedQuestions {
-  questionIds: {
-    id: string;
-    question: string;
-    answers: {
-      label: string;
-      value: string;
-    }[];
-  }[];
-}
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export const ImprovementPlanSummary = () => {
-  const { config, questionOrder } = useContext(AssessmentContext);
+  const { config, questionOrder, failedAnswers } =
+    useContext(AssessmentContext);
   const { urlId } = useParams();
-  const data = localStorage.getItem(`failed-questions-${urlId}`);
 
-  const failedQuestions: FailedQuestions = JSON.parse(
-    data || '{"questionIds": []}'
-  );
-
-  const questionIds = failedQuestions?.questionIds?.map(
-    (question) => question.id
-  );
+  const questionIds = failedAnswers?.map((answer) => answer.questionId);
 
   const questionConfig = config?.sections.reduce<Section[]>((acc, section) => {
-    const newQuestions = section.questions.filter((question) =>
+    const failedQuestions = section.questions.filter((question) =>
       questionIds.includes(question.id)
     );
 
-    if (newQuestions.length > 0) {
+    if (failedQuestions.length > 0) {
       return [
         ...acc,
         {
           ...section,
-          questions: newQuestions,
+          questions: failedQuestions,
         },
       ];
     }
@@ -69,13 +52,13 @@ export const ImprovementPlanSummary = () => {
         <h1>Improvement Plan</h1>
 
         <h2>
-          {Object.keys(questionIds).length} of your answers did not meet the
-          minimum requirements.
+          {failedAnswers.length} of your answers did not meet the minimum
+          requirements.
         </h2>
 
         <p>
           You have completed <b>{answeredCount}</b> out of{" "}
-          <b>{questionIds.length}</b> improvement plan answers.
+          <b>{failedAnswers.length}</b> improvement plan answers.
         </p>
         <div style={{ padding: "2rem 0" }}>
           {questionConfig?.map((section) => {
@@ -100,11 +83,11 @@ export const ImprovementPlanSummary = () => {
                           alignItems: "center",
                         }}
                       >
-                        <a href={`/${urlId}/improvement-plan/${question.id}`}>
+                        <Link to={`/${urlId}/improvement-plan/${question.id}`}>
                           {questionOrder.findIndex((id) => id === question.id) +
                             1}
                           . {question.title}
-                        </a>
+                        </Link>
                         <StatusLabel
                           hasAnswer={Boolean(
                             currentImprovementPlan?.[question.id]

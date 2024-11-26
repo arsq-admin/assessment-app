@@ -1,7 +1,7 @@
 import React from "react";
-import { QuestionAndAnswer } from "../reviewPage/useAnswers";
 import { scotGovColour } from "@/themes";
 import styled from "styled-components";
+import { AssessmentAnswer } from "@/api/assessment/types";
 
 const Container = styled.div`
   font-size: 1rem;
@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 interface Props {
-  failedAnswer: QuestionAndAnswer;
+  failedAnswer: AssessmentAnswer;
 }
 
 export const YourAnswer = ({ failedAnswer }: Props) => {
@@ -23,10 +23,10 @@ export const YourAnswer = ({ failedAnswer }: Props) => {
   return (
     <Container>
       <h4>Your answer</h4>
-      {failedAnswer.answers.map((answer) => {
+      {failedAnswer.answer.map((answer) => {
         return (
           <React.Fragment key={answer.value}>
-            <p style={{ color: secondaryText }}>{answer.label}</p>
+            <p style={{ color: secondaryText }}>{answer.value}</p>
             {answer.freeText && (
               <p style={{ color: secondaryText }}>{answer.freeText}</p>
             )}

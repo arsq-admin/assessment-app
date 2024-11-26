@@ -2,7 +2,11 @@ import { getQuestionFromConfig } from "@/services/assessment";
 import { useState } from "react";
 import { AssessmentAnswers } from "../pages/assessmentPage/types/assessmentAnswers";
 import { useSearchParams } from "react-router-dom";
-import { AssessmentConfig, Question } from "@/api/assessment/types";
+import {
+  AssessmentConfig,
+  Question,
+  AssessmentAnswer as SavedAssessmentAnswer,
+} from "@/api/assessment/types";
 
 export const useAssessment = () => {
   const [searchParams] = useSearchParams();
@@ -10,6 +14,10 @@ export const useAssessment = () => {
 
   const [assessmentConfig, setAssessmentConfig] =
     useState<null | AssessmentConfig>(null);
+
+  const [failedAnswers, setFailedAnswers] = useState<SavedAssessmentAnswer[]>(
+    []
+  );
 
   const firstQuestion = assessmentConfig?.sections?.[0]?.questions?.[0];
   const [
@@ -40,6 +48,8 @@ export const useAssessment = () => {
       : { question: null, section: "" };
 
   return {
+    failedAnswers,
+    setFailedAnswers,
     setQuestionId,
     questionId,
     currentAnswers,

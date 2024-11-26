@@ -23,10 +23,13 @@ export interface QuestionAndAnswer {
 export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
+  const { setFailedAnswers } = useContext(AssessmentContext);
+
   const { mutate } = useMutation({
     mutationFn: submitAssessment,
     onSuccess: (data) => {
       const outcomeName = data.outcome?.id || "error";
+      setFailedAnswers(data.failedAnswers);
       navigate(`/${urlId}/result?outcome=${outcomeName}`);
     },
   });

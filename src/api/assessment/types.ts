@@ -173,3 +173,20 @@ export interface AssessmentConfig {
   assessmentType: AssessmentType;
   isTemplate?: boolean;
 }
+
+export interface AnswerValue {
+  value: string | number;
+  freeText?: string;
+}
+
+export interface AssessmentAnswer {
+  lastUpdated: string;
+  createdDate: string;
+  attempt: number;
+  title: string;
+  answer: AnswerValue[];
+  followUp?: Record<string, AnswerValue[]>;
+  organisationId: string;
+  assessmentId: string;
+  questionId: string;
+}

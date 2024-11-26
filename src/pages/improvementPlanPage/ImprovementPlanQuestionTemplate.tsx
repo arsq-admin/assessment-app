@@ -1,12 +1,12 @@
 import { QuestionGuidance, QuestionTitle, FreeTextInput } from "@/components";
 import { Question } from "../assessmentPage/types/assessmentConfig";
 import styled from "styled-components";
-import { QuestionAndAnswer } from "../reviewPage/useAnswers";
 import { YourAnswer } from "./YourAnswer";
 import { MinimumRequiredAnswer } from "./MinimumRequiredAnswer";
 import { useContext, useEffect, useState } from "react";
 import { AssessmentContext } from "@/context";
 import { useNavigate, useParams } from "react-router-dom";
+import { AssessmentAnswer } from "@/api/assessment/types";
 
 const QuestionContainer = styled.div`
   padding: 2rem 0;
@@ -30,7 +30,7 @@ const NavigationContainer = styled.div`
 
 interface Props {
   question: Question;
-  failedAnswer?: QuestionAndAnswer;
+  failedAnswer?: AssessmentAnswer;
   onPrev: (callback: () => void) => void;
   onNext: (callback: () => void) => void;
   improvementAction: string;

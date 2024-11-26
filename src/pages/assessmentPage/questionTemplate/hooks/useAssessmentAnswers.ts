@@ -135,16 +135,6 @@ export const useAssessmentAnswers = ({ question }: Props) => {
         title,
       });
 
-      // To be removed
-      const storedAnswers = JSON.parse(
-        localStorage.getItem(`assessment-${urlId}`) || "{}"
-      );
-
-      localStorage.setItem(
-        `assessment-${assessmentId}`,
-        JSON.stringify({ ...storedAnswers, [questionId]: response })
-      );
-
       if (saveToCurrentAnswers) {
         setCurrentAnswers((prevState) => {
           return { ...prevState, [questionId]: response };

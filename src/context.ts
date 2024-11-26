@@ -1,5 +1,9 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { AssessmentConfig, Question } from "@/api/assessment/types";
+import {
+  AssessmentAnswer,
+  AssessmentConfig,
+  Question,
+} from "@/api/assessment/types";
 import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 import { Organisation, User } from "./api/user/types";
 import { PublicTenderPackage } from "./api/tenderPackage/type";
@@ -19,6 +23,8 @@ interface AssessmentContext {
   setReachedImprovementPlanReviewPage: Dispatch<SetStateAction<boolean>>;
   questionsById: Record<string, Question>;
   setAssessmentConfig: Dispatch<SetStateAction<AssessmentConfig | null>>;
+  failedAnswers: AssessmentAnswer[];
+  setFailedAnswers: Dispatch<SetStateAction<AssessmentAnswer[]>>;
 }
 
 export const AssessmentContext = createContext<AssessmentContext>({
@@ -36,6 +42,8 @@ export const AssessmentContext = createContext<AssessmentContext>({
   setReachedImprovementPlanReviewPage: () => {},
   questionsById: {},
   setAssessmentConfig: () => {},
+  failedAnswers: [],
+  setFailedAnswers: () => {},
 });
 
 interface UserContext {
