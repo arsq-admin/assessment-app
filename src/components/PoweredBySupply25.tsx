@@ -22,7 +22,11 @@ export const PoweredBySupply25 = ({ margin }: Props) => {
       <p style={{ margin: "0 0 0.5rem" }}>
         <b>Powered by</b>
       </p>
-      <img width="100%" src={Supply25} />
+      <img
+        width="100%"
+        alt="Assessment is powered by Supply25"
+        src={Supply25}
+      />
     </div>
   );
 };

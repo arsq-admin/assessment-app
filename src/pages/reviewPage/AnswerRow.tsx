@@ -1,7 +1,7 @@
 import { Column, Container } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 
@@ -30,7 +30,6 @@ interface Props {
 }
 
 export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
-  const navigate = useNavigate();
   const { urlId } = useParams();
   const { questionOrder } = useContext(AssessmentContext);
 
@@ -58,7 +57,14 @@ export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
           : "—"}
       </AnswerColumn>
       <Column span={1}>
-        <a onClick={() => navigate(`/${urlId}/assessment?id=${id}`)}>
+        <a
+          aria-label={
+            !previewOnly
+              ? `Edit answer to question ${currentQuestionPosition}`
+              : `View question ${currentQuestionPosition}`
+          }
+          href={`/${urlId}/assessment?id=${id}`}
+        >
           {!previewOnly ? "Edit" : "View"}
         </a>
       </Column>
