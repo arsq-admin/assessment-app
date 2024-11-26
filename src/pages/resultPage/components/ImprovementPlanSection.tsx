@@ -30,9 +30,8 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
 
   const failedQuestions: FailedQuestions = JSON.parse(data || "{}");
 
-  const questionIds = failedQuestions?.questionIds?.map(
-    (question) => question.id
-  );
+  const questionIds =
+    failedQuestions?.questionIds?.map((question) => question.id) || [];
 
   const navigate = useNavigate();
 
@@ -103,7 +102,7 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
             <div key={section.name}>
               <h3 style={{ marginBottom: "0.5rem" }}>{section.name}</h3>
               <hr style={{ margin: "0 0 1rem" }} />
-              {section.questions.map((question) => {
+              {section?.questions?.map((question) => {
                 return (
                   <p key={question.id} style={{ fontSize: "1rem" }}>
                     <b>

@@ -6,9 +6,7 @@ import {
   getQuestionJourneyFromAnswers,
   isAssessmentComplete,
 } from "@/services/assessment";
-import { QuestionType } from "../assessmentPage/types/assessmentConfig";
 import { useNavigate, useParams } from "react-router-dom";
-import { AssessmentType, OutcomeType } from "@/api/assessment/types";
 import { submitAssessment } from "@/api/assessment";
 import { useMutation } from "@tanstack/react-query";
 
@@ -25,15 +23,18 @@ export interface QuestionAndAnswer {
 export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
-  const { mutate, data } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: submitAssessment,
+    onSuccess: (data) => {
+      const outcomeName = data.outcome?.id || "error";
+      navigate(`/${urlId}/result?outcome=${outcomeName}`);
+    },
   });
 
   const { tenderPackage } = useContext(TenderPackageContext);
   const navigate = useNavigate();
   const { urlId } = useParams();
-  const { currentAnswers, config, questionsById, setQuestionId } =
-    useContext(AssessmentContext);
+  const { currentAnswers, config } = useContext(AssessmentContext);
 
   const questionIds =
     (config && getQuestionJourneyFromAnswers(config, currentAnswers)) || [];
@@ -89,63 +90,13 @@ export const useAnswers = () => {
 
     if (config.isTemplate) return;
 
-    if (config.assessmentType === AssessmentType.BUYER) {
-      if (!urlId || !tenderPackage?.organisationId)
-        throw new Error("Missing org id or url id");
+    if (!urlId || !tenderPackage?.organisationId)
+      throw new Error("Missing org id or url id");
 
-      await mutate({
-        urlId,
-        organisationId: tenderPackage.organisationId,
-      });
-    } else {
-      const answers = Object.values(formattedAnswers).flat();
-
-      let hasPassed = true;
-
-      const failedAnswers: Record<string, QuestionAndAnswer> = {};
-
-      answers.forEach((answer) => {
-        const { id, answers: questionAnswer } = answer;
-        const questionConfig = questionsById[id];
-
-        if (questionConfig.type === QuestionType.MULTIPLE_CHOICE) {
-          questionAnswer.forEach(({ value }) => {
-            const optionConfig = questionConfig.options.find(
-              (option) => value === option.value
-            );
-
-            if (optionConfig && !optionConfig.isAcceptable) {
-              hasPassed = false;
-              failedAnswers[id] = answer;
-            }
-          });
-        }
-      });
-
-      setQuestionId(Object.values(failedAnswers)[0].id);
-
-      localStorage.setItem(
-        `failed-questions-${urlId}`,
-        JSON.stringify({ questionIds: Object.values(failedAnswers) })
-      );
-
-      const outcomeType = hasPassed
-        ? OutcomeType.SUCCESSFUL
-        : OutcomeType.UNSUCCESSFUL;
-
-      const finalOutcome = config.outcomes.find(
-        (outcome) => outcome.type === outcomeType
-      );
-
-      if (!finalOutcome)
-        throw new Error("Unable to find outcome. Please check your config.");
-
-      return navigate(
-        `/${urlId}/result?outcome=${finalOutcome.id}${
-          hasPassed ? `&fail-count=${Object.keys(failedAnswers).length}` : ""
-        }`
-      );
-    }
+    await mutate({
+      urlId,
+      organisationId: tenderPackage.organisationId,
+    });
   };
 
   return {
@@ -154,6 +105,5 @@ export const useAnswers = () => {
     skippedQuestionId,
     isComplete,
     resolveAssessment,
-    submitResponse: data,
   };
 };
