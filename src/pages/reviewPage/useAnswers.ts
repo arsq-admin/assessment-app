@@ -1,4 +1,4 @@
-import { AssessmentContext, TenderPackageContext } from "@/context";
+import { AssessmentContext, UserContext } from "@/context";
 import { useContext } from "react";
 import { AnswerValue } from "../assessmentPage/types/assessmentAnswers";
 import {
@@ -24,6 +24,7 @@ export type FormattedAnswers = Record<string, QuestionAndAnswer[]>;
 
 export const useAnswers = () => {
   const { setFailedAnswers } = useContext(AssessmentContext);
+  const { organisations } = useContext(UserContext);
 
   const { mutate } = useMutation({
     mutationFn: submitAssessment,
@@ -34,7 +35,6 @@ export const useAnswers = () => {
     },
   });
 
-  const { tenderPackage } = useContext(TenderPackageContext);
   const navigate = useNavigate();
   const { urlId } = useParams();
   const { currentAnswers, config } = useContext(AssessmentContext);
@@ -93,12 +93,12 @@ export const useAnswers = () => {
 
     if (config.isTemplate) return;
 
-    if (!urlId || !tenderPackage?.organisationId)
+    if (!urlId || !organisations[0]?.id)
       throw new Error("Missing org id or url id");
 
     await mutate({
       urlId,
-      organisationId: tenderPackage.organisationId,
+      organisationId: organisations[0]?.id,
     });
   };
 

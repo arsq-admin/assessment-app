@@ -26,7 +26,7 @@ export const useAuthenticated = () => {
   useEffect(() => {
     if (myUser && myOrgs) {
       setUser(myUser);
-      setOrganisations(myOrgs);
+      setOrganisations(myOrgs.data);
     }
   }, [myOrgs, myUser]);
 
