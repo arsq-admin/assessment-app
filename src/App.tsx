@@ -46,6 +46,8 @@ function App() {
     reachedImprovementPlanReviewPage,
     setReachedImprovementPlanReviewPage,
     setAssessmentConfig,
+    failedAnswers,
+    setFailedAnswers,
   } = useAssessment();
 
   // Will need to correct when we dynamically pull configs based on url
@@ -86,6 +88,8 @@ function App() {
             reachedImprovementPlanReviewPage,
             setReachedImprovementPlanReviewPage,
             setAssessmentConfig,
+            failedAnswers,
+            setFailedAnswers,
           }}
         >
           <ScrollToTop />

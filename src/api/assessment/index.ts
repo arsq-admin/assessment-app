@@ -74,5 +74,9 @@ export const submitAssessment = async ({
     credentials: "include",
   });
 
+  if (!res.ok) {
+    throw new Error(`Error when submitting your answers.`);
+  }
+
   return await res.json();
 };

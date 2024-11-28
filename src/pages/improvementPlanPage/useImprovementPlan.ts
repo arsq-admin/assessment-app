@@ -1,27 +1,17 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
-import { QuestionAndAnswer } from "../reviewPage/useAnswers";
 import { useNavigate, useParams } from "react-router-dom";
-
-interface SavedFailedQuestions {
-  questionIds: QuestionAndAnswer[];
-}
 
 export const useImprovementPlan = () => {
   const navigate = useNavigate();
   const { id, urlId } = useParams();
 
-  const { questionId } = useContext(AssessmentContext);
-  const failedAnswersJson = localStorage.getItem(`failed-questions-${urlId}`);
+  const { questionId, failedAnswers } = useContext(AssessmentContext);
 
   const currentId = id || questionId;
 
-  const { questionIds: failedAnswers } = JSON.parse(
-    failedAnswersJson || ""
-  ) as SavedFailedQuestions;
-
   const failedAnswer = failedAnswers.find((answer) => {
-    return answer?.id === currentId;
+    return answer?.questionId === currentId;
   });
 
   const onPrev = (callback: () => void) => {

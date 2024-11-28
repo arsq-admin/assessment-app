@@ -5,34 +5,16 @@ import { scotGovColour } from "@/themes";
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-interface FailedQuestions {
-  questionIds: {
-    id: string;
-    question: string;
-    answers: {
-      label: string;
-      value: string;
-    }[];
-  }[];
-}
-
-interface Props {
-  failedCount?: number;
-}
-
-export const ImprovementPlanSection = ({ failedCount }: Props) => {
+export const ImprovementPlanSection = () => {
   const { urlId } = useParams();
-  const { config, questionOrder } = useContext(AssessmentContext);
+  const { config, questionOrder, failedAnswers } =
+    useContext(AssessmentContext);
 
   const { secondaryText } = scotGovColour;
 
-  const data = localStorage.getItem(`failed-questions-${urlId}`);
+  const failedCount = failedAnswers.length;
 
-  const failedQuestions: FailedQuestions = JSON.parse(data || "{}");
-
-  const questionIds = failedQuestions?.questionIds?.map(
-    (question) => question.id
-  );
+  const questionIds = failedAnswers?.map((answer) => answer.questionId) || [];
 
   const navigate = useNavigate();
 
@@ -103,7 +85,7 @@ export const ImprovementPlanSection = ({ failedCount }: Props) => {
             <div key={section.name}>
               <h3 style={{ marginBottom: "0.5rem" }}>{section.name}</h3>
               <hr style={{ margin: "0 0 1rem" }} />
-              {section.questions.map((question) => {
+              {section?.questions?.map((question) => {
                 return (
                   <p key={question.id} style={{ fontSize: "1rem" }}>
                     <b>
