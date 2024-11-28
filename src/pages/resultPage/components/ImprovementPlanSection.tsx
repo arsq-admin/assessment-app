@@ -59,7 +59,7 @@ export const ImprovementPlanSection = () => {
 
       <h2>What happens if you do not complete an Improvement Plan?</h2>
       <p style={{ color: secondaryText }}>
-        If you choose not to complete an Improvement Plan, you will not be
+        If you choose not to complete an Improvement Plan, you may not be
         awarded this contract because you have not demonstrated that you are
         able to meet the requirements.
       </p>
