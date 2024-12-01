@@ -1,5 +1,6 @@
 export interface AnswerValue {
   value: string | number;
+  name?: string;
   freeText?: string;
 }
 

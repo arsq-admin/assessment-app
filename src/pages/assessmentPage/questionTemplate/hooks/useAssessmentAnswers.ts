@@ -10,6 +10,7 @@ import { AssessmentContext, UserContext } from "@/context";
 import { useMutation } from "@tanstack/react-query";
 import { saveQuestionAnswer } from "@/api/assessment";
 import { useParams } from "react-router-dom";
+import { QuestionType } from "@/api/assessment/types";
 
 interface Props {
   question: Question;
@@ -87,7 +88,17 @@ export const useAssessmentAnswers = ({ question }: Props) => {
 
   const saveAnswer = (saveToCurrentAnswers: boolean = true) => {
     const formattedAnswers = answer.map((value) => {
-      const formatted: AnswerValue = { value };
+      const originalOption =
+        question.type === QuestionType.MULTIPLE_CHOICE
+          ? question.options.find((option) => option.value === value)
+          : undefined;
+
+      const formatted: AnswerValue = {
+        value: originalOption?.value || value,
+        name:
+          originalOption?.name ||
+          `Error: unable to find name of ${value} from question id: ${questionId}`,
+      };
       if (freeText[value]) {
         formatted.freeText = freeText[value];
       }
@@ -128,13 +139,15 @@ export const useAssessmentAnswers = ({ question }: Props) => {
     }
 
     if (response.answer.length > 0) {
-      mutate({
-        organisationId: organisations[0].id || "",
-        assessmentId: urlId || "",
-        questionId,
-        answer: response.answer,
-        title,
-      });
+      if (organisations[0]?.id) {
+        mutate({
+          organisationId: organisations[0].id,
+          assessmentId: urlId || "",
+          questionId,
+          answer: response.answer,
+          title,
+        });
+      }
 
       if (saveToCurrentAnswers) {
         setCurrentAnswers((prevState) => {

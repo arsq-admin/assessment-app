@@ -27,9 +27,9 @@ export enum IntroSectionType {
 }
 
 export interface Option {
-  value: string;
+  value: string | number;
   name: string;
-  points: number;
+  points?: number;
   freeText?: boolean;
   freeTextLabel?: string;
   minimumRequired?: boolean;
