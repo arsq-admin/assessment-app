@@ -85,7 +85,7 @@ export const ImprovementPlanQuestionTemplate = ({
       <Divider />
       <FreeTextInput
         label="Please outline the improvements you will make"
-        value={improvementPlan[question.id].answer || ""}
+        value={improvementPlan[question.id]?.answer || ""}
         setValue={(value) =>
           setImprovementPlan((prevState) => ({
             ...prevState,

@@ -1,14 +1,24 @@
-import { publicGetAssessmentById } from "@/api/assessment";
+import {
+  getMyAssessmentAnswers,
+  publicGetAssessmentById,
+} from "@/api/assessment";
+import { AssessmentAnswer } from "@/api/assessment/types";
 import { publicGetTenderPackageById } from "@/api/tenderPackage";
 import { FullPageLoading } from "@/components/FullPageLoading";
-import { AssessmentContext, TenderPackageContext } from "@/context";
+import {
+  AssessmentContext,
+  TenderPackageContext,
+  UserContext,
+} from "@/context";
 import { Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useEffect } from "react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 
 export const PrepareAssessmentPage = () => {
-  const { setAssessmentConfig } = useContext(AssessmentContext);
+  const { organisations } = useContext(UserContext);
+  const { setAssessmentConfig, setCurrentAnswers } =
+    useContext(AssessmentContext);
   const { setTenderPackage } = useContext(TenderPackageContext);
   const { urlId } = useParams();
   const { pathname } = useLocation();
@@ -20,6 +30,12 @@ export const PrepareAssessmentPage = () => {
     enabled: Boolean(urlId),
   });
 
+  const { data: answers, isLoading: isAnswersLoading } = useQuery({
+    queryKey: [urlId || "", organisations[0]?.id || ""],
+    queryFn: getMyAssessmentAnswers,
+    enabled: Boolean(urlId) && Boolean(organisations[0]?.id),
+  });
+
   const { tenderPackageId } = assessment?.data?.[0] || {};
 
   const { data: tenderPackage, isLoading: isTenderPackageLoading } = useQuery({
@@ -27,6 +43,17 @@ export const PrepareAssessmentPage = () => {
     queryFn: publicGetTenderPackageById,
     enabled: Boolean(tenderPackageId),
   });
+
+  useEffect(() => {
+    if (!isAnswersLoading && answers) {
+      const answerByQuestionId: Record<string, Partial<AssessmentAnswer>> = {};
+      answers.data.forEach((answer) => {
+        answerByQuestionId[answer.questionId] = answer;
+      });
+
+      setCurrentAnswers(answerByQuestionId);
+    }
+  }, [answers, setCurrentAnswers, isAnswersLoading]);
 
   useEffect(() => {
     if (assessment?.data?.length === 1) {

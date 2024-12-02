@@ -1,7 +1,7 @@
 import { QueryFunctionContext } from "@tanstack/react-query";
 import { ASSESSMENT_SERVICE_URL } from "../index";
 import { AnswerValue } from "@/pages/assessmentPage/types/assessmentAnswers";
-import { ImprovementAction } from "./types";
+import { AssessmentAnswer, ImprovementAction } from "./types";
 
 export const publicGetAssessmentById = async ({
   queryKey,
@@ -111,7 +111,7 @@ export const saveImprovementAction = async ({
   });
 
   if (!res.ok) {
-    throw new Error(`Error when submitting your answers.`);
+    throw new Error(`Error when saving your improvement action.`);
   }
 
   return await res.json();
@@ -140,7 +140,62 @@ export const getMyImprovementActions = async ({
   );
 
   if (!res.ok) {
-    throw new Error(`Error when submitting your answers.`);
+    throw new Error(`Error when getting your improvement actions.`);
+  }
+
+  return await res.json();
+};
+
+type GetMyAssessmentAnswersQueryKey = [string, string];
+
+export const getMyAssessmentAnswers = async ({
+  queryKey,
+}: QueryFunctionContext<GetMyAssessmentAnswersQueryKey>): Promise<{
+  data: AssessmentAnswer[];
+}> => {
+  const [assessmentId, organisationId] = queryKey;
+
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Organisation-Id", organisationId);
+
+  const res = await fetch(`${ASSESSMENT_SERVICE_URL}/answer/${assessmentId}`, {
+    method: "GET",
+    headers,
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Error when getting your improvement actions.`);
+  }
+
+  return await res.json();
+};
+
+interface SubmitImprovementPlan {
+  organisationId: string;
+  urlId: string;
+}
+
+export const submitImprovementPlan = async ({
+  organisationId,
+  urlId,
+}: SubmitImprovementPlan) => {
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Organisation-Id", organisationId);
+
+  const res = await fetch(`${ASSESSMENT_SERVICE_URL}/submit/improvement-plan`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      urlId,
+    }),
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Error when submitting your improvement plan.`);
   }
 
   return await res.json();

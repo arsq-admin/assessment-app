@@ -2,10 +2,16 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "@/api/assessment/types";
 import { ImprovementPlanContext } from "../improvementPlanRoot/context";
+import { useMutation } from "@tanstack/react-query";
+import { submitImprovementPlan } from "@/api/assessment";
 
 export const useImprovementPlanAnswers = () => {
   const { config, failedAnswers } = useContext(AssessmentContext);
   const { improvementPlan } = useContext(ImprovementPlanContext);
+
+  const { mutate } = useMutation({
+    mutationFn: submitImprovementPlan,
+  });
 
   const sections: Section[] = [];
   config?.sections.forEach((section) => {
@@ -29,5 +35,6 @@ export const useImprovementPlanAnswers = () => {
     sections,
     answers: improvementPlan,
     journey,
+    submitImprovementPlan: mutate,
   };
 };

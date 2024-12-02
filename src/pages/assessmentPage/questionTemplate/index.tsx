@@ -67,6 +67,7 @@ export const QuestionTemplate = ({
     question,
     answer,
   });
+  console.log("current anawer:::", currentAnswers);
 
   // Temporary keyboard control
   const keydownListener = useCallback(
