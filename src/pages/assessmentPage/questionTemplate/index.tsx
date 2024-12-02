@@ -106,7 +106,6 @@ export const QuestionTemplate = ({
             value={answer[0]}
             freeText={freeText[answer[0]]}
             onChange={(event) => {
-              console.log("event radio", event.target.value, question.options);
               setAnswer([event.target.value]);
             }}
             freeTextOnChange={(event, optionValue) =>

@@ -1,6 +1,6 @@
 import { scotGovColour } from "@/themes";
 import styled from "styled-components";
-import { Question } from "../assessmentPage/types/assessmentConfig";
+import { Question } from "@/api/assessment/types";
 import { getQuestionMinimumRequiredAnswer } from "@/services/assessment";
 
 const Container = styled.div`

@@ -1,6 +1,7 @@
 import { ReviewAnswerRow } from "@/components";
-import { Section } from "../assessmentPage/types/assessmentConfig";
+import { ImprovementAction, Section } from "@/api/assessment/types";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   margin: 0 0 3rem;
@@ -22,10 +23,11 @@ const QuestionContainer = styled.div`
 
 interface Props {
   section: Section;
-  answers: Record<string, string>;
+  answers: Record<string, Partial<ImprovementAction>>;
 }
 
 export const ImprovementPlanSection = ({ section, answers }: Props) => {
+  const { urlId } = useParams();
   return (
     <Container>
       <Name>{section.name}</Name>
@@ -36,9 +38,9 @@ export const ImprovementPlanSection = ({ section, answers }: Props) => {
             <ReviewAnswerRow
               key={question.id}
               question={question.title}
-              answer={answers[question.id]}
+              answer={answers[question.id]?.answer || ""}
               id={question.id}
-              editUrl={`/improvement-plan/${question.id}`}
+              editUrl={`/${urlId}/improvement-plan/${question.id}`}
             />
           );
         })}

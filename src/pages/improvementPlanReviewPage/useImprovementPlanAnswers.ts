@@ -1,25 +1,17 @@
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
-import { Section } from "../assessmentPage/types/assessmentConfig";
-import { useParams } from "react-router-dom";
+import { Section } from "@/api/assessment/types";
+import { ImprovementPlanContext } from "../improvementPlanRoot/context";
 
 export const useImprovementPlanAnswers = () => {
-  const { urlId } = useParams();
-  const { config } = useContext(AssessmentContext);
-
-  const failedAnswers = JSON.parse(
-    localStorage.getItem(`failed-questions-${urlId}`) || "{}"
-  ) as { questionIds: { id: string }[] };
-
-  const improvementPlanAnswers = JSON.parse(
-    localStorage.getItem("improvement-plan-answers") || "{}"
-  );
+  const { config, failedAnswers } = useContext(AssessmentContext);
+  const { improvementPlan } = useContext(ImprovementPlanContext);
 
   const sections: Section[] = [];
   config?.sections.forEach((section) => {
     const improvementPlanQuestions = section.questions.filter((question) => {
-      return failedAnswers?.questionIds.find((answer) => {
-        return answer.id === question.id;
+      return failedAnswers.find((answer) => {
+        return answer.questionId === question.id;
       });
     });
 
@@ -31,11 +23,11 @@ export const useImprovementPlanAnswers = () => {
     }
   });
 
-  const journey = failedAnswers.questionIds.map((question) => question.id);
+  const journey = failedAnswers.map((answer) => answer.questionId);
 
   return {
     sections,
-    answers: improvementPlanAnswers,
+    answers: improvementPlan,
     journey,
   };
 };

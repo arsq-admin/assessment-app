@@ -190,3 +190,12 @@ export interface AssessmentAnswer {
   assessmentId: string;
   questionId: string;
 }
+
+export interface ImprovementAction {
+  assessmentId: string;
+  questionId: string;
+  answer: string;
+  authorId: string;
+  lastUpdated: string;
+  createdDate: string;
+}

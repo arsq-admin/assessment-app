@@ -1,13 +1,15 @@
 import { Container, Column, PoweredBySupply25 } from "@/components";
 import { AssessmentContext } from "@/context";
 import { useContext } from "react";
-import { Section } from "../assessmentPage/types/assessmentConfig";
+import { Section } from "@/api/assessment/types";
 import { StatusLabel } from "./StatusLabel";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { ImprovementPlanContext } from "../improvementPlanRoot/context";
 
 export const ImprovementPlanSummary = () => {
   const { config, questionOrder, failedAnswers } =
     useContext(AssessmentContext);
+  const { improvementPlan } = useContext(ImprovementPlanContext);
   const { urlId } = useParams();
 
   const questionIds = failedAnswers?.map((answer) => answer.questionId);
@@ -30,14 +32,10 @@ export const ImprovementPlanSummary = () => {
     return acc;
   }, []);
 
-  const currentImprovementPlan = JSON.parse(
-    localStorage.getItem("improvement-plan-answers") || "{}"
-  );
-
   let answeredCount = 0;
 
   questionIds.forEach((id) => {
-    if (currentImprovementPlan[id]) {
+    if (improvementPlan[id]) {
       answeredCount++;
     }
   });
@@ -89,9 +87,7 @@ export const ImprovementPlanSummary = () => {
                           . {question.title}
                         </Link>
                         <StatusLabel
-                          hasAnswer={Boolean(
-                            currentImprovementPlan?.[question.id]
-                          )}
+                          hasAnswer={Boolean(improvementPlan?.[question.id])}
                         />
                       </div>
                     );

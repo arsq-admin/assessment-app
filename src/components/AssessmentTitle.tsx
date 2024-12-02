@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Question } from "../pages/assessmentPage/types/assessmentConfig";
+import { Question } from "@/api/assessment/types";
 import { SectionTitle } from "../pages/assessmentPage/components";
 
 interface Props {
