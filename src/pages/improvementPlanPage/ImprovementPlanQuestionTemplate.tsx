@@ -1,12 +1,13 @@
 import { QuestionGuidance, QuestionTitle, FreeTextInput } from "@/components";
-import { Question } from "../assessmentPage/types/assessmentConfig";
+import { Question } from "@/api/assessment/types";
 import styled from "styled-components";
 import { YourAnswer } from "./YourAnswer";
 import { MinimumRequiredAnswer } from "./MinimumRequiredAnswer";
-import { useContext, useEffect, useState } from "react";
-import { AssessmentContext } from "@/context";
+import { useContext } from "react";
+import { AssessmentContext, UserContext } from "@/context";
 import { useNavigate, useParams } from "react-router-dom";
 import { AssessmentAnswer } from "@/api/assessment/types";
+import { ImprovementPlanContext } from "../improvementPlanRoot/context";
 
 const QuestionContainer = styled.div`
   padding: 2rem 0;
@@ -31,9 +32,14 @@ const NavigationContainer = styled.div`
 interface Props {
   question: Question;
   failedAnswer?: AssessmentAnswer;
-  onPrev: (callback: () => void) => void;
-  onNext: (callback: () => void) => void;
-  improvementAction: string;
+  onPrev: (callback?: () => void) => void;
+  onNext: (callback?: () => void) => void;
+  saveImprovementAction: (param: {
+    assessmentId: string;
+    questionId: string;
+    answer: string;
+    organisationId: string;
+  }) => void;
 }
 
 export const ImprovementPlanQuestionTemplate = ({
@@ -41,33 +47,29 @@ export const ImprovementPlanQuestionTemplate = ({
   failedAnswer,
   onPrev,
   onNext,
-  improvementAction,
+  saveImprovementAction,
 }: Props) => {
   const { urlId } = useParams();
+  const { organisations } = useContext(UserContext);
+  const { improvementPlan, setImprovementPlan } = useContext(
+    ImprovementPlanContext
+  );
   const { reachedImprovementPlanReviewPage, questionOrder } =
     useContext(AssessmentContext);
   const navigate = useNavigate();
   const { title, guidance, id } = question;
-  const [ipValue, setIpValue] = useState(improvementAction || "");
 
-  const saveImprovementAction = (questionId: string, answer: string) => {
-    const currentImprovementPlan = JSON.parse(
-      localStorage.getItem("improvement-plan-answers") || "{}"
-    );
-    const improvementPlanAnswers = {
-      ...currentImprovementPlan,
-      [questionId]: answer,
-    };
-
-    localStorage.setItem(
-      "improvement-plan-answers",
-      JSON.stringify(improvementPlanAnswers)
-    );
+  const onClick = (questionId: string) => {
+    const { answer } = improvementPlan[question.id];
+    if (urlId && organisations[0]?.id && answer) {
+      saveImprovementAction({
+        assessmentId: urlId,
+        questionId: questionId,
+        answer,
+        organisationId: organisations[0].id,
+      });
+    }
   };
-
-  useEffect(() => {
-    setIpValue(improvementAction);
-  }, [improvementAction]);
 
   return (
     <QuestionContainer>
@@ -83,8 +85,13 @@ export const ImprovementPlanQuestionTemplate = ({
       <Divider />
       <FreeTextInput
         label="Please outline the improvements you will make"
-        value={ipValue}
-        setValue={setIpValue}
+        value={improvementPlan[question.id]?.answer || ""}
+        setValue={(value) =>
+          setImprovementPlan((prevState) => ({
+            ...prevState,
+            [question.id]: { answer: value },
+          }))
+        }
         name={`improvementPlan-${id}`}
       />
       <NavigationContainer>
@@ -93,9 +100,7 @@ export const ImprovementPlanQuestionTemplate = ({
           type="button"
           id="previous"
           onClick={() => {
-            onPrev(() => {
-              setIpValue("");
-            });
+            onPrev();
           }}
         >
           Back
@@ -106,8 +111,7 @@ export const ImprovementPlanQuestionTemplate = ({
           id="next"
           onClick={() => {
             onNext(() => {
-              setIpValue("");
-              saveImprovementAction(id, ipValue);
+              onClick(id);
             });
           }}
         >
@@ -121,8 +125,7 @@ export const ImprovementPlanQuestionTemplate = ({
             className="ds_button"
             type="button"
             onClick={() => {
-              setIpValue("");
-              saveImprovementAction(id, ipValue);
+              onClick(id);
               navigate(`/${urlId}/improvement-plan/review`);
             }}
           >

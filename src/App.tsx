@@ -11,6 +11,7 @@ import {
   OauthCallbackPage,
   HomePage,
   PrepareAssessmentPage,
+  ImprovementPlanRoot,
 } from "./pages";
 import { Footer, Header, ScrollToTop } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -120,30 +121,35 @@ function App() {
                   <Route path="/:urlId/result" element={<ResultPage />} />
 
                   <Route
-                    path="/:urlId/improvement-plan/result"
-                    element={<ImprovementPlanResultPage />}
-                  />
-                  <Route
-                    path="/:urlId/improvement-plan/summary"
-                    element={<ImprovementPlanSummary />}
-                  />
-                  <Route
-                    path="/:urlId/improvement-plan/introduction"
-                    element={
-                      <ImprovementPlanIntroPage
-                        buttonName="Continue"
-                        redirectUrl="/improvement-plan/summary"
-                      />
-                    }
-                  />
-                  <Route
-                    path="/:urlId/improvement-plan/review"
-                    element={<ImprovementPlanReviewPage />}
-                  />
-                  <Route
-                    path="/:urlId/improvement-plan/:id"
-                    element={<ImprovementPlanPage />}
-                  />
+                    path="/:urlId/improvement-plan"
+                    element={<ImprovementPlanRoot />}
+                  >
+                    <Route
+                      path="/:urlId/improvement-plan/result"
+                      element={<ImprovementPlanResultPage />}
+                    />
+                    <Route
+                      path="/:urlId/improvement-plan/summary"
+                      element={<ImprovementPlanSummary />}
+                    />
+                    <Route
+                      path="/:urlId/improvement-plan/introduction"
+                      element={
+                        <ImprovementPlanIntroPage
+                          buttonName="Continue"
+                          redirectUrl="/improvement-plan/summary"
+                        />
+                      }
+                    />
+                    <Route
+                      path="/:urlId/improvement-plan/review"
+                      element={<ImprovementPlanReviewPage />}
+                    />
+                    <Route
+                      path="/:urlId/improvement-plan/:id"
+                      element={<ImprovementPlanPage />}
+                    />
+                  </Route>
                 </Route>
               </Routes>
             </Box>

@@ -4,7 +4,6 @@ import {
   AssessmentConfig,
   Question,
 } from "@/api/assessment/types";
-import { AssessmentAnswers } from "./pages/assessmentPage/types/assessmentAnswers";
 import { Organisation, User } from "./api/user/types";
 import { PublicTenderPackage } from "./api/tenderPackage/type";
 
@@ -14,8 +13,10 @@ interface AssessmentContext {
   questionOrder: string[];
   setQuestionId: Dispatch<SetStateAction<string>>;
   journey: string[];
-  currentAnswers: AssessmentAnswers;
-  setCurrentAnswers: Dispatch<SetStateAction<AssessmentAnswers>>;
+  currentAnswers: Record<string, Partial<AssessmentAnswer>>;
+  setCurrentAnswers: Dispatch<
+    SetStateAction<Record<string, Partial<AssessmentAnswer>>>
+  >;
   tenderName: string;
   reachedReviewPage: boolean;
   setReachedReviewPage: Dispatch<SetStateAction<boolean>>;

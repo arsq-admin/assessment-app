@@ -1,5 +1,5 @@
 import { Column, Container, PoweredBySupply25 } from "@/components";
-import { AssessmentContext } from "@/context";
+import { AssessmentContext, UserContext } from "@/context";
 import { useContext } from "react";
 import { useImprovementPlanAnswers } from "./useImprovementPlanAnswers";
 import { ImprovementPlanSection } from "./ImprovementPlanSection";
@@ -17,9 +17,11 @@ const NavigationContainer = styled.div`
 
 export const ImprovementPlanReviewPage = () => {
   const { config } = useContext(AssessmentContext);
+  const { organisations } = useContext(UserContext);
   const { urlId } = useParams();
   const navigate = useNavigate();
-  const { sections, answers } = useImprovementPlanAnswers();
+  const { sections, answers, submitImprovementPlan } =
+    useImprovementPlanAnswers();
 
   return (
     <Container padding="2rem">
@@ -56,7 +58,13 @@ export const ImprovementPlanReviewPage = () => {
             className="ds_button"
             type="button"
             onClick={() => {
-              navigate(`/${urlId}/improvement-plan/result`);
+              if (urlId && organisations[0]?.id) {
+                submitImprovementPlan({
+                  urlId,
+                  organisationId: organisations[0].id,
+                });
+                navigate(`/${urlId}/improvement-plan/result`);
+              }
             }}
           >
             Save and download Improvement Plan

@@ -11,11 +11,8 @@ import accessibility from "./assessments/accessibility.json";
 import saql from "./assessments/lowSaq.json";
 import saqm from "./assessments/modSaq.json";
 import saqh from "./assessments/highSaq.json";
-import {
-  AnswerValue,
-  AssessmentAnswers,
-  QuestionAnswer,
-} from "./types/assessmentAnswers";
+import { AnswerValue, QuestionAnswer } from "./types/assessmentAnswers";
+import { AssessmentAnswer } from "@/api/assessment/types";
 
 export const TEMP_assessmentConfigs = {
   rpa,
@@ -28,7 +25,7 @@ export const TEMP_assessmentConfigs = {
 export const isConditionMet = (
   conditions: Condition[],
   answer: (string | number)[],
-  allAnswers: AssessmentAnswers
+  allAnswers: Record<string, Partial<AssessmentAnswer>>
 ) => {
   return conditions.every(({ op, value, questionId }) => {
     let isMet = false;
