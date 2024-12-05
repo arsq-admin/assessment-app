@@ -200,3 +200,50 @@ export const submitImprovementPlan = async ({
 
   return await res.json();
 };
+
+interface ExportResultAsPdf {
+  organisationId: string;
+  urlId: string;
+  tenderName: string;
+}
+
+export const exportResultAsPdf = async ({
+  organisationId,
+  urlId,
+  tenderName,
+}: ExportResultAsPdf) => {
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Organisation-Id", organisationId);
+
+  const res = await fetch(`${ASSESSMENT_SERVICE_URL}/result/export`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      urlId,
+    }),
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Error generating pdf of result.`);
+  }
+
+  const { url } = await res.json();
+
+  const s3headers = new Headers();
+  s3headers.append("Content-Type", "application/json");
+  const s3Res = await fetch(url, { headers: s3headers });
+  if (!s3Res.ok) {
+    throw new Error(`Error when fetching pdf from S3.`);
+  }
+  console.log("s3res", s3Res);
+
+  const blob = await s3Res.blob();
+  const downloadUrl = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = downloadUrl;
+  link.download = `${tenderName} Result.pdf`; // Use the file name from the key
+  link.click();
+  URL.revokeObjectURL(downloadUrl); // Clean up
+};
