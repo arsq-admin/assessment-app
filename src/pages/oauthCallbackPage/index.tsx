@@ -18,9 +18,11 @@ export const OauthCallbackPage = () => {
   // TODO: Need to include the state maybe?
   useEffect(() => {
     if (isSuccess) {
-      navigate("/");
+      const state = searchParams.get("state");
+      console.log("state", state);
+      navigate(state || "/");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, navigate, searchParams]);
 
   return <FullPageLoading />;
 };
