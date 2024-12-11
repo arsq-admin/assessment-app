@@ -142,7 +142,7 @@ export const useAnswers = () => {
 
       return navigate(
         `/${urlId}/result?outcome=${finalOutcome.id}${
-          hasPassed ? `&fail-count=${Object.keys(failedAnswers).length}` : ""
+          !hasPassed ? `&fail-count=${Object.keys(failedAnswers).length}` : ""
         }`
       );
     }

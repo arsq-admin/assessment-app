@@ -1,7 +1,7 @@
 import { Column, Container } from "@/components";
 import { FormattedAnswer } from "./useAnswers";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AssessmentContext } from "@/context";
 
@@ -57,16 +57,16 @@ export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
           : "—"}
       </AnswerColumn>
       <Column span={1}>
-        <a
+        <Link
           aria-label={
             !previewOnly
               ? `Edit answer to question ${currentQuestionPosition}`
               : `View question ${currentQuestionPosition}`
           }
-          href={`/${urlId}/assessment?id=${id}`}
+          to={`/${urlId}/assessment?id=${id}`}
         >
           {!previewOnly ? "Edit" : "View"}
-        </a>
+        </Link>
       </Column>
     </Container>
   );

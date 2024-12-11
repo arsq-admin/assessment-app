@@ -3,7 +3,7 @@ import { AssessmentContext } from "@/context";
 import { useContext } from "react";
 import { Section } from "../assessmentPage/types/assessmentConfig";
 import { StatusLabel } from "./StatusLabel";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 interface FailedQuestions {
   questionIds: {
@@ -100,11 +100,11 @@ export const ImprovementPlanSummary = () => {
                           alignItems: "center",
                         }}
                       >
-                        <a href={`/${urlId}/improvement-plan/${question.id}`}>
+                        <Link to={`/${urlId}/improvement-plan/${question.id}`}>
                           {questionOrder.findIndex((id) => id === question.id) +
                             1}
                           . {question.title}
-                        </a>
+                        </Link>
                         <StatusLabel
                           hasAnswer={Boolean(
                             currentImprovementPlan?.[question.id]
