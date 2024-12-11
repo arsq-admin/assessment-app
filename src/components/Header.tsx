@@ -29,9 +29,10 @@ const Wrapper = styled.div`
 
 interface Props {
   tenderName: string;
+  tenderId: string;
 }
 
-export const Header = ({ tenderName }: Props) => {
+export const Header = ({ tenderName, tenderId }: Props) => {
   const {
     VITE_PUBLIC_COGNITO_CLIENT_ID,
     VITE_STAGE,
@@ -57,7 +58,9 @@ export const Header = ({ tenderName }: Props) => {
         <Container>
           <Column span={12}>
             <Wrapper>
-              <div>{tenderName}</div>
+              <div>
+                {tenderId} {tenderName}
+              </div>
               <div
                 style={{ display: "flex", alignItems: "center", gap: "2rem" }}
               >

@@ -1,0 +1,416 @@
+{
+  "sections": [
+    {
+      "name": "Certification",
+      "questions": [
+        {
+          "guidance": "Example certification includes:  Cyber Essential (Plus) and ISO 27001",
+          "id": "SAQ000-01",
+          "logic": [
+            {
+              "action": "SKIP",
+              "condition": [
+                {
+                  "op": "EQUAL",
+                  "value": "no"
+                }
+              ],
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ2"
+              }
+            }
+          ],
+          "options": [
+            {
+              "isAcceptable": true,
+              "name": "Yes",
+              "points": 0,
+              "value": "yes"
+            },
+            {
+              "isAcceptable": true,
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            }
+          ],
+          "title": "Do you have any Information Security Certification?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "allowMultiple": true,
+          "id": "SAQ000-02",
+          "logic": [
+            {
+              "action": "SKIP",
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "value": ["iso27001"]
+                }
+              ],
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ6"
+              }
+            }
+          ],
+          "options": [
+            {
+              "isAcceptable": true,
+              "name": "Cyber Essential (Plus)",
+              "points": 0,
+              "value": "cyberEssentialPlus"
+            },
+            {
+              "isAcceptable": true,
+              "name": "ISO 27001",
+              "points": 0,
+              "value": "iso27001"
+            },
+            {
+              "freeText": true,
+              "freeTextLabel": "Please name the certificate providers.",
+              "isAcceptable": true,
+              "name": "Other",
+              "points": 0,
+              "value": "other"
+            }
+          ],
+          "title": "Check all information certificates that you own and provide the associated certificate number.",
+          "type": "MULTIPLE_CHOICE"
+        }
+      ]
+    },
+    {
+      "name": "Managing Security Risk",
+      "questions": [
+        {
+          "guidance": "There should be an identified, and named, board or senior representative (or a person with the direct delegated authority) who is responsible for the information security aspects of the service and all employees, contractors and third parties.",
+          "id": "SAQ2",
+          "options": [
+            {
+              "name": "No - Responsibility for information security has not been formally assigned",
+              "points": 0,
+              "value": "noResponsibilityForInformationSecurityHasNotBeenFormallyAssigned"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Partial – Responsibilities are understood but not formalised",
+              "points": 25,
+              "value": "partialResponsibilitiesAreUnderstoodButNotFormalised"
+            },
+            {
+              "isAcceptable": true,
+              "name": "Yes – Clearly assigned roles and responsibilities, including senior levels",
+              "points": 35,
+              "value": "yesClearlyAssignedRolesAndResponsibilitiesIncludingSeniorLevels"
+            }
+          ],
+          "subsection": "Governance",
+          "title": "Have appropriate information security roles and responsibilities been defined and allocated?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "As a minimum, organisations need to know when they should or must report information security incidents to external authorities, and how to do so. Depending on the circumstances, this may include law enforcement (in Scotland, call Police Scotland 101), the Information Commissioner, NIS Competent Authorities, and other sector-specific regulators.",
+          "id": "SAQ4",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 15,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Governance",
+          "title": "Are there arrangements for reporting significant cyber security incidents to external authorities?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "Organisations should apply a similar level of rigour to assessing the risks to technology, systems and information assets as they would to other risks that might have a material business impact, such as regulatory, financial or operational risks.",
+          "id": "SAQ6",
+          "logic": [
+            {
+              "action": "SKIP",
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "questionId": "SAQ000-02",
+                  "value": ["iso27001", "cyberEssentialPlus"]
+                }
+              ],
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ34"
+              }
+            }
+          ],
+          "options": [
+            {
+              "name": "No specific activities under this description",
+              "points": 0,
+              "value": "noSpecificActivitiesUnderThisDescription"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "ICT risk assessment and management processes are done on an ad hoc basis",
+              "points": 19,
+              "value": "ictRiskAssessmentAndManagementProcessesAreDoneOnAnAdHocBasis"
+            },
+            {
+              "isAcceptable": true,
+              "name": "Fully governed and using a repeatable formal assessment process",
+              "points": 30,
+              "value": "fullyGovernedAndUsingARepeatableFormalAssessmentProcess"
+            }
+          ],
+          "subsection": "Risk Management",
+          "title": "Is there a risk management regime which assesses the risks to relevant information and systems?",
+          "type": "MULTIPLE_CHOICE"
+        }
+      ]
+    },
+    {
+      "name": "Protecting from Cyber Attack & Identity and Access Management",
+      "questions": [
+        {
+          "guidance": "There should be policies and procedures in place to ensure that all users are asked to authenticate before they can access applications, devices and management interfaces that are relevant to delivery of the contract.",
+          "id": "SAQ29",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 20,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Access Management",
+          "title": "Are all users asked to authenticate appropriately before they can access relevant applications, devices, and management interfaces?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "Users should only be able to access the information and systems they require to do their jobs.",
+          "id": "SAQ34",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 20,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Access Management",
+          "title": "Are users only granted the level of access to information and systems that they require to perform their role?",
+          "type": "MULTIPLE_CHOICE"
+        }
+      ]
+    },
+    {
+      "name": "System Security",
+      "questions": [
+        {
+          "guidance": "All devices used to deliver the service that can connect to the Internet must be protected by a correctly configured firewall (or equivalent network device).",
+          "id": "SAQ78",
+          "logic": [
+            {
+              "action": "SKIP",
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "questionId": "SAQ000-02",
+                  "value": ["iso27001", "cyberEssentialPlus"]
+                }
+              ],
+              "target": {
+                "type": "QUESTION",
+                "value": "SAQ131"
+              }
+            }
+          ],
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 7,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "title": "Are all parts of the network used to deliver the service protected from the Internet and other networks by a Firewall?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "All default vendor-supplied passwords that come with any system or software should be changed before deployment. Organisations should pay particular attention to essential infrastructure devices such as routers, wireless access points, and firewalls.",
+          "id": "SAQ81",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 7,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "title": "Are the default passwords for firewalls and network edge devices changed?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "Best practice is to manage firewalls and routers on the edge of the network from inside the network NOT from the Internet.",
+          "id": "SAQ82",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes - unless there is a clear and documented business need and mitigating controls are in place",
+              "points": 7,
+              "value": "yesUnlessThereIsAClearAndDocumentedBusinessNeedAndMitigatingControlsAreInPlace"
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "title": "Is administrative access to the firewall and/or network edge device blocked from the internet?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "The NCSC's Cyber Essentials Standard: Firewalls. https://www.cyberessentials.ncsc.gov.uk/advice/",
+          "id": "SAQ83",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 7,
+              "value": "yes"
+            }
+          ],
+          "subsection": "Secure Configuration",
+          "title": "Are all inbound connections from the internet or other networks blocked by default?",
+          "type": "MULTIPLE_CHOICE"
+        }
+      ]
+    },
+    {
+      "name": "Minimising the Impact of Security Incidents",
+      "questions": [
+        {
+          "guidance": "There should be policy and procedures to manage (report, assess, respond to and learn from) information security events, incidents and weaknesses consistently and effectively.",
+          "id": "SAQ131",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 10,
+              "value": "yes"
+            }
+          ],
+          "title": "Are there incident management policies and procedures to manage information security events and alerts?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "Organisations should appoint and empower specific individuals (or suppliers) to handle incidents and provide them with clear terms of reference to make decisions and manage any incident that may occur.",
+          "id": "SAQ132",
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 10,
+              "value": "yes"
+            }
+          ],
+          "title": "Have incident management roles and responsibilities been defined?",
+          "type": "MULTIPLE_CHOICE"
+        },
+        {
+          "guidance": "Organisations should have policies and procedures in place to ensure that relevant security incidents are reported in acceptable timescales and formats.",
+          "id": "SAQ133",
+          "logic": [
+            {
+              "action": "END",
+              "condition": [
+                {
+                  "op": "INCLUDES",
+                  "questionId": "SAQ000-02",
+                  "value": ["iso27001"]
+                }
+              ],
+              "target": {
+                "type": "OUTCOME",
+                "value": "COMPLETE"
+              }
+            }
+          ],
+          "options": [
+            {
+              "name": "No",
+              "points": 0,
+              "value": "no"
+            },
+            {
+              "isAcceptable": true,
+              "minimumRequired": true,
+              "name": "Yes",
+              "points": 25,
+              "value": "yes"
+            }
+          ],
+          "title": "Are policies and procedures in place to ensure that all relevant security incidents are reported to the contracting authority in an acceptable time frame?",
+          "type": "MULTIPLE_CHOICE"
+        }
+      ]
+    }
+  ]
+}

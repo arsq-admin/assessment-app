@@ -68,24 +68,6 @@ export const QuestionTemplate = ({
     answer,
   });
 
-  // Temporary keyboard control
-  const keydownListener = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "n") {
-        onNext();
-      }
-      if (event.key === "b") {
-        onPrev();
-      }
-    },
-    [onNext, onPrev]
-  );
-
-  useEffect(() => {
-    window.addEventListener("keydown", keydownListener, true);
-    return () => window.removeEventListener("keydown", keydownListener, true);
-  }, [keydownListener]);
-
   const currentQuestionPosition = questionOrder.findIndex(
     (questionId) => questionId === id
   );

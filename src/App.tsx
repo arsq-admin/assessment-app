@@ -97,7 +97,10 @@ function App() {
               width: "100%",
             }}
           >
-            <Header tenderName={tenderPackage?.name || ""} />
+            <Header
+              tenderName={tenderPackage?.name || ""}
+              tenderId={tenderPackage?.pcsId || ""}
+            />
             <Box sx={{ flexGrow: 1 }}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
