@@ -2,11 +2,25 @@ import { scotGovColour } from "@/themes";
 import { ImprovementPlanSection } from "./ImprovementPlanSection";
 import { Column, PoweredBySupply25 } from "@/components";
 import { useContext } from "react";
-import { AssessmentContext } from "@/context";
+import {
+  AssessmentContext,
+  TenderPackageContext,
+  UserContext,
+} from "@/context";
+import { useParams } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { exportResultAsPdf } from "@/api/assessment";
 
 export const UnsuccessfulPage = () => {
   const { secondaryText } = scotGovColour;
   const { config } = useContext(AssessmentContext);
+  const { organisations } = useContext(UserContext);
+  const { tenderPackage } = useContext(TenderPackageContext);
+  const { urlId = "" } = useParams();
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: exportResultAsPdf,
+  });
 
   return (
     <>
@@ -23,6 +37,21 @@ export const UnsuccessfulPage = () => {
           Supply25. You can also download your answers in PDF format below.
         </p>
 
+        <button
+          style={{ margin: "1.5rem 0" }}
+          className="ds_button ds_button--secondary"
+          disabled={isPending}
+          onClick={() =>
+            mutate({
+              organisationId: organisations[0]?.id,
+              urlId,
+              tenderName: tenderPackage?.name || "",
+              pcsId: tenderPackage?.pcsId || "",
+            })
+          }
+        >
+          Download PDF Result
+        </button>
         <ImprovementPlanSection />
       </Column>
       <Column span={3}>
