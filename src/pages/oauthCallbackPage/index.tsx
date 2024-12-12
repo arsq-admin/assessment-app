@@ -19,7 +19,6 @@ export const OauthCallbackPage = () => {
   useEffect(() => {
     if (isSuccess) {
       const state = searchParams.get("state");
-      console.log("state", state);
       navigate(state || "/");
     }
   }, [isSuccess, navigate, searchParams]);

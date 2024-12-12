@@ -241,7 +241,6 @@ export const exportResultAsPdf = async ({
   if (!s3Res.ok) {
     throw new Error(`Error when fetching pdf from S3.`);
   }
-  console.log("s3res", s3Res);
 
   const blob = await s3Res.blob();
   const downloadUrl = URL.createObjectURL(blob);
