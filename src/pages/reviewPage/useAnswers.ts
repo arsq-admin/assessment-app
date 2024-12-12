@@ -122,7 +122,9 @@ export const useAnswers = () => {
         }
       });
 
-      setQuestionId(Object.values(failedAnswers)[0].id);
+      if (Object.values(failedAnswers).length > 0) {
+        setQuestionId(Object.values(failedAnswers)[0].id);
+      }
 
       localStorage.setItem(
         `failed-questions-${urlId}`,

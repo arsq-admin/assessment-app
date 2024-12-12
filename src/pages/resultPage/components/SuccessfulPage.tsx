@@ -28,8 +28,8 @@ export const SuccessfulPage = ({ title = "", body = "" }: Props) => {
         </div>
       </Column>
       <Column span="3 / span 8">
-        <h2>{title}</h2>
-        <p style={{ color: secondaryText }}>{body}</p>
+        {title ? <h2>{title}</h2> : null}
+        {body ? <p style={{ color: secondaryText }}>{body}</p> : null}
         <h2>What happens next?</h2>
         <p style={{ color: secondaryText }}>
           You have completed the assessment and may now close this browser
