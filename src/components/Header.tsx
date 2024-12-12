@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AssessmentContext, UserContext } from "@/context";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "@/api/user";
+import { DOMAIN } from "@/api";
 
 const FullContainer = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -49,6 +50,11 @@ export const Header = ({ tenderName }: Props) => {
     },
   });
 
+  const fullUrl = window.location.href;
+  const state = fullUrl.includes("localhost")
+    ? fullUrl.split("localhost:5173")[1]
+    : fullUrl.split(DOMAIN)[1];
+
   const redirectUrl = `${VITE_COGNITO_CALLBACK_DOMAIN}/oauth/callback`;
 
   return (
@@ -73,7 +79,7 @@ export const Header = ({ tenderName }: Props) => {
                   </>
                 ) : (
                   <a
-                    href={`https://auth-${VITE_STAGE}.supply25.com/authorize?client_id=${VITE_PUBLIC_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}`}
+                    href={`https://auth-${VITE_STAGE}.supply25.com/authorize?client_id=${VITE_PUBLIC_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirectUrl}&state=${state}`}
                   >
                     Log in
                   </a>
