@@ -36,6 +36,7 @@ interface Props {
   onNext: (callback?: () => void) => void;
   saveImprovementAction: (param: {
     assessmentId: string;
+    title: string;
     questionId: string;
     answer: string;
     organisationId: string;
@@ -64,6 +65,7 @@ export const ImprovementPlanQuestionTemplate = ({
     if (urlId && organisations[0]?.id && answer) {
       saveImprovementAction({
         assessmentId: urlId,
+        title,
         questionId: questionId,
         answer,
         organisationId: organisations[0].id,

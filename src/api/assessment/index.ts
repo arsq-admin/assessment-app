@@ -87,11 +87,13 @@ interface SaveImprovementAction {
   questionId: string;
   answer: string;
   organisationId: string;
+  title: string;
 }
 
 export const saveImprovementAction = async ({
   assessmentId,
   questionId,
+  title,
   answer,
   organisationId,
 }: SaveImprovementAction) => {
@@ -104,6 +106,7 @@ export const saveImprovementAction = async ({
     headers,
     body: JSON.stringify({
       assessmentId,
+      title,
       questionId,
       answer,
     }),
