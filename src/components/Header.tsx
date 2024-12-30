@@ -5,6 +5,7 @@ import { AssessmentContext, UserContext } from "@/context";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "@/api/user";
 import { DOMAIN } from "@/api";
+import { scotGovColour } from "@/themes";
 
 const FullContainer = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -41,8 +42,9 @@ export const Header = ({ tenderName }: Props) => {
     VITE_STAGE,
     VITE_COGNITO_CALLBACK_DOMAIN,
   } = import.meta.env;
+  const { secondaryText } = scotGovColour;
 
-  const { user } = useContext(UserContext);
+  const { user, organisations } = useContext(UserContext);
   const { config } = useContext(AssessmentContext);
   const { isTemplate } = config || {};
 
@@ -72,7 +74,12 @@ export const Header = ({ tenderName }: Props) => {
               >
                 {user ? (
                   <>
-                    <p>{user.name}</p>
+                    <div style={{ textAlign: "right" }}>
+                      <p>{user.name}</p>
+                      <p style={{ color: secondaryText }}>
+                        {organisations[0].name}
+                      </p>
+                    </div>
                     <button
                       className="ds_button ds_button--secondary"
                       onClick={() => mutate()}
