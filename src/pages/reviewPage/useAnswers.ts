@@ -65,7 +65,7 @@ export const useAnswers = () => {
       question: currentQuestion.title,
       id: questionId,
       answers:
-        currentAnswers[questionId]?.answer.map((answer) => {
+        currentAnswers[questionId]?.answer?.map((answer) => {
           const label =
             "options" in currentQuestion &&
             currentQuestion.options.find(

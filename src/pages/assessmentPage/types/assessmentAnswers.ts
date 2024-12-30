@@ -1,3 +1,4 @@
+import { AssessmentAnswer } from "@/api/assessment/types";
 export interface AnswerValue {
   value: string | number;
   name?: string;
@@ -9,4 +10,4 @@ export interface QuestionAnswer {
   followUp?: Record<string, AnswerValue[]>;
 }
 
-export type AssessmentAnswers = Record<string, QuestionAnswer>;
+export type AssessmentAnswers = Record<string, Partial<AssessmentAnswer>>;

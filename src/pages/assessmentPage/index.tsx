@@ -31,7 +31,8 @@ export const AssessmentPage = () => {
     currentQuestionIndex > skippedQuestionIndex;
 
   const isDisabled =
-    firstSkippedQuestionId && isCurrentQuestionAfterSkippedQuestion;
+    config?.isTemplate ||
+    (firstSkippedQuestionId && isCurrentQuestionAfterSkippedQuestion);
 
   const { question, section } =
     config && questionId
@@ -40,7 +41,7 @@ export const AssessmentPage = () => {
 
   return (
     <>
-      {isDisabled && (
+      {!config?.isTemplate && isDisabled && (
         <Container>
           <Column span={12}>
             <PreviewNotice skippedQuestionId={firstSkippedQuestionId} />

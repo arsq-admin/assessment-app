@@ -59,18 +59,19 @@ export const formatAnswers = (
     formattedAnswers[currentSection.name].push({
       question: currentQuestion.title,
       id: questionId,
-      answers: answers[questionId].answer.map((answer) => {
-        const label =
-          "options" in currentQuestion &&
-          currentQuestion.options.find(
-            (option) => option.value === answer.value
-          )?.name;
+      answers:
+        answers[questionId].answer?.map((answer) => {
+          const label =
+            "options" in currentQuestion &&
+            currentQuestion.options.find(
+              (option) => option.value === answer.value
+            )?.name;
 
-        return {
-          ...answer,
-          label: label || "",
-        };
-      }),
+          return {
+            ...answer,
+            label: label || "",
+          };
+        }) || [],
     });
   });
 
@@ -250,7 +251,9 @@ export const hasMissingAnswers = (
   answers: AssessmentAnswers
 ) => {
   return !journey.every((questionId) => {
-    return answers[questionId]?.answer?.length > 0;
+    return (
+      answers[questionId]?.answer && answers[questionId]?.answer?.length > 0
+    );
   });
 };
 
@@ -261,7 +264,10 @@ export const getFirstUnansweredQuestion = (
   let unansweredQuestion = "";
 
   journey.find((questionId) => {
-    if (answers[questionId]?.answer?.length > 0) {
+    if (
+      answers[questionId]?.answer &&
+      answers[questionId]?.answer?.length > 0
+    ) {
       return false;
     }
 

@@ -48,7 +48,7 @@ export const IntroductionPage = () => {
           id="begin-assessment"
           onClick={beginAssessment}
         >
-          Begin assessment
+          {config?.isTemplate ? "Preview Assessment" : "Begin assessment"}
         </button>
       </Column>
     </Container>

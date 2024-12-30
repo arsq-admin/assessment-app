@@ -17,6 +17,7 @@ interface Props {
   journey: string[];
   skippedQuestionId: string;
   isComplete: boolean;
+  isTemplate?: boolean;
 }
 
 export const ReviewSection = ({
@@ -25,6 +26,7 @@ export const ReviewSection = ({
   journey,
   skippedQuestionId,
   isComplete,
+  isTemplate,
 }: Props) => {
   return (
     <OuterContainer span={12}>
@@ -43,6 +45,7 @@ export const ReviewSection = ({
 
         return (
           <AnswerRow
+            isTemplate={isTemplate}
             key={id}
             id={id}
             question={question}

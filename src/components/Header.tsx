@@ -16,6 +16,9 @@ const PreviewBanner = styled(FluidContainer)`
   background-color: #d9effc;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `;
 
 const Wrapper = styled.div`

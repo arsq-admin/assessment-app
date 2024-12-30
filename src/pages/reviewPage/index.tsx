@@ -25,8 +25,8 @@ export const ReviewPage = () => {
 
   return (
     <Container padding="2rem">
-      <Heading />
-      {skippedQuestionId && (
+      <Heading isTemplate={isTemplate} />
+      {!isTemplate && skippedQuestionId && (
         <Column span={12}>
           <PreviewNotice skippedQuestionId={skippedQuestionId} />
         </Column>
@@ -34,6 +34,7 @@ export const ReviewPage = () => {
       {sections.map((sectionName) => {
         return (
           <ReviewSection
+            isTemplate={isTemplate}
             key={sectionName}
             name={sectionName}
             answers={answers[sectionName] || []}
@@ -53,15 +54,17 @@ export const ReviewPage = () => {
           >
             Go back to the assessments
           </button>
-          <button
-            className="ds_button"
-            disabled={!isComplete || isTemplate}
-            onClick={() => {
-              resolveAssessment();
-            }}
-          >
-            Submit
-          </button>
+          {!isTemplate && (
+            <button
+              className="ds_button"
+              disabled={!isComplete || isTemplate}
+              onClick={() => {
+                resolveAssessment();
+              }}
+            >
+              Submit
+            </button>
+          )}
         </NavigationContainer>
       </Column>
     </Container>
