@@ -53,7 +53,7 @@ export const SuccessfulPage = ({ title = "", body = "" }: Props) => {
               organisationId: organisations[0]?.id,
               urlId,
               tenderName: tenderPackage?.name || "",
-              pcsId: tenderPackage?.pcsId || "",
+              referenceId: tenderPackage?.referenceId || "",
             })
           }
         >

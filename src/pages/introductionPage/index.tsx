@@ -17,7 +17,7 @@ export const IntroductionPage = () => {
         <p>
           <b>Welcome to the</b>
         </p>
-        <h2 style={{ margin: "0 0 2rem" }}>{config?.name}</h2>
+        <h1 style={{ margin: "0 0 2rem" }}>{config?.name}</h1>
         {config?.introduction.map((intro, introIndex) => {
           return (
             <div key={introIndex} style={{ marginBottom: "3rem" }}>
