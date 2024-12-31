@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Option } from "../types/assessmentConfig";
 import { MinimumRequiredLabel } from "./MinimumRequiredLabel";
+import { scotGovColour } from "@/themes";
 
 interface Props {
   questionId: string;
@@ -24,8 +25,10 @@ export const CheckboxGroup = ({
   freeTextOnChange,
   disabled,
 }: Props) => {
+  const { secondaryText } = scotGovColour;
   return (
     <Box display="flex" flexDirection="column" gap="0.5rem" width="90%">
+      <p style={{ color: secondaryText }}>Select all that apply.</p>
       {options.map(
         ({
           name,
@@ -50,8 +53,8 @@ export const CheckboxGroup = ({
                 <label className="ds_checkbox__label" htmlFor={optionValue}>
                   {name}
                 </label>
+                {minimumRequired && <MinimumRequiredLabel />}
               </div>
-              {minimumRequired && <MinimumRequiredLabel />}
               {freeText && value.includes(optionValue) && (
                 <Box
                   sx={{
@@ -72,7 +75,7 @@ export const CheckboxGroup = ({
                     rows={3}
                     id={`${questionId}-freeText`}
                     name={`${questionId}-freeText`}
-                  ></textarea>
+                  />
                 </Box>
               )}
             </Box>
