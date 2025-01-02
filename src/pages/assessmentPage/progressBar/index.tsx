@@ -44,18 +44,15 @@ export const ProgressBar = () => {
 
   const currentSection = config.sections[currentSectionIndex];
 
-  const totalSectionsPlusReview = config?.sections.length + 1;
-
   return (
     <Column span={4}>
-      <PoweredBySupply25 margin="0 auto 2rem" />
       <Title>Progress</Title>
       <p>
         You have completed {currentSectionIndex} out of{" "}
-        {totalSectionsPlusReview} sections.
+        {config?.sections.length} sections.
       </p>
       <Sections>
-        {config.sections?.map(({ name, questions }) => {
+        {config.sections?.map(({ name, questions }, index, array) => {
           const questionsInJourney = questions.filter((question) =>
             journey.includes(question.id)
           );
@@ -64,7 +61,7 @@ export const ProgressBar = () => {
           );
           return (
             <Section
-              isLast={false}
+              isLast={index === array.length - 1}
               key={name}
               name={name}
               isCurrentSection={currentSection?.name === name}
@@ -72,16 +69,11 @@ export const ProgressBar = () => {
             />
           );
         })}
-        <Section
-          isLast={true}
-          name={"Review"}
-          isCurrentSection={false}
-          isComplete={false}
-        />
         <LineWrapper>
           <Line />
         </LineWrapper>
       </Sections>
+      <PoweredBySupply25 margin="2rem" />
     </Column>
   );
 };

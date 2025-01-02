@@ -208,14 +208,14 @@ interface ExportResultAsPdf {
   organisationId: string;
   urlId: string;
   tenderName: string;
-  pcsId: string;
+  referenceId: string;
 }
 
 export const exportResultAsPdf = async ({
   organisationId,
   urlId,
   tenderName,
-  pcsId,
+  referenceId,
 }: ExportResultAsPdf) => {
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
@@ -227,7 +227,7 @@ export const exportResultAsPdf = async ({
     body: JSON.stringify({
       urlId,
       assessmentPackageName: tenderName,
-      tenderId: pcsId,
+      tenderId: referenceId,
     }),
     credentials: "include",
   });

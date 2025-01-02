@@ -170,7 +170,9 @@ export const QuestionTemplate = ({
             Previous
           </button>
           <button
-            className="ds_button"
+            className={`ds_button ${
+              reachedReviewPage ? "ds_button--secondary" : ""
+            }`}
             type="button"
             id="next"
             onClick={onNext}

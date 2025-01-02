@@ -98,11 +98,13 @@ function App() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              height: "100vh",
               width: "100%",
             }}
           >
-            <Header tenderName={tenderPackage?.name || ""} />
+            <Header
+              referenceId={tenderPackage?.referenceId || ""}
+              tenderName={tenderPackage?.name || ""}
+            />
             <Box sx={{ flexGrow: 1 }}>
               <Routes>
                 <Route path="/" element={<HomePage />} />

@@ -10,7 +10,7 @@ export interface PublicTenderPackage {
   id: string;
   allowImprovementPlan: boolean;
   submissionDeadline: string;
-  pcsId: string;
+  referenceId: string;
   status: TenderPackageStatus;
   organisationId: string;
 }

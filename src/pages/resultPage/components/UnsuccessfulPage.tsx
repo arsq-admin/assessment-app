@@ -46,13 +46,15 @@ export const UnsuccessfulPage = () => {
               organisationId: organisations[0]?.id,
               urlId,
               tenderName: tenderPackage?.name || "",
-              pcsId: tenderPackage?.pcsId || "",
+              referenceId: tenderPackage?.referenceId || "",
             })
           }
         >
           Download PDF Result
         </button>
-        <ImprovementPlanSection />
+        {tenderPackage?.allowImprovementPlan ? (
+          <ImprovementPlanSection />
+        ) : null}
       </Column>
       <Column span={3}>
         <PoweredBySupply25 />

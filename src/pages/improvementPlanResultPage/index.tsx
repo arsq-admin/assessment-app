@@ -41,7 +41,7 @@ export const ImprovementPlanResultPage = () => {
                 organisationId: organisations[0]?.id,
                 urlId,
                 tenderName: tenderPackage?.name || "",
-                pcsId: tenderPackage?.pcsId || "",
+                referenceId: tenderPackage?.referenceId || "",
               })
             }
           >

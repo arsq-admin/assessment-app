@@ -5,6 +5,7 @@ import { AssessmentContext, UserContext } from "@/context";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "@/api/user";
 import { DOMAIN } from "@/api";
+import { scotGovColour } from "@/themes";
 
 const FullContainer = styled(FluidContainer)`
   border-bottom: 8px solid #ebebeb;
@@ -16,6 +17,9 @@ const PreviewBanner = styled(FluidContainer)`
   background-color: #d9effc;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `;
 
 const Wrapper = styled.div`
@@ -29,17 +33,19 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
-  tenderName: string;
+  referenceId?: string;
+  tenderName?: string;
 }
 
-export const Header = ({ tenderName }: Props) => {
+export const Header = ({ tenderName, referenceId }: Props) => {
   const {
     VITE_PUBLIC_COGNITO_CLIENT_ID,
     VITE_STAGE,
     VITE_COGNITO_CALLBACK_DOMAIN,
   } = import.meta.env;
+  const { secondaryText } = scotGovColour;
 
-  const { user } = useContext(UserContext);
+  const { user, organisations } = useContext(UserContext);
   const { config } = useContext(AssessmentContext);
   const { isTemplate } = config || {};
 
@@ -63,13 +69,24 @@ export const Header = ({ tenderName }: Props) => {
         <Container>
           <Column span={12}>
             <Wrapper>
-              <div>{tenderName}</div>
+              <p>
+                <b>
+                  {referenceId &&
+                    tenderName &&
+                    `${referenceId} | ${tenderName}`}
+                </b>
+              </p>
               <div
                 style={{ display: "flex", alignItems: "center", gap: "2rem" }}
               >
                 {user ? (
                   <>
-                    <p>{user.name}</p>
+                    <div style={{ textAlign: "right" }}>
+                      <p>{user.name}</p>
+                      <p style={{ color: secondaryText }}>
+                        {organisations[0].name}
+                      </p>
+                    </div>
                     <button
                       className="ds_button ds_button--secondary"
                       onClick={() => mutate()}

@@ -27,9 +27,16 @@ interface Props {
   answers: FormattedAnswer[];
   id: string;
   previewOnly: boolean;
+  isTemplate?: boolean;
 }
 
-export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
+export const AnswerRow = ({
+  question,
+  answers,
+  id,
+  previewOnly,
+  isTemplate,
+}: Props) => {
   const { urlId } = useParams();
   const { questionOrder } = useContext(AssessmentContext);
 
@@ -65,7 +72,7 @@ export const AnswerRow = ({ question, answers, id, previewOnly }: Props) => {
           }
           to={`/${urlId}/assessment?id=${id}`}
         >
-          {!previewOnly ? "Edit" : "View"}
+          {isTemplate ? "Preview" : !previewOnly ? "Edit" : "View"}
         </Link>
       </Column>
     </Container>
